@@ -1,0 +1,24 @@
+{
+  "plugins": ["react", "prettier", "only-warn"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:jsdoc/recommended",
+    "plugin:prettier/recommended",
+    "plugin:cypress/recommended"
+  ],
+  "ignorePatterns": ["*.yml"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  }
+}
