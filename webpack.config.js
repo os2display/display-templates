@@ -43,7 +43,8 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+//          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          "style-loader",
           "css-loader",
           "postcss-loader",
           "sass-loader",
@@ -52,7 +53,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+//    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: "webpack Examples",
       template: path.resolve(__dirname, "./examples/src/index.html"),
