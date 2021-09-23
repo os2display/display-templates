@@ -19,6 +19,12 @@ const output = devMode
       clean: true,
     };
 
+const externals = devMode
+  ? {}
+  : {
+      react: "react",
+    };
+
 module.exports = {
   mode: devMode ? "development" : "production",
   entry: {
@@ -26,6 +32,7 @@ module.exports = {
     "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
   },
   output,
+  externals,
   module: {
     rules: [
       {
@@ -59,10 +66,7 @@ module.exports = {
         },
       ],
     }),
-    new CleanWebpackPlugin({
-      protectWebpackAssets: false,
-      cleanAfterEveryBuildPatterns: ["*.LICENSE.txt"],
-    }),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     port: 3000,
