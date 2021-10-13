@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktemplates=self.webpackChunktemplates||[]).push([[924],{8924:e=>{e.exports=JSON.parse('{"free":[{"type":0,"value":"Gratis"}]}')}}]);

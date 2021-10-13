@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import "./image-text.scss";
-import parse from "html-react-parser";
-import DOMPurify from "dompurify";
-import PropTypes from "prop-types";
-import BaseSlideExecution from "../base-slide-execution";
+import React, { useEffect } from 'react';
+import './image-text.scss';
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
+import PropTypes from 'prop-types';
+import { createGlobalStyle } from 'styled-components';
+import BaseSlideExecution from '../base-slide-execution';
 
 /**
  * ImageText component.
@@ -32,8 +33,8 @@ function ImageText({ slide, content, run, slideDone }) {
     fontSize,
     shadow,
   } = content.styling || {};
-  const boxClasses = fontSize ? `box ${fontSize}` : "box";
-  const rootClasses = ["template-image-text"];
+  const boxClasses = fontSize ? `box ${fontSize}` : 'box';
+  const rootClasses = ['template-image-text'];
 
   // Styling objects
   const rootStyle = {};
@@ -82,50 +83,69 @@ function ImageText({ slide, content, run, slideDone }) {
   }
 
   // Position text-box.
-  if (boxAlign === "left" || boxAlign === "right") {
-    rootClasses.push("column");
+  if (boxAlign === 'left' || boxAlign === 'right') {
+    rootClasses.push('column');
   }
 
-  if (boxAlign === "bottom" || boxAlign === "right") {
-    rootClasses.push("flex-end");
+  if (boxAlign === 'bottom' || boxAlign === 'right') {
+    rootClasses.push('flex-end');
   }
   if (reversed) {
-    rootClasses.push("reversed");
+    rootClasses.push('reversed');
   }
   if (boxMargin || reversed) {
-    rootClasses.push("box-margin");
+    rootClasses.push('box-margin');
   }
   if (halfSize && !reversed) {
-    rootClasses.push("half-size");
+    rootClasses.push('half-size');
   }
   if (separator && !reversed) {
-    rootClasses.push("animated-header");
+    rootClasses.push('animated-header');
   }
 
   if (shadow) {
-    rootClasses.push("shadow");
+    rootClasses.push('shadow');
   }
 
+  /**
+   * Setup theme vars
+   */
+  /* TODO: Css from theme editor goes inside `ThemeStyles` */
+  /* TODO: Replace class `.template-image-text` with unique id/class from slide. */
+  const ThemeStyles = createGlobalStyle`
+    .template-image-text {
+      --text-dark: #000;
+      --bg-light: #f5f5f5;
+      --font-size-sm: 10px;
+      --font-size-base: 15px;
+      --font-size-lg: 20px;
+      --font-size-xl: 25px;
+    }
+  `;
+
   return (
-    <div className={rootClasses.join(" ")} style={rootStyle}>
-      {title && (
-        <div className={boxClasses} style={imageTextStyle}>
-          {title && (
-            <h1>
-              {title}
-              {/* Todo theme the color of the below */}
-              {displaySeparator && (
-                <div
-                  className="separator"
-                  style={{ backgroundColor: "#ee0043" }}
-                />
-              )}
-            </h1>
-          )}
-          {text && <div className="text">{parse(sanitizedText)}</div>}
-        </div>
-      )}
-    </div>
+    <>
+      <ThemeStyles />
+      <div className={rootClasses.join(' ')} style={rootStyle}>
+        {title && (
+          <div className={boxClasses} style={imageTextStyle}>
+            {title && (
+              <h1>
+                {title}
+                {/* Todo theme the color of the below */}
+                {displaySeparator && (
+                  <div
+                    className="separator"
+                    style={{ backgroundColor: '#ee0043' }}
+                  />
+                )}
+              </h1>
+            )}
+            {text && <div className="text">{parse(sanitizedText)}</div>}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
