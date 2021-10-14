@@ -81,7 +81,10 @@ module.exports = {
         },
       ],
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      protectWebpackAssets: false,
+      cleanAfterEveryBuildPatterns: ['*.LICENSE.txt'],
+    }),
   ],
   devServer: {
     port: 3000,
