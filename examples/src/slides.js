@@ -1,5 +1,6 @@
 const slides = [
   {
+    id: 'slide1',
     type: 'image-text',
     duration: 5000,
     content: {
@@ -20,6 +21,7 @@ const slides = [
     }
   },
   {
+    id: 'slide2',
     type: 'book-review',
     duration: 5000,
     content: {
@@ -38,6 +40,7 @@ const slides = [
     }
   },
   {
+    id: 'slide3',
     type: 'calendar',
     duration: 5000,
     'content': {
@@ -73,6 +76,7 @@ const slides = [
     }
   },
   {
+    id: 'slide4',
     type: 'meeting-room-schedule',
     duration: 5000,
     'content': {
@@ -118,6 +122,7 @@ const slides = [
     }
   },
   {
+    id: 'slide5',
     type: 'poster',
     duration: 5000,
     'content': {
@@ -146,6 +151,7 @@ const slides = [
     }
   },
   {
+    id: 'slide6',
     type: 'rss',
     duration: 5000,
     'content': {
@@ -156,6 +162,7 @@ const slides = [
     }
   },
   {
+    id: 'slide7',
     type: 'slideshow',
     duration: 5000,
     'content': {
@@ -192,6 +199,7 @@ const slides = [
     }
   },
   {
+    id: 'slide8',
     type: 'contacts',
     duration: 5000,
     'content': {
@@ -260,6 +268,7 @@ const slides = [
     }
   },
   {
+    id: 'slide9',
     type: 'sparkle',
     duration: 5000,
     'content': {
@@ -281,6 +290,7 @@ const slides = [
     }
   },
   {
+    id: 'slide10',
     type: 'quote',
     duration: 5000,
     'content': {
@@ -312,7 +322,7 @@ const slides = [
         }
       ]
     }
-  }
+  },
 ];
 
 export default slides;

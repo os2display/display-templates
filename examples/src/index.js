@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { render } from "react-dom";
 import ImageText from "../../src/image-text/image-text";
 import slides from './slides';
@@ -87,16 +87,26 @@ const renderSlide = (slide) => {
   }
 }
 
-const styles = {
-  margin: '25px',
-  width: '1920px',
-  height: '1080px',
+
+const App = () => {
+  const [selectedSlide, setSelectedSlide] = useState(null);
+  const buttonStyles = {margin: '5px'};
+  const slideStyles = {
+    margin: '25px',
+    width: '1920px',
+    height: '1080px',
+  }
+
+  return <div>
+    <h1>Examples</h1>
+    {slides.map((slide) => <button id={`button-${slide.id}`} style={buttonStyles} onClick={() => {setSelectedSlide(slide)}}>{slide.id}</button>)}
+
+    {selectedSlide &&
+      <div style={slideStyles}>
+        {renderSlide(selectedSlide)}
+      </div>
+    }
+  </div>
 }
 
-const App = () => (
-  <div>
-    <h1>Examples</h1>
-    {slides.map((slide, index) => <div style={styles} key={index}>{renderSlide(slide)}</div>)}
-  </div>
-);
 render(<App />, document.getElementById("root"));
