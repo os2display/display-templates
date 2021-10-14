@@ -155,7 +155,6 @@ const slides = [
       'source': './fixtures/rss/feed.json'
     }
   },
-
   {
     type: 'slideshow',
     duration: 5000,
@@ -258,6 +257,60 @@ const slides = [
       'styling': {
         'separator': true
       }
+    }
+  },
+  {
+    type: 'sparkle',
+    duration: 5000,
+    'content': {
+      'hashtagText': 'dadaada',
+      'orientation': 'landscape',
+      'imageWidth': 56.25,
+      'duration': 10000,
+      'selectedFeed': 27626,
+      'posts': [
+        {
+          'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. #Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum',
+          'textMarkup': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum',
+          'mediaUrl': './fixtures/images/mountain3.jpeg',
+          'videoUrl': null,
+          'username': 'Lorem Ipsum',
+          'createdTime': '2021-06-21T10:13:30'
+        }
+      ]
+    }
+  },
+  {
+    type: 'quote',
+    duration: 5000,
+    'content': {
+      'quoteInTwoLines': true,
+      'quotes': [
+        {
+          'quote': 'I Miss You So Much, It Hurts Sometimes.',
+          'author': 'John Michael Dorian',
+          'duration': 5000,
+          'id': 'uniqueQuote1'
+        },
+        {
+          'quote': 'I Shouldn\'t Be Mopping Here Anyways...This Is A Rug.',
+          'author': 'Janitor',
+          'duration': 5000,
+          'id': 'uniqueQuote2'
+        },
+        {
+          'quote': 'Ladies and gentlemen, allow me to present, Man Not Caring.',
+          'author': 'Dr. Cox',
+          'duration': 5000,
+          'id': 'uniqueQuote3'
+        },
+        {
+          'quote': 'You Would Hear Cricket\'s Chirping, But They Were Too Uncomfortable About Just How Unfunny That Actually Was.',
+          'author': 'Dr. Cox',
+          'duration': 7000,
+          'id': 'uniqueQuote3'
+        }
+      ]
     }
   }
 ];

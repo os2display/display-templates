@@ -59,8 +59,8 @@ function Contacts({ slide, content, run, slideDone }) {
           )}
         </h1>
         <div className="contacts">
-          {contacts.map((contact) => (
-            <div className="contact">
+          {contacts.map((contact, index) => (
+            <div className="contact" key={index}>
               {contact.media && (
                 <div
                   className="image-area"

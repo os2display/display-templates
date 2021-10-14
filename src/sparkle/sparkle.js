@@ -7,8 +7,8 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 import parse from 'html-react-parser';
 import DOMPurify from 'dompurify';
 import { createGlobalStyle } from 'styled-components';
-import { ReactComponent as Shape } from './shape.svg';
-import { ReactComponent as InstagramLogo } from './instagram-logo.svg';
+import Shape from './shape.svg';
+import InstagramLogo from './instagram-logo.svg';
 import BaseSlideExecution from '../base-slide-execution';
 import './sparkle.scss';
 

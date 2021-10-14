@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './quote.scss';
 import BaseSlideExecution from '../base-slide-execution';
-import { ReactComponent as Logo } from './citation-mark.svg';
+import Logo from './citation-mark.svg';
 
 /**
  * Quote component.
