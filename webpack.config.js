@@ -39,6 +39,27 @@ const entry = devMode ? {
     'sparkle': path.resolve(__dirname, './src/sparkle/sparkle.js')
 }
 
+const plugins = devMode ? [
+    new HtmlWebpackPlugin({
+        title: 'webpack Examples',
+        template: path.resolve(__dirname, './examples/src/index.html'),
+        filename: 'index.html'
+    }),
+    new CopyPlugin({
+        patterns: [
+            {
+                from: path.resolve(__dirname, './examples/src/fixtures'),
+                to: 'fixtures'
+            }
+        ]
+    }),
+] : [
+    new CleanWebpackPlugin({
+        protectWebpackAssets: false,
+        cleanAfterEveryBuildPatterns: ['*.LICENSE.txt']
+    })
+];
+
 module.exports = {
     mode: devMode ? 'development' : 'production',
     entry: entry,
@@ -77,25 +98,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'webpack Examples',
-            template: path.resolve(__dirname, './examples/src/index.html'),
-            filename: 'index.html'
-        }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, './examples/src/fixtures'),
-                    to: 'fixtures'
-                }
-            ]
-        }),
-        new CleanWebpackPlugin({
-            protectWebpackAssets: false,
-            cleanAfterEveryBuildPatterns: ['*.LICENSE.txt']
-        })
-    ],
+    plugins: plugins,
     devServer: {
         port: 3000,
         host: '0.0.0.0',
