@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes, Keyframes } from 'styled-components';
-import './slideshow.scss';
-import BaseSlideExecution from '../base-slide-execution';
+import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import styled, { keyframes, Keyframes } from "styled-components";
+import "./slideshow.scss";
+import BaseSlideExecution from "../base-slide-execution";
 
 /**
  * Slideshow component.
@@ -70,11 +70,11 @@ function Slideshow({ slide, content, run, slideDone }) {
    * @returns {Keyframes}
    *   The animation.
    */
-  function createAnimation(grow, transform = '50% 50%') {
+  function createAnimation(grow, transform = "50% 50%") {
     const transformOrigin = transform;
     const startSize = grow ? 1 : 1.2;
     const finishSize = grow ? 1.2 : 1;
-    const startFinishOpacity = transitions === 'fade' ? 0 : 1;
+    const startFinishOpacity = transitions === "fade" ? 0 : 1;
     return keyframes`
     0% {
       transform: scale(${startSize});
@@ -109,20 +109,20 @@ function Slideshow({ slide, content, run, slideDone }) {
    */
   function getCurrentAnimation(animationType) {
     const animationTypes = [
-      'zoom-in-middle',
-      'zoom-out-middle',
-      'zoom-out-random',
-      'zoom-in-random',
+      "zoom-in-middle",
+      "zoom-out-middle",
+      "zoom-out-random",
+      "zoom-in-random",
     ];
     const randomPercent = `${random(100) + 1}% ${random(100) + 1}%`;
     switch (animationType) {
-      case 'zoom-in-middle':
+      case "zoom-in-middle":
         return createAnimation(true);
-      case 'zoom-out-middle':
+      case "zoom-out-middle":
         return createAnimation(false);
-      case 'zoom-in-random':
+      case "zoom-in-random":
         return createAnimation(true, randomPercent);
-      case 'zoom-out-random':
+      case "zoom-out-random":
         return createAnimation(false, randomPercent);
       default:
         return getCurrentAnimation(

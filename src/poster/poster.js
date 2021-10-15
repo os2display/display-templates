@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import localeDa from 'dayjs/locale/da';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
-import './poster.scss';
-import da from './lang/da.json';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import localeDa from "dayjs/locale/da";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
+import "./poster.scss";
+import da from "./lang/da.json";
 
 /**
  * Poster component.
@@ -145,14 +145,14 @@ function Poster({ slide, content, run, slideDone }) {
             }}
           />
           {/* todo theme color */}
-          <div className="header-area" style={{ backgroundColor: 'Azure' }}>
+          <div className="header-area" style={{ backgroundColor: "Azure" }}>
             <div className="center">
               <h1>{name}</h1>
               <p className="lead">{excerpt}</p>
             </div>
           </div>
           {/* todo theme color */}
-          <div className="info-area" style={{ backgroundColor: 'Aquamarine' }}>
+          <div className="info-area" style={{ backgroundColor: "Aquamarine" }}>
             <div className="center">
               {startDate && endDate && (
                 <span>
@@ -160,7 +160,7 @@ function Poster({ slide, content, run, slideDone }) {
                     <span>
                       <p className="date">
                         {capitalize(
-                          dayjs(startDate).locale(localeDa).format('LLLL')
+                          dayjs(startDate).locale(localeDa).format("LLLL")
                         )}
                       </p>
                     </span>
@@ -170,11 +170,11 @@ function Poster({ slide, content, run, slideDone }) {
                     <span>
                       <p className="date">
                         {capitalize(
-                          dayjs(startDate).locale(localeDa).format('LLLL')
-                        )}{' '}
-                        -{' '}
+                          dayjs(startDate).locale(localeDa).format("LLLL")
+                        )}{" "}
+                        -{" "}
                         {capitalize(
-                          dayjs(endDate).locale(localeDa).format('LLLL')
+                          dayjs(endDate).locale(localeDa).format("LLLL")
                         )}
                       </p>
                     </span>

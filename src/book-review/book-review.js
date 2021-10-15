@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import PropTypes from 'prop-types';
-import parse from 'html-react-parser';
-import './book-review.scss';
-import DOMPurify from 'dompurify';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
+import PropTypes from "prop-types";
+import parse from "html-react-parser";
+import "./book-review.scss";
+import DOMPurify from "dompurify";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
 
 /**
  * Book review component.
@@ -28,8 +28,8 @@ function BookReview({ slide, content, run, slideDone }) {
   const bookUrl = content.media?.bookImage?.url;
   const authorImage = authorUrl
     ? { backgroundImage: `url("${authorUrl}")` }
-    : '';
-  const bookImage = bookUrl ? { backgroundImage: `url("${bookUrl}")` } : '';
+    : "";
+  const bookImage = bookUrl ? { backgroundImage: `url("${bookUrl}")` } : "";
   const sanitizedBookText = DOMPurify.sanitize(bookText);
 
   /**

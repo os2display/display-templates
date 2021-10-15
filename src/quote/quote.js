@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import './quote.scss';
-import BaseSlideExecution from '../base-slide-execution';
-import Logo from './citation-mark.svg';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import "./quote.scss";
+import BaseSlideExecution from "../base-slide-execution";
+import Logo from "./citation-mark.svg";
 
 /**
  * Quote component.
@@ -22,7 +22,7 @@ import Logo from './citation-mark.svg';
  */
 function Quote({ slide, content, run, slideDone }) {
   const { quotes, quoteInTwoLines } = content;
-  const quoteClasses = quoteInTwoLines ? 'quote two-lines' : 'quote';
+  const quoteClasses = quoteInTwoLines ? "quote two-lines" : "quote";
   const [first] = quotes;
   const [currentQuote, setCurrentQuote] = useState(first);
   const [show, setShow] = useState(true);
@@ -63,9 +63,9 @@ function Quote({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <div className={show ? 'template-quote show' : 'template-quote hide'}>
+      <div className={show ? "template-quote show" : "template-quote hide"}>
         {/* todo make this themeable */}
-        <Logo style={{ stroke: 'red' }} />
+        <Logo style={{ stroke: "red" }} />
         <div className="quote-container">
           <div className={quoteClasses}>{currentQuote.quote}</div>
           <div className="author">{currentQuote.author}</div>

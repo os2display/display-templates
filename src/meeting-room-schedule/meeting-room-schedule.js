@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import localeDa from 'dayjs/locale/da';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import './meeting-room-schedule.scss';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
-import da from './lang/da.json';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import localeDa from "dayjs/locale/da";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import "./meeting-room-schedule.scss";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
+import da from "./lang/da.json";
 
 /**
  * Meeting room schedule component.
@@ -106,9 +106,9 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
       new Date().getTime() > new Date(event.from).getTime() &&
       new Date(event.to).getDay() < new Date().getTime()
     ) {
-      return 'flex-item now';
+      return "flex-item now";
     }
-    return 'flex-item';
+    return "flex-item";
   }
 
   // Sort events by from and filter away events that are done, but not ongoing events.
@@ -152,8 +152,8 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
                 sortedEvents.map((event) => (
                   <div className={isNow(event)} key={event.id}>
                     <div className="time">
-                      {dayjs(event.from).locale(localeDa).format('LT')} -{' '}
-                      {dayjs(event.to).locale(localeDa).format('LT')}
+                      {dayjs(event.from).locale(localeDa).format("LT")} -{" "}
+                      {dayjs(event.to).locale(localeDa).format("LT")}
                     </div>
                     <div className="event-name">
                       {event.eventName ? event.eventName : occupiedText}

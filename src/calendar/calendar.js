@@ -1,13 +1,13 @@
-import React, { useEffect, Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import localeDa from 'dayjs/locale/da';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
-import './calendar.scss';
-import da from './lang/da.json';
+import React, { useEffect, Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import localeDa from "dayjs/locale/da";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
+import "./calendar.scss";
+import da from "./lang/da.json";
 
 /**
  * Calendar component.
@@ -108,7 +108,7 @@ function Calendar({ slide, content, run, slideDone }) {
             <div className="grid-item">{title}</div>
             <div className="grid-item-end">
               {currentDate &&
-                capitalize(dayjs().locale(localeDa).format('LLLL'))}
+                capitalize(dayjs().locale(localeDa).format("LLLL"))}
             </div>
           </div>
           <div className="grid-container">
@@ -125,7 +125,7 @@ function Calendar({ slide, content, run, slideDone }) {
               <Fragment key={entry.id}>
                 <div className="grid-item">{entry.eventName}</div>
                 <div className="grid-item">
-                  {dayjs(entry.datetime).locale(localeDa).format('LT')}
+                  {dayjs(entry.datetime).locale(localeDa).format("LT")}
                 </div>
                 <div className="grid-item">{entry.location}</div>
               </Fragment>

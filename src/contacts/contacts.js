@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import BaseSlideExecution from '../base-slide-execution';
-import './contacts.scss';
-import da from './lang/da.json';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import BaseSlideExecution from "../base-slide-execution";
+import "./contacts.scss";
+import da from "./lang/da.json";
 
 /**
  * Contacts component.
@@ -49,17 +49,17 @@ function Contacts({ slide, content, run, slideDone }) {
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
       {/* todo add theme styling below */}
-      <div className="contacts-template" style={{ backgroundColor: 'yellow' }}>
+      <div className="contacts-template" style={{ backgroundColor: "yellow" }}>
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
           {/* todo add theme styling below */}
           {separator && (
-            <div className="separator" style={{ backgroundColor: '#ee0043' }} />
+            <div className="separator" style={{ backgroundColor: "#ee0043" }} />
           )}
         </h1>
         <div className="contacts">
-          {contacts.map((contact, index) => (
-            <div className="contact" key={index}>
+          {contacts.map((contact) => (
+            <div className="contact" key={contact.id}>
               {contact.media && (
                 <div
                   className="image-area"

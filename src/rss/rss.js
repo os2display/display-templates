@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import localeDa from 'dayjs/locale/da';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
-import './rss.scss';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import localeDa from "dayjs/locale/da";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
+import "./rss.scss";
 
 /**
  * RSS component.
@@ -33,7 +33,7 @@ function RSS({ slide, content, run, slideDone }) {
   const [feed, setFeed] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [index, setIndex] = useState(1);
-  const [feedTitle, setFeedTitle] = useState('');
+  const [feedTitle, setFeedTitle] = useState("");
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -124,7 +124,7 @@ function RSS({ slide, content, run, slideDone }) {
         <div className="title">{title}</div>
         {date && (
           <div className="date">
-            {capitalize(dayjs(date).locale(localeDa).format('LLLL'))}
+            {capitalize(dayjs(date).locale(localeDa).format("LLLL"))}
           </div>
         )}
         <div className="description">{description}</div>

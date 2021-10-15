@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import localeDa from 'dayjs/locale/da';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
-import { createGlobalStyle } from 'styled-components';
-import Shape from './shape.svg';
-import InstagramLogo from './instagram-logo.svg';
-import BaseSlideExecution from '../base-slide-execution';
-import './sparkle.scss';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import localeDa from "dayjs/locale/da";
+import relativeTime from "dayjs/plugin/relativeTime";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
+import { createGlobalStyle } from "styled-components";
+import Shape from "./shape.svg";
+import InstagramLogo from "./instagram-logo.svg";
+import BaseSlideExecution from "../base-slide-execution";
+import "./sparkle.scss";
 
 /**
  * Sparkle component.
@@ -104,7 +104,7 @@ function Sparkle({ slide, content, run, slideDone }) {
   return (
     <>
       <ThemeStyles />
-      <div className={show ? 'template-sparkle show' : 'template-sparkle hide'}>
+      <div className={show ? "template-sparkle show" : "template-sparkle hide"}>
         <div className="media-section">
           {!videoUrl && (
             <div

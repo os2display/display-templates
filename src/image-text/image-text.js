@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import './image-text.scss';
-import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
-import PropTypes from 'prop-types';
-import { createGlobalStyle } from 'styled-components';
-import BaseSlideExecution from '../base-slide-execution';
+import React, { useEffect } from "react";
+import "./image-text.scss";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
+import PropTypes from "prop-types";
+import { createGlobalStyle } from "styled-components";
+import BaseSlideExecution from "../base-slide-execution";
 
 /**
  * ImageText component.
@@ -33,8 +33,8 @@ function ImageText({ slide, content, run, slideDone }) {
     fontSize,
     shadow,
   } = content.styling || {};
-  const boxClasses = fontSize ? `box ${fontSize}` : 'box';
-  const rootClasses = ['template-image-text'];
+  const boxClasses = fontSize ? `box ${fontSize}` : "box";
+  const rootClasses = ["template-image-text"];
 
   // Styling objects
   const rootStyle = {};
@@ -83,28 +83,28 @@ function ImageText({ slide, content, run, slideDone }) {
   }
 
   // Position text-box.
-  if (boxAlign === 'left' || boxAlign === 'right') {
-    rootClasses.push('column');
+  if (boxAlign === "left" || boxAlign === "right") {
+    rootClasses.push("column");
   }
 
-  if (boxAlign === 'bottom' || boxAlign === 'right') {
-    rootClasses.push('flex-end');
+  if (boxAlign === "bottom" || boxAlign === "right") {
+    rootClasses.push("flex-end");
   }
   if (reversed) {
-    rootClasses.push('reversed');
+    rootClasses.push("reversed");
   }
   if (boxMargin || reversed) {
-    rootClasses.push('box-margin');
+    rootClasses.push("box-margin");
   }
   if (halfSize && !reversed) {
-    rootClasses.push('half-size');
+    rootClasses.push("half-size");
   }
   if (separator && !reversed) {
-    rootClasses.push('animated-header');
+    rootClasses.push("animated-header");
   }
 
   if (shadow) {
-    rootClasses.push('shadow');
+    rootClasses.push("shadow");
   }
 
   /**
@@ -126,7 +126,7 @@ function ImageText({ slide, content, run, slideDone }) {
   return (
     <>
       <ThemeStyles />
-      <div className={rootClasses.join(' ')} style={rootStyle}>
+      <div className={rootClasses.join(" ")} style={rootStyle}>
         {title && (
           <div className={boxClasses} style={imageTextStyle}>
             {title && (
@@ -136,7 +136,7 @@ function ImageText({ slide, content, run, slideDone }) {
                 {displaySeparator && (
                   <div
                     className="separator"
-                    style={{ backgroundColor: '#ee0043' }}
+                    style={{ backgroundColor: "#ee0043" }}
                   />
                 )}
               </h1>
