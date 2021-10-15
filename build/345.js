@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktemplates=self.webpackChunktemplates||[]).push([[345],{345:e=>{e.exports=JSON.parse('{"contacts":[{"type":0,"value":"Kontakter"}]}')}}]);

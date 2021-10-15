@@ -7,6 +7,7 @@ import { IntlProvider, FormattedMessage } from 'react-intl';
 import { createGlobalStyle } from 'styled-components';
 import BaseSlideExecution from '../base-slide-execution';
 import './calendar.scss';
+import da from './lang/da.json';
 
 /**
  * Calendar component.
@@ -50,9 +51,7 @@ function Calendar({ slide, content, run, slideDone }) {
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
-    import('./lang/da.json').then((data) => {
-      setTranslations(data);
-    });
+    setTranslations(da);
 
     let timer = null;
     if (hasDateAndTime) {

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktemplates=self.webpackChunktemplates||[]).push([[862],{862:e=>{e.exports=JSON.parse('{"available":[{"type":0,"value":"Lokalet er ledigt"}],"occupiedText":[{"type":0,"value":"Lokalet er optaget"}]}')}}]);

@@ -7,6 +7,7 @@ import { IntlProvider, FormattedMessage } from 'react-intl';
 import { createGlobalStyle } from 'styled-components';
 import BaseSlideExecution from '../base-slide-execution';
 import './poster.scss';
+import da from './lang/da.json';
 
 /**
  * Poster component.
@@ -63,9 +64,7 @@ function Poster({ slide, content, run, slideDone }) {
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
-    import('./lang/da.json').then((data) => {
-      setTranslations(data);
-    });
+    setTranslations(da);
   }, []);
 
   /**

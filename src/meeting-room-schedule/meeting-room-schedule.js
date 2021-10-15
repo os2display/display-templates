@@ -7,6 +7,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 import './meeting-room-schedule.scss';
 import { createGlobalStyle } from 'styled-components';
 import BaseSlideExecution from '../base-slide-execution';
+import da from './lang/da.json';
 
 /**
  * Meeting room schedule component.
@@ -70,9 +71,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
-    import('./lang/da.json').then((data) => {
-      setTranslations(data);
-    });
+    setTranslations(da);
 
     let timer = null;
     timer = setInterval(() => setCurrentDate(new Date()), 5000);

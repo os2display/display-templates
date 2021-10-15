@@ -91,7 +91,8 @@ module.exports = {
                     {
                         loader: 'react-svg-loader',
                         options: {
-                            jsx: true
+                            jsx: true,
+                            convertPathData: false
                         }
                     }
                 ]
