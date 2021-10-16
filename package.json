@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "jest",
+    "test-ci": "jest --ci",
     "lint:js": "eslint --ext .js --ext .jsx ./src",
     "lint:js:fix": "eslint --ext .js --ext .jsx --fix ./src",
     "lint:scss": "stylelint \"./src/**/*.scss\"",
