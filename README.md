@@ -29,3 +29,8 @@ npm run build-watch
 
 The compiled files will be placed in `build/`. These should be committed to
 git repository, to enable Remote Components to load them in the clients.
+
+## @TODOs:
+
+* Add tests for all templates.
+* Fixed styles-components issue. Should be declared outside components and overridden by props.

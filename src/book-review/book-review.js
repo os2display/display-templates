@@ -48,6 +48,7 @@ function BookReview({ slide, content, run, slideDone }) {
    * Setup theme vars
    */
 
+  /* @TODO: Fix console warning */
   /* TODO: Css from theme editor goes inside `ThemeStyles` */
   /* TODO: Replace class `.template-book-review` with unique id/class from slide. */
   const ThemeStyles = createGlobalStyle`
