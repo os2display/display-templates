@@ -10,6 +10,19 @@ import "./calendar.scss";
 import da from "./lang/da.json";
 
 /**
+ * Setup theme vars
+ */
+/* TODO: Css from theme editor goes inside `ThemeStyles` */
+/* TODO: Replace class `.template-calendar` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-calendar {
+      --color-red: #d2421e;
+      --color-blue: #235587;
+      --color-yellow: #ffb400;
+    }
+  `;
+
+/**
  * Calendar component.
  *
  * @param {object} props
@@ -85,19 +98,6 @@ function Calendar({ slide, content, run, slideDone }) {
   const capitalize = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-
-  /**
-   * Setup theme vars
-   */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.template-calendar` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-calendar {
-      --color-red: #d2421e;
-      --color-blue: #235587;
-      --color-yellow: #ffb400;
-    }
-  `;
 
   return (
     <>

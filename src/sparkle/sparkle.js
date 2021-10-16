@@ -13,6 +13,19 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./sparkle.scss";
 
 /**
+ * Setup theme vars
+ */
+/* @TODO: Css from theme editor goes inside `ThemeStyles` */
+/* @TODO: Replace class `.template-sparkle` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-sparkle {
+      --font-family-base: "Gibson SemiBold", Arial, sans-serif;
+      --font-size-lg: 2.5rem;
+      --font-size-base: 1.5rem;
+    }
+  `;
+
+/**
  * Sparkle component.
  *
  * @param {object} props
@@ -86,20 +99,6 @@ function Sparkle({ slide, content, run, slideDone }) {
       }
     };
   }, [currentPost]);
-
-  /**
-   * Setup theme vars
-   */
-
-  /* @TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* @TODO: Replace class `.template-sparkle` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-sparkle {
-      --font-family-base: "Gibson SemiBold", Arial, sans-serif;
-      --font-size-lg: 2.5rem;
-      --font-size-base: 1.5rem;
-    }
-  `;
 
   return (
     <>

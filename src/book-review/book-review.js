@@ -7,6 +7,22 @@ import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 
 /**
+ * Setup theme vars
+ */
+/* @TODO: Css from theme editor goes inside `ThemeStyles` */
+/* @TODO: Replace class `.template-book-review` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-book-review {
+      --bg-white: #fff;
+      --bg-light: #f5f5f5;
+      --bg-dark: #111;
+      --text-dark: #454545;
+      --image-blur: 10px;
+      --h1-font-size: 1.5em;
+    }
+  `;
+
+/**
  * Book review component.
  *
  * @param {object} props
@@ -43,24 +59,6 @@ function BookReview({ slide, content, run, slideDone }) {
       slideExecution.stop();
     }
   }, [run]);
-
-  /**
-   * Setup theme vars
-   */
-
-  /* @TODO: Fix console warning */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.template-book-review` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-book-review {
-      --bg-white: #fff;
-      --bg-light: #f5f5f5;
-      --bg-dark: #111;
-      --text-dark: #454545;
-      --image-blur: 10px;
-      --h1-font-size: 1.5em;
-    }
-  `;
 
   return (
     <>

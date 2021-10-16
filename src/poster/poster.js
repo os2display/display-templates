@@ -10,6 +10,17 @@ import "./poster.scss";
 import da from "./lang/da.json";
 
 /**
+ * Setup theme vars
+ */
+/* TODO: Css from theme editor goes inside `ThemeStyles` */
+/* TODO: Replace class `.template-poster` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-poster {
+      --font-size-base: 1em;
+    }
+  `;
+
+/**
  * Poster component.
  *
  * @param {object} props
@@ -118,17 +129,6 @@ function Poster({ slide, content, run, slideDone }) {
   const capitalize = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-
-  /**
-   * Setup theme vars
-   */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.template-poster` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-poster {
-      --font-size-base: 1em;
-    }
-  `;
 
   return (
     <>

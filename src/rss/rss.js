@@ -8,6 +8,19 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./rss.scss";
 
 /**
+ * Setup theme vars
+ */
+/* TODO: Css from theme editor goes inside `ThemeStyles` */
+/* TODO: Replace class `.rss-slide` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .rss-slide {
+      --bg-light: aliceblue;
+      --text-dark: navy;
+      --text-primary: navy;
+    }
+  `;
+
+/**
  * RSS component.
  *
  * @param {object} props
@@ -100,19 +113,6 @@ function RSS({ slide, content, run, slideDone }) {
   }, [currentRSS]);
 
   const { title, date, description } = currentRSS;
-
-  /**
-   * Setup theme vars
-   */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.rss-slide` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .rss-slide {
-      --bg-light: aliceblue;
-      --text-dark: navy;
-      --text-primary: navy;
-    }
-  `;
 
   return (
     <>

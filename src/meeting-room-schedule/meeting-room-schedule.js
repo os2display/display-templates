@@ -10,6 +10,19 @@ import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 
 /**
+ * Setup theme vars
+ */
+/* TODO: Css from theme editor goes inside `ThemeStyles` */
+/* TODO: Replace class `.template-meeting-room-schedule` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-meeting-room-schedule {
+      --bg-light: #b4b4b4;
+      --color-blue: #235587;
+      --color-yellow: #ffb400;
+    }
+  `;
+
+/**
  * Meeting room schedule component.
  *
  * @param {object} props
@@ -120,19 +133,6 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
       );
     })
     .sort((a, b) => a.from.localeCompare(b.from));
-
-  /**
-   * Setup theme vars
-   */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.template-meeting-room-schedule` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-meeting-room-schedule {
-      --bg-light: #b4b4b4;
-      --color-blue: #235587;
-      --color-yellow: #ffb400;
-    }
-  `;
 
   return (
     <>

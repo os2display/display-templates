@@ -247,12 +247,6 @@ const slides = [
           'name': 'Dr. Cox',
           'phone': '12341234',
           'email': 'mail@mail.dk',
-          'id': 'uniqueContact3'
-        },
-        {
-          'name': 'Dr. Cox',
-          'phone': '12341234',
-          'email': 'mail@mail.dk',
           'id': 'uniqueContact4'
         },
         {
@@ -260,6 +254,12 @@ const slides = [
           'phone': '12341234',
           'email': 'mail@mail.dk',
           'id': 'uniqueContact5'
+        },
+        {
+          'name': 'Dr. Cox',
+          'phone': '12341234',
+          'email': 'mail@mail.dk',
+          'id': 'uniqueContact6'
         }
       ],
       'styling': {

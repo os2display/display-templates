@@ -7,6 +7,22 @@ import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 
 /**
+ * Setup theme vars
+ */
+/* TODO: Css from theme editor goes inside `ThemeStyles` */
+/* TODO: Replace class `.template-image-text` with unique id/class from slide. */
+const ThemeStyles = createGlobalStyle`
+    .template-image-text {
+      --text-dark: #000;
+      --bg-light: #f5f5f5;
+      --font-size-sm: 10px;
+      --font-size-base: 15px;
+      --font-size-lg: 20px;
+      --font-size-xl: 25px;
+    }
+  `;
+
+/**
  * ImageText component.
  *
  * @param {object} props
@@ -106,22 +122,6 @@ function ImageText({ slide, content, run, slideDone }) {
   if (shadow) {
     rootClasses.push("shadow");
   }
-
-  /**
-   * Setup theme vars
-   */
-  /* TODO: Css from theme editor goes inside `ThemeStyles` */
-  /* TODO: Replace class `.template-image-text` with unique id/class from slide. */
-  const ThemeStyles = createGlobalStyle`
-    .template-image-text {
-      --text-dark: #000;
-      --bg-light: #f5f5f5;
-      --font-size-sm: 10px;
-      --font-size-base: 15px;
-      --font-size-lg: 20px;
-      --font-size-xl: 25px;
-    }
-  `;
 
   return (
     <>
