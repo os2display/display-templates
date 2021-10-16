@@ -12,4 +12,6 @@ jest.mock('./citation-mark.svg', () => () => <span/>);
 test('test that app loads', () => {
   const slide = slides[9];
   const wrapper = shallow(<Quote run={true} slide={slide} content={slide.content} slideDone={() => {}}/>);
+
+  // @TODO: Add tests.
 });

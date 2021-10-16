@@ -9,4 +9,6 @@ configure({adapter: new Adapter()});
 test('test that app loads', () => {
   const slide = slides[3];
   const wrapper = shallow(<MeetingRoomSchedule run={true} slide={slide} content={slide.content} slideDone={() => {}}/>);
+
+  // @TODO: Add tests.
 });

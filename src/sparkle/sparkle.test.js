@@ -13,4 +13,6 @@ jest.mock('./instagram-logo.svg', () => () => <span/>);
 test('test that app loads', () => {
   const slide = slides[8];
   const wrapper = shallow(<Sparkle run={true} slide={slide} content={slide.content} slideDone={() => {}}/>);
+
+  // @TODO: Add tests.
 });
