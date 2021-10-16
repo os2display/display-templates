@@ -12,5 +12,5 @@ test('test that app loads', () => {
 
   expect(wrapper.text()).toContain('Lorem Ipsum');
 
-//  expect(container.getElementsByClassName('image-blurry-background')[0]).toHaveStyle('background-image: url("./fixtures/images/mountain1.jpeg")');
+  expect(wrapper.find('.image-blurry-background').get(0).props.style.backgroundImage).toBe('url("./fixtures/images/mountain1.jpeg")');
 });
