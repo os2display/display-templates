@@ -1,52 +1,112 @@
-import React from "react";
+import React, { useState } from 'react';
 import { render } from "react-dom";
 import ImageText from "../../src/image-text/image-text";
+import slides from './slides';
+import BookReview from '../../src/book-review/book-review';
+import Calendar from '../../src/calendar/calendar';
+import Contacts from '../../src/contacts/contacts';
+import MeetingRoomSchedule from '../../src/meeting-room-schedule/meeting-room-schedule';
+import Poster from '../../src/poster/poster';
+import Quote from '../../src/quote/quote';
+import RSS from '../../src/rss/rss';
+import Slideshow from '../../src/slideshow/slideshow';
+import Sparkle from '../../src/sparkle/sparkle';
 
-const slide = {
-  id: "a97f6ec4-5278-4993-bfeb-53cded000011",
-  "@context": "/contexts/Slide",
-  "@id": "/v1/slides/a97f6ec4-5278-4993-bfeb-53cded000011",
-  title: "image-text 1",
-  description: "This is the first slide named one",
-  modified: "2012-09-03T12:21:56Z",
-  created: "2021-09-01T10:04:00Z",
-  modifiedBy: "Ole Olesen",
-  createdBy: "Jens Jensen",
-  template: {
-    "@id": "/v1/templates/457d6ecb-6378-4299-bfcb-53cbaaaa6f10",
-    options: [],
-  },
-  onScreens: "/v1/screens?slideId=a97f6ec4-5278-4993-bfeb-53cded000011",
-  onPlaylists: "/v1/playlists?slideId=a97f6ec4-5278-4993-bfeb-53cded000011",
-  duration: 5000,
-  published: 1622555123,
-  content: {
-    title: "Slide 1",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    media: {
-      id: "uniqueMedia1",
-      url: "./fixtures/images/mountain1.jpeg",
-    },
-    styling: {
-      boxAlign: "top",
-      boxMargin: false,
-      shadow: true,
-      separator: false,
-      halfSize: false,
-      reversed: false,
-    },
-  },
-};
+const renderSlide = (slide) => {
+  switch (slide.type) {
+    case 'book-review':
+      return <BookReview
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'calendar':
+      return <Calendar
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'contacts':
+      return <Contacts
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'image-text':
+      return <ImageText
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'meeting-room-schedule':
+      return <MeetingRoomSchedule
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'poster':
+      return <Poster
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'quote':
+      return <Quote
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'rss':
+      return <RSS
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'slideshow':
+      return <Slideshow
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+    case 'sparkle':
+      return <Sparkle
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => {}}
+      />
+  }
+}
 
-const App = () => (
-  <div>
+
+const App = () => {
+  const [selectedSlide, setSelectedSlide] = useState(null);
+  const buttonStyles = {margin: '5px'};
+  const slideStyles = {
+    margin: '25px',
+    width: '1920px',
+    height: '1080px',
+  }
+
+  return <div>
     <h1>Examples</h1>
-    <ImageText
-      content={slide.content}
-      slide={slide}
-      run={true}
-      slideDone={() => {}}
-    />
+    {slides.map((slide) => <button id={`button-${slide.id}`} style={buttonStyles} onClick={() => {setSelectedSlide(slide)}}>{slide.id}</button>)}
+
+    {selectedSlide &&
+      <div style={slideStyles}>
+        {renderSlide(selectedSlide)}
+      </div>
+    }
   </div>
-);
+}
+
 render(<App />, document.getElementById("root"));
