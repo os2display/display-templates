@@ -21,15 +21,6 @@
       },
       {
         "key": "book-review-form-3",
-        "input": "input",
-        "name": "headline",
-        "type": "text",
-        "label": "Overskrift",
-        "helpText": "Her kan du skrive overskriften til anmeldelsen",
-        "formGroupClasses": "col-md-6"
-      },
-      {
-        "key": "book-review-form-4",
         "input": "textarea",
         "name": "bookText",
         "label": "Teksten til anmeldelsen",
@@ -37,7 +28,7 @@
         "formGroupClasses": "col-md-6"
       },
       {
-        "key": "book-review-form-5",
+        "key": "book-review-form-4",
         "multipleImages": false,
         "input": "image",
         "name": "bookImage",
@@ -45,14 +36,14 @@
         "helpText": "Billede af det som bliver anmeldt"
       },
       {
-        "key": "book-review-form-6",
+        "key": "book-review-form-5",
         "input": "header-h3",
         "text": "Forfatter",
         "name": "header3",
         "formGroupClasses": "h5 mt-3 mb-3"
       },
       {
-        "key": "book-review-form-7",
+        "key": "book-review-form-6",
         "input": "input",
         "name": "authorText",
         "type": "text",
@@ -61,7 +52,7 @@
         "formGroupClasses": "col-md-6"
       },
       {
-        "key": "book-review-form-8",
+        "key": "book-review-form-7",
         "multipleImages": false,
         "input": "image",
         "name": "authorImage",
@@ -69,14 +60,14 @@
         "helpText": "Billede til forfatteren"
       },
       {
-        "key": "book-review-form-9",
+        "key": "book-review-form-8",
         "input": "header-h3",
         "text": "Opsætning",
         "name": "header3",
         "formGroupClasses": "h5 mt-3 mb-3"
       },
       {
-        "key": "book-review-form-10",
+        "key": "book-review-form-9",
         "input": "input",
         "name": "duration",
         "type": "number",
