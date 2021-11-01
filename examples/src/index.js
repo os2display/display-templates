@@ -11,6 +11,7 @@ import Quote from '../../src/quote/quote';
 import RSS from '../../src/rss/rss';
 import Slideshow from '../../src/slideshow/slideshow';
 import Sparkle from '../../src/sparkle/sparkle';
+import './index.scss';
 
 const renderSlide = (slide) => {
   switch (slide.type) {
@@ -87,22 +88,23 @@ const renderSlide = (slide) => {
   }
 }
 
-
 const App = () => {
   const [selectedSlide, setSelectedSlide] = useState(null);
-  const buttonStyles = {margin: '5px'};
-  const slideStyles = {
-    margin: '25px',
-    width: '1920px',
-    height: '1080px',
-  }
+  const buttonStyles = { margin: '5px' };
 
   return <div>
-    <h1>Examples</h1>
-    {slides.map((slide) => <button id={`button-${slide.id}`} style={buttonStyles} onClick={() => {setSelectedSlide(slide)}}>{slide.id}</button>)}
-
+    {!selectedSlide &&
+      <>
+        <h1>Examples </h1>
+        <ul>
+          {slides.map((slide) =>
+            <li><button id={`button-${slide.id}`} style={buttonStyles} onClick={() => {setSelectedSlide(slide)}}>{slide.id}</button></li>
+          )}
+        </ul>
+      </>
+    }
     {selectedSlide &&
-      <div style={slideStyles}>
+      <div>
         {renderSlide(selectedSlide)}
       </div>
     }

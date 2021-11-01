@@ -40,13 +40,13 @@ const ThemeStyles = createGlobalStyle`
  */
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
-  const authorUrl = content.media?.authorImage?.url;
-  const bookUrl = content.media?.bookImage?.url;
-  const authorImage = authorUrl
-    ? { backgroundImage: `url("${authorUrl}")` }
+  const authorUri = content.authorImage?.assets?.uri;
+  const authorSrc = authorUri
+    ? { backgroundImage: `url("${authorUri}")` }
     : "";
-  const bookImage = bookUrl ? { backgroundImage: `url("${bookUrl}")` } : "";
-  const sanitizedBookText = DOMPurify.sanitize(bookText);
+  const bookUri = content.bookImage?.assets?.uri;
+  const bookSrc = bookUri ? { backgroundImage: `url("${bookUri}")` } : "";
+  const sanitizedParsedBookText = parse(DOMPurify.sanitize(bookText));
 
   /**
    * Setup slide run function.
@@ -65,18 +65,18 @@ function BookReview({ slide, content, run, slideDone }) {
       <ThemeStyles />
       <div className="template-book-review">
         <div className="text-area">
-          <div>{parse(sanitizedBookText)}</div>
+          <div>{sanitizedParsedBookText}</div>
         </div>
         <div className="author-area">
-          {authorImage && <div className="author-image" style={authorImage} />}
+          {authorSrc && <div className="author-image" style={authorSrc} />}
           <div className="author">{authorText}</div>
         </div>
         <div className="book-image-area">
-          {bookImage && (
+          {bookSrc && (
             <>
-              <div className="image-blurry-background" style={bookImage} />
+              <div className="image-blurry-background" style={bookSrc} />
               <div className="book-image">
-                <img src={bookUrl} alt="book" />
+                <img src={bookUri} alt="book" />
               </div>
             </>
           )}
