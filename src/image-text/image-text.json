@@ -23,7 +23,6 @@
         "key": "image-text-form-3",
         "input": "textarea",
         "name": "text",
-        "type": "text",
         "label": "Tekst på slide",
         "helpText": "Her kan du skrive teksten til slidet",
         "formGroupClasses": "col-md-6"
