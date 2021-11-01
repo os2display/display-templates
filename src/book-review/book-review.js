@@ -40,12 +40,17 @@ const ThemeStyles = createGlobalStyle`
  */
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
-  const authorUri = content.authorImage?.assets?.uri;
-  const authorSrc = authorUri
-    ? { backgroundImage: `url("${authorUri}")` }
+
+  console.log(slide);
+
+  const authorStyle = (content.authorImage && slide.mediaData[content.authorImage]?.assets?.uri)
+    ? { backgroundImage: `url("${slide.mediaData[content.authorImage]?.assets?.uri}")` }
     : "";
-  const bookUri = content.bookImage?.assets?.uri;
-  const bookSrc = bookUri ? { backgroundImage: `url("${bookUri}")` } : "";
+  const bookStyle = (content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri)
+    ? { backgroundImage: `url("${slide.mediaData[content.bookImage]?.assets?.uri}")` }
+    : "";
+  const bookUri = content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri ?
+    slide.mediaData[content.bookImage]?.assets?.uri : null;
   const sanitizedParsedBookText = parse(DOMPurify.sanitize(bookText));
 
   /**
@@ -68,13 +73,13 @@ function BookReview({ slide, content, run, slideDone }) {
           <div>{sanitizedParsedBookText}</div>
         </div>
         <div className="author-area">
-          {authorSrc && <div className="author-image" style={authorSrc} />}
+          {authorStyle && <div className="author-image" style={authorStyle} />}
           <div className="author">{authorText}</div>
         </div>
         <div className="book-image-area">
-          {bookSrc && (
+          {bookStyle && (
             <>
-              <div className="image-blurry-background" style={bookSrc} />
+              <div className="image-blurry-background" style={bookStyle} />
               <div className="book-image">
                 <img src={bookUri} alt="book" />
               </div>
