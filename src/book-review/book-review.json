@@ -31,7 +31,7 @@
       {
         "key": "book-review-form-4",
         "input": "textarea",
-        "name": "text",
+        "name": "bookText",
         "label": "Teksten til anmeldelsen",
         "helpText": "Her kan du skrive teksten til anmeldelsen",
         "formGroupClasses": "col-md-6"
@@ -54,7 +54,7 @@
       {
         "key": "book-review-form-7",
         "input": "input",
-        "name": "headline",
+        "name": "authorText",
         "type": "text",
         "label": "Forfattertekst",
         "helpText": "Her kan du skrive tekst til forfatteren",
