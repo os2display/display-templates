@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://display-templates.local.itkdev.dk/config-schema.json",
+  "title": "Config file schema",
+  "description": "Schema for defining config files for templates",
+  "type": "object",
+  "properties": {
+    "icon": {
+      "description": "An icon for the template",
+      "type": "string"
+    },
+    "description": {
+      "description": "A description of the template",
+      "type": "string"
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "description": "Path to the json schema for the content",
+          "type": "string"
+        },
+        "component": {
+          "description": "Path to the react remote component that renders the content",
+          "type": "string"
+        },
+        "admin": {
+          "description": "Path to the json array describing the content form in the administration interface",
+          "type": "string"
+        }
+      }
+    },
+    "title": {
+      "description": "The title of the template",
+      "type": "string"
+    }
+  }
+}
