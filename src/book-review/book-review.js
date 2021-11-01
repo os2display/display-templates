@@ -41,8 +41,6 @@ const ThemeStyles = createGlobalStyle`
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
 
-  console.log(slide);
-
   const authorStyle = (content.authorImage && slide.mediaData[content.authorImage]?.assets?.uri)
     ? { backgroundImage: `url("${slide.mediaData[content.authorImage]?.assets?.uri}")` }
     : "";
