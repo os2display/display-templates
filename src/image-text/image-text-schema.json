@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://display-templates.local.itkdev.dk/image-text-schema.json",
+  "$id": "https://github.com/os2display/display-templates/blob/develop/src/image-text/image-text-schema.json",
   "title": "image-text schema",
   "description": "Content schema for image-text",
   "type": "object",
