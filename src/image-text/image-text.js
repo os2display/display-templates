@@ -83,8 +83,8 @@ function ImageText({ slide, content, run, slideDone }) {
   }, [run]);
 
   // Set background image and background color.
-  if (content.media?.url) {
-    rootStyle.backgroundImage = `url("${content.media?.url}")`;
+  if (content.image && slide?.mediaData[content.image]?.assets?.uri) {
+    rootStyle.backgroundImage = `url("${slide?.mediaData[content.image].assets.uri}")`;
   }
   if (backgroundColor) {
     rootStyle.backgroundColor = backgroundColor;
@@ -102,7 +102,6 @@ function ImageText({ slide, content, run, slideDone }) {
   if (boxAlign === "left" || boxAlign === "right") {
     rootClasses.push("column");
   }
-
   if (boxAlign === "bottom" || boxAlign === "right") {
     rootClasses.push("flex-end");
   }
@@ -118,7 +117,6 @@ function ImageText({ slide, content, run, slideDone }) {
   if (separator && !reversed) {
     rootClasses.push("animated-header");
   }
-
   if (shadow) {
     rootClasses.push("shadow");
   }
@@ -127,23 +125,21 @@ function ImageText({ slide, content, run, slideDone }) {
     <>
       <ThemeStyles />
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        {title && (
-          <div className={boxClasses} style={imageTextStyle}>
-            {title && (
-              <h1>
-                {title}
-                {/* Todo theme the color of the below */}
-                {displaySeparator && (
-                  <div
-                    className="separator"
-                    style={{ backgroundColor: "#ee0043" }}
-                  />
-                )}
-              </h1>
-            )}
-            {text && <div className="text">{parse(sanitizedText)}</div>}
-          </div>
-        )}
+        <div className={boxClasses} style={imageTextStyle}>
+          {title && (
+            <h1>
+              {title}
+              {/* Todo theme the color of the below */}
+              {displaySeparator && (
+                <div
+                  className="separator"
+                  style={{ backgroundColor: "#ee0043" }}
+                />
+              )}
+            </h1>
+          )}
+          {text && <div className="text">{parse(sanitizedText)}</div>}
+        </div>
       </div>
     </>
   );
