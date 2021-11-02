@@ -11,6 +11,7 @@ import Quote from '../../src/quote/quote';
 import RSS from '../../src/rss/rss';
 import Slideshow from '../../src/slideshow/slideshow';
 import Sparkle from '../../src/sparkle/sparkle';
+import IFrame from '../../src/iframe/iframe';
 import './index.scss';
 
 const renderSlide = (slide) => {
@@ -20,70 +21,77 @@ const renderSlide = (slide) => {
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'calendar':
       return <Calendar
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'contacts':
       return <Contacts
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'image-text':
       return <ImageText
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
+      />
+    case 'iframe':
+      return <IFrame
+        content={slide.content}
+        slide={slide}
+        run={true}
+        slideDone={() => { }}
       />
     case 'meeting-room-schedule':
       return <MeetingRoomSchedule
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'poster':
       return <Poster
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'quote':
       return <Quote
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'rss':
       return <RSS
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'slideshow':
       return <Slideshow
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
     case 'sparkle':
       return <Sparkle
         content={slide.content}
         slide={slide}
         run={true}
-        slideDone={() => {}}
+        slideDone={() => { }}
       />
   }
 }
@@ -98,7 +106,7 @@ const App = () => {
         <h1>Examples </h1>
         <ul>
           {slides.map((slide) =>
-            <li><button id={`button-${slide.id}`} style={buttonStyles} onClick={() => {setSelectedSlide(slide)}}>{slide.id}</button></li>
+            <li><button id={`button-${slide.id}`} style={buttonStyles} onClick={() => { setSelectedSlide(slide) }}>{slide.id}</button></li>
           )}
         </ul>
       </>
