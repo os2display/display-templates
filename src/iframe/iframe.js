@@ -42,7 +42,6 @@ function IFrame({ slide, content, run, slideDone }) {
         height="100%"
         src={source}
       />
-      <ThemeStyles />
     </>
   );
 }
