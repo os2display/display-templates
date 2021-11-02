@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -36,7 +36,8 @@ const entry = devMode ? {
     'quote': path.resolve(__dirname, './src/quote/quote.js'),
     'rss': path.resolve(__dirname, './src/rss/rss.js'),
     'slideshow': path.resolve(__dirname, './src/slideshow/slideshow.js'),
-    'sparkle': path.resolve(__dirname, './src/sparkle/sparkle.js')
+    'sparkle': path.resolve(__dirname, './src/sparkle/sparkle.js'),
+    'iframe': path.resolve(__dirname, './src/iframe/iframe.js')
 }
 
 const plugins = devMode ? [
