@@ -14,23 +14,35 @@ import "./slideshow.scss";
  * @returns {object} The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
-  const { images, transitions, animations, logo } = content;
+  const { images, imageDuration, transitions, animations, logoImage, logoSize, logoPosition } = content;
   const fade = transitions === "fade";
   const fadeDuration = 500; // @TODO: check if this is the correct number
-  const timeoutRef = useRef(null);
   const [animationName] = useState("animationForImage");
-
-  // Index is used to go through the images in the array.
   const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
+
+  // @TODO: Get logo from theme.
+  // const logoImageUrl = null;
+  // const logoClasses = `logo ${logoPosition} ${logoSize}`;
+
+  // Map
+  const imageUrls = images.map((image) => {
+    return slide?.mediaData[image]?.assets?.uri;
+  });
+
+  // @TODO: Duration should not be based on a calculated number, but instead on going a full round of all the images.
+  const duration = imageUrls.length * imageDuration;
 
   // If it does not fade, the opacity should just be 1.
   const [imageOneFadeContainerStyle, setImageOneFadeContainerStyle] = useState(
     transitions === "fade" ? { opacity: 1 } : {}
   );
+
   // If it does not fade, the opacity should just be 1.
   const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState(
     transitions === "fade" ? { opacity: 1 } : {}
   );
+
   const [imageOneStyle, setImageOneStyle] = useState();
   const [imageTwoStyles, setImageTwoStyles] = useState();
 
@@ -38,18 +50,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      // @TODO: Make sure each image has been shown the correct duration before transition.
-      // Extract duration from content.images.
-      let duration = 0;
-
-      if (images.length > 0) {
-        images.forEach((image) => {
-          // Default to 5 seconds pr. image.
-          duration += image.duration > 0 ? image.duration : 5000;
-        });
-      }
-
-      slideExecution.start(duration !== 0 ? duration : 1000);
+      slideExecution.start(duration !== 0 ? duration : 5000);
     } else {
       slideExecution.stop();
     }
@@ -77,7 +78,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     const startSize = grow ? 1 : 1.2;
     const finishSize = grow ? 1.2 : 1;
 
-    return `@-webkit-keyframes ${animationName} {
+    return `@keyframes ${animationName} {
       0% {
         transform: scale(${startSize});
         transform-origin: ${transformOrigin};
@@ -148,12 +149,12 @@ function Slideshow({ slide, content, run, slideDone }) {
 
     // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
     const durationOfAnimation = fade
-      ? (images[index].duration + fadeDuration * 2) / 1000
-      : images[index].duration / 1000;
+      ? (imageDuration + fadeDuration * 2) / 1000
+      : imageDuration / 1000;
 
     // Sets the animation and background image to the next image, according to the index
     setImageOneStyle({
-      backgroundImage: `url(${images[index].url})`,
+      backgroundImage: `url(${imageUrls[index].url})`,
       animation: `${animationName} ${durationOfAnimation}s`,
     });
 
@@ -182,8 +183,8 @@ function Slideshow({ slide, content, run, slideDone }) {
 
     // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
     const durationOfAnimation = fade
-      ? (images[index].duration + fadeDuration * 2) / 1000
-      : images[index].duration / 1000;
+      ? (imageDuration + fadeDuration * 2) / 1000
+      : imageDuration / 1000;
 
     // Sets the animation and background image to the next image, according to the index
     setImageTwoStyles({
@@ -228,7 +229,7 @@ function Slideshow({ slide, content, run, slideDone }) {
       setIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, images[index].duration);
+    }, imageDuration);
 
     return () => {
       resetTimeout();
@@ -254,7 +255,7 @@ function Slideshow({ slide, content, run, slideDone }) {
       <div className="fade-container" style={imageTwoFadeContainerStyle}>
         <div style={imageTwoStyles} className="image" />
       </div>
-      {logo && <img className="logo" alt="slide" src={logo.url} />}
+      {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
     </div>
   );
 }
@@ -267,7 +268,9 @@ Slideshow.propTypes = {
     images: PropTypes.arrayOf(
       PropTypes.string
     ),
-    logo: PropTypes.string,
+    logoImage: PropTypes.string,
+    logoSize: PropTypes.string,
+    logoPosition: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,

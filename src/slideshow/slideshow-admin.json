@@ -24,7 +24,7 @@
     "key": "slideshow-form-4",
     "multipleImages": false,
     "input": "image",
-    "name": "logo",
+    "name": "logoImage",
     "label": "Logo"
   },
   {
@@ -98,5 +98,70 @@
       }
     ],
     "name": "animation"
+  },
+  {
+    "key": "slideshow-form-10",
+    "input": "select",
+    "required": true,
+    "label": "Logo size",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logosize1",
+        "title": "xs",
+        "value": "xs"
+      },
+      {
+        "key": "logosize2",
+        "title": "s",
+        "value": "s"
+      },
+      {
+        "key": "logosize3",
+        "title": "m",
+        "value": "m"
+      },
+      {
+        "key": "logosize4",
+        "title": "l",
+        "value": "l"
+      },
+      {
+        "key": "logosize5",
+        "title": "xl",
+        "value": "xl"
+      }
+    ],
+    "name": "logoSize"
+  },
+  {
+    "key": "slideshow-form-11",
+    "input": "select",
+    "required": true,
+    "label": "Logo position",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logoposition1",
+        "title": "top venstre",
+        "value": ""
+      },
+      {
+        "key": "logoposition2",
+        "title": "top højre",
+        "value": "right"
+      },
+      {
+        "key": "logoposition3",
+        "title": "bund venstre",
+        "value": "bottom"
+      },
+      {
+        "key": "logoposition4",
+        "title": "bund højre",
+        "value": "bottom right"
+      }
+    ],
+    "name": "logoPosition"
   }
 ]

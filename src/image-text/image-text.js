@@ -78,6 +78,7 @@ function ImageText({ slide, content, run, slideDone }) {
       slide?.mediaData[content.image].assets.uri
     }")`;
   }
+
   if (backgroundColor) {
     rootStyle.backgroundColor = backgroundColor;
   }
