@@ -75,28 +75,29 @@ function Slideshow({ slide, content, run, slideDone }) {
     const startSize = grow ? 1 : 1.2;
     const finishSize = grow ? 1.2 : 1;
     const startFinishOpacity = transitions === "fade" ? 0 : 1;
+
     return keyframes`
-    0% {
-      transform: scale(${startSize});
-      transform-origin: ${transformOrigin};
-      opacity: ${startFinishOpacity};
-    }
-    5% {
-      transform: scale(${startSize});
-      transform-origin: ${transformOrigin};
-      opacity: 1;
-    }
-    95% {
-      transform: scale(${finishSize});
-      transform-origin: ${transformOrigin};
-      opacity: 1;
-    }
-    100% {
-      transform: scale(${finishSize});
-      transform-origin: ${transformOrigin};
-      opacity: ${startFinishOpacity};
-    }
-  `;
+      0% {
+        transform: scale(${startSize});
+        transform-origin: ${transformOrigin};
+        opacity: ${startFinishOpacity};
+      }
+      5% {
+        transform: scale(${startSize});
+        transform-origin: ${transformOrigin};
+        opacity: 1;
+      }
+      95% {
+        transform: scale(${finishSize});
+        transform-origin: ${transformOrigin};
+        opacity: 1;
+      }
+      100% {
+        transform: scale(${finishSize});
+        transform-origin: ${transformOrigin};
+        opacity: ${startFinishOpacity};
+      }
+    `;
   }
 
   /**
@@ -114,7 +115,9 @@ function Slideshow({ slide, content, run, slideDone }) {
       "zoom-out-random",
       "zoom-in-random",
     ];
+
     const randomPercent = `${random(100) + 1}% ${random(100) + 1}%`;
+
     switch (animationType) {
       case "zoom-in-middle":
         return createAnimation(true);
@@ -153,15 +156,18 @@ function Slideshow({ slide, content, run, slideDone }) {
     }
   }
 
+  // @TODO: Describe effect.
   useEffect(() => {
     // Create slides and reset the timeout.
     createImage();
     resetTimeout();
+
     timeoutRef.current = setTimeout(() => {
       setIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, images[index].duration);
+
     return () => {
       resetTimeout();
     };
@@ -181,18 +187,9 @@ Slideshow.propTypes = {
   slide: PropTypes.shape({}).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-        duration: PropTypes.number.isRequired,
-      })
+      PropTypes.string
     ),
-    logo: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-      position: PropTypes.string,
-      size: PropTypes.string,
-    }),
+    logo: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,
