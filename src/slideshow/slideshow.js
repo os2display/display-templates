@@ -21,12 +21,18 @@ import BaseSlideExecution from "../base-slide-execution";
  *   The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
-  const { images, transitions, animations, logo } = content;
-  const logoClasses = `logo ${logo.position} ${logo.size}`;
+  const { images, imageDuration, transitions, animations, logoImage, logoSize, logoPosition } = content;
+  const logoClasses = `logo ${logoPosition} ${logoSize}`;
   const [index, setIndex] = useState(0);
   const [Image, setImage] = useState();
   const timeoutRef = useRef(null);
   const classes = `image ${transitions} ${animations}`;
+  const logoImageUrl = slide?.mediaData[logoImage]?.assets?.uri ?? null;
+  const imageUrls = images.map((image) => {
+    return slide?.mediaData[image]?.assets?.uri;
+  });
+  // @TODO: Duration should not be based on a calculated number, but instead on going a full round of all the images.
+  const duration = imageUrls.length * imageDuration;
 
   /**
    * Setup slide run function.
@@ -34,15 +40,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      // @TODO: Make sure each image has been shown the correct duration before transition.
-      // Extract duration from content.images.
-      let duration = 0;
-      images.forEach((image) => {
-        // Default to 5 seconds pr. image.
-        duration += image.duration > 0 ? image.duration : 5000;
-      });
-
-      slideExecution.start(duration !== 0 ? duration : 1000);
+      slideExecution.start(duration !== 0 ? duration : 5000);
     } else {
       slideExecution.stop();
     }
@@ -176,7 +174,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   return (
     <div className="template-slideshow">
       {Image && <Image className={classes} />}
-      {logo && <img className={logoClasses} alt="slide" src={logo.url} />}
+      {logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} />}
     </div>
   );
 }
@@ -189,7 +187,9 @@ Slideshow.propTypes = {
     images: PropTypes.arrayOf(
       PropTypes.string
     ),
-    logo: PropTypes.string,
+    logoImage: PropTypes.string,
+    logoSize: PropTypes.string,
+    logoPosition: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,

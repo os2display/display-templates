@@ -86,6 +86,7 @@ function ImageText({ slide, content, run, slideDone }) {
   if (content.image && slide?.mediaData[content.image]?.assets?.uri) {
     rootStyle.backgroundImage = `url("${slide?.mediaData[content.image].assets.uri}")`;
   }
+
   if (backgroundColor) {
     rootStyle.backgroundColor = backgroundColor;
   }

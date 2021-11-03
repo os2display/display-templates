@@ -14,7 +14,13 @@
     "animations": {
       "type": "string"
     },
-    "logo": {
+    "logoPosition": {
+      "type": "string"
+    },
+    "logoSize": {
+      "type": "string"
+    },
+    "logoImage": {
       "type": "string"
     },
     "transitions": {
