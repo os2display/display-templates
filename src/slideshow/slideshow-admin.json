@@ -1,0 +1,102 @@
+[
+  {
+    "key": "slideshow-form-1",
+    "input": "header",
+    "text": "Skabelon: Slideshow",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "slideshow-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "slideshow-form-3",
+    "multipleImages": true,
+    "input": "image",
+    "name": "images",
+    "label": "Billeder"
+  },
+  {
+    "key": "slideshow-form-4",
+    "multipleImages": false,
+    "input": "image",
+    "name": "logo",
+    "label": "Logo"
+  },
+  {
+    "key": "slideshow-form-5",
+    "input": "header-h3",
+    "text": "Opsætning",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "slideshow-form-6",
+    "input": "input",
+    "name": "imageDuration",
+    "type": "number",
+    "label": "Varighed pr. billede (i millisekunder)",
+    "helpText": "Her skal du skrive varigheden pr. billede.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "slideshow-form-8",
+    "input": "select",
+    "required": true,
+    "label": "Vælg animation",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "animation1",
+        "title": "Tilfældig",
+        "value": "random"
+      },
+      {
+        "key": "animation2",
+        "title": "Zoom mod midten",
+        "value": "zoom-in-middle"
+      },
+      {
+        "key": "animation3",
+        "title": "Zoom ud fra midten",
+        "value": "zoom-out-middle"
+      },
+      {
+        "key": "animation4",
+        "title": "Zoom mod tilfældigt punkt",
+        "value": "zoom-in-random"
+      },
+      {
+        "key": "animation5",
+        "title": "Zoom ud fra tilfældigt punkt",
+        "value": "zoom-out-random"
+      }
+    ],
+    "name": "animation"
+  },
+  {
+    "key": "slideshow-form-9",
+    "input": "select",
+    "required": true,
+    "label": "Vælg overgang",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "transition1",
+        "title": "Ingen overgang",
+        "value": null
+      },
+      {
+        "key": "transition2",
+        "title": "Cross fade",
+        "value": "fade"
+      }
+    ],
+    "name": "animation"
+  }
+]
