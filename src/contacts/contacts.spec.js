@@ -6,7 +6,7 @@ import Contacts from "./contacts";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that contacts loads", () => {
   const slide = slides[7];
   const wrapper = mount(
     <Contacts run slide={slide} content={slide.content} slideDone={() => { }} />

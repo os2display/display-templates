@@ -6,7 +6,7 @@ import MeetingRoomSchedule from "./meeting-room-schedule";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that meeting room schedule loads", () => {
   const slide = slides[3];
   const wrapper = shallow(
     <MeetingRoomSchedule

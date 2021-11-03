@@ -10,7 +10,7 @@ configure({ adapter: new Adapter() });
 jest.mock("./shape.svg", () => () => <span />);
 jest.mock("./instagram-logo.svg", () => () => <span />);
 
-test("test that app loads", () => {
+test("Test that sparkle loads", () => {
   const slide = slides[8];
   const wrapper = shallow(
     <Sparkle run slide={slide} content={slide.content} slideDone={() => { }} />

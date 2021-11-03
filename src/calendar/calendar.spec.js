@@ -6,7 +6,7 @@ import Calendar from "./calendar";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that calendar loads", () => {
   const slide = slides[2];
   const wrapper = mount(
     <Calendar run slide={slide} content={slide.content} slideDone={() => { }} />

@@ -6,7 +6,7 @@ import slides from "../../examples/src/slides";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that book review loads", () => {
   const slide = slides[1];
   const wrapper = shallow(
     <BookReview

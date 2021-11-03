@@ -6,7 +6,7 @@ import Poster from "./poster";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that poster loads", () => {
   const slide = slides[4];
   const wrapper = shallow(
     <Poster run slide={slide} content={slide.content} slideDone={() => { }} />
