@@ -13,7 +13,6 @@ test("Test that basic image-text loads", () => {
 
   );
 
-
   expect(
     wrapper.find(".template-image-text").get(0).props.style.backgroundImage
   ).toBe('url("./fixtures/images/mountain1.jepg")');
