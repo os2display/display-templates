@@ -9,9 +9,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./calendar.scss";
 import da from "./lang/da.json";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
 /* TODO: Replace class `.template-calendar` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -25,18 +23,12 @@ const ThemeStyles = createGlobalStyle`
 /**
  * Calendar component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function Calendar({ slide, content, run, slideDone }) {
   const [currentDate, setCurrentDate] = useState(null);
@@ -45,9 +37,7 @@ function Calendar({ slide, content, run, slideDone }) {
   const { backgroundColor, hasDateAndTime, title, events } = content;
   const classes = `template-calendar ${backgroundColor}`;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -57,10 +47,7 @@ function Calendar({ slide, content, run, slideDone }) {
     }
   }, [run]);
 
-  /**
-   * Imports language strings, sets localized formats
-   * and sets timer.
-   */
+  /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
@@ -90,10 +77,8 @@ function Calendar({ slide, content, run, slideDone }) {
   /**
    * Capitalize the datestring, as it starts with the weekday.
    *
-   * @param {string} s
-   *    The string to capitalize.
-   * @returns {string}
-   *    The capitalized string.
+   * @param {string} s The string to capitalize.
+   * @returns {string} The capitalized string.
    */
   const capitalize = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1);

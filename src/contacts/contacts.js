@@ -8,35 +8,24 @@ import da from "./lang/da.json";
 /**
  * Contacts component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
   const { contacts } = content;
   const [translations, setTranslations] = useState();
   const { separator } = content.styling || {};
 
-  /**
-   * Imports language strings, sets localized formats
-   * and sets timer.
-   */
+  /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
     setTranslations(da);
   }, []);
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {

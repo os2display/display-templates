@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() });
 test("Test that calendar loads", () => {
   const slide = slides[2];
   const wrapper = mount(
-    <Calendar run slide={slide} content={slide.content} slideDone={() => { }} />
+    <Calendar run slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
   expect(wrapper.text()).toContain("Calendar");

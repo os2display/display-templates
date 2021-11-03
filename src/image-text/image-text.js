@@ -6,9 +6,7 @@ import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
 /* TODO: Replace class `.template-image-text` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -25,18 +23,12 @@ const ThemeStyles = createGlobalStyle`
 /**
  * ImageText component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function ImageText({ slide, content, run, slideDone }) {
   // Styling from content
@@ -66,9 +58,7 @@ function ImageText({ slide, content, run, slideDone }) {
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -84,7 +74,9 @@ function ImageText({ slide, content, run, slideDone }) {
 
   // Set background image and background color.
   if (content.image && slide?.mediaData[content.image]?.assets?.uri) {
-    rootStyle.backgroundImage = `url("${slide?.mediaData[content.image].assets.uri}")`;
+    rootStyle.backgroundImage = `url("${
+      slide?.mediaData[content.image].assets.uri
+    }")`;
   }
   if (backgroundColor) {
     rootStyle.backgroundColor = backgroundColor;
@@ -145,14 +137,20 @@ function ImageText({ slide, content, run, slideDone }) {
   );
 }
 
+// TODO: update proptypes
 ImageText.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
+    mediaData: PropTypes.objectOf(PropTypes.any),
     duration: PropTypes.number.isRequired,
   }).isRequired,
   content: PropTypes.shape({
+    image: PropTypes.oneOfType([
+      PropTypes.objectOf(PropTypes.any),
+      PropTypes.string,
+    ]).isRequired,
     title: PropTypes.string,
     text: PropTypes.string,
     media: PropTypes.shape({ url: PropTypes.string }),

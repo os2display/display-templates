@@ -9,15 +9,15 @@ configure({ adapter: new Adapter() });
 test("Test that contacts loads", () => {
   const slide = slides[7];
   const wrapper = mount(
-    <Contacts run slide={slide} content={slide.content} slideDone={() => { }} />
+    <Contacts run slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
   expect(wrapper.find("h1").text()).toEqual("Kontakter");
 
   expect(
     wrapper.find(".contacts-template").get(0).props.style.backgroundColor
-  ).toBe('yellow');
-  expect(
-    wrapper.find(".image-area").get(0).props.style.backgroundImage
-  ).toBe('url("./fixtures/images/author.jpg")');
+  ).toBe("yellow");
+  expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
+    'url("./fixtures/images/author.jpg")'
+  );
 });

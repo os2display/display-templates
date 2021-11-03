@@ -7,18 +7,12 @@ import BaseSlideExecution from "../base-slide-execution";
 /**
  * Slideshow component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
   const { images, transitions, animations, logo } = content;
@@ -28,9 +22,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   const timeoutRef = useRef(null);
   const classes = `image ${transitions} ${animations}`;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -51,10 +43,8 @@ function Slideshow({ slide, content, run, slideDone }) {
   /**
    * A random function to simplify the code where random is used
    *
-   * @param {number} multiplier
-   *   The multiplier.
-   * @returns {number}
-   *   Random number.
+   * @param {number} multiplier The multiplier.
+   * @returns {number} Random number.
    */
   function random(multiplier) {
     return Math.floor(Math.random() * multiplier);
@@ -63,12 +53,9 @@ function Slideshow({ slide, content, run, slideDone }) {
   /**
    * Creates the animation using keyframes from styled components
    *
-   * @param {boolean} grow
-   *   Grow boolean.
-   * @param {string} transform
-   *   The transform.
-   * @returns {Keyframes}
-   *   The animation.
+   * @param {boolean} grow Grow boolean.
+   * @param {string} transform The transform.
+   * @returns {Keyframes} The animation.
    */
   function createAnimation(grow, transform = "50% 50%") {
     const transformOrigin = transform;
@@ -102,10 +89,8 @@ function Slideshow({ slide, content, run, slideDone }) {
   /**
    * Determines which animation should be used
    *
-   * @param {string} animationType
-   *   The animation type.
-   * @returns {Keyframes}
-   *   The current animation.
+   * @param {string} animationType The animation type.
+   * @returns {Keyframes} The current animation.
    */
   function getCurrentAnimation(animationType) {
     const animationTypes = [
@@ -131,9 +116,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     }
   }
 
-  /**
-   * Creates a slide with the animation.
-   */
+  /** Creates a slide with the animation. */
   function createImage() {
     const image = styled.div`
       background-image: url(${images[index].url});
@@ -144,9 +127,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     setImage(image);
   }
 
-  /**
-   * Reset the timeout.
-   */
+  /** Reset the timeout. */
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);

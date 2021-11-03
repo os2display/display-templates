@@ -12,9 +12,7 @@ import InstagramLogo from "./instagram-logo.svg";
 import BaseSlideExecution from "../base-slide-execution";
 import "./sparkle.scss";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* @TODO: Css from theme editor goes inside `ThemeStyles` */
 /* @TODO: Replace class `.template-sparkle` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -28,18 +26,12 @@ const ThemeStyles = createGlobalStyle`
 /**
  * Sparkle component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function Sparkle({ slide, content, run, slideDone }) {
   // @TODO: what does horizontal/portrait/vertical do? Ask Troels!
@@ -63,9 +55,7 @@ function Sparkle({ slide, content, run, slideDone }) {
   const [show, setShow] = useState(true);
   const animationDuration = 1500;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -75,9 +65,7 @@ function Sparkle({ slide, content, run, slideDone }) {
     }
   }, [run]);
 
-  /**
-   * Setup post switch and animation, if there is more than one post.
-   */
+  /** Setup post switch and animation, if there is more than one post. */
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = posts.indexOf(currentPost);

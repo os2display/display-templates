@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { jest } from "@jest/globals";
 import slides from "../../examples/src/slides";
 import Sparkle from "./sparkle";
 
@@ -13,7 +14,7 @@ jest.mock("./instagram-logo.svg", () => () => <span />);
 test("Test that sparkle loads", () => {
   const slide = slides[8];
   const wrapper = shallow(
-    <Sparkle run slide={slide} content={slide.content} slideDone={() => { }} />
+    <Sparkle run slide={slide} content={slide.content} slideDone={() => {}} />
   );
-  expect(wrapper.find('.template-sparkle').exists()).toBeTruthy()
+  expect(wrapper.find(".template-sparkle").exists()).toBeTruthy();
 });

@@ -13,15 +13,14 @@ test("Test that meeting room schedule loads", () => {
       run
       slide={slide}
       content={slide.content}
-      slideDone={() => { }}
+      slideDone={() => {}}
     />
   );
 
   expect(
-    wrapper.find(".template-meeting-room-schedule").get(0).props.style.backgroundImage
+    wrapper.find(".template-meeting-room-schedule").get(0).props.style
+      .backgroundImage
   ).toBe('url("./fixtures/images/mountain1.jpeg")');
-  expect(
-    wrapper.find("h1").text()).toContain("Meeting room schedule 1")
-  expect(
-    wrapper.find("p").text()).toContain("Ekstra info!")
+  expect(wrapper.find("h1").text()).toContain("Meeting room schedule 1");
+  expect(wrapper.find("p").text()).toContain("Ekstra info!");
 });

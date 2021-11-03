@@ -13,18 +13,17 @@ test("Test that book review loads", () => {
       run
       slide={slide}
       content={slide.content}
-      slideDone={() => { }}
+      slideDone={() => {}}
     />
   );
 
   expect(
     wrapper.find(".image-blurry-background").get(0).props.style.backgroundImage
   ).toBe('url("./fixtures/images/mountain1.jpeg")');
-  expect(
-    wrapper.find(".author-image").get(0).props.style.backgroundImage
-  ).toBe('url("./fixtures/images/author.jpg")');
-  expect(
-    wrapper.find("h1").text()).toContain("Lorem Ipsum")
-  expect(
-    wrapper.find(".author").text()).toContain("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.")
+  expect(wrapper.find(".author-image").get(0).props.style.backgroundImage).toBe(
+    'url("./fixtures/images/author.jpg")'
+  );
+  expect(wrapper.find(".author").text()).toContain(
+    "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+  );
 });

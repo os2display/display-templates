@@ -9,9 +9,7 @@ import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
 /* TODO: Replace class `.template-meeting-room-schedule` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -25,18 +23,12 @@ const ThemeStyles = createGlobalStyle`
 /**
  * Meeting room schedule component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   // Props.
@@ -61,9 +53,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   // Styling and classes.
   const rootClasses = `template-meeting-room-schedule ${textAlign}`;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -77,10 +67,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
     };
   }, [run]);
 
-  /**
-   * Imports language strings, sets localized formats
-   * and sets timer.
-   */
+  /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
@@ -109,10 +96,8 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   /**
    * Returns if an event is now and should be highligted.
    *
-   * @param {object} event
-   *    The event object.
-   * @returns {string}
-   *    The classes to return.
+   * @param {object} event The event object.
+   * @returns {string} The classes to return.
    */
   function isNow(event) {
     if (

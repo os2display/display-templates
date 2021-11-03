@@ -9,8 +9,8 @@ configure({ adapter: new Adapter() });
 test("Test that rss loads", () => {
   const slide = slides[5];
   const wrapper = shallow(
-    <RSS run slide={slide} content={slide.content} slideDone={() => { }} />
+    <RSS run slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
-  expect(wrapper.find('.progress').exists()).toBeTruthy()
+  expect(wrapper.find(".progress").exists()).toBeTruthy();
 });

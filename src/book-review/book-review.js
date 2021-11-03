@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
 import "./book-review.scss";
@@ -6,9 +6,7 @@ import DOMPurify from "dompurify";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* @TODO: Css from theme editor goes inside `ThemeStyles` */
 /* @TODO: Replace class `.template-book-review` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -25,35 +23,39 @@ const ThemeStyles = createGlobalStyle`
 /**
  * Book review component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
+  const [sanitizedParsedBookText, setSanitizedParsedBookText] = useState("");
 
-  const authorStyle = (content.authorImage && slide.mediaData[content.authorImage]?.assets?.uri)
-    ? { backgroundImage: `url("${slide.mediaData[content.authorImage]?.assets?.uri}")` }
-    : "";
-  const bookStyle = (content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri)
-    ? { backgroundImage: `url("${slide.mediaData[content.bookImage]?.assets?.uri}")` }
-    : "";
-  const bookUri = content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri ?
-    slide.mediaData[content.bookImage]?.assets?.uri : null;
-  const sanitizedParsedBookText = parse(DOMPurify.sanitize(bookText));
+  const authorStyle =
+    content.authorImage && slide.mediaData[content.authorImage]?.assets?.uri
+      ? {
+          backgroundImage: `url("${
+            slide.mediaData[content.authorImage]?.assets?.uri
+          }")`,
+        }
+      : "";
+  const bookStyle =
+    content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri
+      ? {
+          backgroundImage: `url("${
+            slide.mediaData[content.bookImage]?.assets?.uri
+          }")`,
+        }
+      : "";
+  const bookUri =
+    content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri
+      ? slide.mediaData[content.bookImage]?.assets?.uri
+      : null;
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -62,6 +64,10 @@ function BookReview({ slide, content, run, slideDone }) {
       slideExecution.stop();
     }
   }, [run]);
+
+  useEffect(() => {
+    setSanitizedParsedBookText(parse(DOMPurify.sanitize(bookText)));
+  }, []);
 
   return (
     <>
@@ -88,26 +94,14 @@ function BookReview({ slide, content, run, slideDone }) {
     </>
   );
 }
-
-const imageShape = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-});
-
 BookReview.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
-  content: PropTypes.shape({
-    authorText: PropTypes.string,
-    media: PropTypes.shape({
-      authorImage: imageShape,
-      bookImage: imageShape,
-    }).isRequired,
-    bookText: PropTypes.string,
-  }).isRequired,
+  content: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default BookReview;
