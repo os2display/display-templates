@@ -99,6 +99,7 @@ const renderSlide = (slide) => {
 const App = () => {
   const [selectedSlide, setSelectedSlide] = useState(null);
   const buttonStyles = { margin: '5px' };
+
   return <div>
     {!selectedSlide &&
       <>

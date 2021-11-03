@@ -101,7 +101,12 @@ BookReview.propTypes = {
     duration: PropTypes.number.isRequired,
     mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
-  content: PropTypes.objectOf(PropTypes.any).isRequired,
+  content: PropTypes.shape({
+    authorText: PropTypes.string,
+    bookText: PropTypes.string,
+    authorImage: PropTypes.string,
+    bookImage: PropTypes.string,
+  }).isRequired,
 };
 
 export default BookReview;

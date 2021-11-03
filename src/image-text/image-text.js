@@ -137,7 +137,6 @@ function ImageText({ slide, content, run, slideDone }) {
   );
 }
 
-// TODO: update proptypes
 ImageText.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
@@ -147,10 +146,7 @@ ImageText.propTypes = {
     duration: PropTypes.number.isRequired,
   }).isRequired,
   content: PropTypes.shape({
-    image: PropTypes.oneOfType([
-      PropTypes.objectOf(PropTypes.any),
-      PropTypes.string,
-    ]).isRequired,
+    image: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
     media: PropTypes.shape({ url: PropTypes.string }),
