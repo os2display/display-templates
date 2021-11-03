@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import styled, { keyframes, Keyframes } from "styled-components";
-import "./slideshow.scss";
 import BaseSlideExecution from "../base-slide-execution";
+import "./slideshow.scss";
 
 /**
  * Slideshow component.
@@ -16,11 +15,24 @@ import BaseSlideExecution from "../base-slide-execution";
  */
 function Slideshow({ slide, content, run, slideDone }) {
   const { images, transitions, animations, logo } = content;
-  const logoClasses = `logo ${logo.position} ${logo.size}`;
-  const [index, setIndex] = useState(0);
-  const [Image, setImage] = useState();
+  const fade = transitions === "fade";
+  const fadeDuration = 500; // @TODO: check if this is the correct number
   const timeoutRef = useRef(null);
-  const classes = `image ${transitions} ${animations}`;
+  const [animationName] = useState("animationForImage");
+
+  // Index is used to go through the images in the array.
+  const [index, setIndex] = useState(0);
+
+  // If it does not fade, the opacity should just be 1.
+  const [imageOneFadeContainerStyle, setImageOneFadeContainerStyle] = useState(
+    transitions === "fade" ? { opacity: 1 } : {}
+  );
+  // If it does not fade, the opacity should just be 1.
+  const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState(
+    transitions === "fade" ? { opacity: 1 } : {}
+  );
+  const [imageOneStyle, setImageOneStyle] = useState();
+  const [imageTwoStyles, setImageTwoStyles] = useState();
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
@@ -51,46 +63,46 @@ function Slideshow({ slide, content, run, slideDone }) {
   }
 
   /**
-   * Creates the animation using keyframes from styled components
+   * Creates the animation
    *
-   * @param {boolean} grow Grow boolean.
-   * @param {string} transform The transform.
-   * @returns {Keyframes} The animation.
+   * @param {boolean} grow
+   *   Grow boolean.
+   * @param {string} transform
+   *   The transform.
+   * @returns {string}
+   *   The animation.
    */
   function createAnimation(grow, transform = "50% 50%") {
     const transformOrigin = transform;
     const startSize = grow ? 1 : 1.2;
     const finishSize = grow ? 1.2 : 1;
-    const startFinishOpacity = transitions === "fade" ? 0 : 1;
-    return keyframes`
-    0% {
-      transform: scale(${startSize});
-      transform-origin: ${transformOrigin};
-      opacity: ${startFinishOpacity};
-    }
-    5% {
-      transform: scale(${startSize});
-      transform-origin: ${transformOrigin};
-      opacity: 1;
-    }
-    95% {
-      transform: scale(${finishSize});
-      transform-origin: ${transformOrigin};
-      opacity: 1;
-    }
-    100% {
-      transform: scale(${finishSize});
-      transform-origin: ${transformOrigin};
-      opacity: ${startFinishOpacity};
-    }
-  `;
+    return `@-webkit-keyframes ${animationName} {
+      0% {
+        transform: scale(${startSize});
+        transform-origin: ${transformOrigin};
+      }
+      5% {
+        transform: scale(${startSize});
+        transform-origin: ${transformOrigin};
+      }
+      95% {
+        transform: scale(${finishSize});
+        transform-origin: ${transformOrigin};
+      }
+      100% {
+        transform: scale(${finishSize});
+        transform-origin: ${transformOrigin};
+      }
+    }`;
   }
 
   /**
    * Determines which animation should be used
    *
-   * @param {string} animationType The animation type.
-   * @returns {Keyframes} The current animation.
+   * @param {string} animationType
+   *   The animation type.
+   * @returns {string}
+   *   The current animation.
    */
   function getCurrentAnimation(animationType) {
     const animationTypes = [
@@ -116,15 +128,82 @@ function Slideshow({ slide, content, run, slideDone }) {
     }
   }
 
-  /** Creates a slide with the animation. */
-  function createImage() {
-    const image = styled.div`
-      background-image: url(${images[index].url});
-      animation-name: ${getCurrentAnimation(animations)};
-      animation-duration: ${images[index].duration / 1000}s;
-      animation-iteration-count: infinite;
-    `;
-    setImage(image);
+  // Setup animation
+  useEffect(() => {
+    // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(
+      getCurrentAnimation(animations),
+      styleSheet.cssRules.length
+    );
+  }, []);
+
+  /**
+   * Sets animations and background images for image one.
+   */
+  function updateImageOne() {
+    // If it fades, then fadeout the previous image.
+    if (fade) {
+      setImageTwoFadeContainerStyle({ animation: `fadeOut ${fadeDuration}ms` });
+    }
+
+    // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
+    const durationOfAnimation = fade
+      ? (images[index].duration + fadeDuration * 2) / 1000
+      : images[index].duration / 1000;
+
+    // Sets the animation and background image to the next image, according to the index
+    setImageOneStyle({
+      backgroundImage: `url(${images[index].url})`,
+      animation: `${animationName} ${durationOfAnimation}s`,
+    });
+
+    // If it fades, set image one to fade in
+    if (fade) {
+      setImageOneFadeContainerStyle({ animation: `fadeIn ${fadeDuration}ms` });
+    }
+
+    setTimeout(() => {
+      // Remove animation of image two
+      setImageTwoStyles({ animation: "none" });
+      if (fade) {
+        // If it faded in, set the opacity to 1.
+        setImageOneFadeContainerStyle({ opacity: 1 });
+      }
+    }, fadeDuration);
+  }
+
+  /**
+   * Sets animations and background images for image two.
+   */
+  function updateImageTwo() {
+    // If it fades, then fadeout the previous image.
+    if (fade) {
+      setImageOneFadeContainerStyle({ animation: `fadeOut ${fadeDuration}ms` });
+    }
+    // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
+    const durationOfAnimation = fade
+      ? (images[index].duration + fadeDuration * 2) / 1000
+      : images[index].duration / 1000;
+
+    // Sets the animation and background image to the next image, according to the index
+    setImageTwoStyles({
+      backgroundImage: `url(${images[index].url})`,
+      animation: `${animationName} ${durationOfAnimation}s`,
+    });
+
+    // If it fades, set image two to fade in
+    if (fade) {
+      setImageTwoFadeContainerStyle({ animation: `fadeIn ${fadeDuration}ms` });
+    }
+    setTimeout(() => {
+      // Remove animation of image one
+      setImageOneStyle({ animation: "none" });
+      if (fade) {
+        // If it faded in, set the opacity to 1.
+        setImageTwoFadeContainerStyle({ opacity: 1 });
+      }
+    }, fadeDuration);
   }
 
   /** Reset the timeout. */
@@ -134,24 +213,39 @@ function Slideshow({ slide, content, run, slideDone }) {
     }
   }
 
+  // Creates index and reset the timeout.
   useEffect(() => {
-    // Create slides and reset the timeout.
-    createImage();
     resetTimeout();
     timeoutRef.current = setTimeout(() => {
+      // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
       setIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, images[index].duration);
+
     return () => {
       resetTimeout();
     };
   }, [index]);
 
+  // Shift images
+  useEffect(() => {
+    if (index % 2 === 0) {
+      updateImageOne();
+    } else {
+      updateImageTwo();
+    }
+  }, [index]);
+
   return (
     <div className="template-slideshow">
-      {Image && <Image className={classes} />}
-      {logo && <img className={logoClasses} alt="slide" src={logo.url} />}
+      <div className="fade-container" style={imageOneFadeContainerStyle}>
+        <div style={imageOneStyle} className="image" />
+      </div>
+      <div className="fade-container" style={imageTwoFadeContainerStyle}>
+        <div style={imageTwoStyles} className="image" />
+      </div>
+      {logo && <img className="logo" alt="slide" src={logo.url} />}
     </div>
   );
 }
