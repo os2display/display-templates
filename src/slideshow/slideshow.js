@@ -76,6 +76,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     const transformOrigin = transform;
     const startSize = grow ? 1 : 1.2;
     const finishSize = grow ? 1.2 : 1;
+
     return `@-webkit-keyframes ${animationName} {
       0% {
         transform: scale(${startSize});
@@ -109,7 +110,9 @@ function Slideshow({ slide, content, run, slideDone }) {
       "zoom-out-random",
       "zoom-in-random",
     ];
+
     const randomPercent = `${random(100) + 1}% ${random(100) + 1}%`;
+
     switch (animationType) {
       case "zoom-in-middle":
         return createAnimation(true);
@@ -219,6 +222,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     }
 
     resetTimeout();
+
     timeoutRef.current = setTimeout(() => {
       // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
       setIndex((prevIndex) =>
@@ -261,18 +265,9 @@ Slideshow.propTypes = {
   slide: PropTypes.shape({}).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-        duration: PropTypes.number.isRequired,
-      })
+      PropTypes.string
     ),
-    logo: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-      position: PropTypes.string,
-      size: PropTypes.string,
-    }),
+    logo: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,
