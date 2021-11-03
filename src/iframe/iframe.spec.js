@@ -6,11 +6,11 @@ import IFrame from "./iframe";
 
 configure({ adapter: new Adapter() });
 
-test("test that app loads", () => {
+test("Test that iframe loads", () => {
   const slide = slides[10];
   const wrapper = shallow(
     <IFrame run slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
-  // @TODO: Add tests.
+  expect(wrapper.find("iframe").exists()).toBeTruthy();
 });

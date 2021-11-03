@@ -7,9 +7,7 @@ import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import "./rss.scss";
 
-/**
- * Setup theme vars
- */
+/** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
 /* TODO: Replace class `.rss-slide` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
@@ -23,18 +21,12 @@ const ThemeStyles = createGlobalStyle`
 /**
  * RSS component.
  *
- * @param {object} props
- *   Props.
- * @param {object} props.slide
- *   The slide.
- * @param {object} props.content
- *   The slide content.
- * @param {boolean} props.run
- *   Whether or not the slide should start running.
- * @param {Function} props.slideDone
- *   Function to invoke when the slide is done playing.
- * @returns {object}
- *   The component.
+ * @param {object} props Props.
+ * @param {object} props.slide The slide.
+ * @param {object} props.content The slide content.
+ * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @returns {object} The component.
  */
 function RSS({ slide, content, run, slideDone }) {
   const { source, rssDuration, rssNumber, fontSize, media } = content;
@@ -51,18 +43,14 @@ function RSS({ slide, content, run, slideDone }) {
   /**
    * Capitalize the datestring, as it starts with the weekday.
    *
-   * @param {string} s
-   *    The string to capitalize.
-   * @returns {string}
-   *    The capitalized string.
+   * @param {string} s The string to capitalize.
+   * @returns {string} The capitalized string.
    */
   const capitalize = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
-  /**
-   * Fetch data.
-   */
+  /** Fetch data. */
   useEffect(() => {
     fetch(source)
       .then((response) => response.json())
@@ -75,16 +63,12 @@ function RSS({ slide, content, run, slideDone }) {
       });
   }, []);
 
-  /**
-   * Sets localized formats (dayjs)
-   */
+  /** Sets localized formats (dayjs) */
   useEffect(() => {
     dayjs.extend(localizedFormat);
   }, []);
 
-  /**
-   * Setup slide run function.
-   */
+  /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
