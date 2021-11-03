@@ -22,20 +22,13 @@
   },
   {
     "key": "slideshow-form-4",
-    "multipleImages": false,
-    "input": "image",
-    "name": "logoImage",
-    "label": "Logo"
-  },
-  {
-    "key": "slideshow-form-5",
     "input": "header-h3",
     "text": "Opsætning",
     "name": "header2",
     "formGroupClasses": "h5 mb-3"
   },
   {
-    "key": "slideshow-form-6",
+    "key": "slideshow-form-5",
     "input": "input",
     "name": "imageDuration",
     "type": "number",
@@ -45,7 +38,7 @@
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "key": "slideshow-form-8",
+    "key": "slideshow-form-6",
     "input": "select",
     "required": true,
     "label": "Vælg animation",
@@ -80,7 +73,7 @@
     "name": "animation"
   },
   {
-    "key": "slideshow-form-9",
+    "key": "slideshow-form-7",
     "input": "select",
     "required": true,
     "label": "Vælg overgang",
@@ -100,7 +93,14 @@
     "name": "animation"
   },
   {
-    "key": "slideshow-form-10",
+    "key": "image-text-form-8",
+    "input": "checkbox",
+    "label": "Vis logo fra tema",
+    "name": "logoEnabled",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "slideshow-form-9",
     "input": "select",
     "required": true,
     "label": "Logo size",
@@ -135,7 +135,7 @@
     "name": "logoSize"
   },
   {
-    "key": "slideshow-form-11",
+    "key": "slideshow-form-10",
     "input": "select",
     "required": true,
     "label": "Logo position",

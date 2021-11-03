@@ -20,8 +20,8 @@
     "logoSize": {
       "type": "string"
     },
-    "logoImage": {
-      "type": "string"
+    "logoEnabled": {
+      "type": "boolean"
     },
     "transitions": {
       "type": "string"
