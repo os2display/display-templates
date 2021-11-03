@@ -41,10 +41,12 @@ function Slideshow({ slide, content, run, slideDone }) {
       // @TODO: Make sure each image has been shown the correct duration before transition.
       // Extract duration from content.images.
       let duration = 0;
-      images.forEach((image) => {
-        // Default to 5 seconds pr. image.
-        duration += image.duration > 0 ? image.duration : 5000;
-      });
+      if (images.length > 0) {
+        images.forEach((image) => {
+          // Default to 5 seconds pr. image.
+          duration += image.duration > 0 ? image.duration : 5000;
+        });
+      }
 
       slideExecution.start(duration !== 0 ? duration : 1000);
     } else {
@@ -65,12 +67,9 @@ function Slideshow({ slide, content, run, slideDone }) {
   /**
    * Creates the animation
    *
-   * @param {boolean} grow
-   *   Grow boolean.
-   * @param {string} transform
-   *   The transform.
-   * @returns {string}
-   *   The animation.
+   * @param {boolean} grow Grow boolean.
+   * @param {string} transform The transform.
+   * @returns {string} The animation.
    */
   function createAnimation(grow, transform = "50% 50%") {
     const transformOrigin = transform;
@@ -99,10 +98,8 @@ function Slideshow({ slide, content, run, slideDone }) {
   /**
    * Determines which animation should be used
    *
-   * @param {string} animationType
-   *   The animation type.
-   * @returns {string}
-   *   The current animation.
+   * @param {string} animationType The animation type.
+   * @returns {string} The current animation.
    */
   function getCurrentAnimation(animationType) {
     const animationTypes = [
@@ -138,9 +135,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     );
   }, []);
 
-  /**
-   * Sets animations and background images for image one.
-   */
+  /** Sets animations and background images for image one. */
   function updateImageOne() {
     // If it fades, then fadeout the previous image.
     if (fade) {
@@ -173,9 +168,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     }, fadeDuration);
   }
 
-  /**
-   * Sets animations and background images for image two.
-   */
+  /** Sets animations and background images for image two. */
   function updateImageTwo() {
     // If it fades, then fadeout the previous image.
     if (fade) {
@@ -215,25 +208,34 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   // Creates index and reset the timeout.
   useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(() => {
-      // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
-      setIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, images[index].duration);
-
-    return () => {
+    if (images.length === 0) {
+      return;
+    }
+    // Index only necessary if more than one image
+    if (images.length > 1) {
       resetTimeout();
-    };
+      timeoutRef.current = setTimeout(() => {
+        // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
+        setIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, images[index].duration);
+
+      return () => {
+        resetTimeout();
+      };
+    }
+    updateImageOne();
   }, [index]);
 
   // Shift images
   useEffect(() => {
-    if (index % 2 === 0) {
-      updateImageOne();
-    } else {
-      updateImageTwo();
+    if (images.length > 0) {
+      if (index % 2 === 0) {
+        updateImageOne();
+      } else {
+        updateImageTwo();
+      }
     }
   }, [index]);
 
