@@ -13,5 +13,12 @@ test("Test that basic image-text loads", () => {
 
   );
 
-  expect(wrapper.find('h1').exists()).toBeTruthy()
+
+  expect(
+    wrapper.find(".template-image-text").get(0).props.style.backgroundImage
+  ).toBe('url("./fixtures/images/mountain1.jepg")');
+  expect(
+    wrapper.find("h1").text()).toContain("Slide 1")
+  expect(
+    wrapper.find(".text").text()).toContain("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
 });
