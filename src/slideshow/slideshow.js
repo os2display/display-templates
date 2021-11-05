@@ -41,6 +41,7 @@ function Slideshow({ slide, content, run, slideDone }) {
       // @TODO: Make sure each image has been shown the correct duration before transition.
       // Extract duration from content.images.
       let duration = 0;
+
       if (images.length > 0) {
         images.forEach((image) => {
           // Default to 5 seconds pr. image.
@@ -161,6 +162,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     setTimeout(() => {
       // Remove animation of image two
       setImageTwoStyles({ animation: "none" });
+
       if (fade) {
         // If it faded in, set the opacity to 1.
         setImageOneFadeContainerStyle({ opacity: 1 });
@@ -174,6 +176,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     if (fade) {
       setImageOneFadeContainerStyle({ animation: `fadeOut ${fadeDuration}ms` });
     }
+
     // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
     const durationOfAnimation = fade
       ? (images[index].duration + fadeDuration * 2) / 1000
@@ -189,9 +192,11 @@ function Slideshow({ slide, content, run, slideDone }) {
     if (fade) {
       setImageTwoFadeContainerStyle({ animation: `fadeIn ${fadeDuration}ms` });
     }
+
     setTimeout(() => {
       // Remove animation of image one
       setImageOneStyle({ animation: "none" });
+
       if (fade) {
         // If it faded in, set the opacity to 1.
         setImageTwoFadeContainerStyle({ opacity: 1 });
@@ -208,24 +213,22 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   // Creates index and reset the timeout.
   useEffect(() => {
-    if (images.length === 0) {
-      return;
-    }
     // Index only necessary if more than one image
-    if (images.length > 1) {
-      resetTimeout();
-      timeoutRef.current = setTimeout(() => {
-        // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
-        setIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-      }, images[index].duration);
-
-      return () => {
-        resetTimeout();
-      };
+    if (images.length === 0) {
+      return false;
     }
-    updateImageOne();
+
+    resetTimeout();
+    timeoutRef.current = setTimeout(() => {
+      // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
+      setIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, images[index].duration);
+
+    return () => {
+      resetTimeout();
+    };
   }, [index]);
 
   // Shift images
