@@ -21,16 +21,20 @@ import BaseSlideExecution from "../base-slide-execution";
  *   The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
-  const { images, imageDuration, transitions, animations, logoImage, logoSize, logoPosition } = content;
+  const { images, imageDuration, transitions, animations, logoEnabled, logoSize, logoPosition } = content;
   const logoClasses = `logo ${logoPosition} ${logoSize}`;
   const [index, setIndex] = useState(0);
   const [Image, setImage] = useState();
   const timeoutRef = useRef(null);
   const classes = `image ${transitions} ${animations}`;
-  const logoImageUrl = slide?.mediaData[logoImage]?.assets?.uri ?? null;
+
+  // @TODO: Get logo image from theme.
+  const logoImageUrl = null;
+
   const imageUrls = images.map((image) => {
     return slide?.mediaData[image]?.assets?.uri;
   });
+
   // @TODO: Duration should not be based on a calculated number, but instead on going a full round of all the images.
   const duration = imageUrls.length * imageDuration;
 
@@ -174,7 +178,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   return (
     <div className="template-slideshow">
       {Image && <Image className={classes} />}
-      {logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} />}
+      {logoEnabled && logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} />}
     </div>
   );
 }
@@ -187,7 +191,7 @@ Slideshow.propTypes = {
     images: PropTypes.arrayOf(
       PropTypes.string
     ),
-    logoImage: PropTypes.string,
+    logoEnabled: PropTypes.bool,
     logoSize: PropTypes.string,
     logoPosition: PropTypes.string,
     animations: PropTypes.string,
