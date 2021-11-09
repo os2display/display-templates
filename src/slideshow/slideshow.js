@@ -15,7 +15,8 @@ import "./slideshow.scss";
  */
 function Slideshow({ slide, content, run, slideDone }) {
   const { images, imageDuration, transitions, animations
-//    , logoEnabled, logoSize, logoPosition
+    // @TOOD: Add when logo is available from theme
+    // , logoEnabled, logoSize, logoPosition
   } = content;
   const [animationName] = useState("animationForImage");
   const [index, setIndex] = useState(0);
@@ -156,7 +157,7 @@ function Slideshow({ slide, content, run, slideDone }) {
 
     // Sets the animation and background image to the next image, according to the index
     setImageOneStyle({
-      backgroundImage: `url(${imageUrls[index].url})`,
+      backgroundImage: `url(${imageUrls[index]})`,
       animation: `${animationName} ${durationOfAnimation}s`,
     });
 
@@ -190,7 +191,7 @@ function Slideshow({ slide, content, run, slideDone }) {
 
     // Sets the animation and background image to the next image, according to the index
     setImageTwoStyles({
-      backgroundImage: `url(${images[index].url})`,
+      backgroundImage: `url(${imageUrls[index]})`,
       animation: `${animationName} ${durationOfAnimation}s`,
     });
 
@@ -220,7 +221,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   // Creates index and reset the timeout.
   useEffect(() => {
     // Index only necessary if more than one image
-    if (images.length === 0) {
+    if (imageUrls.length === 0) {
       return false;
     }
 
@@ -229,7 +230,7 @@ function Slideshow({ slide, content, run, slideDone }) {
     timeoutRef.current = setTimeout(() => {
       // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
       setIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
       );
     }, imageDuration);
 
@@ -240,7 +241,7 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   // Shift images
   useEffect(() => {
-    if (images.length > 0) {
+    if (imageUrls.length > 0) {
       if (index % 2 === 0) {
         updateImageOne();
       } else {
@@ -265,7 +266,9 @@ function Slideshow({ slide, content, run, slideDone }) {
 Slideshow.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
-  slide: PropTypes.shape({}).isRequired,
+  slide: PropTypes.shape({
+    mediaData: PropTypes.objectOf(PropTypes.any).isRequired
+  }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(
       PropTypes.string

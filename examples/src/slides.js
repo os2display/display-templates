@@ -1,6 +1,6 @@
 const slides = [
   {
-    id: 'slide1',
+    id: 'slide1-image-text',
     type: 'image-text',
     duration: 5000,
     mediaData: {
@@ -25,7 +25,7 @@ const slides = [
     }
   },
   {
-    id: 'slide2',
+    id: 'slide2-book-review',
     type: 'book-review',
     duration: 5000,
     mediaData: {
@@ -48,7 +48,7 @@ const slides = [
     }
   },
   {
-    id: 'slide3',
+    id: 'slide3-calendar',
     type: 'calendar',
     duration: 5000,
     'content': {
@@ -84,7 +84,7 @@ const slides = [
     }
   },
   {
-    id: 'slide4',
+    id: 'slide4-meeting-room-schedule',
     type: 'meeting-room-schedule',
     duration: 5000,
     'content': {
@@ -130,7 +130,7 @@ const slides = [
     }
   },
   {
-    id: 'slide5',
+    id: 'slide5-poster',
     type: 'poster',
     duration: 5000,
     'content': {
@@ -159,7 +159,7 @@ const slides = [
     }
   },
   {
-    id: 'slide6',
+    id: 'slide6-rss',
     type: 'rss',
     duration: 5000,
     'content': {
@@ -170,44 +170,47 @@ const slides = [
     }
   },
   {
-    id: 'slide7',
+    id: 'slide7-slideshow',
     type: 'slideshow',
-    duration: 5000,
-    'content': {
-      'images': [
-        {
-          'id': 'uniqueMedia1',
-          'url': './fixtures/images/mountain1.jpeg',
-          'duration': 5000
-        },
-        {
-          'id': 'uniqueMedia2',
-          'url': './fixtures/images/mountain2.jpeg',
-          'duration': 5000
-        },
-        {
-          'id': 'uniqueMedia3',
-          'url': './fixtures/images/mountain3.jpeg',
-          'duration': 5000
-        },
-        {
-          'id': 'uniqueMedia4',
-          'url': './fixtures/images/mountain4.jpeg',
-          'duration': 5000
+    mediaData: {
+      '/v1/media/00000000000000000000000001': {
+        assets: {
+          uri: './fixtures/images/mountain1.jpeg'
         }
-      ],
-      'logo': {
-        'id': 'uniqueMedia5',
-        'url': './fixtures/images/logo.png',
-        'position': 'bottom left',
-        'size': 'l'
       },
-      'transitions': 'fade',
-      'animations': 'random'
+      '/v1/media/00000000000000000000000002': {
+        assets: {
+          uri: './fixtures/images/mountain2.jpeg'
+        }
+      },
+      '/v1/media/00000000000000000000000003': {
+        assets: {
+          uri: './fixtures/images/mountain3.jpeg'
+        }
+      },
+      '/v1/media/00000000000000000000000004': {
+        assets: {
+          uri: './fixtures/images/mountain4.jpeg'
+        }
+      },
+    },
+    content: {
+      imageDuration: 5000,
+      images: [
+        '/v1/media/00000000000000000000000001',
+        '/v1/media/00000000000000000000000002',
+        '/v1/media/00000000000000000000000003',
+        '/v1/media/00000000000000000000000004',
+      ],
+      logoEnabled: false,
+      logoSize: 'l',
+      logoPosition: 'bottom right',
+      transitions: 'fade',
+      animations: 'random'
     }
   },
   {
-    id: 'slide8',
+    id: 'slide8-contacts',
     type: 'contacts',
     duration: 5000,
     'content': {
@@ -276,7 +279,7 @@ const slides = [
     }
   },
   {
-    id: 'slide9',
+    id: 'slide9-sparkle',
     type: 'sparkle',
     duration: 5000,
     'content': {
@@ -298,7 +301,7 @@ const slides = [
     }
   },
   {
-    id: 'slide10',
+    id: 'slide10-quote',
     type: 'quote',
     duration: 5000,
     'content': {
@@ -332,11 +335,11 @@ const slides = [
     }
   },
   {
-    id: 'slide11',
+    id: 'slide11-iframe',
     type: 'iframe',
     duration: 5000,
-    'content': {
-      'source': "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80"
+    content: {
+      source: "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80"
     }
   },
 ];
