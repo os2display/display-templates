@@ -14,18 +14,20 @@ import "./slideshow.scss";
  * @returns {object} The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
-  const { images, imageDuration, transitions, animations, logoImage, logoSize, logoPosition } = content;
-  const fade = transitions === "fade";
-  const fadeDuration = 500; // @TODO: check if this is the correct number
+  const { images, imageDuration, transitions, animations
+//    , logoEnabled, logoSize, logoPosition
+  } = content;
   const [animationName] = useState("animationForImage");
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
+  const fade = transitions === "fade";
+  const fadeDuration = 500; // @TODO: check if this is the correct number
 
   // @TODO: Get logo from theme.
   // const logoImageUrl = null;
   // const logoClasses = `logo ${logoPosition} ${logoSize}`;
 
-  // Map
+  // Map images to mediaData.
   const imageUrls = images.map((image) => {
     return slide?.mediaData[image]?.assets?.uri;
   });
@@ -268,7 +270,7 @@ Slideshow.propTypes = {
     images: PropTypes.arrayOf(
       PropTypes.string
     ),
-    logoImage: PropTypes.string,
+    logoEnabled: PropTypes.bool,
     logoSize: PropTypes.string,
     logoPosition: PropTypes.string,
     animations: PropTypes.string,
