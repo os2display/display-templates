@@ -40,14 +40,14 @@ function Slideshow({ slide, content, run, slideDone }) {
   const duration = imageUrls.length * imageDuration;
 
   // If it does not fade, the opacity should just be 1.
-  const [imageOneFadeContainerStyle, setImageOneFadeContainerStyle] = useState(
-    transitions === "fade" ? { opacity: 1 } : {}
-  );
+  const [imageOneFadeContainerStyle, setImageOneFadeContainerStyle] = useState({
+    opacity: 1,
+  });
 
   // If it does not fade, the opacity should just be 1.
-  const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState(
-    transitions === "fade" ? { opacity: 1 } : {}
-  );
+  const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState({
+    opacity: 1,
+  });
 
   const [imageOneStyle, setImageOneStyle] = useState();
   const [imageTwoStyles, setImageTwoStyles] = useState();
