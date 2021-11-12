@@ -104,9 +104,10 @@ const App = () => {
     {!selectedSlide &&
       <>
         <h1>Examples </h1>
+
         <ul>
           {slides.map((slide) =>
-            <li key={slide.id}><button id={`button-${slide.id}`} style={buttonStyles} onClick={() => { setSelectedSlide(slide) }}>{slide.id}</button></li>
+            <li key={slide.id} id={slide.id}><button id={`button-${slide.id}`} style={buttonStyles} onClick={() => { setSelectedSlide(slide) }}>{slide.id}</button></li>
           )}
         </ul>
       </>
