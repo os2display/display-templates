@@ -1,0 +1,14 @@
+{
+  "images": [
+    "/v1/media/00000000000000000000000001",
+    "/v1/media/00000000000000000000000002",
+    "/v1/media/00000000000000000000000003",
+    "/v1/media/00000000000000000000000004"
+  ],
+  "logoImage": "/v1/media/00000000000000000000000001",
+  "logoPosition": "bottom right",
+  "logoSize": "xl",
+  "transitions": "fade",
+  "animations": "random",
+  "imageDuration": 5000
+}

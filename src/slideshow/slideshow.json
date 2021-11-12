@@ -1,0 +1,13 @@
+{
+  "title": "Slideshow",
+  "icon": "",
+  "description": "Skabelon til slideshow af billeder med forskellige effekter",
+  "resources": {
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/slideshow.js",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/src/slideshow/slideshow-admin.json",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/src/slideshow/slideshow-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

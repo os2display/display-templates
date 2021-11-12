@@ -5,6 +5,7 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
+import { getFirstMediaUrlFromField } from "../slide-util";
 
 /** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
@@ -72,12 +73,14 @@ function ImageText({ slide, content, run, slideDone }) {
     };
   }, [run]);
 
-  // Set background image and background color.
-  if (content.image && slide?.mediaData[content.image]?.assets?.uri) {
-    rootStyle.backgroundImage = `url("${
-      slide?.mediaData[content.image].assets.uri
-    }")`;
+  const imageUrl = getFirstMediaUrlFromField(slide.mediaData, content.image);
+
+  // Set background image.
+  if (imageUrl) {
+    rootStyle.backgroundImage = `url("${imageUrl}")`;
   }
+
+  // Set background color.
   if (backgroundColor) {
     rootStyle.backgroundColor = backgroundColor;
   }
@@ -146,10 +149,11 @@ ImageText.propTypes = {
     duration: PropTypes.number.isRequired,
   }).isRequired,
   content: PropTypes.shape({
-    image: PropTypes.string,
+    image: PropTypes.arrayOf(
+      PropTypes.string
+    ),
     title: PropTypes.string,
     text: PropTypes.string,
-    media: PropTypes.shape({ url: PropTypes.string }),
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
     boxColor: PropTypes.string,
