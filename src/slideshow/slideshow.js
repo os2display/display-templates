@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import "./slideshow.scss";
+import { getAllMediaUrlsFromField } from "../slide-util";
 
 /**
  * Slideshow component.
@@ -29,9 +30,7 @@ function Slideshow({ slide, content, run, slideDone }) {
   // const logoClasses = `logo ${logoPosition} ${logoSize}`;
 
   // Map images to mediaData.
-  const imageUrls = images.map((image) => {
-    return slide?.mediaData[image]?.assets?.uri;
-  });
+  const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
   // @TODO: Duration should not be based on a calculated number, but instead on going a full round of all the images.
   const duration = imageUrls.length * imageDuration;

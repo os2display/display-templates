@@ -5,6 +5,7 @@ import "./book-review.scss";
 import DOMPurify from "dompurify";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
+import { getFirstMediaUrlFromField } from '../slide-util';
 
 /** Setup theme vars */
 /* @TODO: Css from theme editor goes inside `ThemeStyles` */
@@ -34,26 +35,11 @@ function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
   const [sanitizedParsedBookText, setSanitizedParsedBookText] = useState("");
 
-  const authorStyle =
-    content.authorImage && slide.mediaData[content.authorImage]?.assets?.uri
-      ? {
-          backgroundImage: `url("${
-            slide.mediaData[content.authorImage]?.assets?.uri
-          }")`,
-        }
-      : "";
-  const bookStyle =
-    content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri
-      ? {
-          backgroundImage: `url("${
-            slide.mediaData[content.bookImage]?.assets?.uri
-          }")`,
-        }
-      : "";
-  const bookUri =
-    content.bookImage && slide.mediaData[content.bookImage]?.assets?.uri
-      ? slide.mediaData[content.bookImage]?.assets?.uri
-      : null;
+  const authorImageUrl = getFirstMediaUrlFromField(slide.mediaData, content.authorImage);
+  const bookImageUrl = getFirstMediaUrlFromField(slide.mediaData, content.bookImage);
+
+  const authorStyle = authorImageUrl ? { backgroundImage: `url("${authorImageUrl}")`} : "";
+  const bookStyle = bookImageUrl ? { backgroundImage: `url("${bookImageUrl}")`} : "";
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
@@ -85,7 +71,7 @@ function BookReview({ slide, content, run, slideDone }) {
             <>
               <div className="image-blurry-background" style={bookStyle} />
               <div className="book-image">
-                <img src={bookUri} alt="book" />
+                <img src={bookImageUrl} alt="book" />
               </div>
             </>
           )}
@@ -104,8 +90,12 @@ BookReview.propTypes = {
   content: PropTypes.shape({
     authorText: PropTypes.string,
     bookText: PropTypes.string,
-    authorImage: PropTypes.string,
-    bookImage: PropTypes.string,
+    authorImage: PropTypes.arrayOf(
+      PropTypes.string
+    ),
+    bookImage: PropTypes.arrayOf(
+      PropTypes.string
+    ),
   }).isRequired,
 };
 
