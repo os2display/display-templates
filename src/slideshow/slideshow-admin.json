@@ -38,9 +38,9 @@
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
+    "name": "animation",
     "key": "slideshow-form-6",
     "input": "select",
-    "required": true,
     "label": "Vælg animation",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
@@ -69,13 +69,12 @@
         "title": "Zoom ud fra tilfældigt punkt",
         "value": "zoom-out-random"
       }
-    ],
-    "name": "animation"
+    ]
   },
   {
+    "name": "transition",
     "key": "slideshow-form-7",
     "input": "select",
-    "required": true,
     "label": "Vælg overgang",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
@@ -89,8 +88,7 @@
         "title": "Cross fade",
         "value": "fade"
       }
-    ],
-    "name": "animation"
+    ]
   },
   {
     "key": "slideshow-form-8",
