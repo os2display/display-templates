@@ -15,7 +15,11 @@ import { getAllMediaUrlsFromField } from "../slide-util";
  * @returns {object} The component.
  */
 function Slideshow({ slide, content, run, slideDone }) {
-  const { images, imageDuration, transitions, animations
+  const {
+    images,
+    imageDuration = 5000,
+    transitions,
+    animations,
     // @TOOD: Add when logo is available from theme
     // , logoEnabled, logoSize, logoPosition
   } = content;
@@ -266,12 +270,11 @@ Slideshow.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.objectOf(PropTypes.any).isRequired
+    mediaData: PropTypes.objectOf(PropTypes.any).isRequired,
   }).isRequired,
   content: PropTypes.shape({
-    images: PropTypes.arrayOf(
-      PropTypes.string
-    ),
+    images: PropTypes.arrayOf(PropTypes.string),
+    imageDuration: PropTypes.number,
     logoEnabled: PropTypes.bool,
     logoSize: PropTypes.string,
     logoPosition: PropTypes.string,
