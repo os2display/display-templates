@@ -349,6 +349,37 @@ const slides = [
         "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80",
     },
   },
+  {
+    id: "slide12-table",
+    type: "table",
+    duration: 5000,
+    content: {
+      title: "Overskrift",
+      table: [
+        {
+          "type": "header",
+          "columns": [
+            {
+              "title": "Column 1",
+              "field": "column1"
+            },
+            {
+              "title": "Column 2",
+              "field": "column2"
+            }
+          ]
+        },
+        {
+          "column1": "Data 1",
+          "column2": "Data 2"
+        },
+        {
+          "column1": "Data 3",
+          "column2": "Data 4"
+        }
+      ]
+    },
+  },
 ];
 
 export default slides;

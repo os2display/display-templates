@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/os2display/display-templates/blob/develop/src/table/table-schema.json",
+  "title": "table schema",
+  "description": "Content schema for table",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The title of the table slide",
+      "type": "string"
+    },
+  }
+}

@@ -32,5 +32,5 @@ git repository, to enable Remote Components to load them in the clients.
 
 ## @TODOs:
 
-* Add tests for all templates.
-* Fixed styles-components issue. Should be declared outside components and overridden by props.
+- Add tests for all templates.
+- Fixed styles-components issue. Should be declared outside components and overridden by props.
