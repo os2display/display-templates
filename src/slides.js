@@ -353,8 +353,22 @@ const slides = [
     id: "slide12-table",
     type: "table",
     duration: 5000,
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "./fixtures/images/mountain1.jpeg",
+        },
+      },
+
+    },
     content: {
+      backgroundImage: ["/v1/media/00000000000000000000000001"],
       title: "Overskrift",
+      text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
+      styling: {
+        fontPlacement: "bottom",
+        fontSize: "s",
+      },
       table: [
         {
           "type": "header",

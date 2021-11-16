@@ -1,6 +1,12 @@
+@use "../variables.scss";
+
 .table {
-  padding-top: 2%;
-  padding-left: 10%;
+  padding: 2% 10%;
+  height: 100%;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
 
   .column {
     font-size: 2em;
@@ -14,5 +20,22 @@
 
   .column-header {
     padding: 2% 0;
+  }
+
+  .text {
+    margin-top: 2%;
+
+    &.s {
+      font-size: var(--font-size-sm);
+    }
+    &.m {
+      font-size: var(--font-size-base);
+    }
+    &.l {
+      font-size: var(--font-size-lg);
+    }
+    &.xl {
+      font-size: var(--font-size-xl);
+    }
   }
 }

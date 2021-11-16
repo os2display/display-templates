@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
+import { getFirstMediaUrlFromField } from "../slide-util";
 import "./table.scss";
 
 /** Setup theme vars */
@@ -26,8 +27,24 @@ const ThemeStyles = createGlobalStyle`
  * @returns {object} The component.
  */
 function Table({ slide, content, run, slideDone }) {
-  const { table, title } = content;
+  // Styling from content
+  const { fontSize, fontPlacement } = content.styling || {};
+  const textClasses = `text ${fontSize}`;
+
+  // Content
+  const { table, title, text } = content;
   const header = table.shift();
+
+  // Image
+  const rootStyle = {};
+  const backgroundImageUrl = getFirstMediaUrlFromField(
+    slide.mediaData,
+    content.backgroundImage
+  );
+  if (backgroundImageUrl) {
+    rootStyle.backgroundImage = `url("${backgroundImageUrl}")`;
+  }
+
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
@@ -45,8 +62,9 @@ function Table({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <div className="table">
+      <div className="table" style={rootStyle}>
         <h1 className="header">{title}</h1>
+        {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
         <div style={gridStyle}>
           {header.columns.map((headerObject) => (
             <h2 key={headerObject.title} className="column-header">
@@ -62,6 +80,9 @@ function Table({ slide, content, run, slideDone }) {
               ))}
             </Fragment>
           ))}
+          {fontPlacement === "bottom" && (
+            <div classes={textClasses}>{text}</div>
+          )}
         </div>
       </div>
       <ThemeStyles />
@@ -74,10 +95,17 @@ Table.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
   content: PropTypes.shape({
+    styling: PropTypes.shape({
+      fontSize: PropTypes.string,
+      fontPlacement: PropTypes.bool,
+    }),
     title: PropTypes.string,
+    text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
+    backgroundImage: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
