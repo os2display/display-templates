@@ -7,7 +7,7 @@ import "./table.scss";
 
 /** Setup theme vars */
 /* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.rss-slide` with unique id/class from slide. */
+/* TODO: Replace class `.table` with unique id/class from slide. */
 const ThemeStyles = createGlobalStyle`
     -table {
       --bg-light: aliceblue;
@@ -17,7 +17,7 @@ const ThemeStyles = createGlobalStyle`
   `;
 
 /**
- * RSS component.
+ * Table component.
  *
  * @param {object} props Props.
  * @param {object} props.slide The slide.
