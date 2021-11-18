@@ -46,7 +46,7 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   // If it does not fade, the opacity should just be 1.
   const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState({
-    opacity: 1,
+    opacity: 0,
   });
 
   const [imageOneStyle, setImageOneStyle] = useState();
