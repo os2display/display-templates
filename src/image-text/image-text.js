@@ -149,9 +149,7 @@ ImageText.propTypes = {
     duration: PropTypes.number.isRequired,
   }).isRequired,
   content: PropTypes.shape({
-    image: PropTypes.arrayOf(
-      PropTypes.string
-    ),
+    image: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     text: PropTypes.string,
     backgroundColor: PropTypes.string,

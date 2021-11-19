@@ -32,7 +32,9 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   const animationName = "animationForImage";
   const [animationIndex, setAnimationIndex] = useState(0);
-  const [animationDuration, setAnimationDuration] = useState(imageDuration + fadeDuration);
+  const [animationDuration, setAnimationDuration] = useState(
+    imageDuration + fadeDuration
+  );
 
   const timeoutRef = useRef(null);
   const fadeRef = useRef(null);
@@ -109,6 +111,7 @@ function Slideshow({ slide, content, run, slideDone }) {
       case "zoom-out-random":
         return createAnimation(false, randomPercent);
       default:
+      case "random":
         return getCurrentAnimation(
           animationTypes[random(animationTypes.length)]
         );
@@ -117,12 +120,14 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   // Setup animation
   useEffect(() => {
-    // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
-    const styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(
-      getCurrentAnimation(animations),
-      styleSheet.cssRules.length
-    );
+    if (animations !== null) {
+      // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule(
+        getCurrentAnimation(animations),
+        styleSheet.cssRules.length
+      );
+    }
   }, []);
 
   // Get image style for the given image url.

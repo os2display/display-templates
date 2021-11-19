@@ -5,7 +5,7 @@ import "./book-review.scss";
 import DOMPurify from "dompurify";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from '../slide-util';
+import { getFirstMediaUrlFromField } from "../slide-util";
 
 /** Setup theme vars */
 /* @TODO: Css from theme editor goes inside `ThemeStyles` */
@@ -35,11 +35,21 @@ function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
   const [sanitizedParsedBookText, setSanitizedParsedBookText] = useState("");
 
-  const authorImageUrl = getFirstMediaUrlFromField(slide.mediaData, content.authorImage);
-  const bookImageUrl = getFirstMediaUrlFromField(slide.mediaData, content.bookImage);
+  const authorImageUrl = getFirstMediaUrlFromField(
+    slide.mediaData,
+    content.authorImage
+  );
+  const bookImageUrl = getFirstMediaUrlFromField(
+    slide.mediaData,
+    content.bookImage
+  );
 
-  const authorStyle = authorImageUrl ? { backgroundImage: `url("${authorImageUrl}")`} : "";
-  const bookStyle = bookImageUrl ? { backgroundImage: `url("${bookImageUrl}")`} : "";
+  const authorStyle = authorImageUrl
+    ? { backgroundImage: `url("${authorImageUrl}")` }
+    : "";
+  const bookStyle = bookImageUrl
+    ? { backgroundImage: `url("${bookImageUrl}")` }
+    : "";
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
@@ -90,12 +100,8 @@ BookReview.propTypes = {
   content: PropTypes.shape({
     authorText: PropTypes.string,
     bookText: PropTypes.string,
-    authorImage: PropTypes.arrayOf(
-      PropTypes.string
-    ),
-    bookImage: PropTypes.arrayOf(
-      PropTypes.string
-    ),
+    authorImage: PropTypes.arrayOf(PropTypes.string),
+    bookImage: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
