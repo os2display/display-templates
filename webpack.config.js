@@ -96,6 +96,7 @@ module.exports = {
   plugins,
   devServer: {
     historyApiFallback: true,
+    hot: false,
     contentBase: "/",
     port: 3000,
     host: "0.0.0.0",

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import slides from "../../examples/src/slides";
+import slides from "../slides";
 import Contacts from "./contacts";
 
 configure({ adapter: new Adapter() });
