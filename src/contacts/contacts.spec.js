@@ -18,6 +18,6 @@ test("Test that contacts loads", () => {
     wrapper.find(".contacts-template").get(0).props.style.backgroundColor
   ).toBe("yellow");
   expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
-    'url("./fixtures/images/author.jpg")'
+    'url("/fixtures/images/author.jpg")'
   );
 });

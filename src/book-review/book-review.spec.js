@@ -19,9 +19,9 @@ test("Test that book review loads", () => {
 
   expect(
     wrapper.find(".image-blurry-background").get(0).props.style.backgroundImage
-  ).toBe('url("./fixtures/images/mountain1.jpeg")');
+  ).toBe('url("/fixtures/images/mountain1.jpeg")');
   expect(wrapper.find(".author-image").get(0).props.style.backgroundImage).toBe(
-    'url("./fixtures/images/author.jpg")'
+    'url("/fixtures/images/author.jpg")'
   );
   expect(wrapper.find(".author").text()).toContain(
     "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."

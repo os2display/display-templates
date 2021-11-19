@@ -13,7 +13,7 @@ test("Test that poster loads", () => {
   );
 
   expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
-    'url("./fixtures/images/mountain1.jpeg")'
+    'url("/fixtures/images/mountain1.jpeg")'
   );
   expect(wrapper.find("h1").text()).toContain("Havnerundfart med MS TUNØ");
   expect(wrapper.find(".ticket").text()).toContain("75-150 kr.");
