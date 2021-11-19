@@ -20,47 +20,22 @@ function Slideshow({ slide, content, run, slideDone }) {
     imageDuration = 5000,
     transitions,
     animations,
-    // @TOOD: Add when logo is available from theme
+    // @TODO: Add when logo is available from theme
     // , logoEnabled, logoSize, logoPosition
   } = content;
-  const [animationName] = useState("animationForImage");
   const [index, setIndex] = useState(0);
-  const timeoutRef = useRef(null);
-  const fade = transitions === "fade";
-  const fadeDuration = 500; // @TODO: check if this is the correct number
-
-  // @TODO: Get logo from theme.
-  // const logoImageUrl = null;
-  // const logoClasses = `logo ${logoPosition} ${logoSize}`;
+  const fadeEnabled = transitions === "fade";
+  const fadeDuration = 500;
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
-  // @TODO: Duration should not be based on a calculated number, but instead on going a full round of all the images.
-  const duration = imageUrls.length * imageDuration;
+  const animationName = "animationForImage";
+  const timeoutRef = useRef(null);
 
-  // If it does not fade, the opacity should just be 1.
-  const [imageOneFadeContainerStyle, setImageOneFadeContainerStyle] = useState({
-    opacity: 1,
-  });
-
-  // If it does not fade, the opacity should just be 1.
-  const [imageTwoFadeContainerStyle, setImageTwoFadeContainerStyle] = useState({
-    opacity: 1,
-  });
-
-  const [imageOneStyle, setImageOneStyle] = useState();
-  const [imageTwoStyles, setImageTwoStyles] = useState();
-
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
-  useEffect(() => {
-    if (run) {
-      slideExecution.start(duration !== 0 ? duration : 5000);
-    } else {
-      slideExecution.stop();
-    }
-  }, [run]);
+  // @TODO: Get logo from theme.
+  // const logoImageUrl = null;
+  // const logoClasses = `logo ${logoPosition} ${logoSize}`;
 
   /**
    * A random function to simplify the code where random is used
@@ -146,121 +121,59 @@ function Slideshow({ slide, content, run, slideDone }) {
     );
   }, []);
 
-  /** Sets animations and background images for image one. */
-  function updateImageOne() {
-    // If it fades, then fadeout the previous image.
-    if (fade) {
-      setImageTwoFadeContainerStyle({ animation: `fadeOut ${fadeDuration}ms` });
-    }
+  // Get image style for the given image url.
+  const getImageStyle = (imageUrl) => {
+    return {
+      backgroundImage: `url(${imageUrl})`,
+      animation: `${animationName} ${imageDuration}s`,
+    };
+  };
 
-    // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
-    const durationOfAnimation = fade
-      ? (imageDuration + fadeDuration * 2) / 1000
-      : imageDuration / 1000;
-
-    // Sets the animation and background image to the next image, according to the index
-    setImageOneStyle({
-      backgroundImage: `url(${imageUrls[index]})`,
-      animation: `${animationName} ${durationOfAnimation}s`,
-    });
-
-    // If it fades, set image one to fade in
-    if (fade) {
-      setImageOneFadeContainerStyle({ animation: `fadeIn ${fadeDuration}ms` });
-    }
-
-    setTimeout(() => {
-      // Remove animation of image two
-      setImageTwoStyles({ animation: "none" });
-
-      if (fade) {
-        // If it faded in, set the opacity to 1.
-        setImageOneFadeContainerStyle({ opacity: 1 });
-      }
-    }, fadeDuration);
-  }
-
-  /** Sets animations and background images for image two. */
-  function updateImageTwo() {
-    // If it fades, then fadeout the previous image.
-    if (fade) {
-      setImageOneFadeContainerStyle({ animation: `fadeOut ${fadeDuration}ms` });
-    }
-
-    // The duration depends on the fade. If it fades, it gets fadeDuration added. If it doesnt fade, it is just the duration of the image.
-    const durationOfAnimation = fade
-      ? (imageDuration + fadeDuration * 2) / 1000
-      : imageDuration / 1000;
-
-    // Sets the animation and background image to the next image, according to the index
-    setImageTwoStyles({
-      backgroundImage: `url(${imageUrls[index]})`,
-      animation: `${animationName} ${durationOfAnimation}s`,
-    });
-
-    // If it fades, set image two to fade in
-    if (fade) {
-      setImageTwoFadeContainerStyle({ animation: `fadeIn ${fadeDuration}ms` });
-    }
-
-    setTimeout(() => {
-      // Remove animation of image one
-      setImageOneStyle({ animation: "none" });
-
-      if (fade) {
-        // If it faded in, set the opacity to 1.
-        setImageTwoFadeContainerStyle({ opacity: 1 });
-      }
-    }, fadeDuration);
-  }
-
-  /** Reset the timeout. */
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }
-
-  // Creates index and reset the timeout.
+  // Setup image progress.
   useEffect(() => {
-    // Index only necessary if more than one image
-    if (imageUrls.length === 0) {
-      return false;
+    if (run) {
+      if (imageUrls.length > 0) {
+        timeoutRef.current = setTimeout(() => {
+          const newIndex = index + 1;
+
+          if (newIndex > imageUrls.length - 1) {
+            slideDone(slide);
+          } else {
+            // @TODO: Trigger cross-fade.
+            setIndex(newIndex);
+          }
+        }, imageDuration);
+      } else {
+        // If there are no images in slide, wait for 5s before continuing to avoid crashes.
+        setTimeout(() => slideDone(slide), 5000);
+      }
     }
-
-    resetTimeout();
-
-    timeoutRef.current = setTimeout(() => {
-      // sets the index of the next image, if there is no more images in the array, loop it to the beginning.
-      setIndex((prevIndex) =>
-        prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
-      );
-    }, imageDuration);
 
     return () => {
-      resetTimeout();
+      clearInterval(timeoutRef.current);
     };
-  }, [index]);
-
-  // Shift images
-  useEffect(() => {
-    if (imageUrls.length > 0) {
-      if (index % 2 === 0) {
-        updateImageOne();
-      } else {
-        updateImageTwo();
-      }
-    }
-  }, [index]);
+  }, [run, index]);
 
   return (
     <div className="template-slideshow">
-      <div className="fade-container" style={imageOneFadeContainerStyle}>
-        <div style={imageOneStyle} className="image" />
-      </div>
-      <div className="fade-container" style={imageTwoFadeContainerStyle}>
-        <div style={imageTwoStyles} className="image" />
-      </div>
+      {imageUrls &&
+        imageUrls.map((imageUrl, imageUrlIndex) => {
+          const className = "fade-container";
+          const containerStyle = {
+            opacity: imageUrlIndex === index ? 1 : 0,
+          };
+
+          return (
+            <div
+              className={className}
+              key={imageUrl}
+              data-index={imageUrlIndex}
+              style={containerStyle}
+            >
+              <div style={getImageStyle(imageUrl)} className="image" />
+            </div>
+          );
+        })}
       {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
     </div>
   );
