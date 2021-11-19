@@ -6,7 +6,7 @@ const slides = [
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "./fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/mountain1.jpeg",
         },
       },
     },
@@ -31,12 +31,12 @@ const slides = [
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "./fixtures/images/author.jpg",
+          uri: "/fixtures/images/author.jpg",
         },
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "./fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/mountain1.jpeg",
         },
       },
     },
@@ -97,7 +97,7 @@ const slides = [
       availableText: "Lokalet er ledigt",
       backgroundImage: {
         id: "uniqueMedia1",
-        url: "./fixtures/images/mountain1.jpeg",
+        url: "/fixtures/images/mountain1.jpeg",
       },
       title: "Meeting room schedule 1",
       events: [
@@ -143,7 +143,7 @@ const slides = [
             "Det bevaringsværdige og kulturhistoriske skib MS TUNØ tager dig med på en historisk og humoristisk rejse på vandet rundt om Aarhus",
           name: "Havnerundfart med MS TUNØ",
           url: "www.eventurl.dk",
-          image: "./fixtures/images/mountain1.jpeg",
+          image: "/fixtures/images/mountain1.jpeg",
           startDate: "2021-06-21T14:00:00+00:00",
           endDate: "2021-06-21T15:00:00+00:00",
           readMoreText: "læs mere her",
@@ -178,22 +178,22 @@ const slides = [
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "./fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/mountain1.jpeg",
         },
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "./fixtures/images/mountain2.jpeg",
+          uri: "/fixtures/images/mountain2.jpeg",
         },
       },
       "/v1/media/00000000000000000000000003": {
         assets: {
-          uri: "./fixtures/images/mountain3.jpeg",
+          uri: "/fixtures/images/mountain3.jpeg",
         },
       },
       "/v1/media/00000000000000000000000004": {
         assets: {
-          uri: "./fixtures/images/mountain4.jpeg",
+          uri: "/fixtures/images/mountain4.jpeg",
         },
       },
     },
@@ -227,7 +227,7 @@ const slides = [
           media: {
             image: {
               id: "uniqueMedia6",
-              url: "./fixtures/images/author.jpg",
+              url: "/fixtures/images/author.jpg",
             },
           },
         },
@@ -237,7 +237,7 @@ const slides = [
           media: {
             image: {
               id: "uniqueMedia6",
-              url: "./fixtures/images/author.jpg",
+              url: "/fixtures/images/author.jpg",
             },
           },
           phone: "12341234",
@@ -251,7 +251,7 @@ const slides = [
           media: {
             image: {
               id: "uniqueMedia6",
-              url: "./fixtures/images/author.jpg",
+              url: "/fixtures/images/author.jpg",
             },
           },
           email: "mail@mail.dk",
@@ -296,7 +296,7 @@ const slides = [
           text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. #Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum",
           textMarkup:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum",
-          mediaUrl: "./fixtures/images/mountain3.jpeg",
+          mediaUrl: "/fixtures/images/mountain3.jpeg",
           videoUrl: null,
           username: "Lorem Ipsum",
           createdTime: "2021-06-21T10:13:30",

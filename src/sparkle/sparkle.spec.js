@@ -2,7 +2,7 @@ import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { jest } from "@jest/globals";
-import slides from "../../examples/src/slides";
+import slides from "../slides";
 import Sparkle from "./sparkle";
 
 configure({ adapter: new Adapter() });

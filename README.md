@@ -4,10 +4,10 @@ Work in progress. Contains base templates for OS2Display.
 
 ## Develop
 
-In `examples/` is a local setup that is loading the components.
+`index.html` serves a local setup for working with the templates.
 
 ```bash
-docker-compose run template npm install
+docker-compose run node npm install
 docker-compose up -d
 ```
 

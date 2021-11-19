@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import slides from "../../examples/src/slides";
+import slides from "../slides";
 import Contacts from "./contacts";
 
 configure({ adapter: new Adapter() });
@@ -18,6 +18,6 @@ test("Test that contacts loads", () => {
     wrapper.find(".contacts-template").get(0).props.style.backgroundColor
   ).toBe("yellow");
   expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
-    'url("./fixtures/images/author.jpg")'
+    'url("/fixtures/images/author.jpg")'
   );
 });
