@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import BaseSlideExecution from "../base-slide-execution";
 import "./slideshow.scss";
 import { getAllMediaUrlsFromField } from "../slide-util";
 
@@ -25,13 +24,18 @@ function Slideshow({ slide, content, run, slideDone }) {
   } = content;
   const [index, setIndex] = useState(0);
   const fadeEnabled = transitions === "fade";
-  const fadeDuration = 500;
+  const fadeDuration = 1000;
+  const [fade, setFade] = useState(false);
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
   const animationName = "animationForImage";
+  const [animationIndex, setAnimationIndex] = useState(0);
+  const [animationDuration, setAnimationDuration] = useState(imageDuration + fadeDuration);
+
   const timeoutRef = useRef(null);
+  const fadeRef = useRef(null);
 
   // @TODO: Get logo from theme.
   // const logoImageUrl = null;
@@ -122,11 +126,16 @@ function Slideshow({ slide, content, run, slideDone }) {
   }, []);
 
   // Get image style for the given image url.
-  const getImageStyle = (imageUrl) => {
-    return {
+  const getImageStyle = (imageUrl, animation, localAnimationDuration) => {
+    const imageStyle = {
       backgroundImage: `url(${imageUrl})`,
-      animation: `${animationName} ${imageDuration}s`,
     };
+
+    if (animation) {
+      imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
+    }
+
+    return imageStyle;
   };
 
   // Setup image progress.
@@ -137,20 +146,35 @@ function Slideshow({ slide, content, run, slideDone }) {
           const newIndex = index + 1;
 
           if (newIndex > imageUrls.length - 1) {
+            // No more images to show.
             slideDone(slide);
+          } else if (fadeEnabled) {
+            // Fade to next image.
+            setFade(true);
+            setAnimationIndex(newIndex);
+            setAnimationDuration(imageDuration + fadeDuration * 2);
+            fadeRef.current = setTimeout(() => {
+              setFade(false);
+              setIndex(newIndex);
+            }, fadeDuration);
           } else {
-            // @TODO: Trigger cross-fade.
+            // Change to next.
             setIndex(newIndex);
+            setAnimationIndex(newIndex);
+            setAnimationDuration(imageDuration);
           }
         }, imageDuration);
       } else {
-        // If there are no images in slide, wait for 5s before continuing to avoid crashes.
-        setTimeout(() => slideDone(slide), 5000);
+        // If there are no images in slide, wait for 2s before continuing to avoid crashes.
+        setTimeout(() => {
+          slideDone(slide);
+        }, 2000);
       }
     }
 
     return () => {
-      clearInterval(timeoutRef.current);
+      clearTimeout(timeoutRef.current);
+      clearTimeout(fadeRef.current);
     };
   }, [run, index]);
 
@@ -159,9 +183,25 @@ function Slideshow({ slide, content, run, slideDone }) {
       {imageUrls &&
         imageUrls.map((imageUrl, imageUrlIndex) => {
           const className = "fade-container";
+          const current = imageUrlIndex === index;
           const containerStyle = {
-            opacity: imageUrlIndex === index ? 1 : 0,
+            opacity: 0,
+            zIndex: imageUrls.length - imageUrlIndex,
           };
+
+          if (current) {
+            if (fade) {
+              // Fade out current slide.
+              containerStyle.animation = `fadeOut ${fadeDuration}ms`;
+            } else {
+              containerStyle.opacity = 1;
+            }
+          } else if (imageUrlIndex === index + 1) {
+            if (fade) {
+              // Fade in next slide.
+              containerStyle.animation = `fadeIn ${fadeDuration}ms`;
+            }
+          }
 
           return (
             <div
@@ -169,8 +209,16 @@ function Slideshow({ slide, content, run, slideDone }) {
               key={imageUrl}
               data-index={imageUrlIndex}
               style={containerStyle}
+              data-active={current}
             >
-              <div style={getImageStyle(imageUrl)} className="image" />
+              <div
+                style={getImageStyle(
+                  imageUrl,
+                  animationIndex === imageUrlIndex,
+                  animationDuration
+                )}
+                className="image"
+              />
             </div>
           );
         })}
