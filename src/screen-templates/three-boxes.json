@@ -1,0 +1,29 @@
+{
+  "title": "3-delt",
+  "id": "01FMYMAYYC37J63ZRA3RQNVYT0",
+  "grid": {
+    "rows": 2,
+    "columns": 2
+  },
+  "regions": [
+    {
+      "title": "Venstre",
+      "gridArea": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "title": "Højre top",
+      "gridArea": [
+        "b"
+      ]
+    },
+    {
+      "title": "Højre bund",
+      "gridArea": [
+        "d"
+      ]
+    }
+  ]
+}
