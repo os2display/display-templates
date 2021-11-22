@@ -1,0 +1,22 @@
+{
+  "title": "2-delt",
+  "id": "01FMYMBPSJQ7SG7BZZ1N8TB7GW",
+  "grid": {
+    "rows": 2,
+    "columns": 1
+  },
+  "regions": [
+    {
+      "title": "Venstre",
+      "gridArea": [
+        "a"
+      ]
+    },
+    {
+      "title": "Højre",
+      "gridArea": [
+        "b"
+      ]
+    }
+  ]
+}
