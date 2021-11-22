@@ -1,13 +1,109 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/os2display/display-templates/blob/develop/src/table/table-schema.json",
-  "title": "table schema",
-  "description": "Content schema for table",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "backgroundImage": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
     "title": {
-      "description": "The title of the table slide",
       "type": "string"
     },
-  }
+    "text": {
+      "type": "string"
+    },
+    "styling": {
+      "type": "object",
+      "properties": {
+        "fontPlacement": {
+          "type": "string"
+        },
+        "fontSize": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fontPlacement",
+        "fontSize"
+      ]
+    },
+    "table": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "columns": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "field"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "field"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "columns"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "column1": {
+              "type": "string"
+            },
+            "column2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "column1",
+            "column2"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "backgroundImage",
+    "title",
+    "text",
+    "styling",
+    "table"
+  ]
 }
