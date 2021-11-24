@@ -7,18 +7,20 @@ import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField } from "../slide-util";
 
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.template-image-text` with unique id/class from slide. */
+/* TODO: Theme defaults should come from the imported .scss file */
+const themeDefaults = [
+  "--text-dark: #AAAAAA;",
+  "--bg-light: #f5f5f5;",
+  "--font-size-sm: 10px;",
+  "--font-size-base: 15px;",
+  "--font-size-lg: 20px;",
+  "--font-size-xl: 25px;",
+].join();
+
 const ThemeStyles = createGlobalStyle`
-    .template-image-text {
-      --text-dark: #000;
-      --bg-light: #f5f5f5;
-      --font-size-sm: 10px;
-      --font-size-base: 15px;
-      --font-size-lg: 20px;
-      --font-size-xl: 25px;
-    }
+  .template-image-text {
+  ${(props) => (props.selectedTheme ? props.selectedTheme : themeDefaults)}
+  }
   `;
 
 /**
@@ -116,9 +118,12 @@ function ImageText({ slide, content, run, slideDone }) {
     rootClasses.push("shadow");
   }
 
+  // TODO: Should load theme css defined in frontend
+  const theme = "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;";
+
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles selectedTheme={theme} />
       <div className={rootClasses.join(" ")} style={rootStyle}>
         <div className={boxClasses} style={imageTextStyle}>
           {title && (
