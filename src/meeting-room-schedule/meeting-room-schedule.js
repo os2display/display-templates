@@ -110,7 +110,10 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-meeting-room-schedule" css={slide?.themeData?.css} />
+      <ThemeStyles
+        name="template-meeting-room-schedule"
+        css={slide?.themeData?.css}
+      />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className={rootClasses} style={rootStyle}>
           <div className="header">
