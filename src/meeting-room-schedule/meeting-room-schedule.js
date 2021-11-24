@@ -5,20 +5,9 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import "./meeting-room-schedule.scss";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
-
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.template-meeting-room-schedule` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    .template-meeting-room-schedule {
-      --bg-light: #b4b4b4;
-      --color-blue: #235587;
-      --color-yellow: #ffb400;
-    }
-  `;
+import { ThemeStyles } from "../slide-util";
 
 /**
  * Meeting room schedule component.
@@ -121,7 +110,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles name="template-meeting-room-schedule" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className={rootClasses} style={rootStyle}>
           <div className="header">
@@ -158,6 +147,9 @@ MeetingRoomSchedule.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     availableText: PropTypes.string.isRequired,

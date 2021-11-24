@@ -3,20 +3,9 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import "./rss.scss";
-
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.rss-slide` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    .rss-slide {
-      --bg-light: aliceblue;
-      --text-dark: navy;
-      --text-primary: navy;
-    }
-  `;
+import { ThemeStyles } from "../slide-util";
 
 /**
  * RSS component.
@@ -100,7 +89,8 @@ function RSS({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles name="rss-slide" css={slide?.themeData?.css} />
+      {/* TODO: Fix name to the format template- */}
       <div className={`rss-slide ${fontSize}`} style={rootStyle}>
         <div className="progress">
           {feedTitle} {index} / {feed.length}
@@ -122,6 +112,9 @@ RSS.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     source: PropTypes.string.isRequired,

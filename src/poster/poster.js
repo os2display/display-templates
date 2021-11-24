@@ -4,19 +4,10 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import "./poster.scss";
 import da from "./lang/da.json";
-
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.template-poster` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    .template-poster {
-      --font-size-base: 1em;
-    }
-  `;
+import { ThemeStyles } from "../slide-util";
 
 /**
  * Poster component.
@@ -115,7 +106,7 @@ function Poster({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles name="template-poster" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className="template-poster">
           <div
@@ -193,6 +184,9 @@ Poster.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     events: PropTypes.arrayOf(

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./quote.scss";
 import BaseSlideExecution from "../base-slide-execution";
 import Logo from "./citation-mark.svg";
+import { ThemeStyles } from "../slide-util";
 
 /**
  * Quote component.
@@ -55,6 +56,7 @@ function Quote({ slide, content, run, slideDone }) {
 
   return (
     <>
+      <ThemeStyles name="template-quote" css={slide?.themeData?.css} />
       <div className={show ? "template-quote show" : "template-quote hide"}>
         {/* todo make this themeable */}
         <Logo style={{ stroke: "red" }} />
@@ -72,6 +74,9 @@ Quote.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     quotes: PropTypes.arrayOf(
