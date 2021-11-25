@@ -1,6 +1,28 @@
 @use "../variables.scss";
 
+/* Themable variables
+   To be overridden from frontend.
+
+  Default:
+  --bg-light
+  --text-dark
+  --font-size-sm
+  --font-size-base
+  --font-size-lg
+  --font-size-xl
+  --box-shadow-lg
+
+  Dark:
+  --bg-dark
+  --text-light
+
+*/
+
 .template-image-text {
+  /* Assing default colors to variables for easy light/dark mode switch */
+  --background-color: var(--bg-light);
+  --text-color: var(--text-dark);
+
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -20,8 +42,8 @@
     order: 0;
     flex: 1 0 auto;
     align-self: auto;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    background-color: var(--background-color);
+    color: var(--text-color);
     width: 40%;
 
     &.s {
@@ -113,6 +135,13 @@
       order: 2;
       font-size: 3em;
     }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* Change colors for use in darkmode */
+
+    --background-color: var(--bg-dark);
+    --text-color: var(--text-light);
   }
 }
 

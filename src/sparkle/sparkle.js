@@ -6,22 +6,11 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
-import { createGlobalStyle } from "styled-components";
 import Shape from "./shape.svg";
 import InstagramLogo from "./instagram-logo.svg";
 import BaseSlideExecution from "../base-slide-execution";
 import "./sparkle.scss";
-
-/** Setup theme vars */
-/* @TODO: Css from theme editor goes inside `ThemeStyles` */
-/* @TODO: Replace class `.template-sparkle` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    .template-sparkle {
-      --font-family-base: "Gibson SemiBold", Arial, sans-serif;
-      --font-size-lg: 2.5rem;
-      --font-size-base: 1.5rem;
-    }
-  `;
+import { ThemeStyles } from "../slide-util";
 
 /**
  * Sparkle component.
@@ -90,7 +79,7 @@ function Sparkle({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
       <div className={show ? "template-sparkle show" : "template-sparkle hide"}>
         <div className="media-section">
           {!videoUrl && (
@@ -138,6 +127,9 @@ Sparkle.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     hashtagText: PropTypes.string,

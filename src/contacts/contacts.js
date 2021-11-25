@@ -4,6 +4,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import "./contacts.scss";
 import da from "./lang/da.json";
+import { ThemeStyles } from "../slide-util";
 
 /**
  * Contacts component.
@@ -37,11 +38,12 @@ function Contacts({ slide, content, run, slideDone }) {
 
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
-      {/* todo add theme styling below */}
+      <ThemeStyles name="contacts-template" css={slide?.themeData?.css} />
+      {/* TODO: Fix name to the format template- */}
       <div className="contacts-template" style={{ backgroundColor: "yellow" }}>
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
-          {/* todo add theme styling below */}
+          {/* TODO: Make themeable */}
           {separator && (
             <div className="separator" style={{ backgroundColor: "#ee0043" }} />
           )}
@@ -77,6 +79,9 @@ Contacts.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     contacts: PropTypes.arrayOf(

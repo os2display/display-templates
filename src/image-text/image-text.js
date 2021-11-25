@@ -3,23 +3,8 @@ import "./image-text.scss";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from "../slide-util";
-
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.template-image-text` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    .template-image-text {
-      --text-dark: #000;
-      --bg-light: #f5f5f5;
-      --font-size-sm: 10px;
-      --font-size-base: 15px;
-      --font-size-lg: 20px;
-      --font-size-xl: 25px;
-    }
-  `;
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 
 /**
  * ImageText component.
@@ -118,7 +103,7 @@ function ImageText({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles />
+      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <div className={rootClasses.join(" ")} style={rootStyle}>
         <div className={boxClasses} style={imageTextStyle}>
           {title && (
@@ -147,6 +132,9 @@ ImageText.propTypes = {
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     image: PropTypes.arrayOf(PropTypes.string),
