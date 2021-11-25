@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+import React from "react";
+import PropTypes from "prop-types";
+
 /**
  * Get the first media url of a media field.
  *
@@ -46,4 +50,29 @@ function getAllMediaUrlsFromField(mediaData, field) {
   return [];
 }
 
-export { getAllMediaUrlsFromField, getFirstMediaUrlFromField };
+/**
+ * Create a theme style for a slide.
+ *
+ * @param {object} props Props.
+ * @param {string} props.name Class name to target with the css.
+ * @param {string | null} props.css Css as a string.
+ * @returns {object} The component.
+ */
+function ThemeStyles({ name, css = null }) {
+  if (!css) return <></>;
+  const ThemeComponent = createGlobalStyle`.${name} {
+      ${css}
+    }`;
+  return <ThemeComponent />;
+}
+
+ThemeStyles.defaultProps = {
+  css: null,
+};
+
+ThemeStyles.propTypes = {
+  name: PropTypes.string.isRequired,
+  css: PropTypes.string,
+};
+
+export { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles };

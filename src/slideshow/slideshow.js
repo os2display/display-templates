@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./slideshow.scss";
-import { getAllMediaUrlsFromField } from "../slide-util";
+import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 
 /**
  * Slideshow component.
@@ -184,51 +184,54 @@ function Slideshow({ slide, content, run, slideDone }) {
   }, [run, index]);
 
   return (
-    <div className="template-slideshow">
-      {imageUrls &&
-        imageUrls.map((imageUrl, imageUrlIndex) => {
-          const className = "fade-container";
-          const current = imageUrlIndex === index;
-          const containerStyle = {
-            opacity: 0,
-            zIndex: imageUrls.length - imageUrlIndex,
-          };
+    <>
+      <ThemeStyles name="template-slideshow" css={slide?.themeData?.css} />
+      <div className="template-slideshow">
+        {imageUrls &&
+          imageUrls.map((imageUrl, imageUrlIndex) => {
+            const className = "fade-container";
+            const current = imageUrlIndex === index;
+            const containerStyle = {
+              opacity: 0,
+              zIndex: imageUrls.length - imageUrlIndex,
+            };
 
-          if (current) {
-            if (fade) {
-              // Fade out current slide.
-              containerStyle.animation = `fadeOut ${fadeDuration}ms`;
-            } else {
-              containerStyle.opacity = 1;
+            if (current) {
+              if (fade) {
+                // Fade out current slide.
+                containerStyle.animation = `fadeOut ${fadeDuration}ms`;
+              } else {
+                containerStyle.opacity = 1;
+              }
+            } else if (imageUrlIndex === index + 1) {
+              if (fade) {
+                // Fade in next slide.
+                containerStyle.animation = `fadeIn ${fadeDuration}ms`;
+              }
             }
-          } else if (imageUrlIndex === index + 1) {
-            if (fade) {
-              // Fade in next slide.
-              containerStyle.animation = `fadeIn ${fadeDuration}ms`;
-            }
-          }
 
-          return (
-            <div
-              className={className}
-              key={imageUrl}
-              data-index={imageUrlIndex}
-              style={containerStyle}
-              data-active={current}
-            >
+            return (
               <div
-                style={getImageStyle(
-                  imageUrl,
-                  animationIndex === imageUrlIndex,
-                  animationDuration
-                )}
-                className="image"
-              />
-            </div>
-          );
-        })}
-      {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
-    </div>
+                className={className}
+                key={imageUrl}
+                data-index={imageUrlIndex}
+                style={containerStyle}
+                data-active={current}
+              >
+                <div
+                  style={getImageStyle(
+                    imageUrl,
+                    animationIndex === imageUrlIndex,
+                    animationDuration
+                  )}
+                  className="image"
+                />
+              </div>
+            );
+          })}
+        {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
+      </div>
+    </>
   );
 }
 
@@ -237,6 +240,9 @@ Slideshow.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     mediaData: PropTypes.objectOf(PropTypes.any).isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),

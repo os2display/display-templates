@@ -3,6 +3,9 @@ const slides = [
     id: "slide1-image-text",
     type: "image-text",
     duration: 5000,
+    themeData: {
+      css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
+    },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {

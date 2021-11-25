@@ -3,25 +3,8 @@ import "./image-text.scss";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from "../slide-util";
-
-/* TODO: Theme defaults should come from the imported .scss file */
-const themeDefaults = [
-  "--text-dark: #AAAAAA;",
-  "--bg-light: #f5f5f5;",
-  "--font-size-sm: 10px;",
-  "--font-size-base: 15px;",
-  "--font-size-lg: 20px;",
-  "--font-size-xl: 25px;",
-].join();
-
-const ThemeStyles = createGlobalStyle`
-  .template-image-text {
-  ${(props) => (props.selectedTheme ? props.selectedTheme : themeDefaults)}
-  }
-  `;
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 
 /**
  * ImageText component.
@@ -118,12 +101,9 @@ function ImageText({ slide, content, run, slideDone }) {
     rootClasses.push("shadow");
   }
 
-  // TODO: Should load theme css defined in frontend
-  const theme = "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;";
-
   return (
     <>
-      <ThemeStyles selectedTheme={theme} />
+      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <div className={rootClasses.join(" ")} style={rootStyle}>
         <div className={boxClasses} style={imageTextStyle}>
           {title && (
@@ -152,6 +132,9 @@ ImageText.propTypes = {
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
     duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     image: PropTypes.arrayOf(PropTypes.string),
