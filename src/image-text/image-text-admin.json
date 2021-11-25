@@ -150,7 +150,7 @@
   {
     "key": "image-text-form-13",
     "input": "checkbox",
-    "label": "Skyggeeffekt på textboksen",
+    "label": "Skyggeeffekt på tekstboksen",
     "name": "shadow",
     "formGroupClasses": "col-md-6"
   }
