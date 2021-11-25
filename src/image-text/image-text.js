@@ -26,7 +26,7 @@ function ImageText({ slide, content, run, slideDone }) {
     halfSize,
     fontSize,
     shadow,
-  } = content.styling || {};
+  } = content || {};
   const boxClasses = fontSize ? `box ${fontSize}` : "box";
   const rootClasses = ["template-image-text"];
 
@@ -39,7 +39,7 @@ function ImageText({ slide, content, run, slideDone }) {
   const sanitizedText = DOMPurify.sanitize(text);
 
   // Duration
-  const { duration } = slide;
+  const { duration = 15000 } = slide;
 
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
