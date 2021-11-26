@@ -1,4 +1,8 @@
-/*Default:*/
+/*
+** DOKK1 theme css
+*/
+
+/* Defaults */
 --bg-light: #f1f0ef;
 --text-dark: #222;
 --color-primary: #003764;
@@ -8,18 +12,15 @@
 --color-warning: #ffb400;
 --color-danger: #dc3545;
 
---font-family-base: "canada-type-gibson", Gibson, Arial, 'sans-serif';
+--font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
 --font-weight-light: 300;
 --font-weight-bold: 600;
 
-/* Dark: */
+/* Darkmode overrides */
 --bg-dark: #212529;
 --text-light: #ffffff;
 
-/* Include custom Gipson font from https://use.typekit.net/ilx8ovv.css
-
-*/
-
+/* Custom Gibson font from https://use.typekit.net/ilx8ovv.css (Adobe/typeKit) */
 /*
  * The Typekit service used to deliver this font or fonts for use on websites
  * is provided by Adobe and is subject to these Terms of Use
