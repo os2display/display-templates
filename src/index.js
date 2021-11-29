@@ -19,6 +19,7 @@ import RSS from "./rss/rss";
 import Slideshow from "./slideshow/slideshow";
 import Sparkle from "./sparkle/sparkle";
 import IFrame from "./iframe/iframe";
+import Table from './table/table';
 import "./index.scss";
 
 const renderSlide = (slide) => {
@@ -29,7 +30,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "calendar":
@@ -38,7 +39,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "contacts":
@@ -47,7 +48,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "image-text":
@@ -56,7 +57,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "iframe":
@@ -65,7 +66,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "meeting-room-schedule":
@@ -74,7 +75,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "poster":
@@ -83,16 +84,16 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "quote":
       return (
-        <Quote content={slide.content} slide={slide} run slideDone={() => {}} />
+        <Quote content={slide.content} slide={slide} run slideDone={() => { }} />
       );
     case "rss":
       return (
-        <RSS content={slide.content} slide={slide} run slideDone={() => {}} />
+        <RSS content={slide.content} slide={slide} run slideDone={() => { }} />
       );
     case "slideshow":
       return (
@@ -100,7 +101,7 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
         />
       );
     case "sparkle":
@@ -109,7 +110,16 @@ const renderSlide = (slide) => {
           content={slide.content}
           slide={slide}
           run
-          slideDone={() => {}}
+          slideDone={() => { }}
+        />
+      );
+    case "table":
+      return (
+        <Table
+          content={slide.content}
+          slide={slide}
+          run
+          slideDone={() => { }}
         />
       );
     default:
