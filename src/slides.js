@@ -22,7 +22,7 @@ const slides = [
       shadow: true,
       separator: true,
       halfSize: true,
-      reversed: false
+      reversed: false,
     },
   },
   {
@@ -359,7 +359,6 @@ const slides = [
           uri: "./fixtures/images/mountain1.jpeg",
         },
       },
-
     },
     content: {
       backgroundImage: ["/v1/media/00000000000000000000000001"],
@@ -371,27 +370,27 @@ const slides = [
       },
       table: [
         {
-          "type": "header",
-          "columns": [
+          type: "header",
+          columns: [
             {
-              "title": "Column 1",
-              "field": "column1"
+              title: "Column 1",
+              field: "column1",
             },
             {
-              "title": "Column 2",
-              "field": "column2"
-            }
-          ]
+              title: "Column 2",
+              field: "column2",
+            },
+          ],
         },
         {
-          "column1": "Data 1",
-          "column2": "Data 2"
+          column1: "Data 1",
+          column2: "Data 2",
         },
         {
-          "column1": "Data 3",
-          "column2": "Data 4"
-        }
-      ]
+          column1: "Data 3",
+          column2: "Data 4",
+        },
+      ],
     },
   },
 ];

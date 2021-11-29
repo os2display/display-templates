@@ -19,7 +19,7 @@ import RSS from "./rss/rss";
 import Slideshow from "./slideshow/slideshow";
 import Sparkle from "./sparkle/sparkle";
 import IFrame from "./iframe/iframe";
-import Table from './table/table';
+import Table from "./table/table";
 import "./index.scss";
 
 const renderSlide = (slide) => {
@@ -115,12 +115,7 @@ const renderSlide = (slide) => {
       );
     case "table":
       return (
-        <Table
-          content={slide.content}
-          slide={slide}
-          run
-          slideDone={() => {}}
-        />
+        <Table content={slide.content} slide={slide} run slideDone={() => {}} />
       );
     default:
       return <div>Slide type not found!</div>;

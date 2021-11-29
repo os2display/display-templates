@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
-import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "./table.scss";
@@ -51,7 +50,7 @@ function Table({ slide, content, run, slideDone }) {
 
   return (
     <>
-          <ThemeStyles name="template-table" css={slide?.themeData?.css} />
+      <ThemeStyles name="template-table" css={slide?.themeData?.css} />
       <div className="table" style={rootStyle}>
         <h1 className="header">{title}</h1>
         {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
