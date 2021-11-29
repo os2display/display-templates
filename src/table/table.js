@@ -2,19 +2,8 @@ import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from "../slide-util";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "./table.scss";
-
-/** Setup theme vars */
-/* TODO: Css from theme editor goes inside `ThemeStyles` */
-/* TODO: Replace class `.table` with unique id/class from slide. */
-const ThemeStyles = createGlobalStyle`
-    -table {
-      --bg-light: aliceblue;
-      --text-dark: navy;
-      --text-primary: navy;
-    }
-  `;
 
 /**
  * Table component.
@@ -62,6 +51,7 @@ function Table({ slide, content, run, slideDone }) {
 
   return (
     <>
+          <ThemeStyles name="template-table" css={slide?.themeData?.css} />
       <div className="table" style={rootStyle}>
         <h1 className="header">{title}</h1>
         {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
@@ -94,8 +84,12 @@ Table.propTypes = {
   run: PropTypes.bool.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
+    instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
+    duration: PropTypes.number.isRequired,
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     styling: PropTypes.shape({
