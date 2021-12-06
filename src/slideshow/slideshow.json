@@ -1,6 +1,7 @@
 {
   "title": "Slideshow",
   "icon": "",
+  "id": "01FP2SNSC9VXD10ZKXQR819NS9",
   "description": "Skabelon til slideshow af billeder med forskellige effekter",
   "resources": {
     "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/slideshow.js",
