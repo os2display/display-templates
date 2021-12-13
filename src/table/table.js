@@ -21,7 +21,11 @@ function Table({ slide, content, run, slideDone }) {
 
   // Content
   const { table, title, text } = content;
-  const header = table.shift();
+  let header;
+
+  if (table.length > 0) {
+    header = table.shift();
+  }
 
   // Image
   const rootStyle = {};
@@ -43,10 +47,13 @@ function Table({ slide, content, run, slideDone }) {
     }
   }, [run]);
 
-  const gridStyle = {
-    gridTemplateColumns: `${"auto ".repeat(header.columns.length)}`,
-    display: "grid",
-  };
+  let gridStyle;
+  if (header) {
+    gridStyle = {
+      gridTemplateColumns: `${"auto ".repeat(header.columns.length)}`,
+      display: "grid",
+    };
+  }
 
   return (
     <>
@@ -54,25 +61,29 @@ function Table({ slide, content, run, slideDone }) {
       <div className="table" style={rootStyle}>
         <h1 className="header">{title}</h1>
         {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
-        <div style={gridStyle}>
-          {header.columns.map((headerObject) => (
-            <h2 key={headerObject.title} className="column-header">
-              {headerObject.title}
-            </h2>
-          ))}
-          {table.map((column) => (
-            <Fragment key={`${column.toString()}`}>
-              {header.columns.map(({ field }) => (
-                <div key={column[field]} className="column">
-                  {column[field]}
-                </div>
-              ))}
-            </Fragment>
-          ))}
-          {fontPlacement === "bottom" && (
-            <div classes={textClasses}>{text}</div>
-          )}
-        </div>
+
+        {header && (
+          <div style={gridStyle}>
+            {header.columns.map((headerObject) => (
+              <h2 key={headerObject.title} className="column-header">
+                {headerObject.title}
+              </h2>
+            ))}
+
+            {table.map((column) => (
+              <Fragment key={`${column.toString()}`}>
+                {header.columns.map(({ field }) => (
+                  <div key={column[field]} className="column">
+                    {column[field]}
+                  </div>
+                ))}
+              </Fragment>
+            ))}
+            {fontPlacement === "bottom" && (
+              <div classes={textClasses}>{text}</div>
+            )}
+          </div>
+        )}
       </div>
       <ThemeStyles />
     </>
