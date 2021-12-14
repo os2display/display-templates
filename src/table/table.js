@@ -23,7 +23,7 @@ function Table({ slide, content, run, slideDone }) {
   const { table, title, text } = content;
   let header;
 
-  if (table.length > 0) {
+  if (table.length > 0 && table[0].type === "header") {
     header = table.shift();
   }
 
