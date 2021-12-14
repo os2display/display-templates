@@ -1,0 +1,41 @@
+@use "../variables.scss";
+
+.table {
+  padding: 2% 10%;
+  height: 100%;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+
+  .column {
+    font-size: 2em;
+    padding: 2% 0;
+  }
+
+  .header {
+    font-size: 3em;
+    padding: 2% 0;
+  }
+
+  .column-header {
+    padding: 2% 0;
+  }
+
+  .text {
+    margin-top: 2%;
+
+    &.s {
+      font-size: var(--font-size-sm);
+    }
+    &.m {
+      font-size: var(--font-size-base);
+    }
+    &.l {
+      font-size: var(--font-size-lg);
+    }
+    &.xl {
+      font-size: var(--font-size-xl);
+    }
+  }
+}
