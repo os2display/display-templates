@@ -17,7 +17,7 @@ import { ThemeStyles } from "../slide-util";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { contacts } = content || [];
+  const { contacts } = content;
   const [translations, setTranslations] = useState();
   const { separator } = content.styling || {};
 
@@ -49,25 +49,26 @@ function Contacts({ slide, content, run, slideDone }) {
           )}
         </h1>
         <div className="contacts">
-          {contacts.map((contact) => (
-            <div className="contact" key={contact.id}>
-              {contact.media && (
-                <div
-                  className="image-area"
-                  style={{
-                    backgroundImage: `url("${contact.media.image.url}")`,
-                  }}
-                />
-              )}
-              {!contact.media && <div className="image-area" />}
-              <div className="text-container">
-                <div>{contact.title}</div>
-                <div>{contact.name}</div>
-                <div>{contact.email}</div>
-                <div>{contact.phone}</div>
+          {contacts &&
+            contacts.map((contact) => (
+              <div className="contact" key={contact.id}>
+                {contact.media && (
+                  <div
+                    className="image-area"
+                    style={{
+                      backgroundImage: `url("${contact.media.image.url}")`,
+                    }}
+                  />
+                )}
+                {!contact.media && <div className="image-area" />}
+                <div className="text-container">
+                  <div>{contact.title}</div>
+                  <div>{contact.name}</div>
+                  <div>{contact.email}</div>
+                  <div>{contact.phone}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </IntlProvider>
