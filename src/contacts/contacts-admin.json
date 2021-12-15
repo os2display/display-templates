@@ -6,7 +6,6 @@
     "name": "header1",
     "formGroupClasses": "h4 mb-3"
   },
-
   {
     "key": "contacts-form-2",
     "input": "checkbox",
