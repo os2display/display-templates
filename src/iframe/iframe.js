@@ -31,9 +31,10 @@ function IFrame({ slide, content, run, slideDone }) {
         title="iframe title"
         sandbox="allow-same-origin allow-scripts"
         frameBorder="0"
+        scrolling="no"
+        src={source}
         width="100%"
         height="100%"
-        src={source}
       />
     </>
   );
