@@ -67,8 +67,7 @@ function Contacts({ slide, content, run, slideDone }) {
                 <div>{contact.phone}</div>
               </div>
             </div>
-          ))
-          }
+          ))}
         </div>
       </div>
     </IntlProvider>
