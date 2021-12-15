@@ -17,7 +17,7 @@ import { ThemeStyles } from "../slide-util";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { contacts } = content;
+  const { contacts } = content ||[];
   const [translations, setTranslations] = useState();
   const { separator } = content.styling || {};
 
@@ -67,7 +67,8 @@ function Contacts({ slide, content, run, slideDone }) {
                 <div>{contact.phone}</div>
               </div>
             </div>
-          ))}
+          ))
+          }
         </div>
       </div>
     </IntlProvider>
