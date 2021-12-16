@@ -18,6 +18,7 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
  */
 function Contacts({ slide, content, run, slideDone }) {
   const { contacts, separator } = content;
+
   const mappedContacts = contacts.map((contact, index) =>
     contact.media
       ? {
