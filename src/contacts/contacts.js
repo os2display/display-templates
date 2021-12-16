@@ -4,7 +4,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import "./contacts.scss";
 import da from "./lang/da.json";
-import { ThemeStyles } from "../slide-util";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 
 /**
  * Contacts component.
@@ -17,9 +17,21 @@ import { ThemeStyles } from "../slide-util";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { contacts } = content;
+  const { contacts, separator } = content;
+
+  const mappedContacts = contacts.map((contact, index) =>
+    contact.media
+      ? {
+          ...contact,
+          url: getFirstMediaUrlFromField(
+            slide.mediaData,
+            contact?.media?.image,
+            index
+          ),
+        }
+      : { ...contact, url: null }
+  );
   const [translations, setTranslations] = useState();
-  const { separator } = content.styling || {};
 
   /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
@@ -49,14 +61,14 @@ function Contacts({ slide, content, run, slideDone }) {
           )}
         </h1>
         <div className="contacts">
-          {contacts &&
-            contacts.map((contact) => (
+          {mappedContacts &&
+            mappedContacts.map((contact) => (
               <div className="contact" key={contact.id}>
-                {contact.media && (
+                {contact.url && (
                   <div
                     className="image-area"
                     style={{
-                      backgroundImage: `url("${contact.media.image.url}")`,
+                      backgroundImage: `url("${contact.url}")`,
                     }}
                   />
                 )}
@@ -83,8 +95,10 @@ Contacts.propTypes = {
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
+    mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
   content: PropTypes.shape({
+    separator: PropTypes.bool,
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -97,9 +111,6 @@ Contacts.propTypes = {
         }),
       })
     ),
-    styling: PropTypes.shape({
-      separator: PropTypes.bool,
-    }),
   }).isRequired,
 };
 
