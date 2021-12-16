@@ -17,7 +17,10 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { contacts, separator } = content;
+  const { separator } = content;
+  let { contacts } = content;
+
+  contacts ??= [];
 
   const mappedContacts = contacts.map((contact, index) =>
     contact.media
