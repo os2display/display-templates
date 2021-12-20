@@ -15,12 +15,9 @@ import "./table.scss";
  * @returns {object} The component.
  */
 function Table({ slide, content, run, slideDone }) {
-  // Styling from content
-  const { fontSize, fontPlacement } = content.styling || {};
-  const textClasses = `text ${fontSize}`;
-
   // Content
-  const { table, title, text } = content;
+  const { table, title, text, fontSize, fontPlacement } = content;
+  const textClasses = `text ${fontSize}`;
   let header;
 
   if (table.length > 0 && table[0].type === "header") {

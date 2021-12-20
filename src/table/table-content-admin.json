@@ -45,7 +45,7 @@
         "value": "bottom"
       }
     ],
-    "name": "text-align"
+    "name": "fontPlacement"
   },
   {
     "key": "table-form-7",
@@ -80,13 +80,13 @@
         "value": "xl"
       }
     ],
-    "name": "fontsize"
+    "name": "fontSize"
   },
   {
     "key": "table-form-6",
     "multipleImages": false,
     "input": "image",
-    "name": "image",
+    "name": "backgroundImage",
     "label": "Baggrundsbillede"
   },
   {
