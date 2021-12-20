@@ -65,7 +65,7 @@
     "input": "input",
     "name": "duration",
     "type": "number",
-    "label": "Varighed (i millisekunder)",
+    "label": "Varighed (i sekunder)",
     "helpText": "Her skal du skrive varigheden på slidet.",
     "required": true,
     "formGroupClasses": "col-md-6 mb-3"
