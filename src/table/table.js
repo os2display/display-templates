@@ -28,7 +28,7 @@ function Table({ slide, content, run, slideDone }) {
   const rootStyle = {};
   const backgroundImageUrl = getFirstMediaUrlFromField(
     slide.mediaData,
-    content.backgroundImage
+    content.image
   );
   if (backgroundImageUrl) {
     rootStyle.backgroundImage = `url("${backgroundImageUrl}")`;

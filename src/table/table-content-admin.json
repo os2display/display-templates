@@ -86,7 +86,7 @@
     "key": "table-form-6",
     "multipleImages": false,
     "input": "image",
-    "name": "backgroundImage",
+    "name": "image",
     "label": "Baggrundsbillede"
   },
   {
