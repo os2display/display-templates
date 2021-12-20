@@ -104,7 +104,7 @@ Table.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
-    backgroundImage: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
