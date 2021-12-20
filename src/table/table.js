@@ -99,10 +99,8 @@ Table.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
-    styling: PropTypes.shape({
-      fontSize: PropTypes.string,
-      fontPlacement: PropTypes.bool,
-    }),
+    fontSize: PropTypes.string,
+    fontPlacement: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
