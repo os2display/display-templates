@@ -62,7 +62,7 @@ function Table({ slide, content, run, slideDone }) {
         {header && (
           <div style={gridStyle}>
             {header.columns.map((headerObject) => (
-              <h2 key={headerObject.title} className="column-header">
+              <h2 key={headerObject.Header} className="column-header">
                 {headerObject.Header}
               </h2>
             ))}

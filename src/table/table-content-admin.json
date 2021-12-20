@@ -48,7 +48,7 @@
     "name": "fontPlacement"
   },
   {
-    "key": "table-form-7",
+    "key": "table-form-6",
     "input": "select",
     "required": true,
     "label": "Tekststørrelse",
@@ -83,14 +83,14 @@
     "name": "fontSize"
   },
   {
-    "key": "table-form-6",
+    "key": "table-form-7",
     "multipleImages": false,
     "input": "image",
     "name": "image",
     "label": "Baggrundsbillede"
   },
   {
-    "key": "table-form-7",
+    "key": "table-form-8",
     "input": "header-h3",
     "text": "Tabellen",
     "name": "header3",
