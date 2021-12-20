@@ -369,7 +369,7 @@ const slides = [
       },
     },
     content: {
-      backgroundImage: ["/v1/media/00000000000000000000000001"],
+      image: ["/v1/media/00000000000000000000000001"],
       title: "Overskrift",
       text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
       fontPlacement: "bottom",

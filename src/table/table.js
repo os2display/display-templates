@@ -20,7 +20,7 @@ function Table({ slide, content, run, slideDone }) {
   const textClasses = `text ${fontSize}`;
   let header;
 
-  if (table.length > 0 && table[0].type === "header") {
+  if (Array.isArray(table) && table.length > 0 && table[0].type === "header") {
     header = table.shift();
   }
 
@@ -67,7 +67,7 @@ function Table({ slide, content, run, slideDone }) {
               </h2>
             ))}
 
-            {table.map((column) => (
+            {Array.isArray(table) && table.map((column) => (
               <Fragment key={`${column.toString()}`}>
                 {header.columns.map(({ field }) => (
                   <div key={column[field]} className="column">
