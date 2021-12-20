@@ -21,7 +21,7 @@ function Table({ slide, content, run, slideDone }) {
   let header;
 
   if (Array.isArray(table) && table.length > 0 && table[0].type === "header") {
-    header = table.shift();
+    [header] = table;
   }
 
   // Image
@@ -71,17 +71,19 @@ function Table({ slide, content, run, slideDone }) {
               table.map((column) => (
                 <Fragment key={`${column.toString()}`}>
                   {header.columns.map(({ accessor }) => (
-                    <div key={column[accessor]} className="column">
-                      {column[accessor]}
-                    </div>
+                    <>
+                      {column[accessor] && (
+                        <div key={column[accessor]} className="column">
+                          {column[accessor]}
+                        </div>
+                      )}
+                    </>
                   ))}
                 </Fragment>
               ))}
-            {fontPlacement === "bottom" && (
-              <div classes={textClasses}>{text}</div>
-            )}
           </div>
         )}
+        {fontPlacement === "bottom" && <div classes={textClasses}>{text}</div>}
       </div>
       <ThemeStyles />
     </>
