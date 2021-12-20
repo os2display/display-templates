@@ -15,12 +15,9 @@ import "./table.scss";
  * @returns {object} The component.
  */
 function Table({ slide, content, run, slideDone }) {
-  // Styling from content
-  const { fontSize, fontPlacement } = content.styling || {};
-  const textClasses = `text ${fontSize}`;
-
   // Content
-  const { table, title, text } = content;
+  const { table, title, text, fontSize, fontPlacement } = content;
+  const textClasses = `text ${fontSize}`;
   let header;
 
   if (table.length > 0 && table[0].type === "header") {
@@ -31,7 +28,7 @@ function Table({ slide, content, run, slideDone }) {
   const rootStyle = {};
   const backgroundImageUrl = getFirstMediaUrlFromField(
     slide.mediaData,
-    content.backgroundImage
+    content.image
   );
   if (backgroundImageUrl) {
     rootStyle.backgroundImage = `url("${backgroundImageUrl}")`;
@@ -102,14 +99,12 @@ Table.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
-    styling: PropTypes.shape({
-      fontSize: PropTypes.string,
-      fontPlacement: PropTypes.bool,
-    }),
+    fontSize: PropTypes.string,
+    fontPlacement: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
-    backgroundImage: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
