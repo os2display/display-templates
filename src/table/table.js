@@ -63,19 +63,20 @@ function Table({ slide, content, run, slideDone }) {
           <div style={gridStyle}>
             {header.columns.map((headerObject) => (
               <h2 key={headerObject.title} className="column-header">
-                {headerObject.title}
+                {headerObject.Header}
               </h2>
             ))}
 
-            {Array.isArray(table) && table.map((column) => (
-              <Fragment key={`${column.toString()}`}>
-                {header.columns.map(({ field }) => (
-                  <div key={column[field]} className="column">
-                    {column[field]}
-                  </div>
-                ))}
-              </Fragment>
-            ))}
+            {Array.isArray(table) &&
+              table.map((column) => (
+                <Fragment key={`${column.toString()}`}>
+                  {header.columns.map(({ accessor }) => (
+                    <div key={column[accessor]} className="column">
+                      {column[accessor]}
+                    </div>
+                  ))}
+                </Fragment>
+              ))}
             {fontPlacement === "bottom" && (
               <div classes={textClasses}>{text}</div>
             )}
