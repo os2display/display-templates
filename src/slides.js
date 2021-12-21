@@ -360,6 +360,9 @@ const slides = [
   {
     id: "slide12-table",
     type: "table",
+    themeData: {
+      css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
+    },
     duration: 5000,
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -379,12 +382,12 @@ const slides = [
           type: "header",
           columns: [
             {
-              Header: "Overskrift 1",
+              Header: "Column 1",
               key: "1",
               accessor: "accessor-01FQBY38QR2C6YJWESZ288PC5F",
             },
             {
-              Header: "Overskrift 2",
+              Header: "Column 2",
               key: "2",
               accessor: "accessor-01FQBY39P5Q458SWS2V1SYBVNQ",
             },

@@ -55,7 +55,7 @@ function Contacts({ slide, content, run, slideDone }) {
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
       <ThemeStyles name="contacts-template" css={slide?.themeData?.css} />
       {/* TODO: Fix name to the format template- */}
-      <div className="contacts-template" >
+      <div className="contacts-template">
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
           {separator && (

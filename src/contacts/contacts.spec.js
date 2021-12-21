@@ -13,10 +13,6 @@ test("Test that contacts loads", () => {
   );
 
   expect(wrapper.find("h1").text()).toEqual("Kontakter");
-
-  expect(
-    wrapper.find(".contacts-template").get(0).props.style.backgroundColor
-  ).toBe("yellow");
   expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
     'url("/fixtures/images/author.jpg")'
   );

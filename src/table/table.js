@@ -68,24 +68,20 @@ function Table({ slide, content, run, slideDone }) {
             ))}
 
             {Array.isArray(table) &&
-              table.map((column) => (
-                <Fragment key={`${column.toString()}`}>
-                  {header.columns.map(({ accessor }) => (
-                    <>
-                      {column[accessor] && (
-                        <div key={column[accessor]} className="column">
-                          {column[accessor]}
-                        </div>
-                      )}
-                    </>
-                  ))}
-                </Fragment>
-              ))}
+              table.map((column) =>
+                header.columns.map(
+                  ({ accessor }) =>
+                    column[accessor] && (
+                      <div key={column[accessor]} className="column">
+                        {column[accessor]}
+                      </div>
+                    )
+                )
+              )}
           </div>
         )}
         {fontPlacement === "bottom" && <div classes={textClasses}>{text}</div>}
       </div>
-      <ThemeStyles />
     </>
   );
 }
@@ -103,7 +99,7 @@ Table.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     fontSize: PropTypes.string,
-    fontPlacement: PropTypes.bool,
+    fontPlacement: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
