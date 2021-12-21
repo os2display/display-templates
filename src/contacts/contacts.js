@@ -59,7 +59,6 @@ function Contacts({ slide, content, run, slideDone }) {
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
           {separator && (
-            // TODO: Check that this works properly from config. Does not seem to work when set in `slides.js`
             <div className="separator" />
           )}
         </h1>
