@@ -285,9 +285,7 @@ const slides = [
           id: "uniqueContact6",
         },
       ],
-      styling: {
-        separator: true,
-      },
+      separator: true,
     },
   },
   {
