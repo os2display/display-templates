@@ -49,8 +49,6 @@ function ImageText({ slide, content, run, slideDone }) {
   useEffect(() => {
     if (run) {
       slideExecution.start(duration);
-    } else {
-      slideExecution.stop();
     }
 
     return function cleanup() {

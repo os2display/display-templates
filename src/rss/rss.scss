@@ -1,6 +1,6 @@
 @use "../variables.scss";
 
-.rss-slide {
+.template-rss {
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -13,6 +13,10 @@
       padding: 2%;
       font-size: 1em * $font-size;
       color: var(--text-primary);
+    }
+
+    .progress-numbers {
+      margin-left: 1em;
     }
 
     .title {

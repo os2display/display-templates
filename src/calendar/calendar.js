@@ -8,6 +8,8 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./calendar.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 
 /**
  * Calendar component.
@@ -31,9 +33,11 @@ function Calendar({ slide, content, run, slideDone }) {
   useEffect(() => {
     if (run) {
       slideExecution.start(slide.duration);
-    } else {
-      slideExecution.stop();
     }
+
+    return function cleanup() {
+      slideExecution.stop();
+    };
   }, [run]);
 
   /** Imports language strings, sets localized formats and sets timer. */
