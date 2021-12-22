@@ -21,7 +21,7 @@ function Table({ slide, content, run, slideDone }) {
   let header;
 
   if (Array.isArray(table) && table.length > 0 && table[0].type === "header") {
-    header = table.shift();
+    [header] = table;
   }
 
   // Image
@@ -62,28 +62,26 @@ function Table({ slide, content, run, slideDone }) {
         {header && (
           <div style={gridStyle}>
             {header.columns.map((headerObject) => (
-              <h2 key={headerObject.title} className="column-header">
+              <h2 key={headerObject.Header} className="column-header">
                 {headerObject.Header}
               </h2>
             ))}
 
             {Array.isArray(table) &&
-              table.map((column) => (
-                <Fragment key={`${column.toString()}`}>
-                  {header.columns.map(({ accessor }) => (
-                    <div key={column[accessor]} className="column">
-                      {column[accessor]}
-                    </div>
-                  ))}
-                </Fragment>
-              ))}
-            {fontPlacement === "bottom" && (
-              <div classes={textClasses}>{text}</div>
-            )}
+              table.map((column) =>
+                header.columns.map(
+                  ({ accessor }) =>
+                    column[accessor] && (
+                      <div key={column[accessor]} className="column">
+                        {column[accessor]}
+                      </div>
+                    )
+                )
+              )}
           </div>
         )}
+        {fontPlacement === "bottom" && <div classes={textClasses}>{text}</div>}
       </div>
-      <ThemeStyles />
     </>
   );
 }
@@ -101,7 +99,7 @@ Table.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     fontSize: PropTypes.string,
-    fontPlacement: PropTypes.bool,
+    fontPlacement: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
