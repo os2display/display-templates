@@ -24,7 +24,7 @@ function RSS({ slide, content, run, slideDone }) {
   const rootStyle = {};
   const { feedData } = slide;
   const timeoutRef = useRef(null);
-  const feedLength = Math.min(entryNumber, feedData.entries.length);
+  const feedLength = Math.min(entryNumber, feedData?.entries?.length ?? 0);
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
 
   // Set background image.
@@ -105,7 +105,16 @@ RSS.propTypes = {
   slide: PropTypes.shape({
     mediaData: PropTypes.arrayOf(PropTypes.shape({})),
     duration: PropTypes.number.isRequired,
-    feedData: PropTypes.arrayOf(PropTypes.any),
+    feedData: PropTypes.shape({
+      title: PropTypes.string,
+      entries: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          lastModified: PropTypes.string,
+          content: PropTypes.string,
+        })
+      ),
+    }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
