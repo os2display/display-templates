@@ -49,7 +49,7 @@ function RSS({ slide, content, run, slideDone }) {
       slideDone(slide);
     } else {
       setEntryIndex(nextIndex);
-      setCurrentEntry(feedData.entries[nextIndex]);
+      setCurrentEntry(feedData?.entries[nextIndex]);
       timeoutRef.current = setTimeout(() => {
         entryDone(nextIndex);
       }, entryDuration * 1000);
