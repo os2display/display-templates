@@ -27,25 +27,5 @@
     "name": "image",
     "label": "Baggrundsbillede",
     "formGroupClasses": "mb-3"
-  },
-  {
-    "key": "rss-form-5",
-    "input": "input",
-    "name": "entryDuration",
-    "type": "number",
-    "label": "Varighed pr. indgang (i sekunder)",
-    "helpText": "Her skal du skrive varigheden pr. indgang.",
-    "required": true,
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "rss-form-5",
-    "input": "input",
-    "name": "entryNumber",
-    "type": "number",
-    "label": "Maks antal indgange",
-    "helpText": "Her kan du skrive hvor mange indgange der maksimalt skal vises.",
-    "required": true,
-    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

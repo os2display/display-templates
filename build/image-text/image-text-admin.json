@@ -1,0 +1,157 @@
+[
+  {
+    "key": "image-text-form-1",
+    "input": "header",
+    "text": "Skabelon: Tekst og billede",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "image-text-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "image-text-form-3",
+    "input": "textarea",
+    "name": "title",
+    "label": "Overskrift på slide",
+    "helpText": "Her kan du skrive overskriften til slidet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "image-text-form-4",
+    "input": "textarea",
+    "name": "text",
+    "label": "Tekst på slide",
+    "helpText": "Her kan du skrive teksten til slidet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "image-text-form-5",
+    "multipleImages": false,
+    "input": "image",
+    "name": "image",
+    "label": "Billede"
+  },
+  {
+    "key": "image-text-form-6",
+    "input": "header-h3",
+    "text": "Opsætning",
+    "name": "header3",
+    "formGroupClasses": "h5 mt-3 mb-3"
+  },
+  {
+    "key": "image-text-form-7",
+    "input": "input",
+    "name": "duration",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-8",
+    "input": "select",
+    "required": true,
+    "label": "Hvor skal tekstboksen være placeret",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "placement1",
+        "title": "Toppen",
+        "value": "top"
+      },
+      {
+        "key": "placement2",
+        "title": "Højre",
+        "value": "right"
+      },
+      {
+        "key": "placement3",
+        "title": "Bunden",
+        "value": "bottom"
+      },
+      {
+        "key": "placement4",
+        "title": "Venstre",
+        "value": "left"
+      }
+    ],
+    "name": "boxAlign"
+  },
+  {
+    "key": "image-text-form-14",
+    "input": "select",
+    "required": true,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "l"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "xl"
+      }
+    ],
+    "name": "fontSize"
+  },
+  {
+    "key": "image-text-form-9",
+    "input": "checkbox",
+    "label": "Margin rundt om tekst",
+    "name": "boxMargin",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-10",
+    "input": "checkbox",
+    "label": "Animeret tekst under overskrift",
+    "name": "separator",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-11",
+    "input": "checkbox",
+    "label": "Teksten optager højest 50% af skærmen",
+    "name": "halfSize",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-12",
+    "input": "checkbox",
+    "label": "Overskriften er under teksten",
+    "helpText": "Denne kan ikke kombineres med den animerede tekst under overskriften",
+    "name": "reversed",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "image-text-form-13",
+    "input": "checkbox",
+    "label": "Skyggeeffekt på tekstboksen",
+    "name": "shadow",
+    "formGroupClasses": "col-md-6"
+  }
+]

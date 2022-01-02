@@ -19,12 +19,15 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 function RSS({ slide, content, run, slideDone }) {
   const [entryIndex, setEntryIndex] = useState(0);
   const [currentEntry, setCurrentEntry] = useState(null);
-
-  const { entryDuration = 3, entryNumber = 5, fontSize = "m", image } = content;
-  const rootStyle = {};
-  const { feedData } = slide;
   const timeoutRef = useRef(null);
-  const feedLength = Math.min(entryNumber, feedData?.entries?.length ?? 0);
+
+  const { fontSize = "m", image } = content;
+  const { feedData, feed } = slide;
+  const { configuration = {} } = feed;
+  const { entryDuration = 10, numberOfEntries = 5 } = configuration;
+
+  const rootStyle = {};
+  const feedLength = Math.min(numberOfEntries, feedData?.entries?.length ?? 0);
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
 
   // Set background image.
@@ -105,6 +108,12 @@ RSS.propTypes = {
   slide: PropTypes.shape({
     mediaData: PropTypes.arrayOf(PropTypes.shape({})),
     duration: PropTypes.number.isRequired,
+    feed: PropTypes.shape({
+      configuration: {
+        numberOfEntries: PropTypes.number,
+        entryDuration: PropTypes.number,
+      },
+    }),
     feedData: PropTypes.shape({
       title: PropTypes.string,
       entries: PropTypes.arrayOf(
@@ -120,12 +129,8 @@ RSS.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
-    rssDuration: PropTypes.number,
-    rssNumber: PropTypes.number,
-    fontSize: PropTypes.string,
-    media: PropTypes.shape({
-      url: PropTypes.string,
-    }),
+    image: PropTypes.string,
+    fontSize: PropTypes.string
   }).isRequired,
 };
 

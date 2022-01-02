@@ -165,9 +165,14 @@ const slides = [
   {
     id: "slide6-rss",
     type: "rss",
-    duration: 5000,
+    feed: {
+      configuration: {
+        numberOfEntries: 5,
+        entryDuration: 10,
+      },
+    },
     feedData: {
-      title: "Alle nyheder",
+      title: "Ut enim ad.",
       entries: [
         {
           title: "Lorem ipsum dolor sit amet.",
@@ -201,10 +206,16 @@ const slides = [
         },
       ],
     },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
     content: {
+      image: ["/v1/media/00000000000000000000000001"],
       fontSize: "m",
-      entryNumber: 5,
-      entryDuration: 10,
     },
   },
   {
