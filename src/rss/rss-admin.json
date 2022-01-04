@@ -18,6 +18,7 @@
     "input": "feed",
     "text": "Opsæt feed",
     "name": "feed",
+    "feedType": "rss",
     "formGroupClasses": "mb-3"
   },
   {

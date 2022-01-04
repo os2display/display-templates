@@ -5,8 +5,8 @@
   "description": "Mulighed for at vise et rss feed.",
   "resources": {
     "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/rss.js",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/image-text/rss-admin.json",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/image-text/rss-schema.json",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/rss/rss-admin.json",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/rss/rss-schema.json",
     "assets": [],
     "options": {},
     "content": {}
