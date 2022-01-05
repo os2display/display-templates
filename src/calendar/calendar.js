@@ -4,12 +4,12 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 import BaseSlideExecution from "../base-slide-execution";
 import "./calendar.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
-import parse from "html-react-parser";
-import DOMPurify from "dompurify";
 
 /**
  * Calendar component.
@@ -25,7 +25,9 @@ function Calendar({ slide, content, run, slideDone }) {
   const [currentDate, setCurrentDate] = useState(null);
   const [translations, setTranslations] = useState();
 
-  const { backgroundColor, hasDateAndTime, title, events } = content;
+  const { backgroundColor, hasDateAndTime, title } = content;
+  const { feedData = [] } = slide;
+
   const classes = `template-calendar ${backgroundColor}`;
 
   /** Setup slide run function. */
@@ -58,14 +60,18 @@ function Calendar({ slide, content, run, slideDone }) {
   }, []);
 
   // Sort events by datetime and filter away events that are done.
-  const sortedEvents = events
-    .filter((e) => {
-      return (
-        new Date(e.datetime).getTime() > new Date().getTime() &&
-        new Date(e.datetime).getDay() === new Date().getDay()
-      );
-    })
-    .sort((a, b) => a.datetime.localeCompare(b.datetime));
+  const getSortedEvents = (data) => {
+    const now = dayjs();
+    return data
+      .filter((e) => {
+        const startDate = dayjs(e.startTime * 1000);
+
+        return (
+          e.startTime * 1000 > now.unix() && startDate.date() === now.date()
+        );
+      })
+      .sort((a, b) => a - b);
+  };
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -99,15 +105,20 @@ function Calendar({ slide, content, run, slideDone }) {
             <div className="grid-item" key={3}>
               <FormattedMessage id="where" defaultMessage="where" />
             </div>
-            {sortedEvents.map((entry) => (
-              <Fragment key={entry.id}>
-                <div className="grid-item">{entry.eventName}</div>
-                <div className="grid-item">
-                  {dayjs(entry.datetime).locale(localeDa).format("LT")}
-                </div>
-                <div className="grid-item">{entry.location}</div>
-              </Fragment>
-            ))}
+            {feedData?.length > 0 &&
+              getSortedEvents(feedData).map((entry) => (
+                <Fragment key={entry.id}>
+                  <div className="grid-item">{entry.title}</div>
+                  <div className="grid-item">
+                    {dayjs(entry.startTime * 1000)
+                      .locale(localeDa)
+                      .format("LT")}
+                  </div>
+                  <div className="grid-item">
+                    {entry.resourceTitle ?? entry.resourceId ?? ""}
+                  </div>
+                </Fragment>
+              ))}
           </div>
         </div>
       </IntlProvider>
@@ -127,9 +138,10 @@ Calendar.propTypes = {
   content: PropTypes.shape({
     events: PropTypes.arrayOf(
       PropTypes.shape({
-        eventName: PropTypes.string.isRequired,
-        datetime: PropTypes.string.isRequired,
-        location: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        startTime: PropTypes.string.isRequired,
+        endTime: PropTypes.string.isRequired,
+        resourceTitle: PropTypes.string.isRequired,
       })
     ),
     title: PropTypes.string.isRequired,
