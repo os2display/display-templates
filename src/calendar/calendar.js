@@ -146,7 +146,14 @@ function Calendar({ slide, content, run, slideDone }) {
                   {renderTimeOfDay(event.startTime)} -{" "}
                   {renderTimeOfDay(event.endTime)}
                 </div>
-                <div>{event.title}</div>
+                <div>
+                  {event.title ?? resourceUnavailableText ?? (
+                    <FormattedMessage
+                      id="unavailable"
+                      defaultMessage="Unavailable"
+                    />
+                  )}
+                </div>
                 <div>{event.resourceTitle ?? event.resourceId}</div>
               </article>
             ))}
@@ -192,6 +199,7 @@ function Calendar({ slide, content, run, slideDone }) {
       <ThemeStyles name="template-calendar" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className={classes.join(" ")} style={rootStyle}>
+          {/* Layout: Single resource */}
           {layout === "single" && (
             <>
               <div className="single--header">
@@ -213,6 +221,7 @@ function Calendar({ slide, content, run, slideDone }) {
               </div>
             </>
           )}
+          {/* Layout: Multiple resources grouped by day */}
           {layout === "multipleDays" && (
             <>
               <h1 className="multiple-days--header">{title}</h1>
@@ -229,6 +238,7 @@ function Calendar({ slide, content, run, slideDone }) {
               )}
             </>
           )}
+          {/* Layout: Multiple resources */}
           {layout === "multiple" && (
             <>
               <div className="grid-container-title-date">
@@ -255,7 +265,14 @@ function Calendar({ slide, content, run, slideDone }) {
                 {feedData?.length > 0 &&
                   getSortedEvents(feedData).map((entry) => (
                     <Fragment key={entry.id}>
-                      <div className="grid-item">{entry.title}</div>
+                      <div className="grid-item">
+                        {entry.title ?? resourceUnavailableText ?? (
+                          <FormattedMessage
+                            id="unavailable"
+                            defaultMessage="Unavailable"
+                          />
+                        )}
+                      </div>
                       <div className="grid-item">
                         {dayjs(entry.startTime * 1000)
                           .locale(localeDa)

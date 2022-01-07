@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import PropTypes from "prop-types";
 
 const slides = [
   {
@@ -133,6 +134,7 @@ const slides = [
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
       image: ["/v1/media/00000000000000000000000001"],
+      footerText: "Se mere på localhost/events",
     },
   },
   {
