@@ -9,7 +9,7 @@
   {
     "key": "calendar-form-2",
     "input": "header-h3",
-    "text": "Indhold",
+    "text": "Opsæt feed",
     "name": "header2",
     "formGroupClasses": "h5 mb-3"
   },
@@ -20,5 +20,134 @@
     "name": "feed",
     "feedType": "calendar",
     "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "calendar-form-4",
+    "input": "header-h3",
+    "text": "Konfigurér slide",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "calendar-form-layout",
+    "input": "select",
+    "name": "layout",
+    "label": "Vælg layout",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "layout1",
+        "title": "Enkelt lokale",
+        "value": "single"
+      },
+      {
+        "key": "layout2",
+        "title": "Flere resurser",
+        "value": "multiple"
+      },
+      {
+        "key": "layout3",
+        "title": "Flere resurser, flere dage",
+        "value": "multipleDays"
+      }
+    ]
+  },
+  {
+    "key": "calendar-form-title",
+    "input": "input",
+    "name": "title",
+    "type": "text",
+    "label": "Overskrift",
+    "helpText": "Her kan du skrive overskrift.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "calendar-form-subtitle",
+    "input": "input",
+    "name": "subTitle",
+    "type": "text",
+    "label": "Underoverskrift",
+    "helpText": "Her kan du skrive underoverskrift.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "calendar-form-resource-available-text",
+    "input": "input",
+    "name": "resourceAvailableText",
+    "type": "text",
+    "label": "Tekst når resursen er ledig",
+    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "calendar-form-resource-unavailable-text",
+    "input": "input",
+    "name": "resourceUnavailableText",
+    "type": "text",
+    "label": "Begivenhedstitel fallback",
+    "helpText": "Her kan du skrive tekst på begivenheder, hvor der ikke er sat en titel.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "calendar-form-footer-text",
+    "input": "input",
+    "name": "footerText",
+    "type": "text",
+    "label": "Footer tekst",
+    "helpText": "Her kan du skrive tekst til footeren.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "calendar-form-colorize",
+    "input": "checkbox",
+    "label": "Colorize",
+    "name": "colorize",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "calendar-form-colorize-color-class",
+    "input": "select",
+    "name": "colorizeColorClass",
+    "label": "Colorize-farve",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "colorize1",
+        "title": "Rød",
+        "value": "red"
+      },
+      {
+        "key": "colorize2",
+        "title": "Blå",
+        "value": "blue"
+      },
+      {
+        "key": "colorize3",
+        "title": "Gul",
+        "value": "yellow"
+      }
+    ]
+  },
+  {
+    "key": "calendar-form-has-date-and-time",
+    "input": "checkbox",
+    "label": "Vis dato og tidspunkt",
+    "name": "hasDateAndTime",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "calendar-form-image",
+    "multipleImages": false,
+    "input": "image",
+    "name": "image",
+    "label": "Baggrundsbillede"
+  },
+  {
+    "key": "calendar-form-display-headers",
+    "input": "checkbox",
+    "label": "Vis tabeloverskrifter",
+    "name": "displayHeaders",
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]
