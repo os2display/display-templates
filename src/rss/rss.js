@@ -129,7 +129,7 @@ RSS.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
-    image: PropTypes.string,
+    image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
   }).isRequired,
 };

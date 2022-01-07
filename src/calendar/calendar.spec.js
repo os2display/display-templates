@@ -12,6 +12,6 @@ test("Test that calendar loads", () => {
     <Calendar run slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
-  expect(wrapper.text()).toContain("Calendar");
+  expect(wrapper.text()).toContain("Kalender");
   expect(wrapper.find(".template-calendar.blue").length).toBe(1);
 });
