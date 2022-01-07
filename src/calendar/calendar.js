@@ -20,7 +20,7 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
  * @returns {object} The component.
  */
 function Calendar({ slide, content, run, slideDone }) {
-  const [currentDate, setCurrentDate] = useState(null);
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [translations, setTranslations] = useState();
 
   const {
