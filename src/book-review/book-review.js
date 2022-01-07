@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
 import "./book-review.scss";
@@ -18,7 +18,9 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
  */
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
-  const [sanitizedParsedBookText, setSanitizedParsedBookText] = useState("");
+  const sanitizedParsedBookText = bookText
+    ? parse(DOMPurify.sanitize(bookText, {}))
+    : "";
 
   const authorImageUrl = getFirstMediaUrlFromField(
     slide.mediaData,

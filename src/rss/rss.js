@@ -130,7 +130,7 @@ RSS.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     image: PropTypes.string,
-    fontSize: PropTypes.string
+    fontSize: PropTypes.string,
   }).isRequired,
 };
 

@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import PropTypes from "prop-types";
 
 const slides = [
   {
@@ -68,7 +67,7 @@ const slides = [
       },
       {
         id: "uniqueEvent2",
-//        title: "Cookies",
+        //        title: "Cookies",
         startTime: dayjs().add(2, "hour").unix(),
         endTime: dayjs().add(3, "hour").unix(),
         resourceTitle: "Det andet rum",

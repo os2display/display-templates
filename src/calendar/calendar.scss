@@ -32,12 +32,12 @@ $background-color: #b4b4b4;
     }
 
     // Remove border from top.
-    &:nth-child(-n+3) {
+    &:nth-child(-n + 3) {
       border-top: 0;
     }
 
     // Remove border from bottom.
-    &:nth-last-child(-n+3) {
+    &:nth-last-child(-n + 3) {
       border-bottom: 0;
     }
   }

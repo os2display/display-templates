@@ -38,7 +38,7 @@ function Sparkle({ slide, content, run, slideDone }) {
   let { duration } = content;
   const { hashtagText } = content;
   duration = duration || 15000; // Add a default
-  const sanitizedTextMarkup = DOMPurify.sanitize(textMarkup);
+  const sanitizedTextMarkup = parse(DOMPurify.sanitize(textMarkup, {}));
 
   // Animation
   const [show, setShow] = useState(true);

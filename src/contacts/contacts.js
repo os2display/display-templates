@@ -60,9 +60,7 @@ function Contacts({ slide, content, run, slideDone }) {
       <div className="contacts-template">
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
-          {separator && (
-            <div className="separator" />
-          )}
+          {separator && <div className="separator" />}
         </h1>
         <div className="contacts">
           {mappedContacts &&
