@@ -13,7 +13,7 @@ $background-color: #b4b4b4;
   // Title does not have borders.
   @if not $title {
     border-bottom: 1px solid;
-    border-right: 0px;
+    border-right: 0;
 
     // Remove padding and border left on first element in grid.
     @for $i from 1 through 2 {
@@ -23,33 +23,55 @@ $background-color: #b4b4b4;
       }
     }
 
-    @for $i from 1 through 3 {
-      &:nth-of-type(#{$i}) {
-        // Remove border-top from the first elements.
-        border-top: 0px;
-      }
+    &:nth-child(3n-2) {
+      padding-left: 0;
+    }
+
+    &:nth-child(3n) {
+      padding-right: 0;
+    }
+
+    // Remove border from top.
+    &:nth-child(-n+3) {
+      border-top: 0;
+    }
+
+    // Remove border from bottom.
+    &:nth-last-child(-n+3) {
+      border-bottom: 0;
     }
   }
 }
 
 .template-calendar {
   height: 100%;
-  background-color: var(--bg-light);
-  color: var(--color-grey-300);
+  background-color: var(--bg-dark);
+  color: var(--color-white);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.colorize {
+    background-blend-mode: multiply, luminosity;
+  }
 
   .grid-container-title-date {
     display: grid;
     grid-template-columns: auto auto;
     padding: $padding;
+    align-items: center;
+    font-size: 1.4em;
 
     .grid-item {
       @include grid-item($title: true);
+      padding: 0;
     }
 
     .grid-item-end {
       @include grid-item($title: true, $text-align: end);
+      padding: 0;
     }
   }
+
   .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -57,6 +79,7 @@ $background-color: #b4b4b4;
 
     .grid-item {
       @include grid-item();
+      padding: $padding * 2;
     }
   }
 
@@ -74,5 +97,11 @@ $background-color: #b4b4b4;
 
   &.yellow {
     background-color: var(--color-yellow);
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  .header {
+    font-weight: bold;
   }
 }
