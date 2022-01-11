@@ -122,10 +122,12 @@ const slides = [
       },
     },
     content: {
+      // Options: multiple|multipleDays|single
       layout: "multiple",
       hasDateAndTime: true,
       backgroundColor: "green",
       colorize: true,
+      // Options: blue|red|yellow
       colorizeColorClass: "blue",
       title: "Kalender",
       subTitle: "Underoverskrift",
