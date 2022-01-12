@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-import "./calendar.scss";
+//import "./calendar.scss";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";

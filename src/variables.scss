@@ -43,6 +43,7 @@ html {
   --bg-dark: var(--color-dark);
   --bg-primary: var(--color-primary);
   --bg-secondary: var(--color-secondary);
+  --bg-transparent: transparent;
   --text-light: var(--color-light);
   --text-dark: var(--color-dark);
 
@@ -86,4 +87,10 @@ html {
   --box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+
+  /*
+  * Border
+  */
+  --border-light: 1px solid var(--color-light);
+
 }
