@@ -150,25 +150,10 @@ const Wrapper = styled.div`
   grid-template-rows: 1fr 9fr;
   padding: var(--padding-size-base);
 
-  /* TODO: We should consider using props to set css variable instead of classes for colorize and colors */
   &.colorize {
     background-blend-mode: multiply;
     background-color: var(--background-color);
   }
-
-  /* &.red {
-    background-color: var(--color-red);
-  }
-
-  &.blue {
-    background-color: var(--color-blue);
-  }
-
-  &.yellow {
-    background-color: var(--color-yellow);
-  } */
-
-
 `;
 
 const Header = styled.div`

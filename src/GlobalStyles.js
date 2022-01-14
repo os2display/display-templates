@@ -19,13 +19,28 @@ const GlobalStyles = createGlobalStyle`
     * Colors
     */
     --color-white: #fff;
-    --color-grey-100: #f5f5f5;
-    --color-grey-300: #c8c8c8;
-    --color-grey-500: #909090;
-    --color-grey-700: #5f5f5f;
-    --color-grey-900: #2e2e2e;
+    --color-grey-100: hsl(0deg 0% 90%);
+    --color-grey-200: hsl(0deg 0% 85%);
+    --color-grey-300: hsl(0deg 0% 80%);
+    --color-grey-400: hsl(0deg 0% 75%);
+    --color-grey-500: hsl(0deg 0% 70%);
+    --color-grey-600: hsl(0deg 0% 40%);
+    --color-grey-700: hsl(0deg 0% 30%);
+    --color-grey-800: hsl(0deg 0% 20%);
+    --color-grey-900: hsl(0deg 0% 10%);
+    @media (prefers-color-scheme: dark) {
+      --color-grey-100: hsl(0deg 0% 10%);
+      --color-grey-200: hsl(0deg 0% 15%);
+      --color-grey-300: hsl(0deg 0% 20%);
+      --color-grey-400: hsl(0deg 0% 25%);
+      --color-grey-500: hsl(0deg 0% 30%);
+      --color-grey-600: hsl(0deg 0% 45%);
+      --color-grey-700: hsl(0deg 0% 60%);
+      --color-grey-800: hsl(0deg 0% 75%);
+      --color-grey-900: hsl(0deg 0% 90%);
+    }
     --color-black: #000;
-    --color-blue: blue;
+    --color-blue: hsl(219deg 89% 57%);
     --color-indigo: indigo;
     --color-purple: purple;
     --color-pink: pink;
@@ -43,8 +58,8 @@ const GlobalStyles = createGlobalStyle`
     --color-info: var(--color-teal);
     --color-warning: var(--color-yellow);
     --color-danger: var(--color-red);
-    --color-light: var(--color-grey-100);
-    --color-dark: var(--color-grey-900);
+    --color-light: var(--color-white);
+    --color-dark: var(--color-black);
     --bg-light: var(--color-light);
     --bg-dark: var(--color-dark);
     --bg-primary: var(--color-primary);
