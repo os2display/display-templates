@@ -47,6 +47,7 @@ const entry = devMode
       sparkle: path.resolve(__dirname, "./src/sparkle/sparkle.js"),
       iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
       table: path.resolve(__dirname, "./src/table/table.js"),
+      video: path.resolve(__dirname, "./src/video/video.js"),
     };
 
 const plugins = devMode
