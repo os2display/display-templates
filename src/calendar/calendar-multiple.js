@@ -6,11 +6,6 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 
-/* TODO: Remove themes after testing  */
-//import "../themes/dokk1.css"
-//import "../themes/aarhus.css"
-//import "../themes/mso.css"
-
 /**
  * Multiple resource calendar.
  *
@@ -80,17 +75,17 @@ function CalendarMultiple({
   }, [hasDateAndTime]);
 
   return (
-    <Wrapper className={templateClasses.join(" ")} style={templateRootStyle}>
+    <Wrapper className={"calendar-multiple " + templateClasses.join(" ")} style={{ '--bg-image': templateRootStyle.backgroundImage, '--bg-color': templateRootStyle.backgroundColor }}>
 
-      <Header>
-        <HeaderTitle>{title}</HeaderTitle>
+      <Header className="header">
+        <HeaderTitle className="header-title">{title}</HeaderTitle>
         {!dateAsBox &&
-          <HeaderDate>
+          <HeaderDate className="header-date">
             { currentDate && capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
           </HeaderDate>
         }
         {dateAsBox &&
-          <HeaderDateBox>
+          <HeaderDateBox className="header-date-box">
             <Weekday>{ currentDate && capitalize(dayjs().locale(localeDa).format("ddd"))}</Weekday>
             <DateNumber>{ currentDate && capitalize(dayjs().locale(localeDa).format("D"))}</DateNumber>
             <Month>{ currentDate && capitalize(dayjs().locale(localeDa).format("MMM"))}</Month>
@@ -98,16 +93,16 @@ function CalendarMultiple({
         }
       </Header>
 
-      <Content>
+      <Content className="content">
         {displayHeaders !== false && (
             <ContentItemsWrapper>
-              <ContentHeaderItem key={1}>
+              <ContentHeaderItem className="content-item" key={1}>
                 <FormattedMessage id="what" defaultMessage="what" />
               </ContentHeaderItem>
-              <ContentHeaderItem key={2}>
+              <ContentHeaderItem className="content-item" key={2}>
                 <FormattedMessage id="when" defaultMessage="when" />
               </ContentHeaderItem>
-              <ContentHeaderItem key={3}>
+              <ContentHeaderItem className="content-item" key={3}>
                 <FormattedMessage id="where" defaultMessage="where" />
               </ContentHeaderItem>
             </ContentItemsWrapper>
@@ -116,7 +111,7 @@ function CalendarMultiple({
             {calendarEvents?.length > 0 &&
               getSortedEvents(calendarEvents).map((entry) => (
                 <Fragment key={entry.id}>
-                  <ContentItem>
+                  <ContentItem className="content-item-title">
                     {entry.title ?? resourceUnavailableText ?? (
                       <FormattedMessage
                         id="unavailable"
@@ -124,12 +119,12 @@ function CalendarMultiple({
                       />
                     )}
                   </ContentItem>
-                  <ContentItem>
+                  <ContentItem className="content-item-time">
                     {dayjs(entry.startTime * 1000)
                       .locale(localeDa)
                       .format("LT")}
                   </ContentItem>
-                  <ContentItem>
+                  <ContentItem className="content-item-resouce">
                     {entry.resourceTitle ?? entry.resourceId ?? ""}
                   </ContentItem>
                 </Fragment>
@@ -145,8 +140,9 @@ const Wrapper = styled.div`
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: var(--bg-transparent);
-  color: var(--color-white);
+  background-color: var(--bg-color, var(--background-color));
+  background-image: var(--bg-image, none);
+  color: var(--text-color);
   display: grid;
   grid-template-areas:
     'header'
@@ -157,33 +153,27 @@ const Wrapper = styled.div`
   /* TODO: We should consider using props to set css variable instead of classes for colorize and colors */
   &.colorize {
     background-blend-mode: multiply;
-    background-color: var(--color-primary);
+    background-color: var(--background-color);
   }
 
-  &.red {
+  /* &.red {
     background-color: var(--color-red);
-    color: var(--color-white);
-    border-color: var(--color-white);
   }
 
   &.blue {
     background-color: var(--color-blue);
-    color: var(--color-white);
-    border-color: var(--color-white);
   }
 
   &.yellow {
     background-color: var(--color-yellow);
-    color: var(--color-white);
-    border-color: var(--color-white);
-  }
+  } */
+
+
 `;
 
 const Header = styled.div`
   padding: var(--padding-size-base);
   grid-area: header;
-  background-color: var(--bg-transparent);
-  color: var(--color-white);
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -205,23 +195,21 @@ const HeaderDateBox = styled.div`
 `;
 
 const Weekday = styled.div`
-  color: var(--color-light);
+
 `;
 
 const DateNumber = styled.div`
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
-  color: var(--color-light);
+
 `;
 
 const Month = styled.div`
-  color: var(--color-light);
+
 `;
 
 const Content = styled.div`
   grid-area: content;
-  background-color: var(--bg-transparent);
-  color: var(--color-white);
 `;
 
 const ContentItemsWrapper = styled.div`
@@ -231,8 +219,8 @@ const ContentItemsWrapper = styled.div`
 
 const ContentItem = styled.div`
   padding: var(--padding-size-base);
-  border-bottom: var(--border-light);
-  border-left: var(--border-light);
+  border-bottom: var(--border);
+  border-left: var(--border);
 
   // Remove border left.
   &:nth-of-type(3n + 1) {
@@ -249,8 +237,8 @@ const ContentHeaderItem = styled.div`
   padding: var(--padding-size-base);
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
-  border-bottom: var(--border-light);
-  border-left: var(--border-light);
+  border-bottom: var(--border);
+  border-left: var(--border);
 
   // Remove border left.
   &:nth-of-type(3n + 1) {

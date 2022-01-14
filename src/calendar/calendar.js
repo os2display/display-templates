@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-//import "./calendar.scss";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
@@ -42,7 +41,8 @@ function Calendar({ slide, content, run, slideDone }) {
   }
 
   if (colorize && colorizeColorClass !== "") {
-    classes.push("colorize", colorizeColorClass);
+    classes.push("colorize");
+    rootStyle.backgroundColor = colorizeColorClass;
   } else {
     rootStyle.backgroundColor = backgroundColor;
   }
