@@ -2,31 +2,6 @@
 ** DOKK1 theme css
 */
 
-/* Defaults */
-
-:root {
-  --bg-light: #f1f0ef;
-  --text-dark: #222;
-  --color-primary: #003764;
-  --color-secondary: #887c76;
-  --color-success: #006c3b;
-  --color-info: #0dcaf0;
-  --color-warning: #ffb400;
-  --color-danger: #dc3545;
-
-  --color-blue: var(--color-primary);
-  --color-red: var(--color-danger);
-  --color-yellow: var(--color-warning);
-  --color-green: var(--color-success);
-
-  --font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
-  --font-weight-light: 300;
-  --font-weight-bold: 600;
-
-  /* Darkmode overrides */
-  --bg-dark: #212529;
-  --text-light: #ffffff;
-}
 /* Custom Gibson font from https://use.typekit.net/ilx8ovv.css (Adobe/typeKit) */
 /*
  * The Typekit service used to deliver this font or fonts for use on websites
@@ -100,4 +75,52 @@
 
 .tk-canada-type-gibson {
   font-family: "canada-type-gibson", sans-serif;
+}
+
+/* Defaults */
+:root {
+  --bg-light: #f1f0ef;
+  --text-dark: #222;
+  --color-primary: #003764;
+  --color-secondary: #887c76;
+  --color-success: #006c3b;
+  --color-info: #0dcaf0;
+  --color-warning: #ffb400;
+  --color-danger: #dc3545;
+
+  --color-blue: var(--color-primary);
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-green: var(--color-success);
+
+  --font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
+  --font-weight-light: 300;
+  --font-weight-bold: 600;
+
+  --bg-primary: var(--color-primary);
+
+  /* Darkmode overrides */
+  --bg-dark: #212529;
+  --text-light: #ffffff;
+}
+
+/* Customize calender single template styling */
+.calendar-single {
+  --h1-font-size: 5rem;
+  --h4-font-size: 3rem;
+  --font-size-base: 2rem;
+  --padding-size-base: 4rem;
+  --background-color: var(--color-primary);
+  --text-color: var(--color-light);
+  --border: 3px solid var(--color-light);
+  background-image: none;
+}
+
+/* Customize calender multiple template styling */
+.calendar-multiple {
+  --padding-size-base: 2rem;
+  --background-color: var(--color-primary);
+  --border: 1px solid var(--color-light);
+  --text-color: var(--color-light);
+  background-image: none;
 }
