@@ -28,7 +28,7 @@ function CalendarMultiple({
     hasDateAndTime,
     resourceUnavailableText = null,
     displayHeaders = true,
-    dateAsBox = false, /* TODO: Add this to the configuration of the slide */
+    dateAsBox = false /* TODO: Add this to the configuration of the slide */,
   } = content;
 
   /** Imports language strings, sets localized formats. */
@@ -75,61 +75,75 @@ function CalendarMultiple({
   }, [hasDateAndTime]);
 
   return (
-    <Wrapper className={"calendar-multiple " + templateClasses.join(" ")} style={{ '--bg-image': templateRootStyle.backgroundImage, '--bg-color': templateRootStyle.backgroundColor }}>
-
+    <Wrapper
+      className={`calendar-multiple ${templateClasses.join(" ")}`}
+      style={{
+        "--bg-image": templateRootStyle.backgroundImage,
+        "--bg-color": templateRootStyle.backgroundColor,
+      }}
+    >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
-        {!dateAsBox &&
+        {!dateAsBox && (
           <HeaderDate className="header-date">
-            { currentDate && capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
+            {currentDate &&
+              capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
           </HeaderDate>
-        }
-        {dateAsBox &&
+        )}
+        {dateAsBox && (
           <HeaderDateBox className="header-date-box">
-            <Weekday>{ currentDate && capitalize(dayjs().locale(localeDa).format("ddd"))}</Weekday>
-            <DateNumber>{ currentDate && capitalize(dayjs().locale(localeDa).format("D"))}</DateNumber>
-            <Month>{ currentDate && capitalize(dayjs().locale(localeDa).format("MMM"))}</Month>
+            <Weekday>
+              {currentDate &&
+                capitalize(dayjs().locale(localeDa).format("ddd"))}
+            </Weekday>
+            <DateNumber>
+              {currentDate && capitalize(dayjs().locale(localeDa).format("D"))}
+            </DateNumber>
+            <Month>
+              {currentDate &&
+                capitalize(dayjs().locale(localeDa).format("MMM"))}
+            </Month>
           </HeaderDateBox>
-        }
+        )}
       </Header>
 
       <Content className="content">
         {displayHeaders !== false && (
-            <ContentItemsWrapper>
-              <ContentHeaderItem className="content-item" key={1}>
-                <FormattedMessage id="what" defaultMessage="what" />
-              </ContentHeaderItem>
-              <ContentHeaderItem className="content-item" key={2}>
-                <FormattedMessage id="when" defaultMessage="when" />
-              </ContentHeaderItem>
-              <ContentHeaderItem className="content-item" key={3}>
-                <FormattedMessage id="where" defaultMessage="where" />
-              </ContentHeaderItem>
-            </ContentItemsWrapper>
-          )}
           <ContentItemsWrapper>
-            {calendarEvents?.length > 0 &&
-              getSortedEvents(calendarEvents).map((entry) => (
-                <Fragment key={entry.id}>
-                  <ContentItem className="content-item-title">
-                    {entry.title ?? resourceUnavailableText ?? (
-                      <FormattedMessage
-                        id="unavailable"
-                        defaultMessage="Unavailable"
-                      />
-                    )}
-                  </ContentItem>
-                  <ContentItem className="content-item-time">
-                    {dayjs(entry.startTime * 1000)
-                      .locale(localeDa)
-                      .format("LT")}
-                  </ContentItem>
-                  <ContentItem className="content-item-resouce">
-                    {entry.resourceTitle ?? entry.resourceId ?? ""}
-                  </ContentItem>
-                </Fragment>
-              ))}
+            <ContentHeaderItem className="content-item" key={1}>
+              <FormattedMessage id="what" defaultMessage="what" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item" key={2}>
+              <FormattedMessage id="when" defaultMessage="when" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item" key={3}>
+              <FormattedMessage id="where" defaultMessage="where" />
+            </ContentHeaderItem>
           </ContentItemsWrapper>
+        )}
+        <ContentItemsWrapper>
+          {calendarEvents?.length > 0 &&
+            getSortedEvents(calendarEvents).map((entry) => (
+              <Fragment key={entry.id}>
+                <ContentItem className="content-item-title">
+                  {entry.title ?? resourceUnavailableText ?? (
+                    <FormattedMessage
+                      id="unavailable"
+                      defaultMessage="Unavailable"
+                    />
+                  )}
+                </ContentItem>
+                <ContentItem className="content-item-time">
+                  {dayjs(entry.startTime * 1000)
+                    .locale(localeDa)
+                    .format("LT")}
+                </ContentItem>
+                <ContentItem className="content-item-resouce">
+                  {entry.resourceTitle ?? entry.resourceId ?? ""}
+                </ContentItem>
+              </Fragment>
+            ))}
+        </ContentItemsWrapper>
       </Content>
     </Wrapper>
   );
@@ -145,8 +159,8 @@ const Wrapper = styled.div`
   color: var(--text-color);
   display: grid;
   grid-template-areas:
-    'header'
-    'content';
+    "header"
+    "content";
   grid-template-rows: 1fr 9fr;
   padding: var(--padding-size-base);
 
@@ -179,19 +193,14 @@ const HeaderDateBox = styled.div`
   line-height: 1;
 `;
 
-const Weekday = styled.div`
-
-`;
+const Weekday = styled.div``;
 
 const DateNumber = styled.div`
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
-
 `;
 
-const Month = styled.div`
-
-`;
+const Month = styled.div``;
 
 const Content = styled.div`
   grid-area: content;
@@ -253,6 +262,7 @@ CalendarMultiple.propTypes = {
     title: PropTypes.string,
     hasDateAndTime: PropTypes.bool,
     displayHeaders: PropTypes.bool,
+    dateAsBox: PropTypes.bool,
     resourceUnavailableText: PropTypes.string,
   }).isRequired,
 };

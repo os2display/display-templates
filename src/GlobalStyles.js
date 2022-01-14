@@ -1,11 +1,11 @@
 // GlobalStyles.js
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 /* TODO: Remove themes after testing  */
-import "./themes/dokk1.css"
-//import "./themes/blixen.css"
-//import "./themes/mso.css"
-//import "./themes/aarhus.css"
+import "./themes/dokk1.css";
+// import "./themes/blixen.css"
+// import "./themes/mso.css"
+// import "./themes/aarhus.css"
 
 const GlobalStyles = createGlobalStyle`
   /*

@@ -49,7 +49,11 @@ function CalendarSingle({
           elements.push(
             <ContentItem
               key={event.id}
-              className={elements.length === 0 ? "content-item single--now" : "content-item single--next"}
+              className={
+                elements.length === 0
+                  ? "content-item single--now"
+                  : "content-item single--next"
+              }
             >
               <Meta>
                 {renderTimeOfDay(event.startTime)}
@@ -72,18 +76,20 @@ function CalendarSingle({
   };
 
   return (
-    <Wrapper className={"calendar-single " + templateClasses.join(" ")} style={{ '--bg-image': templateRootStyle.backgroundImage, '--bg-color': templateRootStyle.backgroundColor }}>
-      <Title className="title">
-        {title}
-      </Title>
-      {subTitle && (
-        <SubTitle className="subtitle">
-          {subTitle}
-        </SubTitle>
-      )}
+    <Wrapper
+      className={`calendar-single ${templateClasses.join(" ")}`}
+      style={{
+        "--bg-image": templateRootStyle.backgroundImage,
+        "--bg-color": templateRootStyle.backgroundColor,
+      }}
+    >
+      <Title className="title">{title}</Title>
+      {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
       <Content className="content">
         {calendarEvents?.length === 0 && (
-          <ContentItem className="content-item">{resourceAvailableText}</ContentItem>
+          <ContentItem className="content-item">
+            {resourceAvailableText}
+          </ContentItem>
         )}
         {calendarEvents?.length > 0 && renderSingle(calendarEvents)}
       </Content>

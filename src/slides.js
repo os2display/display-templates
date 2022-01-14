@@ -125,7 +125,7 @@ const slides = [
       // Options: multiple|multipleDays|single
       layout: "multipleDays",
       hasDateAndTime: true,
-      //backgroundColor: "hsl(0deg 0% 20%)",
+      // backgroundColor: "hsl(0deg 0% 20%)",
       backgroundColor: "",
       colorize: false,
       // Options: blue|red|yellow
@@ -135,7 +135,7 @@ const slides = [
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
-      //image: ["/v1/media/00000000000000000000000001"],
+      // image: ["/v1/media/00000000000000000000000001"],
       image: [],
       footerText: "Se mere på localhost/events",
     },

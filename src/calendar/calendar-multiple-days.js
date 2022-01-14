@@ -66,17 +66,21 @@ function CalendarMultipleDays({
             {days[dayString].map((event) => (
               <ColItem key={event.id} className="col-item">
                 <Time className="col-item-time">
-                  <div>{renderTimeOfDay(event.startTime)} -{" "}</div>
+                  <div>{renderTimeOfDay(event.startTime)} - </div>
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <EventTitle>{event.title ?? resourceUnavailableText ?? (
-                    <FormattedMessage
-                      id="unavailable"
-                      defaultMessage="Unavailable"
-                    />
-                  )}</EventTitle>
-                  <EventResourceTitle>{event.resourceTitle ?? event.resourceId}</EventResourceTitle>
+                  <EventTitle>
+                    {event.title ?? resourceUnavailableText ?? (
+                      <FormattedMessage
+                        id="unavailable"
+                        defaultMessage="Unavailable"
+                      />
+                    )}
+                  </EventTitle>
+                  <EventResourceTitle>
+                    {event.resourceTitle ?? event.resourceId}
+                  </EventResourceTitle>
                 </Event>
               </ColItem>
             ))}
@@ -87,18 +91,20 @@ function CalendarMultipleDays({
   };
 
   return (
-    <Wrapper className={'calendar-multiple-days ' + templateClasses.join(' ')} style={{ '--bg-image': templateRootStyle.backgroundImage, '--bg-color': templateRootStyle.backgroundColor }}>
+    <Wrapper
+      className={`calendar-multiple-days ${templateClasses.join(" ")}`}
+      style={{
+        "--bg-image": templateRootStyle.backgroundImage,
+        "--bg-color": templateRootStyle.backgroundColor,
+      }}
+    >
       <>
-        <Title className='title'>{title}</Title>
-        <Content className='content'>
+        <Title className="title">{title}</Title>
+        <Content className="content">
           {calendarEvents?.length > 0 &&
             renderDays(groupEventsByDays(calendarEvents))}
         </Content>
-        {footerText && (
-          <Footer className="footer">
-            {footerText}
-          </Footer>
-        )}
+        {footerText && <Footer className="footer">{footerText}</Footer>}
       </>
     </Wrapper>
   );
@@ -114,9 +120,9 @@ const Wrapper = styled.div`
   color: var(--text-color);
   display: grid;
   grid-template-areas:
-    'title'
-    'content'
-    'footer';
+    "title"
+    "content"
+    "footer";
   grid-template-rows: 1fr 14fr 1fr;
 
   &.colorize {
@@ -142,10 +148,9 @@ const Content = styled.div`
   @media (orientation: portrait) {
     grid-template-rows: auto;
     grid-template-columns: revert;
-    font-size: calc(var(--font-size-base) * 2)
+    font-size: calc(var(--font-size-base) * 2);
   }
-
-  `;
+`;
 
 const Col = styled.section`
   background-color: var(--color-grey-200);
@@ -155,17 +160,17 @@ const ColTitle = styled.h3`
   background-color: var(--color-grey-100);
   padding: calc(var(--padding-size-base, 30px) / 2);
   margin: 0;
-  font-weight: var(--font-weight-bold );
+  font-weight: var(--font-weight-bold);
 `;
 
 const ColItem = styled.article`
-  padding: calc(var(--padding-size-base, 30px) / 2) calc(var(--padding-size-base, 30px) / 2);
+  padding: calc(var(--padding-size-base, 30px) / 2)
+    calc(var(--padding-size-base, 30px) / 2);
   display: flex;
   background-color: var(--color-grey-300);
 
   &:nth-child(odd) {
     background-color: var(--color-grey-400);
-
   }
 `;
 
@@ -193,7 +198,6 @@ const Footer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 
 CalendarMultipleDays.defaultProps = {
   templateClasses: [],
