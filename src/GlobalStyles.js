@@ -2,7 +2,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 /* TODO: Remove themes after testing  */
-//import "./themes/dokk1.css"
+import "./themes/dokk1.css"
 //import "./themes/blixen.css"
 //import "./themes/mso.css"
 //import "./themes/aarhus.css"
@@ -13,31 +13,8 @@ const GlobalStyles = createGlobalStyle`
   * This is calculated and added through the slide template component.
   */
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  /* Common template variables */
   html {
-    font-size: 1.125rem;
-  }
-  body {
-    margin: 0;
-  }
-
-  :root {
-    /* Common variables */
-    --font: var(--font-family-base, Arial, "sans-serif");
-    --bg-color: var(--bg-dark, hsl(0deg, 0%, 10%));
-    --text-color: var(--color-light, hsl(0deg, 0%, 100%));
-    --highlight-color: var(--color-primary, hsl(200deg, 60%, 50%));
-    --padding: var(--padding-size-base, 30px);
-    --margin: var(--margin-size-base, 30px);
-    --title-font-size: var(--h1-font-size, 4rem);
-    --title-font-weight: var(--font-weight-bold, 700);
-    --sub-title-font-size: var(--h4-font-size, 2rem);
-    --content-font-size: var(--font-size-base, 1.25rem);
-    --color-meta: var(--color-grey-300, hsl(0deg, 0%, 70%));
-    --border: var(--border-light, 1px solid var(--color));
-
     /*
     * Colors
     */
@@ -95,9 +72,6 @@ const GlobalStyles = createGlobalStyle`
     /*
     * Sizes
     */
-    --spacer: 1rem;
-    --margin-size-base: var(--spacer);
-    --padding-size-base: var(--spacer);
     --font-size-base: 1rem; // Assumes the browser default, typically 16px
     --font-size-sm: calc(var(--font-size-base) * 0.875);
     --font-size-lg: calc(var(--font-size-base) * 1.25);
@@ -108,6 +82,13 @@ const GlobalStyles = createGlobalStyle`
     --h4-font-size: calc(var(--font-size-base) * 1.5);
     --h5-font-size: calc(var(--font-size-base) * 1.25);
     --h6-font-size: calc(var(--font-size-base));
+
+    /*
+    * Spacing
+    */
+    --spacer: 12px;
+    --margin-size-base: calc(var(--spacer) * 3);
+    --padding-size-base: calc(var(--spacer) * 3);
 
     /*
     * Shadow
@@ -122,8 +103,44 @@ const GlobalStyles = createGlobalStyle`
     */
     --border-size: 1px;
     --border-style: solid;
-    --border-color: var(--color-light);
-    --border-light: var(--border-size) var(--border-style) var(--border-color);
+    --border-color: var(--color-grey-900);
+    @media (prefers-color-scheme: dark) {
+      --border-color: var(--color-light);
+    }
+    --border: var(--border-size) var(--border-style) var(--border-color);
+
+
+    /*
+    * Light / Dark mode
+    */
+    --background-color: var(--bg-light, hsl(0deg, 0%, 100%));
+    --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
+
+
+  }
+
+  /* Basic resets */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 1.125rem;
+    height: 100%;
+
+    /* Color defaults */
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  body {
+    margin: 0;
+    height: 100%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+      --text-color: var(--text-light, hsl(0deg, 0%, 100%));
+    }
   }
 
 `;
