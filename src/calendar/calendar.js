@@ -9,6 +9,7 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Calendar component.
@@ -68,7 +69,6 @@ function Calendar({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-calendar" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
@@ -95,6 +95,9 @@ function Calendar({ slide, content, run, slideDone }) {
           />
         )}
       </IntlProvider>
+
+      <ThemeStyles name="template-calendar" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

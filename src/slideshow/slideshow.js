@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./slideshow.scss";
 import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Slideshow component.
@@ -185,7 +186,6 @@ function Slideshow({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-slideshow" css={slide?.themeData?.css} />
       <div className="template-slideshow">
         {imageUrls &&
           imageUrls.map((imageUrl, imageUrlIndex) => {
@@ -231,6 +231,8 @@ function Slideshow({ slide, content, run, slideDone }) {
           })}
         {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
       </div>
+      <ThemeStyles name="template-slideshow" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

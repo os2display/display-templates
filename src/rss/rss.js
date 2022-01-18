@@ -5,6 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import "./rss.scss";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * RSS component.
@@ -72,7 +73,6 @@ function RSS({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-rss" css={slide?.themeData?.css} />
       <div className={`template-rss ${fontSize}`} style={rootStyle}>
         <div className="progress">
           {slide?.feedData?.title}
@@ -98,6 +98,8 @@ function RSS({ slide, content, run, slideDone }) {
           </>
         )}
       </div>
+      <ThemeStyles name="template-rss" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

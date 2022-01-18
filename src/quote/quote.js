@@ -4,6 +4,7 @@ import "./quote.scss";
 import BaseSlideExecution from "../base-slide-execution";
 import Logo from "./citation-mark.svg";
 import { ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Quote component.
@@ -58,7 +59,6 @@ function Quote({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-quote" css={slide?.themeData?.css} />
       <div className={show ? "template-quote show" : "template-quote hide"}>
         {/* todo make this themeable */}
         <Logo style={{ stroke: "red" }} />
@@ -67,6 +67,8 @@ function Quote({ slide, content, run, slideDone }) {
           <div className="author">{currentQuote.author}</div>
         </div>
       </div>
+      <ThemeStyles name="template-quote" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }
