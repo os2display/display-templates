@@ -41,14 +41,12 @@ function BookReview({ slide, content, run, slideDone }) {
   useEffect(() => {
     if (run) {
       slideExecution.start(slide.duration);
-    } else {
-      slideExecution.stop();
     }
-  }, [run]);
 
-  useEffect(() => {
-    setSanitizedParsedBookText(parse(DOMPurify.sanitize(bookText)));
-  }, []);
+    return function cleanup() {
+      slideExecution.stop();
+    };
+  }, [run]);
 
   return (
     <>

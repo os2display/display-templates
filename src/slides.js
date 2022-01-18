@@ -165,12 +165,57 @@ const slides = [
   {
     id: "slide6-rss",
     type: "rss",
-    duration: 5000,
+    feed: {
+      configuration: {
+        numberOfEntries: 5,
+        entryDuration: 10,
+      },
+    },
+    feedData: {
+      title: "Ut enim ad.",
+      entries: [
+        {
+          title: "Lorem ipsum dolor sit amet.",
+          lastModified: "2021-08-11T11:08:31.360Z",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Ut enim ad minim veniam,.",
+          lastModified: "2021-08-12T11:08:31.360Z",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Duis aute irure dolor i.",
+          lastModified: "2021-08-13T11:08:31.360Z",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Excepteur sint occaecat cupidatat non proident.",
+          lastModified: "2021-08-14T11:08:31.360Z",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+        {
+          title: "Sed ut perspiciatis unde omnis.",
+          lastModified: "2021-08-15T11:08:31.360Z",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
     content: {
-      fontSize: "xl",
-      rssNumber: 5,
-      rssDuration: 10,
-      source: "./fixtures/rss/feed.json",
+      image: ["/v1/media/00000000000000000000000001"],
+      fontSize: "m",
     },
   },
   {

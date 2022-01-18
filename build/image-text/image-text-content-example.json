@@ -1,0 +1,13 @@
+{
+  "title": "Slide title",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+  "image": "/v1/media/00000000000000000000000001",
+  "styling": {
+    "boxAlign": "top",
+    "boxMargin": false,
+    "shadow": true,
+    "separator": false,
+    "halfSize": false,
+    "reversed": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Fuld skærm",
+  "id": "01FMYMAB1EQYQ40QE0C7Y6NVBK",
+  "grid": {
+    "rows": 1,
+    "columns": 1
+  },
+  "regions": [
+    {
+      "title": "Skærmområde",
+      "gridArea": [
+        "a"
+      ]
+    }
+  ]
+}

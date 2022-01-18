@@ -1,0 +1,24 @@
+[
+  {
+    "key": "calendar-form-1",
+    "input": "header",
+    "text": "Skabelon: Kalender",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "calendar-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "calendar-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feed",
+    "feedType": "calendar",
+    "formGroupClasses": "mb-3"
+  }
+]

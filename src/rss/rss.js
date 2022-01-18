@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import BaseSlideExecution from "../base-slide-execution";
 import "./rss.scss";
-import { ThemeStyles } from "../slide-util";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 
 /**
  * RSS component.
@@ -13,21 +12,28 @@ import { ThemeStyles } from "../slide-util";
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {number} props.run Timestamp of when to start run.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
 function RSS({ slide, content, run, slideDone }) {
-  const { source, rssDuration, rssNumber, fontSize, media } = content;
-  // @TODO: theme the color of the below
-  const rootStyle = {
-    backgroundImage: `url("${media?.url}")`,
-  };
-  const [currentRSS, setCurrentRSS] = useState([]);
-  const [feed, setFeed] = useState([]);
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [index, setIndex] = useState(1);
-  const [feedTitle, setFeedTitle] = useState("");
+  const [entryIndex, setEntryIndex] = useState(0);
+  const [currentEntry, setCurrentEntry] = useState(null);
+  const timeoutRef = useRef(null);
+
+  const { fontSize = "m", image } = content;
+  const { feedData, feed } = slide;
+  const { configuration = {} } = feed;
+  const { entryDuration = 10, numberOfEntries = 5 } = configuration;
+
+  const rootStyle = {};
+  const feedLength = Math.min(numberOfEntries, feedData?.entries?.length ?? 0);
+  const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
+
+  // Set background image.
+  if (imageUrl) {
+    rootStyle.backgroundImage = `url("${imageUrl}")`;
+  }
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -39,91 +45,92 @@ function RSS({ slide, content, run, slideDone }) {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
-  /** Fetch data. */
-  useEffect(() => {
-    fetch(source)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setFeed(jsonData.feed.slice(0, rssNumber));
-        setFeedTitle(jsonData.feedTitle);
-        const [first] = jsonData.feed;
-        setDataLoaded(true);
-        setCurrentRSS(first);
-      });
-  }, []);
+  const entryDone = (index) => {
+    const nextIndex = index + 1;
+
+    if (nextIndex >= feedLength) {
+      slideDone(slide);
+    } else {
+      setEntryIndex(nextIndex);
+      setCurrentEntry(feedData?.entries[nextIndex]);
+      timeoutRef.current = setTimeout(() => {
+        entryDone(nextIndex);
+      }, entryDuration * 1000);
+    }
+  };
 
   /** Sets localized formats (dayjs) */
   useEffect(() => {
     dayjs.extend(localizedFormat);
   }, []);
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
-    } else {
-      slideExecution.stop();
+      entryDone(-1);
     }
   }, [run]);
 
-  useEffect(() => {
-    let timer;
-    if (dataLoaded) {
-      timer = setTimeout(() => {
-        const currentIndex = feed.indexOf(currentRSS);
-        const nextIndex = (currentIndex + 1) % feed.length;
-        setIndex(nextIndex + 1);
-        setCurrentRSS(feed[nextIndex]);
-      }, rssDuration * 1000);
-    }
-
-    return function cleanup() {
-      if (timer !== null) {
-        clearInterval(timer);
-      }
-    };
-  }, [currentRSS]);
-
-  const { title, date, description } = currentRSS;
-
   return (
     <>
-      <ThemeStyles name="rss-slide" css={slide?.themeData?.css} />
-      {/* TODO: Fix name to the format template- */}
-      <div className={`rss-slide ${fontSize}`} style={rootStyle}>
+      <ThemeStyles name="template-rss" css={slide?.themeData?.css} />
+      <div className={`template-rss ${fontSize}`} style={rootStyle}>
         <div className="progress">
-          {feedTitle} {index} / {feed.length}
+          {slide?.feedData?.title}
+          {feedLength > 0 && (
+            <span className="progress-numbers">
+              {entryIndex + 1} / {feedLength}
+            </span>
+          )}
         </div>
-        <div className="title">{title}</div>
-        {date && (
-          <div className="date">
-            {capitalize(dayjs(date).locale(localeDa).format("LLLL"))}
-          </div>
+        {currentEntry && (
+          <>
+            <div className="title">{currentEntry.title}</div>
+            {currentEntry.lastModified && (
+              <div className="date">
+                {capitalize(
+                  dayjs(currentEntry.lastModified)
+                    .locale(localeDa)
+                    .format("LLLL")
+                )}
+              </div>
+            )}
+            <div className="description">{currentEntry.content}</div>
+          </>
         )}
-        <div className="description">{description}</div>
       </div>
     </>
   );
 }
 
 RSS.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
+    mediaData: PropTypes.arrayOf(PropTypes.shape({})),
     duration: PropTypes.number.isRequired,
+    feed: PropTypes.shape({
+      configuration: {
+        numberOfEntries: PropTypes.number,
+        entryDuration: PropTypes.number,
+      },
+    }),
+    feedData: PropTypes.shape({
+      title: PropTypes.string,
+      entries: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          lastModified: PropTypes.string,
+          content: PropTypes.string,
+        })
+      ),
+    }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
-    source: PropTypes.string.isRequired,
-    rssDuration: PropTypes.number,
-    rssNumber: PropTypes.number,
-    fontSize: PropTypes.string,
-    media: PropTypes.shape({
-      url: PropTypes.string,
-    }),
+    image: PropTypes.string,
+    fontSize: PropTypes.string
   }).isRequired,
 };
 

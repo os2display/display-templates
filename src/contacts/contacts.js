@@ -46,9 +46,11 @@ function Contacts({ slide, content, run, slideDone }) {
   useEffect(() => {
     if (run) {
       slideExecution.start(slide.duration);
-    } else {
-      slideExecution.stop();
     }
+
+    return function cleanup() {
+      slideExecution.stop();
+    };
   }, [run]);
 
   return (

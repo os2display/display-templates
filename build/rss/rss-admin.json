@@ -1,0 +1,32 @@
+[
+  {
+    "key": "rss-form-1",
+    "input": "header",
+    "text": "Skabelon: RSS",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "rss-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "rss-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feed",
+    "feedType": "rss",
+    "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "rss-form-4",
+    "multipleImages": false,
+    "input": "image",
+    "name": "image",
+    "label": "Baggrundsbillede",
+    "formGroupClasses": "mb-3"
+  }
+]

@@ -66,6 +66,14 @@ const plugins = devMode
       }),
     ]
   : [
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, "./src/*/*.json"),
+            context: path.resolve(__dirname, "src"),
+          },
+        ],
+      }),
       new CleanWebpackPlugin({
         protectWebpackAssets: false,
         cleanAfterEveryBuildPatterns: ["*.LICENSE.txt"],
