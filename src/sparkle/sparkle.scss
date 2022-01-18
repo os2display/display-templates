@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   display: flex;
-  background-color: var(--color-white);
+  background-color: var(--background-color);
   font-family: var(--font-family-base);
   position: relative;
 
@@ -41,13 +41,13 @@
     -moz-hyphens: auto;
     hyphens: auto;
     overflow: hidden;
-    background-color: var(--bg-white);
-    color: var(--text-dark);
+    background-color: var(--background-color);
+    color: var(--text-color);
 
     h1 {
       font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
-      color: var(--text-dark);
+      color: var(--text-color);
       display: inline;
       padding-right: var(--spacer);
     }
@@ -55,7 +55,7 @@
     p {
       font-size: var(--font-size-lg);
       line-height: var(--line-height-base);
-      color: var(--text-dark);
+      color: var(--text-color);
     }
 
     p.date {
@@ -79,14 +79,14 @@
       display: inline-block;
       width: 5%;
       margin-right: 1em;
-      fill: var(--text-dark);
+      fill: var(--color-grey-900);
     }
 
     .brand-tag {
       font-size: 2.5em;
       line-height: 1;
       padding-top: 0.15em;
-      color: var(--text-dark);
+      color: var(--color-grey-900);
     }
   }
 
@@ -98,7 +98,7 @@
     display: flex;
 
     svg {
-      fill: var(--bg-light);
+      fill: var(--color-grey-100);
     }
   }
 
