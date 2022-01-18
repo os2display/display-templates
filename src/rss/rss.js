@@ -108,13 +108,12 @@ RSS.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.arrayOf(PropTypes.shape({})),
-    duration: PropTypes.number.isRequired,
+    mediaData: PropTypes.shape({}),
     feed: PropTypes.shape({
-      configuration: {
+      configuration: PropTypes.shape({
         numberOfEntries: PropTypes.number,
         entryDuration: PropTypes.number,
-      },
+      }),
     }),
     feedData: PropTypes.shape({
       title: PropTypes.string,

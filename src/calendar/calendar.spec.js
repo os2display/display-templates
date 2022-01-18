@@ -13,5 +13,4 @@ test("Test that calendar loads", () => {
   );
 
   expect(wrapper.text()).toContain("Kalender");
-  expect(wrapper.find(".template-calendar.blue").length).toBe(1);
 });
