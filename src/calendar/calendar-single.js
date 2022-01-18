@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import styled from "styled-components";
 
 /**
  * Single resource calendar.
@@ -46,22 +47,26 @@ function CalendarSingle({
       calendarEventsToRender.forEach((event) => {
         if (elements.length < 3) {
           elements.push(
-            <div
+            <ContentItem
               key={event.id}
-              className={elements.length === 0 ? "single--now" : "single--next"}
+              className={
+                elements.length === 0
+                  ? "content-item single--now"
+                  : "content-item single--next"
+              }
             >
-              <div className="single--meta">
+              <Meta>
                 {renderTimeOfDay(event.startTime)}
                 {" - "}
                 {renderTimeOfDay(event.endTime)}
-              </div>
+              </Meta>
               {event?.title ?? resourceUnavailableText ?? (
                 <FormattedMessage
                   id="unavailable"
                   defaultMessage="Unavailable"
                 />
               )}
-            </div>
+            </ContentItem>
           );
         }
       });
@@ -71,27 +76,80 @@ function CalendarSingle({
   };
 
   return (
-    <div className={templateClasses.join(" ")} style={templateRootStyle}>
-      <>
-        <div className="single--header">
-          {title}
-          {subTitle && (
-            <>
-              <br />
-              <div className="single--meta">{subTitle}</div>
-            </>
-          )}
-        </div>
-        <div className="single--content">
-          {calendarEvents?.length === 0 && (
-            <div className="single--available">{resourceAvailableText}</div>
-          )}
-          {calendarEvents?.length > 0 && renderSingle(calendarEvents)}
-        </div>
-      </>
-    </div>
+    <Wrapper
+      className={`calendar-single ${templateClasses.join(" ")}`}
+      style={{
+        "--bg-image": templateRootStyle.backgroundImage,
+        "--bg-color": templateRootStyle.backgroundColor,
+      }}
+    >
+      <Title className="title">{title}</Title>
+      {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
+      <Content className="content">
+        {calendarEvents?.length === 0 && (
+          <ContentItem className="content-item">
+            {resourceAvailableText}
+          </ContentItem>
+        )}
+        {calendarEvents?.length > 0 && renderSingle(calendarEvents)}
+      </Content>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  /* Wrapper styling */
+  font-family: var(--font-family-base);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--bg-color, var(--background-color));
+  background-image: var(--bg-image, none);
+  color: var(--text-color);
+  padding: var(--padding-size-base);
+
+  &.colorize {
+    background-blend-mode: multiply;
+    background-color: var(--background-color);
+  }
+`;
+
+const Title = styled.div`
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--margin-size-base);
+`;
+
+const SubTitle = styled.div`
+  font-size: var(--h2-font-size);
+  margin-bottom: var(--margin-size-base);
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ContentItem = styled.div`
+  border-left: var(--border);
+  padding-left: var(--padding-size-base);
+  margin-bottom: var(--margin-size-base);
+  font-size: var(--font-size-base);
+
+  &:first-of-type {
+    font-size: calc(var(--font-size-base) * 2);
+  }
+`;
+
+const Meta = styled.div`
+  color: inherit;
+  opacity: 0.75;
+  font-size: smaller;
+
+  /* @media (prefers-color-scheme: dark) {
+    color: var(--color-grey-700);
+  } */
+`;
 
 CalendarSingle.defaultProps = {
   templateClasses: [],

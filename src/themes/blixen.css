@@ -1,0 +1,40 @@
+/*
+** Blixen theme css
+*/
+
+/* Import roboto slab font from google */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap");
+
+/* Override default variabels */
+:root {
+  --color-primary: #673ab7;
+  --font-family-base: "Roboto Slab", serif;
+
+  --background-color: var(--bg-dark);
+  --text-color: var(--color-light);
+  --padding-size-base: 60px;
+  --margin-size-base: 60px;
+}
+
+/* Customize calender single template styling */
+.calendar-single {
+  --background-color: var(--color-primary);
+  --text-color: var(--color-light);
+  --font-size-base: 2rem;
+  text-align: right;
+}
+
+.calendar-single .title,
+.calendar-single .subtitle {
+  font-size: 4rem;
+  font-weight: 300;
+}
+.calendar-single .subtitle {
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.calendar-single .content-item {
+  font-family: Arial, sans-serif;
+  border-left: 0;
+}

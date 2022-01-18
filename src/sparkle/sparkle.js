@@ -11,6 +11,7 @@ import InstagramLogo from "./instagram-logo.svg";
 import BaseSlideExecution from "../base-slide-execution";
 import "./sparkle.scss";
 import { ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Sparkle component.
@@ -79,7 +80,6 @@ function Sparkle({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
       <div className={show ? "template-sparkle show" : "template-sparkle hide"}>
         <div className="media-section">
           {!videoUrl && (
@@ -118,6 +118,9 @@ function Sparkle({ slide, content, run, slideDone }) {
           <span className="brand-tag">{hashtagText}</span>
         </div>
       </div>
+
+      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

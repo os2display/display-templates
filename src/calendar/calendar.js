@@ -4,12 +4,12 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-import "./calendar.scss";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Calendar component.
@@ -42,7 +42,8 @@ function Calendar({ slide, content, run, slideDone }) {
   }
 
   if (colorize && colorizeColorClass !== "") {
-    classes.push("colorize", colorizeColorClass);
+    classes.push("colorize");
+    rootStyle.backgroundColor = colorizeColorClass;
   } else {
     rootStyle.backgroundColor = backgroundColor;
   }
@@ -68,7 +69,6 @@ function Calendar({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-calendar" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
@@ -95,6 +95,9 @@ function Calendar({ slide, content, run, slideDone }) {
           />
         )}
       </IntlProvider>
+
+      <ThemeStyles name="template-calendar" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

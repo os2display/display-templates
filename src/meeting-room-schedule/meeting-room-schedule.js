@@ -8,6 +8,7 @@ import "./meeting-room-schedule.scss";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Meeting room schedule component.
@@ -139,6 +140,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
           )}
         </div>
       </IntlProvider>
+      <GlobalStyles />
     </>
   );
 }

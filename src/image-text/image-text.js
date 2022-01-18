@@ -5,6 +5,7 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * ImageText component.
@@ -101,7 +102,6 @@ function ImageText({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <div className={rootClasses.join(" ")} style={rootStyle}>
         <div className={boxClasses} style={imageTextStyle}>
           {title && (
@@ -119,6 +119,8 @@ function ImageText({ slide, content, run, slideDone }) {
           {text && <div className="text">{parse(sanitizedText)}</div>}
         </div>
       </div>
+      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

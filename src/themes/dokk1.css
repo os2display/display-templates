@@ -2,24 +2,6 @@
 ** DOKK1 theme css
 */
 
-/* Defaults */
---bg-light: #f1f0ef;
---text-dark: #222;
---color-primary: #003764;
---color-secondary: #887c76;
---color-success: #006c3b;
---color-info: #0dcaf0;
---color-warning: #ffb400;
---color-danger: #dc3545;
-
---font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
---font-weight-light: 300;
---font-weight-bold: 600;
-
-/* Darkmode overrides */
---bg-dark: #212529;
---text-light: #ffffff;
-
 /* Custom Gibson font from https://use.typekit.net/ilx8ovv.css (Adobe/typeKit) */
 /*
  * The Typekit service used to deliver this font or fonts for use on websites
@@ -41,36 +23,112 @@
 
 @font-face {
   font-family: "canada-type-gibson";
-  src:url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/l?subset_id=2&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/d?subset_id=2&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/a?subset_id=2&fvd=n6&v=3") format("opentype");
-  font-display:auto;
-  font-style:normal;
-  font-weight:600;
+  src: url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/l?subset_id=2&fvd=n6&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/d?subset_id=2&fvd=n6&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/a?subset_id=2&fvd=n6&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family:"canada-type-gibson";
-  src:url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/l?subset_id=2&fvd=i6&v=3") format("woff2"),url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/d?subset_id=2&fvd=i6&v=3") format("woff"),url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/a?subset_id=2&fvd=i6&v=3") format("opentype");
-  font-display:auto;
-  font-style:italic;
-  font-weight:600;
+  font-family: "canada-type-gibson";
+  src: url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/l?subset_id=2&fvd=i6&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/d?subset_id=2&fvd=i6&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/a?subset_id=2&fvd=i6&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family:"canada-type-gibson";
-  src:url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
-  font-display:auto;
-  font-style:normal;
-  font-weight:300;
+  font-family: "canada-type-gibson";
+  src: url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 300;
 }
 
 @font-face {
-  font-family:"canada-type-gibson";
-  src:url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/l?subset_id=2&fvd=i3&v=3") format("woff2"),url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/d?subset_id=2&fvd=i3&v=3") format("woff"),url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/a?subset_id=2&fvd=i3&v=3") format("opentype");
-  font-display:auto;
-  font-style:italic;
-  font-weight:300;
+  font-family: "canada-type-gibson";
+  src: url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/l?subset_id=2&fvd=i3&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/d?subset_id=2&fvd=i3&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/a?subset_id=2&fvd=i3&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 300;
 }
 
 .tk-canada-type-gibson {
-  font-family: "canada-type-gibson",sans-serif;
+  font-family: "canada-type-gibson", sans-serif;
+}
+
+/* Defaults */
+:root {
+  --bg-light: #f1f0ef;
+  --text-dark: #222;
+  --color-primary: #003764;
+  --color-secondary: #887c76;
+  --color-success: #006c3b;
+  --color-info: #0dcaf0;
+  --color-warning: #ffb400;
+  --color-danger: #dc3545;
+
+  --color-blue: var(--color-primary);
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-green: var(--color-success);
+
+  --font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
+  --font-weight-light: 300;
+  --font-weight-bold: 600;
+
+  --bg-primary: var(--color-primary);
+
+  /* Darkmode overrides */
+  --bg-dark: #212529;
+  --text-light: #ffffff;
+}
+
+/* Customize calender single template styling */
+.calendar-single {
+  --h1-font-size: 5rem;
+  --h4-font-size: 3rem;
+  --font-size-base: 2rem;
+  --padding-size-base: 4rem;
+  --background-color: var(--color-primary);
+  --text-color: var(--color-light);
+  --border: 3px solid var(--color-light);
+  background-image: none;
+}
+
+/* Customize calender multiple template styling */
+.calendar-multiple {
+  --padding-size-base: 2rem;
+  --background-color: var(--color-primary);
+  --border: 1px solid var(--color-light);
+  --text-color: var(--color-light);
+  background-image: none;
+}
+
+.calendar-multiple-days {
+  --padding-size-base: 2rem;
+  --background-color: var(--color-grey-100);
+  --border: 1px solid var(--color-light);
+  --color-primary: var(--color-warning);
+  background-image: none;
 }

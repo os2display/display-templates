@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import styled from "styled-components";
 
 /**
  * Multiple resource calendar.
@@ -27,6 +28,7 @@ function CalendarMultiple({
     hasDateAndTime,
     resourceUnavailableText = null,
     displayHeaders = true,
+    dateAsBox = false /* TODO: Add this to the configuration of the slide */,
   } = content;
 
   /** Imports language strings, sets localized formats. */
@@ -73,54 +75,170 @@ function CalendarMultiple({
   }, [hasDateAndTime]);
 
   return (
-    <div className={templateClasses.join(" ")} style={templateRootStyle}>
-      <>
-        <div className="grid-container-title-date">
-          <div className="grid-item">{title}</div>
-          <div className="grid-item-end">
-            {currentDate && capitalize(dayjs().locale(localeDa).format("LLLL"))}
-          </div>
-        </div>
-        <div className="grid-container">
-          {displayHeaders !== false && (
-            <>
-              <div className="grid-item header" key={1}>
-                <FormattedMessage id="what" defaultMessage="what" />
-              </div>
-              <div className="grid-item header" key={2}>
-                <FormattedMessage id="when" defaultMessage="when" />
-              </div>
-              <div className="grid-item header" key={3}>
-                <FormattedMessage id="where" defaultMessage="where" />
-              </div>
-            </>
-          )}
+    <Wrapper
+      className={`calendar-multiple ${templateClasses.join(" ")}`}
+      style={{
+        "--bg-image": templateRootStyle.backgroundImage,
+        "--bg-color": templateRootStyle.backgroundColor,
+      }}
+    >
+      <Header className="header">
+        <HeaderTitle className="header-title">{title}</HeaderTitle>
+        {!dateAsBox && (
+          <HeaderDate className="header-date">
+            {currentDate &&
+              capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
+          </HeaderDate>
+        )}
+        {dateAsBox && (
+          <HeaderDateBox className="header-date-box">
+            <Weekday>
+              {currentDate &&
+                capitalize(dayjs().locale(localeDa).format("ddd"))}
+            </Weekday>
+            <DateNumber>
+              {currentDate && capitalize(dayjs().locale(localeDa).format("D"))}
+            </DateNumber>
+            <Month>
+              {currentDate &&
+                capitalize(dayjs().locale(localeDa).format("MMM"))}
+            </Month>
+          </HeaderDateBox>
+        )}
+      </Header>
+
+      <Content className="content">
+        {displayHeaders !== false && (
+          <ContentItemsWrapper>
+            <ContentHeaderItem className="content-item" key={1}>
+              <FormattedMessage id="what" defaultMessage="what" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item" key={2}>
+              <FormattedMessage id="when" defaultMessage="when" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item" key={3}>
+              <FormattedMessage id="where" defaultMessage="where" />
+            </ContentHeaderItem>
+          </ContentItemsWrapper>
+        )}
+        <ContentItemsWrapper>
           {calendarEvents?.length > 0 &&
             getSortedEvents(calendarEvents).map((entry) => (
               <Fragment key={entry.id}>
-                <div className="grid-item">
+                <ContentItem className="content-item-title">
                   {entry.title ?? resourceUnavailableText ?? (
                     <FormattedMessage
                       id="unavailable"
                       defaultMessage="Unavailable"
                     />
                   )}
-                </div>
-                <div className="grid-item">
+                </ContentItem>
+                <ContentItem className="content-item-time">
                   {dayjs(entry.startTime * 1000)
                     .locale(localeDa)
                     .format("LT")}
-                </div>
-                <div className="grid-item">
+                </ContentItem>
+                <ContentItem className="content-item-resouce">
                   {entry.resourceTitle ?? entry.resourceId ?? ""}
-                </div>
+                </ContentItem>
               </Fragment>
             ))}
-        </div>
-      </>
-    </div>
+        </ContentItemsWrapper>
+      </Content>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  font-family: var(--font-family-base);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--bg-color, var(--background-color));
+  background-image: var(--bg-image, none);
+  color: var(--text-color);
+  display: grid;
+  grid-template-areas:
+    "header"
+    "content";
+  grid-template-rows: 1fr 9fr;
+  padding: var(--padding-size-base);
+
+  &.colorize {
+    background-blend-mode: multiply;
+    background-color: var(--background-color);
+  }
+`;
+
+const Header = styled.div`
+  padding: var(--padding-size-base);
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+`;
+
+const HeaderTitle = styled.div`
+  font-size: var(--h1-font-size);
+`;
+
+const HeaderDate = styled.div`
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-light);
+`;
+
+const HeaderDateBox = styled.div`
+  padding: var(--padding-size-base) calc(var(--padding-size-base) * 2);
+  background-color: var(--color-primary);
+  line-height: 1;
+`;
+
+const Weekday = styled.div``;
+
+const DateNumber = styled.div`
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-bold);
+`;
+
+const Month = styled.div``;
+
+const Content = styled.div`
+  grid-area: content;
+`;
+
+const ContentItemsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+
+const ContentItem = styled.div`
+  padding: var(--padding-size-base);
+  border-bottom: var(--border);
+  border-left: var(--border);
+
+  // Remove border left.
+  &:nth-of-type(3n + 1) {
+    border-left: 0;
+  }
+
+  // Remove border from bottom.
+  &:nth-last-child(-n + 3) {
+    border-bottom: 0;
+  }
+`;
+
+const ContentHeaderItem = styled.div`
+  padding: var(--padding-size-base);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-bold);
+  border-bottom: var(--border);
+  border-left: var(--border);
+
+  // Remove border left.
+  &:nth-of-type(3n + 1) {
+    border-left: 0;
+  }
+`;
 
 CalendarMultiple.defaultProps = {
   templateClasses: [],
@@ -144,6 +262,7 @@ CalendarMultiple.propTypes = {
     title: PropTypes.string,
     hasDateAndTime: PropTypes.bool,
     displayHeaders: PropTypes.bool,
+    dateAsBox: PropTypes.bool,
     resourceUnavailableText: PropTypes.string,
   }).isRequired,
 };
