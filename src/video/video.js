@@ -34,11 +34,8 @@ function Video({ slide, content, run, slideDone }) {
 
       if (promise !== undefined) {
         promise
-          .then(() => {
-            console.log("autoplay started");
-          })
-          .catch((error) => {
-            console.log("autoplay blocked, enabling controls");
+          .then(() => {})
+          .catch(() => {
             if (videoRef?.current) {
               videoRef.current.controls = true;
             }
