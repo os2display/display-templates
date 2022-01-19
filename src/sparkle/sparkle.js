@@ -11,6 +11,7 @@ import InstagramLogo from "./instagram-logo.svg";
 import BaseSlideExecution from "../base-slide-execution";
 import "./sparkle.scss";
 import { ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Sparkle component.
@@ -38,7 +39,7 @@ function Sparkle({ slide, content, run, slideDone }) {
   let { duration } = content;
   const { hashtagText } = content;
   duration = duration || 15000; // Add a default
-  const sanitizedTextMarkup = DOMPurify.sanitize(textMarkup);
+  const sanitizedTextMarkup = parse(DOMPurify.sanitize(textMarkup, {}));
 
   // Animation
   const [show, setShow] = useState(true);
@@ -79,7 +80,6 @@ function Sparkle({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
       <div className={show ? "template-sparkle show" : "template-sparkle hide"}>
         <div className="media-section">
           {!videoUrl && (
@@ -118,6 +118,9 @@ function Sparkle({ slide, content, run, slideDone }) {
           <span className="brand-tag">{hashtagText}</span>
         </div>
       </div>
+
+      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

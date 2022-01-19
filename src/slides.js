@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 const slides = [
   {
     id: "slide1-image-text",
@@ -54,36 +56,88 @@ const slides = [
     id: "slide3-calendar",
     type: "calendar",
     duration: 5000,
+    feedData: [
+      {
+        id: "uniqueEvent1",
+        title: "Cake",
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det første rum",
+        resourceId: "M1",
+      },
+      {
+        id: "uniqueEvent2",
+        //        title: "Cookies",
+        startTime: dayjs().add(2, "hour").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle: "Det andet rum",
+        resourceId: "M2",
+      },
+      {
+        id: "uniqueEvent3",
+        title: "Coffee",
+        startTime: dayjs().add(3, "hour").add(15, "minutes").unix(),
+        endTime: dayjs().add(4, "hour").unix(),
+        resourceTitle: "Det tredje rum",
+        resourceId: "M3",
+      },
+      {
+        id: "uniqueEvent4",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent5",
+        title: "Tea",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent6",
+        title: "Tea",
+        startTime: dayjs().add(3, "hour").add(3, "day").unix(),
+        endTime: dayjs().add(4, "hour").add(3, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent7",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(6, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(6, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+    ],
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
     content: {
+      // Options: multiple|multipleDays|single
+      layout: "multipleDays",
       hasDateAndTime: true,
-      backgroundColor: "blue",
-      title: "Calendar",
-      events: [
-        {
-          id: "uniqueEvent1",
-          eventName: "Cake",
-          datetime: "2021-06-10T07:55:28.478Z",
-          location: "M2",
-        },
-        {
-          id: "uniqueEvent2",
-          eventName: "Workshop",
-          datetime: "2021-06-10T08:28:22.450Z",
-          location: "Home",
-        },
-        {
-          id: "uniqueEvent3",
-          eventName: "GDPR",
-          datetime: "2021-06-10T08:59:05.251Z",
-          location: "M3-4",
-        },
-        {
-          id: "uniqueEvent4",
-          eventName: "Meeting",
-          datetime: "2021-06-10T09:59:47.264Z",
-          location: "Workshopzonen",
-        },
-      ],
+      // backgroundColor: "hsl(0deg 0% 20%)",
+      backgroundColor: "",
+      colorize: false,
+      // Options: blue|red|yellow
+      colorizeColorClass: "hsl(170deg 80% 55%)",
+      title: "Kalender",
+      subTitle: "Underoverskrift",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      resourceUnavailableText: "Det er optaget",
+      // image: ["/v1/media/00000000000000000000000001"],
+      image: [],
+      footerText: "Se mere på localhost/events",
     },
   },
   {

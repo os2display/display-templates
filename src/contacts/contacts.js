@@ -5,6 +5,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./contacts.scss";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Contacts component.
@@ -55,14 +56,11 @@ function Contacts({ slide, content, run, slideDone }) {
 
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
-      <ThemeStyles name="contacts-template" css={slide?.themeData?.css} />
       {/* TODO: Fix name to the format template- */}
       <div className="contacts-template">
         <h1>
           <FormattedMessage id="contacts" defaultMessage="contacts" />
-          {separator && (
-            <div className="separator" />
-          )}
+          {separator && <div className="separator" />}
         </h1>
         <div className="contacts">
           {mappedContacts &&
@@ -87,6 +85,9 @@ function Contacts({ slide, content, run, slideDone }) {
             ))}
         </div>
       </div>
+
+      <ThemeStyles name="contacts-template" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </IntlProvider>
   );
 }

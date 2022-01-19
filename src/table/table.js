@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "./table.scss";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Table component.
@@ -54,7 +55,6 @@ function Table({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-table" css={slide?.themeData?.css} />
       <div className="table" style={rootStyle}>
         <h1 className="header">{title}</h1>
         {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
@@ -82,6 +82,9 @@ function Table({ slide, content, run, slideDone }) {
         )}
         {fontPlacement === "bottom" && <div classes={textClasses}>{text}</div>}
       </div>
+
+      <ThemeStyles name="template-table" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }

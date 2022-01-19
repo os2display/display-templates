@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
 import "./book-review.scss";
 import DOMPurify from "dompurify";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Book review component.
@@ -18,7 +19,9 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
  */
 function BookReview({ slide, content, run, slideDone }) {
   const { authorText, bookText } = content;
-  const [sanitizedParsedBookText, setSanitizedParsedBookText] = useState("");
+  const sanitizedParsedBookText = bookText
+    ? parse(DOMPurify.sanitize(bookText, {}))
+    : "";
 
   const authorImageUrl = getFirstMediaUrlFromField(
     slide.mediaData,
@@ -50,7 +53,6 @@ function BookReview({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-book-review" css={slide?.themeData?.css} />
       <div className="template-book-review">
         <div className="text-area">
           <div>{sanitizedParsedBookText}</div>
@@ -70,6 +72,9 @@ function BookReview({ slide, content, run, slideDone }) {
           )}
         </div>
       </div>
+
+      <ThemeStyles name="template-book-review" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }
