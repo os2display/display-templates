@@ -1,5 +1,3 @@
-@use "../variables.scss";
-
 /* Themable variables
    To be overridden from frontend.
 
@@ -7,6 +5,7 @@
   --bg-light
   --text-dark
   --color-primary
+  --font-family-base
 
   Dark:
   --bg-dark
@@ -15,13 +14,15 @@
 */
 
 .contacts-template {
+  --font: var(--font-family-base, Arial);
+  --highlight-color: var(--color-primary, hsl(200deg, 70%, 55%));
+
   /* Assign default colors to variables for easy light/dark mode switch */
-  --background-color: var(--bg-light);
-  --text-color: var(--text-dark);
+  --background-color: var(--bg-light, hsl(0deg, 0%, 100%));
+  --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
 
   height: 100%;
   padding: 5%;
-
   background-color: var(--background-color);
   color: var(--text-color);
 
@@ -37,7 +38,7 @@
       width: 100%;
       transition: width 0.3s ease-out;
       animation: 0.7s normal 0.5s forwards 1 h1-underline ease-out;
-      background-color: var(--color-primary);
+      background-color: var(--highlight-color);
     }
   }
 
@@ -64,7 +65,7 @@
   @media (prefers-color-scheme: dark) {
     /* Change colors for use in darkmode */
 
-    --background-color: var(--bg-dark);
-    --text-color: var(--text-light);
+    --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+    --text-color: var(--text-light, hsl(0deg, 0%, 100%));
   }
 }

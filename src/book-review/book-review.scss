@@ -1,11 +1,18 @@
-@use "../variables.scss";
-
 .template-book-review {
+  --font: var(--font-family-base, Arial);
+  --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
+  --bg-color: var(--bg-white, hsl(0deg, 0%, 100%));
+  --bg-color-light: var(--bg-light, hsl(0deg, 0%, 90%));
+  --bg-color-dark: var(--bg-dark, hsl(0deg, 5%, 20%));
+  --title-font-size: var(--h1-font-size, 4rem);
+  --blur: var(--image-blur, 10px);
+
+  font-family: var(--font);
   position: relative;
   text-align: left;
   height: 100%;
   width: 100%;
-  color: var(--text-dark);
+  color: var(--text-color);
   display: grid;
   grid-template-columns: 64% 36%;
   grid-template-rows: 80% 20%;
@@ -14,7 +21,7 @@
   overflow: hidden;
 
   .text-area {
-    background: var(--bg-white);
+    background: var(--bg-color);
     grid-area: a;
     padding: 8% 10% 0 10%;
     word-wrap: break-word;
@@ -25,7 +32,7 @@
     }
 
     h1 {
-      font-size: var(--h1-font-size);
+      font-size: var(--title-font-size);
       margin: 0 0 2% 0;
       text-align: left;
     }
@@ -42,7 +49,7 @@
   }
 
   .author-area {
-    background-color: var(--bg-light);
+    background-color: var(--bg-color-light);
     position: relative;
     grid-area: b;
 
@@ -56,12 +63,13 @@
       overflow: hidden;
       background-size: cover;
       background-position: center center;
+      background-color: var(--bg-color-dark);
     }
 
     .author {
       padding: 5% 1% 1% 1%;
       text-align: center;
-      color: var(--text-dark);
+      color: var(--text-color);
       font-size: 1.5em;
       margin-top: 2em;
       margin-bottom: 1em;
@@ -70,7 +78,7 @@
 
   .book-image-area {
     position: relative;
-    background: var(--bg-dark);
+    background: var(--bg-color-dark);
     display: grid;
     overflow: hidden;
     grid-area: c;
@@ -84,7 +92,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      filter: blur(var(--image-blur));
+      filter: blur(var(--blur));
 
       &:after {
         content: "";

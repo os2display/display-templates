@@ -8,6 +8,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import "./poster.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Poster component.
@@ -108,7 +109,6 @@ function Poster({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-poster" css={slide?.themeData?.css} />
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className="template-poster">
           <div
@@ -177,6 +177,9 @@ function Poster({ slide, content, run, slideDone }) {
           </div>
         </div>
       </IntlProvider>
+
+      <ThemeStyles name="template-poster" css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }
