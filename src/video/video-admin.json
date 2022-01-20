@@ -1,0 +1,25 @@
+[
+  {
+    "key": "video-form-1",
+    "input": "header",
+    "text": "Skabelon: Video",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "video-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "video-form-video",
+    "input": "file",
+    "text": "Video",
+    "name": "video",
+    "acceptedFileExtensions": ["webm", "mp4"],
+    "acceptedMimetypes": ["video/webm", "video/mp4"],
+    "formGroupClasses": "h5 mb-3"
+  }
+]
