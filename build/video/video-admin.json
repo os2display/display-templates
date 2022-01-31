@@ -18,7 +18,6 @@
     "input": "file",
     "text": "Video",
     "name": "video",
-    "acceptedFileExtensions": ["webm", "mp4"],
     "acceptedMimetypes": ["video/webm", "video/mp4"],
     "formGroupClasses": "h5 mb-3"
   }
