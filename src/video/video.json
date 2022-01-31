@@ -4,7 +4,7 @@
   "id": "01FQBJFKM0YFX1VW5K94VBSNCC",
   "description": "Skabelon til video.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/video/video.js",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/video.js",
     "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/video/video-admin.json",
     "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/video/video-schema.json",
     "assets": [],
