@@ -11,10 +11,10 @@ configure({ adapter: new Adapter() });
 jest.mock("./shape.svg", () => () => <span />);
 jest.mock("./instagram-logo.svg", () => () => <span />);
 
-test("Test that sparkle loads", () => {
+test("Test that instagram-feed loads", () => {
   const slide = slides[8];
   const wrapper = shallow(
     <InstagramFeed run slide={slide} content={slide.content} slideDone={() => {}} />
   );
-  expect(wrapper.find(".template-sparkle").exists()).toBeTruthy();
+  expect(wrapper.find(".template-instagram-feed").exists()).toBeTruthy();
 });

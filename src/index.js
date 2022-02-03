@@ -113,7 +113,7 @@ const renderSlide = (slide) => {
           slideDone={() => {}}
         />
       );
-    case "sparkle":
+    case "instagram-feed":
       return (
         <InstagramFeed
           content={slide.content}

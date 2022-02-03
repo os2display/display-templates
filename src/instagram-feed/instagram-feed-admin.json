@@ -17,7 +17,7 @@
     "key": "instagram-feed-form-3",
     "input": "feed",
     "text": "Opsæt feed",
-    "name": "feedId",
+    "name": "feeds",
     "feedType": "instagram-feed",
     "formGroupClasses": "mb-3",
     "singleSelect": true

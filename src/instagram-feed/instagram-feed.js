@@ -24,44 +24,34 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function InstagramFeed({ slide, content, run, slideDone }) {
-  // @TODO: what does horizontal/portrait/vertical do? Ask Troels!
   dayjs.extend(localizedFormat);
   dayjs.extend(relativeTime);
 
-  // Posts
-  const { posts } = content;
-  const [first] = posts;
-  const [currentPost, setCurrentPost] = useState(first);
-
-  // Props from content and post.
-  const { textMarkup, mediaUrl, username, createdTime, videoUrl } = currentPost;
-  // @TODO: should duration depend on number of instagram posts to show? Ask Troels!
-  let { duration } = content;
-  const { hashtagText } = content;
-  duration = duration || 15000; // Add a default
-  const sanitizedTextMarkup = parse(DOMPurify.sanitize(textMarkup, {}));
+  const [currentPost, setCurrentPost] = useState(null);
 
   // Animation
   const [show, setShow] = useState(true);
   const animationDuration = 1500;
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
-  useEffect(() => {
-    if (run) {
-      slideExecution.start(slide.duration);
-    } else {
-      slideExecution.stop();
-    }
-  }, [run]);
+  const { feedData } = slide;
+  const { hashtagText } = content;
 
-  /** Setup post switch and animation, if there is more than one post. */
+  // @TODO: should duration depend on number of instagram posts to show?
+  let { duration } = content;
+  duration = duration || 15000; // Add a default
+
+  /** Setup feed entry switch and animation, if there is more than one post. */
   useEffect(() => {
     const timer = setTimeout(() => {
-      const currentIndex = posts.indexOf(currentPost);
-      const nextIndex = (currentIndex + 1) % posts.length;
-      setCurrentPost(posts[nextIndex]);
-      setShow(true);
+      const currentIndex = feedData.indexOf(currentPost);
+      const nextIndex = (currentIndex + 1) % feedData.length;
+
+      if (nextIndex === 0) {
+        slideDone(slide);
+      } else {
+        setCurrentPost(feedData[nextIndex]);
+        setShow(true);
+      }
     }, duration);
 
     const animationTimer = setTimeout(() => {
@@ -78,48 +68,72 @@ function InstagramFeed({ slide, content, run, slideDone }) {
     };
   }, [currentPost]);
 
+  useEffect(() => {
+    if (run) {
+      if (feedData.length > 0) {
+        setCurrentPost(feedData[0]);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
+    }
+  }, [run]);
+
+  const getSanitizedMarkup = (textMarkup) => {
+    return parse(DOMPurify.sanitize(textMarkup, {}));
+  };
+
+  // @TODO: what does horizontal/portrait/vertical do?
+
   return (
     <>
-      <div className={show ? "template-sparkle show" : "template-sparkle hide"}>
-        <div className="media-section">
-          {!videoUrl && (
-            <div
-              className="image"
-              style={{
-                backgroundImage: `url("${mediaUrl}")`,
-                ...(show
-                  ? { animation: `fade-in ${animationDuration}ms` }
-                  : { animation: `fade-out ${animationDuration}ms` }),
-              }}
-            />
-          )}
-          {videoUrl && (
-            <div className="video-container">
-              <video muted="muted" autoPlay="autoplay" loop>
-                <source src={videoUrl} type="video/mp4" />
-                <track kind="captions" />
-              </video>
+      {currentPost && (
+        <div
+          className={
+            show
+              ? "template-instagram-feed show"
+              : "template-instagram-feed hide"
+          }
+        >
+          <div className="media-section">
+            {!currentPost.videoUrl && (
+              <div
+                className="image"
+                style={{
+                  backgroundImage: `url("${currentPost.mediaUrl}")`,
+                  ...(show
+                    ? { animation: `fade-in ${animationDuration}ms` }
+                    : { animation: `fade-out ${animationDuration}ms` }),
+                }}
+              />
+            )}
+            {currentPost.videoUrl && (
+              <div className="video-container">
+                <video muted="muted" autoPlay loop src={currentPost.videoUrl}>
+                  <track kind="captions" />
+                </video>
+              </div>
+            )}
+          </div>
+          <div className="author-section">
+            <h1 className="author">{currentPost.username}</h1>
+            <div className="date">
+              {dayjs(currentPost.createdTime).locale(localeDa).fromNow()}
             </div>
-          )}
+            <div className="description">
+              {getSanitizedMarkup(currentPost.textMarkup)}
+            </div>
+          </div>
+          <div className="shape">
+            <Shape />
+          </div>
+          <div className="brand">
+            <InstagramLogo className="brand-icon" />
+            <span className="brand-tag">{hashtagText}</span>
+          </div>
         </div>
-        <div className="author-section">
-          <h1 className="author">{username}</h1>
-          <p className="date">
-            {dayjs(createdTime).locale(localeDa).fromNow()}
-          </p>
-          <p className="description">{parse(sanitizedTextMarkup)}</p>
-        </div>
-        <div className="shape">
-          <Shape />
-        </div>
-        <div className="brand">
-          {/* todo make this themeable */}
-          <InstagramLogo className="brand-icon" />
-          <span className="brand-tag">{hashtagText}</span>
-        </div>
-      </div>
+      )}
 
-      <ThemeStyles name="template-sparkle" css={slide?.themeData?.css} />
+      <ThemeStyles name="template-instagram-feed" css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -133,13 +147,20 @@ InstagramFeed.propTypes = {
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
+    feedData: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        textMarkup: PropTypes.string,
+        mediaUrl: PropTypes.string,
+        videoUrl: PropTypes.string,
+        username: PropTypes.string,
+        createdTime: PropTypes.string,
+      })
+    ).isRequired,
   }).isRequired,
   content: PropTypes.shape({
     hashtagText: PropTypes.string,
     duration: PropTypes.number,
-    posts: PropTypes.arrayOf(
-      PropTypes.shape({ quote: PropTypes.string, author: PropTypes.string })
-    ),
   }).isRequired,
 };
 
