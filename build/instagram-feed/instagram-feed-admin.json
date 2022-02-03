@@ -17,9 +17,69 @@
     "key": "instagram-feed-form-3",
     "input": "feed",
     "text": "Opsæt feed",
-    "name": "feedId",
+    "name": "feeds",
     "feedType": "instagram-feed",
     "formGroupClasses": "mb-3",
     "singleSelect": true
+  },
+  {
+    "key": "instagram-feed-form-entry-duration",
+    "input": "input",
+    "name": "entryDuration",
+    "type": "number",
+    "label": "Varighed pr. indgang (i sekunder)",
+    "helpText": "Her skal du skrive varigheden pr. indgang.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "instagram-feed-hashtag-text",
+    "input": "input",
+    "name": "hashtagText",
+    "type": "text",
+    "label": "Hashtag-tekst",
+    "helpText": "Her kan du skrive hashtag-teksten.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "instagram-feed-orientation",
+    "input": "select",
+    "name": "orientation",
+    "label": "Vælg skærmorientering",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "orientation1",
+        "title": "Horisontalt",
+        "value": "landscape"
+      },
+      {
+        "key": "orientation2",
+        "title": "Vertikal",
+        "value": "vertical"
+      }
+    ]
+  },
+  {
+    "key": "instagram-feed-image-width",
+    "input": "input",
+    "name": "imageWidth",
+    "type": "number",
+    "min": 0,
+    "max": 100.0,
+    "label": "Billedebredde",
+    "helpText": "Her kan du skrive billedebredden.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "instagram-feed-max-entries",
+    "input": "input",
+    "name": "maxEntries",
+    "type": "number",
+    "min": 1,
+    "label": "Maksimalt antal indgange",
+    "helpText": "Her kan du skrive maksimalt antal indgange.",
+    "formGroupClasses": "col-md-6"
   }
 ]

@@ -395,7 +395,8 @@ const slides = [
       hashtagText: "#myhashtag",
       orientation: "landscape",
       imageWidth: 56.25,
-      duration: 10000,
+      entryDuration: 10,
+      maxEntries: 5,
     },
     feedData: [
       {

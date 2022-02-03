@@ -8,7 +8,6 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import Shape from "./shape.svg";
 import InstagramLogo from "./instagram-logo.svg";
-import BaseSlideExecution from "../base-slide-execution";
 import "./instagram-feed.scss";
 import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
@@ -37,14 +36,17 @@ function InstagramFeed({ slide, content, run, slideDone }) {
   const { hashtagText } = content;
 
   // @TODO: should duration depend on number of instagram posts to show?
-  let { duration } = content;
-  duration = duration || 15000; // Add a default
+  let { entryDuration: duration } = content;
+  duration = (duration || 15) * 1000; // Add a default
+
+  const { maxEntries = 5 } = content;
 
   /** Setup feed entry switch and animation, if there is more than one post. */
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = feedData.indexOf(currentPost);
-      const nextIndex = (currentIndex + 1) % feedData.length;
+      const nextIndex =
+        (currentIndex + 1) % Math.min(feedData.length, maxEntries);
 
       if (nextIndex === 0) {
         slideDone(slide);
@@ -143,7 +145,6 @@ InstagramFeed.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
@@ -160,7 +161,8 @@ InstagramFeed.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     hashtagText: PropTypes.string,
-    duration: PropTypes.number,
+    entryDuration: PropTypes.number,
+    maxEntries: PropTypes.number,
   }).isRequired,
 };
 
