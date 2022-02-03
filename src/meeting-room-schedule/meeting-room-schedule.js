@@ -145,7 +145,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   );
 }
 MeetingRoomSchedule.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,

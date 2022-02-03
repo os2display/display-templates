@@ -185,7 +185,7 @@ function Poster({ slide, content, run, slideDone }) {
 }
 
 Poster.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,

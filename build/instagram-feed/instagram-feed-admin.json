@@ -1,0 +1,25 @@
+[
+  {
+    "key": "instagram-feed-form-1",
+    "input": "header",
+    "text": "Skabelon: Instagram feed",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "instagram-feed-form-2",
+    "input": "header-h3",
+    "text": "Opsæt feed",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "instagram-feed-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feedId",
+    "feedType": "instagram-feed",
+    "formGroupClasses": "mb-3",
+    "singleSelect": true
+  }
+]

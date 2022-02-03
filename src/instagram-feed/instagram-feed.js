@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 import Shape from "./shape.svg";
 import InstagramLogo from "./instagram-logo.svg";
 import BaseSlideExecution from "../base-slide-execution";
-import "./sparkle.scss";
+import "./instagram-feed.scss";
 import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 
@@ -23,7 +23,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
-function Sparkle({ slide, content, run, slideDone }) {
+function InstagramFeed({ slide, content, run, slideDone }) {
   // @TODO: what does horizontal/portrait/vertical do? Ask Troels!
   dayjs.extend(localizedFormat);
   dayjs.extend(relativeTime);
@@ -125,8 +125,8 @@ function Sparkle({ slide, content, run, slideDone }) {
   );
 }
 
-Sparkle.propTypes = {
-  run: PropTypes.bool.isRequired,
+InstagramFeed.propTypes = {
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     duration: PropTypes.number.isRequired,
@@ -143,4 +143,4 @@ Sparkle.propTypes = {
   }).isRequired,
 };
 
-export default Sparkle;
+export default InstagramFeed;

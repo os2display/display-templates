@@ -238,7 +238,7 @@ function Slideshow({ slide, content, run, slideDone }) {
 }
 
 Slideshow.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     mediaData: PropTypes.objectOf(PropTypes.any).isRequired,
