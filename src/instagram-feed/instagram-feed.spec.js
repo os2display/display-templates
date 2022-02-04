@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
+import { configure, mount } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { jest } from "@jest/globals";
 import slides from "../slides";
@@ -13,8 +13,13 @@ jest.mock("./instagram-logo.svg", () => () => <span />);
 
 test("Test that instagram-feed loads", () => {
   const slide = slides[8];
-  const wrapper = shallow(
-    <InstagramFeed run slide={slide} content={slide.content} slideDone={() => {}} />
+  const wrapper = mount(
+    <InstagramFeed
+      run={new Date().toISOString()}
+      slide={slide}
+      content={slide.content}
+      slideDone={() => {}}
+    />
   );
   expect(wrapper.find(".template-instagram-feed").exists()).toBeTruthy();
 });
