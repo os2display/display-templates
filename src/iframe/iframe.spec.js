@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() });
 test("Test that iframe loads", () => {
   const slide = slides[10];
   const wrapper = shallow(
-    <IFrame run slide={slide} content={slide.content} slideDone={() => {}} />
+    <IFrame run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
   expect(wrapper.find("iframe").exists()).toBeTruthy();

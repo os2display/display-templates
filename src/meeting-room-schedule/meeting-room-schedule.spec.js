@@ -10,7 +10,7 @@ test("Test that meeting room schedule loads", () => {
   const slide = slides[3];
   const wrapper = shallow(
     <MeetingRoomSchedule
-      run
+      run={new Date().toISOString()}
       slide={slide}
       content={slide.content}
       slideDone={() => {}}

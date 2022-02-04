@@ -17,7 +17,7 @@ import Poster from "./poster/poster";
 import Quote from "./quote/quote";
 import RSS from "./rss/rss";
 import Slideshow from "./slideshow/slideshow";
-import Sparkle from "./sparkle/sparkle";
+import InstagramFeed from "./instagram-feed/instagram-feed";
 import IFrame from "./iframe/iframe";
 import Table from "./table/table";
 
@@ -28,7 +28,7 @@ const renderSlide = (slide) => {
         <BookReview
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -37,7 +37,7 @@ const renderSlide = (slide) => {
         <Calendar
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -46,7 +46,7 @@ const renderSlide = (slide) => {
         <Contacts
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -55,7 +55,7 @@ const renderSlide = (slide) => {
         <ImageText
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -64,7 +64,7 @@ const renderSlide = (slide) => {
         <IFrame
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -73,7 +73,7 @@ const renderSlide = (slide) => {
         <MeetingRoomSchedule
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
@@ -82,39 +82,54 @@ const renderSlide = (slide) => {
         <Poster
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
     case "quote":
       return (
-        <Quote content={slide.content} slide={slide} run slideDone={() => {}} />
+        <Quote
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
       );
     case "rss":
       return (
-        <RSS content={slide.content} slide={slide} run slideDone={() => {}} />
+        <RSS
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
       );
     case "slideshow":
       return (
         <Slideshow
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
-    case "sparkle":
+    case "instagram-feed":
       return (
-        <Sparkle
+        <InstagramFeed
           content={slide.content}
           slide={slide}
-          run
+          run={new Date().toISOString()}
           slideDone={() => {}}
         />
       );
     case "table":
       return (
-        <Table content={slide.content} slide={slide} run slideDone={() => {}} />
+        <Table
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
       );
     default:
       return <div>Slide type not found!</div>;

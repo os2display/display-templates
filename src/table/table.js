@@ -90,7 +90,7 @@ function Table({ slide, content, run, slideDone }) {
 }
 
 Table.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,

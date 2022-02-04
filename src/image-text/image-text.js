@@ -126,7 +126,7 @@ function ImageText({ slide, content, run, slideDone }) {
 }
 
 ImageText.propTypes = {
-  run: PropTypes.bool.isRequired,
+  run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,

@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() });
 test("Test that poster loads", () => {
   const slide = slides[4];
   const wrapper = shallow(
-    <Poster run slide={slide} content={slide.content} slideDone={() => {}} />
+    <Poster run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
   );
 
   expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(

@@ -1,4 +1,4 @@
-.template-sparkle {
+.template-instagram-feed {
   --percentage-wide: 53%;
   --percentage-narrow: 47%;
 
@@ -8,6 +8,7 @@
   background-color: var(--background-color);
   font-family: var(--font-family-base);
   position: relative;
+  overflow: hidden;
 
   .media-section {
     width: var(--percentage-wide);
@@ -52,13 +53,13 @@
       padding-right: var(--spacer);
     }
 
-    p {
+    .description {
       font-size: var(--font-size-lg);
       line-height: var(--line-height-base);
       color: var(--text-color);
     }
 
-    p.date {
+    .date {
       font-size: var(--font-size-base);
       line-height: var(--line-height-base);
       color: var(--color-grey-700);

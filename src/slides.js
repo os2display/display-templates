@@ -388,27 +388,45 @@ const slides = [
     },
   },
   {
-    id: "slide9-sparkle",
-    type: "sparkle",
+    id: "slide9-instagram",
+    type: "instagram-feed",
     duration: 5000,
     content: {
-      hashtagText: "dadaada",
+      hashtagText: "#myhashtag",
       orientation: "landscape",
       imageWidth: 56.25,
-      duration: 10000,
-      selectedFeed: 27626,
-      posts: [
-        {
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. #Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum",
-          textMarkup:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum#Lorem#Ipsum",
-          mediaUrl: "/fixtures/images/mountain3.jpeg",
-          videoUrl: null,
-          username: "Lorem Ipsum",
-          createdTime: "2021-06-21T10:13:30",
-        },
-      ],
+      entryDuration: 10,
+      maxEntries: 5,
     },
+    feedData: [
+      {
+        text: "#mountains #horizon",
+        textMarkup:
+          '<div class="text"></div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> Lorem ipsum ...</div>',
+        mediaUrl: "./fixtures/images/mountain1.jpeg",
+        videoUrl: null,
+        username: "username",
+        createdTime: "2022-02-03T08:50:07",
+      },
+      {
+        text: "#mountains #horizon #sky",
+        textMarkup:
+          '<div class="text"></div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> <span class="tag">#sky</span> Lorem ipsum and mountains ...</div>',
+        mediaUrl: "./fixtures/images/mountain2.jpeg",
+        videoUrl: null,
+        username: "username2",
+        createdTime: "2022-01-03T08:50:07",
+      },
+      {
+        text: "#video",
+        textMarkup:
+          '<div class="text"></div>\n<div class="tags"><span class="tag">#video</span> Lorem ipsum and video ...</div>',
+        mediaUrl: null,
+        videoUrl: "./fixtures/videos/test.mp4",
+        username: "username2",
+        createdTime: "2022-01-03T08:50:07",
+      },
+    ],
   },
   {
     id: "slide10-quote",

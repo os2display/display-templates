@@ -44,7 +44,10 @@ const entry = devMode
       quote: path.resolve(__dirname, "./src/quote/quote.js"),
       rss: path.resolve(__dirname, "./src/rss/rss.js"),
       slideshow: path.resolve(__dirname, "./src/slideshow/slideshow.js"),
-      sparkle: path.resolve(__dirname, "./src/sparkle/sparkle.js"),
+      "instagram-feed": path.resolve(
+        __dirname,
+        "./src/instagram-feed/instagram-feed.js"
+      ),
       iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
       table: path.resolve(__dirname, "./src/table/table.js"),
       video: path.resolve(__dirname, "./src/video/video.js"),

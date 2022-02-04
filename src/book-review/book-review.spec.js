@@ -10,7 +10,7 @@ test("Test that book review loads", () => {
   const slide = slides[1];
   const wrapper = shallow(
     <BookReview
-      run
+      run={new Date().toISOString()}
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
