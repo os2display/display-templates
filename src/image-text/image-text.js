@@ -119,8 +119,8 @@ function ImageText({ slide, content, run, slideDone }) {
           {text && <div className="text">{parse(sanitizedText)}</div>}
         </div>
       </div>
-      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <GlobalStyles />
+      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
     </>
   );
 }
