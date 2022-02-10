@@ -163,11 +163,6 @@ const Wrapper = styled.div`
     "content";
   grid-template-rows: 1fr 9fr;
   padding: var(--padding-size-base);
-
-  &.colorize {
-    background-blend-mode: multiply;
-    background-color: var(--background-color);
-  }
 `;
 
 const Header = styled.div`

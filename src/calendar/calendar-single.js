@@ -107,11 +107,6 @@ const Wrapper = styled.div`
   background-image: var(--bg-image, none);
   color: var(--text-color);
   padding: var(--padding-size-base);
-
-  &.colorize {
-    background-blend-mode: multiply;
-    background-color: var(--background-color);
-  }
 `;
 
 const Title = styled.div`

@@ -124,11 +124,6 @@ const Wrapper = styled.div`
     "content"
     "footer";
   grid-template-rows: 1fr 14fr 1fr;
-
-  &.colorize {
-    background-blend-mode: multiply;
-    background-color: var(--background-color);
-  }
 `;
 
 const Title = styled.h1`
