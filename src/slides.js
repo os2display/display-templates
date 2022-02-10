@@ -127,9 +127,6 @@ const slides = [
       hasDateAndTime: true,
       // backgroundColor: "hsl(0deg 0% 20%)",
       backgroundColor: "",
-      colorize: false,
-      // Options: blue|red|yellow
-      colorizeColorClass: "hsl(170deg 80% 55%)",
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",

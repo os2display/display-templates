@@ -99,37 +99,6 @@
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "calendar-form-colorize",
-    "input": "checkbox",
-    "label": "Colorize",
-    "name": "colorize",
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "calendar-form-colorize-color-class",
-    "input": "select",
-    "name": "colorizeColorClass",
-    "label": "Colorize-farve",
-    "formGroupClasses": "col-md-6 mb-3",
-    "options": [
-      {
-        "key": "colorize1",
-        "title": "Rød",
-        "value": "red"
-      },
-      {
-        "key": "colorize2",
-        "title": "Blå",
-        "value": "blue"
-      },
-      {
-        "key": "colorize3",
-        "title": "Gul",
-        "value": "yellow"
-      }
-    ]
-  },
-  {
     "key": "calendar-form-has-date-and-time",
     "input": "checkbox",
     "label": "Vis dato og tidspunkt",

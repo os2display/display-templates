@@ -27,8 +27,6 @@ function Calendar({ slide, content, run, slideDone }) {
   const {
     backgroundColor = "",
     layout = "multiple",
-    colorize = false,
-    colorizeColorClass = "",
   } = content;
   const { feedData = [] } = slide;
 
@@ -39,13 +37,6 @@ function Calendar({ slide, content, run, slideDone }) {
 
   if (imageUrl) {
     rootStyle.backgroundImage = `url("${imageUrl}")`;
-  }
-
-  if (colorize && colorizeColorClass !== "") {
-    classes.push("colorize");
-    rootStyle.backgroundColor = colorizeColorClass;
-  } else {
-    rootStyle.backgroundColor = backgroundColor;
   }
 
   /** Setup slide run function. */
@@ -124,8 +115,6 @@ Calendar.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     layout: PropTypes.string,
-    colorize: PropTypes.bool,
-    colorizeColorClass: PropTypes.string,
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
