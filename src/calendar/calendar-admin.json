@@ -29,6 +29,16 @@
     "formGroupClasses": "h5 mb-3"
   },
   {
+    "key": "calendar-form-duration",
+    "input": "input",
+    "name": "duration",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
     "key": "calendar-form-layout",
     "input": "select",
     "name": "layout",
@@ -99,10 +109,24 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "calendar-form-hide-grid",
+    "input": "checkbox",
+    "label": "Skjul grid",
+    "name": "hideGrid",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
     "key": "calendar-form-has-date-and-time",
     "input": "checkbox",
     "label": "Vis dato og tidspunkt",
     "name": "hasDateAndTime",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "calendar-form-date-as-box",
+    "input": "checkbox",
+    "label": "Dato og tidspunkt som boks",
+    "name": "dateAsBox",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {

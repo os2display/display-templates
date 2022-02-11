@@ -28,6 +28,7 @@ function CalendarMultiple({
     hasDateAndTime,
     resourceUnavailableText = null,
     displayHeaders = true,
+    hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
   } = content;
 
@@ -74,6 +75,8 @@ function CalendarMultiple({
     };
   }, [hasDateAndTime]);
 
+  const borderStyle = hideGrid ? { "--border": "0" } : {};
+
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
@@ -84,39 +87,58 @@ function CalendarMultiple({
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
-        {!dateAsBox && (
-          <HeaderDate className="header-date">
-            {currentDate &&
-              capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
-          </HeaderDate>
-        )}
-        {dateAsBox && (
-          <HeaderDateBox className="header-date-box">
-            <Weekday>
-              {currentDate &&
-                capitalize(dayjs().locale(localeDa).format("ddd"))}
-            </Weekday>
-            <DateNumber>
-              {currentDate && capitalize(dayjs().locale(localeDa).format("D"))}
-            </DateNumber>
-            <Month>
-              {currentDate &&
-                capitalize(dayjs().locale(localeDa).format("MMM"))}
-            </Month>
-          </HeaderDateBox>
+        {hasDateAndTime && (
+          <>
+            {!dateAsBox && (
+              <HeaderDate className="header-date">
+                {currentDate &&
+                  capitalize(
+                    dayjs().locale(localeDa).format("dddd D. MMMM HH:mm")
+                  )}
+              </HeaderDate>
+            )}
+            {dateAsBox && (
+              <HeaderDateBox className="header-date-box">
+                <Weekday>
+                  {currentDate &&
+                    capitalize(dayjs().locale(localeDa).format("ddd"))}
+                </Weekday>
+                <DateNumber>
+                  {currentDate &&
+                    capitalize(dayjs().locale(localeDa).format("D"))}
+                </DateNumber>
+                <Month>
+                  {currentDate &&
+                    capitalize(dayjs().locale(localeDa).format("MMM"))}
+                </Month>
+              </HeaderDateBox>
+            )}
+          </>
         )}
       </Header>
 
       <Content className="content">
         {displayHeaders !== false && (
           <ContentItemsWrapper>
-            <ContentHeaderItem className="content-item" key={1}>
-              <FormattedMessage id="what" defaultMessage="what" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item" key={2}>
+            <ContentHeaderItem
+              className="content-item"
+              key={2}
+              style={borderStyle}
+            >
               <FormattedMessage id="when" defaultMessage="when" />
             </ContentHeaderItem>
-            <ContentHeaderItem className="content-item" key={3}>
+            <ContentHeaderItem
+              className="content-item"
+              key={1}
+              style={borderStyle}
+            >
+              <FormattedMessage id="what" defaultMessage="what" />
+            </ContentHeaderItem>
+            <ContentHeaderItem
+              className="content-item"
+              key={3}
+              style={borderStyle}
+            >
               <FormattedMessage id="where" defaultMessage="where" />
             </ContentHeaderItem>
           </ContentItemsWrapper>
@@ -125,7 +147,20 @@ function CalendarMultiple({
           {calendarEvents?.length > 0 &&
             getSortedEvents(calendarEvents).map((entry) => (
               <Fragment key={entry.id}>
-                <ContentItem className="content-item-title">
+                <ContentItem className="content-item-time" style={borderStyle}>
+                  {dayjs(entry.startTime * 1000)
+                    .locale(localeDa)
+                    .format("LT")}
+                  {entry.endTime && (
+                    <>
+                      <span> - </span>
+                      {dayjs(entry.startTime * 1000)
+                        .locale(localeDa)
+                        .format("LT")}
+                    </>
+                  )}
+                </ContentItem>
+                <ContentItem className="content-item-title" style={borderStyle}>
                   {entry.title ?? resourceUnavailableText ?? (
                     <FormattedMessage
                       id="unavailable"
@@ -133,12 +168,10 @@ function CalendarMultiple({
                     />
                   )}
                 </ContentItem>
-                <ContentItem className="content-item-time">
-                  {dayjs(entry.startTime * 1000)
-                    .locale(localeDa)
-                    .format("LT")}
-                </ContentItem>
-                <ContentItem className="content-item-resouce">
+                <ContentItem
+                  className="content-item-resouce"
+                  style={borderStyle}
+                >
                   {entry.resourceTitle ?? entry.resourceId ?? ""}
                 </ContentItem>
               </Fragment>
@@ -259,6 +292,7 @@ CalendarMultiple.propTypes = {
     displayHeaders: PropTypes.bool,
     dateAsBox: PropTypes.bool,
     resourceUnavailableText: PropTypes.string,
+    hideGrid: PropTypes.bool,
   }).isRequired,
 };
 

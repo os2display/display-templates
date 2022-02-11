@@ -27,8 +27,8 @@
     "input": "input",
     "name": "entryDuration",
     "type": "number",
-    "label": "Varighed pr. indgang (i sekunder)",
-    "helpText": "Her skal du skrive varigheden pr. indgang.",
+    "label": "Varighed pr. billede/video (i sekunder)",
+    "helpText": "Her skal du skrive varigheden pr. billede/video.",
     "required": true,
     "formGroupClasses": "col-md-6 mb-3"
   },
@@ -78,8 +78,8 @@
     "name": "maxEntries",
     "type": "number",
     "min": 1,
-    "label": "Maksimalt antal indgange",
-    "helpText": "Her kan du skrive maksimalt antal indgange.",
+    "label": "Maksimalt antal billeder/videoer fra feedet",
+    "helpText": "Her kan du skrive maksimalt antal billeder/videoer fra feedet.",
     "formGroupClasses": "col-md-6"
   }
 ]
