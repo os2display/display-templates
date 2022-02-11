@@ -32,7 +32,7 @@ function InstagramFeed({ slide, content, run, slideDone }) {
   const [show, setShow] = useState(true);
   const animationDuration = 1500;
 
-  const { feedData } = slide;
+  const { feedData = [] } = slide;
   const { hashtagText } = content;
 
   // @TODO: should duration depend on number of instagram posts to show?
@@ -72,7 +72,7 @@ function InstagramFeed({ slide, content, run, slideDone }) {
 
   useEffect(() => {
     if (run) {
-      if (feedData.length > 0) {
+      if (feedData?.length > 0) {
         setCurrentPost(feedData[0]);
       } else {
         setTimeout(() => slideDone(slide), 1000);
