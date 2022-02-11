@@ -19,6 +19,7 @@
     "text": "Video",
     "name": "video",
     "acceptedMimetypes": ["video/webm", "video/mp4"],
-    "formGroupClasses": "h5 mb-3"
+    "formGroupClasses": "h5 mb-3",
+    "helpText": "Følgende formatter accepteres: .webm, mp4"
   }
 ]
