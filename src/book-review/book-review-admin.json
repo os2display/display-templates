@@ -15,11 +15,10 @@
   },
   {
     "key": "book-review-form-3",
-    "input": "textarea",
+    "input": "rich-text-input",
     "name": "bookText",
     "label": "Teksten til anmeldelsen",
-    "helpText": "Her kan du skrive teksten til anmeldelsen",
-    "formGroupClasses": "col-md-6"
+    "helpText": "Her kan du skrive teksten til anmeldelsen"
   },
   {
     "key": "book-review-form-4",
