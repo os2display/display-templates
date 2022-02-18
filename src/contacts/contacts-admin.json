@@ -18,5 +18,16 @@
     "input": "contacts",
     "name": "contacts",
     "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "contacts-form-4",
+    "input": "input",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

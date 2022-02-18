@@ -102,5 +102,16 @@
     "name": "table",
     "label": "Tabellen",
     "helpText": "Her kan du angive tabeldata"
+  },
+  {
+    "key": "table-form-10",
+    "input": "input",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

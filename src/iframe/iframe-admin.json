@@ -17,6 +17,7 @@
     "key": "iframe-form-3",
     "input": "input",
     "name": "duration",
+    "min": "1",
     "type": "number",
     "label": "Varighed (i sekunder)",
     "helpText": "Her skal du skrive varigheden på slidet.",
