@@ -21,19 +21,18 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Poster({ slide, content, run, slideDone }) {
-  // Translations.
   const [translations, setTranslations] = useState();
 
-  // Events.
-  const { events } = content;
-  const [first] = events;
+  const { feedData = [] } = slide;
+  const [first] = feedData;
   const [currentEvent, setCurrentEvent] = useState(first);
 
   // Animation.
   const [show, setShow] = useState(true);
-  const animationActive = events.length > 1;
+  const animationActive = feedData.length > 1;
   const animationDuration = 500;
-  const { duration } = content || 15000; // default 15s.
+  const { entryDuration = 15 } = content; // default 15s.
+  const entryDurationMilliseconds = entryDuration * 1000;
 
   // Props from content.
   const {
@@ -43,10 +42,20 @@ function Poster({ slide, content, run, slideDone }) {
     image,
     excerpt,
     ticketPriceRange,
-    readMoreText,
     url,
     place,
   } = currentEvent;
+
+  const {
+    // feedType,
+    // eventId,
+    // occurrenceId,
+    // overrideTitle,
+    // overrideSubTitle,
+    // overrideTicketPrice,
+    readMoreText,
+    // hideTime,
+  } = content;
 
   // Dates.
   const singleDayEvent =
@@ -65,15 +74,15 @@ function Poster({ slide, content, run, slideDone }) {
     let timer;
     if (animationActive) {
       timer = setTimeout(() => {
-        const currentIndex = events.indexOf(currentEvent);
-        const nextIndex = (currentIndex + 1) % events.length;
-        setCurrentEvent(events[nextIndex]);
+        const currentIndex = feedData.indexOf(currentEvent);
+        const nextIndex = (currentIndex + 1) % feedData.length;
+        setCurrentEvent(feedData[nextIndex]);
         setShow(true);
-      }, duration);
+      }, entryDurationMilliseconds);
 
       animationTimer = setTimeout(() => {
         setShow(false);
-      }, duration - animationDuration);
+      }, entryDurationMilliseconds - animationDuration);
     }
     return function cleanup() {
       if (timer !== null) {
@@ -89,7 +98,7 @@ function Poster({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(entryDurationMilliseconds);
     }
 
     return function cleanup() {
@@ -109,6 +118,7 @@ function Poster({ slide, content, run, slideDone }) {
 
   return (
     <>
+      {/* TODO: Adjust styling to variables from Theme */}
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className="template-poster">
           <div
@@ -120,14 +130,12 @@ function Poster({ slide, content, run, slideDone }) {
                 : { animation: `fade-out ${animationDuration}ms` }),
             }}
           />
-          {/* todo theme color */}
           <div className="header-area" style={{ backgroundColor: "Azure" }}>
             <div className="center">
               <h1>{name}</h1>
               <p className="lead">{excerpt}</p>
             </div>
           </div>
-          {/* todo theme color */}
           <div className="info-area" style={{ backgroundColor: "Aquamarine" }}>
             <div className="center">
               {startDate && endDate && (
@@ -164,7 +172,6 @@ function Poster({ slide, content, run, slideDone }) {
                 </p>
               )}
               {ticketPriceRange && <p className="ticket">{ticketPriceRange}</p>}
-              {/* todo theme color link */}
               {readMoreText && url && (
                 <p className="moreinfo">
                   {readMoreText} <span className="look-like-link">{url}</span>
@@ -188,13 +195,10 @@ Poster.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
-  }).isRequired,
-  content: PropTypes.shape({
-    events: PropTypes.arrayOf(
+    feedData: PropTypes.arrayOf(
       PropTypes.shape({
         endDate: PropTypes.string,
         eventStatusText: PropTypes.string,
@@ -214,7 +218,18 @@ Poster.propTypes = {
         ticketPurchaseUrl: PropTypes.string,
         url: PropTypes.string,
       })
-    ),
+    ).isRequired,
+  }).isRequired,
+  content: PropTypes.shape({
+    entryDuration: PropTypes.number,
+    feedType: PropTypes.string.isRequired,
+    eventId: PropTypes.string,
+    occurrenceId: PropTypes.string,
+    overrideTitle: PropTypes.string,
+    overrideSubTitle: PropTypes.string,
+    overrideTicketPrice: PropTypes.string,
+    readMoreText: PropTypes.string,
+    hideTime: PropTypes.bool,
   }).isRequired,
 };
 
