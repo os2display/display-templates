@@ -59,6 +59,7 @@ function Poster({ slide, content, run, slideDone }) {
 
   // Dates.
   const singleDayEvent =
+    endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
 
   /** Imports language strings, sets localized formats and sets timer. */
@@ -116,6 +117,13 @@ function Poster({ slide, content, run, slideDone }) {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
+  const formatDate = (date) => {
+    if (!date) return "";
+    return capitalize(
+      dayjs(date).locale(localeDa).format("LLLL")
+    );
+  };
+
   return (
     <>
       {/* TODO: Adjust styling to variables from Theme */}
@@ -143,9 +151,7 @@ function Poster({ slide, content, run, slideDone }) {
                   {singleDayEvent && (
                     <span>
                       <p className="date">
-                        {capitalize(
-                          dayjs(startDate).locale(localeDa).format("LLLL")
-                        )}
+                        {formatDate(startDate)}
                       </p>
                     </span>
                   )}
@@ -153,13 +159,7 @@ function Poster({ slide, content, run, slideDone }) {
                   {!singleDayEvent && (
                     <span>
                       <p className="date">
-                        {capitalize(
-                          dayjs(startDate).locale(localeDa).format("LLLL")
-                        )}{" "}
-                        -{" "}
-                        {capitalize(
-                          dayjs(endDate).locale(localeDa).format("LLLL")
-                        )}
+                        {formatDate(startDate)} - {formatDate(endDate)}
                       </p>
                     </span>
                   )}

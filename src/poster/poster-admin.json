@@ -15,7 +15,7 @@
   },
   {
     "key": "poster-form-3",
-    "input": "poster-selector",
+    "input": "feed",
     "text": "Opsæt feed",
     "name": "feeds",
     "feedType": "poster",
