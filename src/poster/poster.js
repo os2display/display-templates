@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
-import BaseSlideExecution from "../base-slide-execution";
 import "./poster.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
@@ -23,15 +22,13 @@ import GlobalStyles from "../GlobalStyles";
 function Poster({ slide, content, run, slideDone }) {
   const [translations, setTranslations] = useState();
 
+  const [currentEvent, setCurrentEvent] = useState(null);
+
   const { feedData = [] } = slide;
   const { feed } = slide;
 
-  const [first] = feedData;
-  const [currentEvent, setCurrentEvent] = useState(first);
-
   // Animation.
   const [show, setShow] = useState(true);
-  const animationActive = feedData.length > 1;
   const animationDuration = 500;
   const { entryDuration = 15 } = content; // default 15s.
   const entryDurationMilliseconds = entryDuration * 1000;
@@ -46,7 +43,14 @@ function Poster({ slide, content, run, slideDone }) {
     ticketPriceRange,
     url,
     place,
-  } = currentEvent;
+  } = currentEvent ?? {};
+
+  useEffect(() => {
+    if (feedData?.length > 0) {
+      const [first] = feedData;
+      setCurrentEvent(first);
+    }
+  }, [feedData]);
 
   const { configuration = {} } = feed;
 
@@ -71,22 +75,26 @@ function Poster({ slide, content, run, slideDone }) {
     setTranslations(da);
   }, []);
 
-  /** Setup event switch and animation, if there is more than one event. */
+  /** Setup feed entry switch and animation, if there is more than one post. */
   useEffect(() => {
-    let animationTimer;
-    let timer;
-    if (animationActive) {
-      timer = setTimeout(() => {
-        const currentIndex = feedData.indexOf(currentEvent);
-        const nextIndex = (currentIndex + 1) % feedData.length;
+    if (!currentEvent) return;
+
+    const timer = setTimeout(() => {
+      const currentIndex = feedData.indexOf(currentEvent);
+      const nextIndex = (currentIndex + 1) % feedData.length;
+
+      if (nextIndex === 0) {
+        slideDone(slide);
+      } else {
         setCurrentEvent(feedData[nextIndex]);
         setShow(true);
-      }, entryDurationMilliseconds);
+      }
+    }, entryDurationMilliseconds);
 
-      animationTimer = setTimeout(() => {
-        setShow(false);
-      }, entryDurationMilliseconds - animationDuration);
-    }
+    const animationTimer = setTimeout(() => {
+      setShow(false);
+    }, entryDurationMilliseconds - animationDuration);
+
     return function cleanup() {
       if (timer !== null) {
         clearInterval(timer);
@@ -97,16 +105,14 @@ function Poster({ slide, content, run, slideDone }) {
     };
   }, [currentEvent]);
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(entryDurationMilliseconds);
+      if (feedData?.length > 0) {
+        setCurrentEvent(feedData[0]);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
     }
-
-    return function cleanup() {
-      slideExecution.stop();
-    };
   }, [run]);
 
   /**

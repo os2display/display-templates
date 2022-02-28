@@ -186,6 +186,16 @@ const slides = [
   {
     id: "slide5-poster-single",
     type: "poster",
+    feed: {
+      configuration: {
+        overrideTitle: null,
+        overrideSubTitle: null,
+        overrideTicketPrice: null,
+        overrideReadMoreUrl: null,
+        readMoreText: "Læs mere her: www.example.com",
+        hideTime: false,
+      },
+    },
     feedData: [
       {
         ticketPurchaseUrl: "www.example.dk",
@@ -213,12 +223,7 @@ const slides = [
       feedType: "single",
       eventId: "",
       occurrenceId: "",
-      overrideTitle: null,
-      overrideSubTitle: null,
-      overrideTicketPrice: null,
-      readMoreText: "Læs mere her: www.example.com",
-      hideTime: false,
-      entryDuration: 10000,
+      entryDuration: 10,
     },
   },
   {
@@ -690,6 +695,69 @@ const slides = [
       resourceUnavailableText: "Det er optaget",
       image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
+    },
+  },
+  {
+    id: "slide15-poster-subscription",
+    type: "poster",
+    feed: {
+      configuration: {
+        overrideTitle: null,
+        overrideSubTitle: null,
+        overrideTicketPrice: null,
+        overrideReadMoreUrl: null,
+        readMoreText: "Læs mere her: www.example.com",
+        hideTime: false,
+      },
+    },
+    feedData: [
+      {
+        ticketPurchaseUrl: "www.example.dk",
+        excerpt:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....",
+        name: "Lorem ipsum",
+        url: "www.example.dk",
+        image: "/fixtures/images/mountain1.jpeg",
+        startDate: "2021-06-21T14:00:00+00:00",
+        endDate: "2021-06-21T15:00:00+00:00",
+        ticketPriceRange: "75-150 kr.",
+        eventStatusText: null,
+        place: {
+          name: "Lorem ipsum, Aarhus C",
+          streetAddress: "Vej 2",
+          addressLocality: "Aarhus",
+          postalCode: "8000",
+          image: null,
+          telephone: null,
+        },
+      },
+      {
+        ticketPurchaseUrl: "www.example2.dk",
+        excerpt:
+          "Ipsum lorem dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....",
+        name: "Ipsum lorem",
+        url: "www.example.dk",
+        image: "/fixtures/images/mountain2.jpeg",
+        startDate: "2021-06-21T14:00:00+00:00",
+        endDate: "2021-06-21T15:00:00+00:00",
+        ticketPriceRange: "75-150 kr.",
+        eventStatusText: null,
+        place: {
+          name: "Lorem ipsum, Aarhus C",
+          streetAddress: "Vej 2",
+          addressLocality: "Aarhus",
+          postalCode: "8000",
+          image: null,
+          telephone: null,
+        },
+      },
+    ],
+    content: {
+      // "single" or "subscription"
+      feedType: "subscription",
+      eventId: "",
+      occurrenceId: "",
+      entryDuration: 10,
     },
   },
 ];
