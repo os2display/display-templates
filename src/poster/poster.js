@@ -182,19 +182,17 @@ function Poster({ slide, content, run, slideDone }) {
                   </>
                 )}
               </p>
-              {readMoreText && (
-                <>
-                  <p className="moreinfo">{readMoreText}</p>
-                  {!overrideReadMoreUrl && url && (
-                    <span className="look-like-link">{url}</span>
-                  )}
-                  {overrideReadMoreUrl && (
-                    <span className="look-like-link">
-                      {overrideReadMoreUrl}
-                    </span>
-                  )}
-                </>
-              )}
+              <>
+                {readMoreText && <p className="moreinfo">{readMoreText}</p>}
+                {!overrideReadMoreUrl && url && (
+                  <span className="look-like-link">{url}</span>
+                )}
+                {overrideReadMoreUrl && (
+                  <span className="look-like-link">
+                    {overrideReadMoreUrl}
+                  </span>
+                )}
+              </>
             </div>
           </div>
         </div>
@@ -218,6 +216,7 @@ Poster.propTypes = {
         overrideTitle: PropTypes.string,
         overrideSubTitle: PropTypes.string,
         overrideTicketPrice: PropTypes.string,
+        overrideReadMoreUrl: PropTypes.string,
         hideTime: PropTypes.bool,
         readMoreText: PropTypes.string,
       }),
