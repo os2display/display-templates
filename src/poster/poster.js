@@ -24,6 +24,8 @@ function Poster({ slide, content, run, slideDone }) {
   const [translations, setTranslations] = useState();
 
   const { feedData = [] } = slide;
+  const { feed } = slide;
+
   const [first] = feedData;
   const [currentEvent, setCurrentEvent] = useState(first);
 
@@ -46,16 +48,16 @@ function Poster({ slide, content, run, slideDone }) {
     place,
   } = currentEvent;
 
+  const { configuration = {} } = feed;
+
   const {
-    // feedType,
-    // eventId,
-    // occurrenceId,
-    // overrideTitle,
-    // overrideSubTitle,
-    // overrideTicketPrice,
-    readMoreText,
-    // hideTime,
-  } = content;
+    overrideTitle = "",
+    overrideSubTitle = "",
+    overrideTicketPrice = "",
+    overrideReadMoreUrl = "",
+    hideTime = false,
+    readMoreText = "",
+  } = configuration;
 
   // Dates.
   const singleDayEvent =
@@ -119,9 +121,7 @@ function Poster({ slide, content, run, slideDone }) {
 
   const formatDate = (date) => {
     if (!date) return "";
-    return capitalize(
-      dayjs(date).locale(localeDa).format("LLLL")
-    );
+    return capitalize(dayjs(date).locale(localeDa).format("LLLL"));
   };
 
   return (
@@ -140,45 +140,60 @@ function Poster({ slide, content, run, slideDone }) {
           />
           <div className="header-area" style={{ backgroundColor: "Azure" }}>
             <div className="center">
-              <h1>{name}</h1>
-              <p className="lead">{excerpt}</p>
+              <h1>
+                {!overrideTitle && name}
+                {overrideTitle}
+              </h1>
+              <p className="lead">
+                {!overrideSubTitle && excerpt}
+                {overrideSubTitle}
+              </p>
             </div>
           </div>
           <div className="info-area" style={{ backgroundColor: "Aquamarine" }}>
             <div className="center">
-              {startDate && endDate && (
+              {!hideTime && startDate && (
                 <span>
                   {singleDayEvent && (
                     <span>
-                      <p className="date">
-                        {formatDate(startDate)}
-                      </p>
+                      <p className="date">{formatDate(startDate)}</p>
                     </span>
                   )}
                   {/* todo if startdate is not equal to enddate */}
                   {!singleDayEvent && (
                     <span>
                       <p className="date">
-                        {formatDate(startDate)} - {formatDate(endDate)}
+                        {startDate && formatDate(startDate)} -
+                        {endDate && formatDate(endDate)}
                       </p>
                     </span>
                   )}
                 </span>
               )}
               {place && <p className="place">{place.name}</p>}
-              {!ticketPriceRange && (
-                <p className="ticket">
+              <p className="ticket">
+                {!ticketPriceRange && (
                   <FormattedMessage id="free" defaultMessage="free" />
-                </p>
-              )}
-              {ticketPriceRange && <p className="ticket">{ticketPriceRange}</p>}
-              {readMoreText && url && (
-                <p className="moreinfo">
-                  {readMoreText} <span className="look-like-link">{url}</span>
-                </p>
-              )}
-              {readMoreText && !url && (
-                <p className="moreinfo">{readMoreText}</p>
+                )}
+                {ticketPriceRange && (
+                  <>
+                    {!overrideTicketPrice && ticketPriceRange}
+                    {overrideTicketPrice}
+                  </>
+                )}
+              </p>
+              {readMoreText && (
+                <>
+                  <p className="moreinfo">{readMoreText}</p>
+                  {!overrideReadMoreUrl && url && (
+                    <span className="look-like-link">{url}</span>
+                  )}
+                  {overrideReadMoreUrl && (
+                    <span className="look-like-link">
+                      {overrideReadMoreUrl}
+                    </span>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -197,6 +212,15 @@ Poster.propTypes = {
   slide: PropTypes.shape({
     themeData: PropTypes.shape({
       css: PropTypes.string,
+    }),
+    feed: PropTypes.shape({
+      configuration: PropTypes.shape({
+        overrideTitle: PropTypes.string,
+        overrideSubTitle: PropTypes.string,
+        overrideTicketPrice: PropTypes.string,
+        hideTime: PropTypes.bool,
+        readMoreText: PropTypes.string,
+      }),
     }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({
@@ -222,14 +246,6 @@ Poster.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
-    feedType: PropTypes.string.isRequired,
-    eventId: PropTypes.string,
-    occurrenceId: PropTypes.string,
-    overrideTitle: PropTypes.string,
-    overrideSubTitle: PropTypes.string,
-    overrideTicketPrice: PropTypes.string,
-    readMoreText: PropTypes.string,
-    hideTime: PropTypes.bool,
   }).isRequired,
 };
 
