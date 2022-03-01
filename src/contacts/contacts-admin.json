@@ -21,7 +21,7 @@
   },
   {
     "key": "contacts-form-4",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "min": "1",
     "type": "number",
