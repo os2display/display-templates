@@ -27,6 +27,10 @@ function Poster({ slide, content, run, slideDone }) {
   const { feedData = [] } = slide;
   const { feed } = slide;
 
+  if (!feed) {
+    return <></>;
+  }
+
   // Animation.
   const [show, setShow] = useState(true);
   const animationDuration = 500;
@@ -52,7 +56,7 @@ function Poster({ slide, content, run, slideDone }) {
     }
   }, [feedData]);
 
-  const { configuration = {} } = feed;
+  const { configuration } = feed;
 
   const {
     overrideTitle = "",
@@ -61,7 +65,7 @@ function Poster({ slide, content, run, slideDone }) {
     overrideReadMoreUrl = "",
     hideTime = false,
     readMoreText = "",
-  } = configuration;
+  } = configuration ?? {};
 
   // Dates.
   const singleDayEvent =
