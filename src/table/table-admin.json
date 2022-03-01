@@ -105,7 +105,7 @@
   },
   {
     "key": "table-form-10",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "min": "1",
     "type": "number",

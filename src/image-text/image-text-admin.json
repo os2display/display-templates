@@ -45,7 +45,7 @@
   },
   {
     "key": "image-text-form-7",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "min": "1",
     "type": "number",

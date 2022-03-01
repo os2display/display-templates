@@ -61,7 +61,7 @@
   },
   {
     "key": "book-review-form-9",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "min": "1",
     "type": "number",

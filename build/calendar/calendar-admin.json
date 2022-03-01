@@ -30,7 +30,7 @@
   },
   {
     "key": "calendar-form-duration",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "type": "number",
     "label": "Varighed (i sekunder)",

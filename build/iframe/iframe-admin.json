@@ -15,7 +15,7 @@
   },
   {
     "key": "iframe-form-3",
-    "input": "input",
+    "input": "duration",
     "name": "duration",
     "min": "1",
     "type": "number",
