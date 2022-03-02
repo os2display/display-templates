@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
-import BaseSlideExecution from "../base-slide-execution";
 import "./poster.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
@@ -21,19 +20,22 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Poster({ slide, content, run, slideDone }) {
-  // Translations.
   const [translations, setTranslations] = useState();
 
-  // Events.
-  const { events } = content;
-  const [first] = events;
-  const [currentEvent, setCurrentEvent] = useState(first);
+  const [currentEvent, setCurrentEvent] = useState(null);
+
+  const { feedData = [] } = slide;
+  const { feed } = slide;
+
+  if (!feed) {
+    return <></>;
+  }
 
   // Animation.
   const [show, setShow] = useState(true);
-  const animationActive = events.length > 1;
   const animationDuration = 500;
-  const { duration } = content || 15000; // default 15s.
+  const { entryDuration = 15 } = content; // default 15s.
+  const entryDurationMilliseconds = entryDuration * 1000;
 
   // Props from content.
   const {
@@ -43,13 +45,31 @@ function Poster({ slide, content, run, slideDone }) {
     image,
     excerpt,
     ticketPriceRange,
-    readMoreText,
     url,
     place,
-  } = currentEvent;
+  } = currentEvent ?? {};
+
+  useEffect(() => {
+    if (feedData?.length > 0) {
+      const [first] = feedData;
+      setCurrentEvent(first);
+    }
+  }, [feedData]);
+
+  const { configuration } = feed;
+
+  const {
+    overrideTitle = "",
+    overrideSubTitle = "",
+    overrideTicketPrice = "",
+    overrideReadMoreUrl = "",
+    hideTime = false,
+    readMoreText = "",
+  } = configuration ?? {};
 
   // Dates.
   const singleDayEvent =
+    endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
 
   /** Imports language strings, sets localized formats and sets timer. */
@@ -59,22 +79,26 @@ function Poster({ slide, content, run, slideDone }) {
     setTranslations(da);
   }, []);
 
-  /** Setup event switch and animation, if there is more than one event. */
+  /** Setup feed entry switch and animation, if there is more than one post. */
   useEffect(() => {
-    let animationTimer;
-    let timer;
-    if (animationActive) {
-      timer = setTimeout(() => {
-        const currentIndex = events.indexOf(currentEvent);
-        const nextIndex = (currentIndex + 1) % events.length;
-        setCurrentEvent(events[nextIndex]);
-        setShow(true);
-      }, duration);
+    if (!currentEvent) return;
 
-      animationTimer = setTimeout(() => {
-        setShow(false);
-      }, duration - animationDuration);
-    }
+    const timer = setTimeout(() => {
+      const currentIndex = feedData.indexOf(currentEvent);
+      const nextIndex = (currentIndex + 1) % feedData.length;
+
+      if (nextIndex === 0) {
+        slideDone(slide);
+      } else {
+        setCurrentEvent(feedData[nextIndex]);
+        setShow(true);
+      }
+    }, entryDurationMilliseconds);
+
+    const animationTimer = setTimeout(() => {
+      setShow(false);
+    }, entryDurationMilliseconds - animationDuration);
+
     return function cleanup() {
       if (timer !== null) {
         clearInterval(timer);
@@ -85,16 +109,14 @@ function Poster({ slide, content, run, slideDone }) {
     };
   }, [currentEvent]);
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      if (feedData?.length > 0) {
+        setCurrentEvent(feedData[0]);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
     }
-
-    return function cleanup() {
-      slideExecution.stop();
-    };
   }, [run]);
 
   /**
@@ -107,8 +129,14 @@ function Poster({ slide, content, run, slideDone }) {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
+  const formatDate = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("LLLL"));
+  };
+
   return (
     <>
+      {/* TODO: Adjust styling to variables from Theme */}
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         <div className="template-poster">
           <div
@@ -120,59 +148,61 @@ function Poster({ slide, content, run, slideDone }) {
                 : { animation: `fade-out ${animationDuration}ms` }),
             }}
           />
-          {/* todo theme color */}
           <div className="header-area" style={{ backgroundColor: "Azure" }}>
             <div className="center">
-              <h1>{name}</h1>
-              <p className="lead">{excerpt}</p>
+              <h1>
+                {!overrideTitle && name}
+                {overrideTitle}
+              </h1>
+              <p className="lead">
+                {!overrideSubTitle && excerpt}
+                {overrideSubTitle}
+              </p>
             </div>
           </div>
-          {/* todo theme color */}
           <div className="info-area" style={{ backgroundColor: "Aquamarine" }}>
             <div className="center">
-              {startDate && endDate && (
+              {!hideTime && startDate && (
                 <span>
                   {singleDayEvent && (
                     <span>
-                      <p className="date">
-                        {capitalize(
-                          dayjs(startDate).locale(localeDa).format("LLLL")
-                        )}
-                      </p>
+                      <p className="date">{formatDate(startDate)}</p>
                     </span>
                   )}
                   {/* todo if startdate is not equal to enddate */}
                   {!singleDayEvent && (
                     <span>
                       <p className="date">
-                        {capitalize(
-                          dayjs(startDate).locale(localeDa).format("LLLL")
-                        )}{" "}
-                        -{" "}
-                        {capitalize(
-                          dayjs(endDate).locale(localeDa).format("LLLL")
-                        )}
+                        {startDate && formatDate(startDate)} -
+                        {endDate && formatDate(endDate)}
                       </p>
                     </span>
                   )}
                 </span>
               )}
               {place && <p className="place">{place.name}</p>}
-              {!ticketPriceRange && (
-                <p className="ticket">
+              <p className="ticket">
+                {!ticketPriceRange && (
                   <FormattedMessage id="free" defaultMessage="free" />
-                </p>
-              )}
-              {ticketPriceRange && <p className="ticket">{ticketPriceRange}</p>}
-              {/* todo theme color link */}
-              {readMoreText && url && (
-                <p className="moreinfo">
-                  {readMoreText} <span className="look-like-link">{url}</span>
-                </p>
-              )}
-              {readMoreText && !url && (
-                <p className="moreinfo">{readMoreText}</p>
-              )}
+                )}
+                {ticketPriceRange && (
+                  <>
+                    {!overrideTicketPrice && ticketPriceRange}
+                    {overrideTicketPrice}
+                  </>
+                )}
+              </p>
+              <>
+                {readMoreText && <p className="moreinfo">{readMoreText}</p>}
+                {!overrideReadMoreUrl && url && (
+                  <span className="look-like-link">{url}</span>
+                )}
+                {overrideReadMoreUrl && (
+                  <span className="look-like-link">
+                    {overrideReadMoreUrl}
+                  </span>
+                )}
+              </>
             </div>
           </div>
         </div>
@@ -188,13 +218,20 @@ Poster.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
-  }).isRequired,
-  content: PropTypes.shape({
-    events: PropTypes.arrayOf(
+    feed: PropTypes.shape({
+      configuration: PropTypes.shape({
+        overrideTitle: PropTypes.string,
+        overrideSubTitle: PropTypes.string,
+        overrideTicketPrice: PropTypes.string,
+        overrideReadMoreUrl: PropTypes.string,
+        hideTime: PropTypes.bool,
+        readMoreText: PropTypes.string,
+      }),
+    }),
+    feedData: PropTypes.arrayOf(
       PropTypes.shape({
         endDate: PropTypes.string,
         eventStatusText: PropTypes.string,
@@ -214,7 +251,10 @@ Poster.propTypes = {
         ticketPurchaseUrl: PropTypes.string,
         url: PropTypes.string,
       })
-    ),
+    ).isRequired,
+  }).isRequired,
+  content: PropTypes.shape({
+    entryDuration: PropTypes.number,
   }).isRequired,
 };
 
