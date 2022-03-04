@@ -103,18 +103,20 @@ function ImageText({ slide, content, run, slideDone }) {
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        {title && (
+        {(title || text) && (
           <div className={boxClasses} style={imageTextStyle}>
-            <h1>
-              {title}
-              {/* Todo theme the color of the below */}
-              {displaySeparator && (
-                <div
-                  className="separator"
-                  style={{ backgroundColor: "#ee0043" }}
-                />
-              )}
-            </h1>
+            {title && (
+              <h1>
+                {title}
+                {/* Todo theme the color of the below */}
+                {displaySeparator && (
+                  <div
+                    className="separator"
+                    style={{ backgroundColor: "#ee0043" }}
+                  />
+                )}
+              </h1>
+            )}
             {text && <div className="text">{parse(sanitizedText)}</div>}
           </div>
         )}
