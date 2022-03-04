@@ -33,11 +33,11 @@ git repository, to enable Remote Components to load them in the clients.
 ### Linting
 
 ```bash
-docker-compose run node yarn check-coding-standards
+docker-compose run node npm run check-coding-standards
 ```
 
 ```bash
-docker-compose run node yarn apply-coding-standards
+docker-compose run node npm run apply-coding-standards
 ```
 
 ## @TODOs:
