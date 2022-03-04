@@ -13,7 +13,12 @@ jest.mock("./citation-mark.svg", () => () => <span />);
 test("test that app loads", () => {
   const slide = slides[9];
   const wrapper = shallow(
-    <Quote run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
+    <Quote
+      run={new Date().toISOString()}
+      slide={slide}
+      content={slide.content}
+      slideDone={() => {}}
+    />
   );
 
   expect(wrapper.find(".quote").text()).toContain(

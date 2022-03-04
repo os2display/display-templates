@@ -9,7 +9,12 @@ configure({ adapter: new Adapter() });
 test("Test that basic image-text loads", () => {
   const slide = slides[0];
   const wrapper = shallow(
-    <ImageText run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
+    <ImageText
+      run={new Date().toISOString()}
+      slide={slide}
+      content={slide.content}
+      slideDone={() => {}}
+    />
   );
 
   expect(

@@ -9,7 +9,12 @@ configure({ adapter: new Adapter() });
 test("Test that contacts loads", () => {
   const slide = slides[7];
   const wrapper = mount(
-    <Contacts run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
+    <Contacts
+      run={new Date().toISOString()}
+      slide={slide}
+      content={slide.content}
+      slideDone={() => {}}
+    />
   );
 
   expect(wrapper.find("h1").text()).toEqual("Kontakter");

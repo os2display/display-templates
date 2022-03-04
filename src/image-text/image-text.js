@@ -103,21 +103,23 @@ function ImageText({ slide, content, run, slideDone }) {
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        <div className={boxClasses} style={imageTextStyle}>
-          {title && (
-            <h1>
-              {title}
-              {/* Todo theme the color of the below */}
-              {displaySeparator && (
-                <div
-                  className="separator"
-                  style={{ backgroundColor: "#ee0043" }}
-                />
-              )}
-            </h1>
-          )}
-          {text && <div className="text">{parse(sanitizedText)}</div>}
-        </div>
+        {(title || text) && (
+          <div className={boxClasses} style={imageTextStyle}>
+            {title && (
+              <h1>
+                {title}
+                {/* Todo theme the color of the below */}
+                {displaySeparator && (
+                  <div
+                    className="separator"
+                    style={{ backgroundColor: "#ee0043" }}
+                  />
+                )}
+              </h1>
+            )}
+            {text && <div className="text">{parse(sanitizedText)}</div>}
+          </div>
+        )}
       </div>
       <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <GlobalStyles />
