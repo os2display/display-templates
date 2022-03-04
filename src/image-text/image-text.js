@@ -103,8 +103,8 @@ function ImageText({ slide, content, run, slideDone }) {
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        <div className={boxClasses} style={imageTextStyle}>
-          {title && (
+        {title && (
+          <div className={boxClasses} style={imageTextStyle}>
             <h1>
               {title}
               {/* Todo theme the color of the below */}
@@ -115,9 +115,9 @@ function ImageText({ slide, content, run, slideDone }) {
                 />
               )}
             </h1>
-          )}
-          {text && <div className="text">{parse(sanitizedText)}</div>}
-        </div>
+            {text && <div className="text">{parse(sanitizedText)}</div>}
+          </div>
+        )}
       </div>
       <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <GlobalStyles />
