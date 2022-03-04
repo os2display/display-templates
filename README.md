@@ -30,6 +30,16 @@ npm run build-watch
 The compiled files will be placed in `build/`. These should be committed to
 git repository, to enable Remote Components to load them in the clients.
 
+### Linting
+
+```bash
+docker-compose run node yarn check-coding-standards
+```
+
+```bash
+docker-compose run node yarn apply-coding-standards
+```
+
 ## @TODOs:
 
 * Add tests for all templates.

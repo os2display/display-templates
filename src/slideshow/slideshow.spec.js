@@ -9,7 +9,12 @@ configure({ adapter: new Adapter() });
 test("Test that slideshow loads", () => {
   const slide = slides[6];
   const wrapper = shallow(
-    <Slideshow run={new Date().toISOString()} slide={slide} content={slide.content} slideDone={() => {}} />
+    <Slideshow
+      run={new Date().toISOString()}
+      slide={slide}
+      content={slide.content}
+      slideDone={() => {}}
+    />
   );
 
   expect(wrapper.find(".template-slideshow").exists()).toBeTruthy();
