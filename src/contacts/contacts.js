@@ -19,23 +19,27 @@ import GlobalStyles from "../GlobalStyles";
  */
 function Contacts({ slide, content, run, slideDone }) {
   const { separator } = content;
-  let { contacts } = content;
-
-  contacts ??= [];
-
-  const mappedContacts = contacts.map((contact, index) =>
-    contact.media
-      ? {
-          ...contact,
-          url: getFirstMediaUrlFromField(
-            slide.mediaData,
-            contact?.media?.image,
-            index
-          ),
-        }
-      : { ...contact, url: null }
-  );
+  const [mappedContacts, setMappedContacts] = useState([]);
   const [translations, setTranslations] = useState();
+
+  useEffect(() => {
+    const contacts = content.contacts ?? [];
+
+    const newMappedContacts = contacts.map((contact, index) =>
+      contact.media
+        ? {
+            ...contact,
+            url: getFirstMediaUrlFromField(
+              slide.mediaData,
+              contact?.media?.image,
+              index
+            ),
+          }
+        : { ...contact, url: null }
+    );
+
+    setMappedContacts(newMappedContacts);
+  }, [content?.contacts]);
 
   /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
@@ -63,26 +67,25 @@ function Contacts({ slide, content, run, slideDone }) {
           {separator && <div className="separator" />}
         </h1>
         <div className="contacts">
-          {mappedContacts &&
-            mappedContacts.map((contact) => (
-              <div className="contact" key={contact.id}>
-                {contact.url && (
-                  <div
-                    className="image-area"
-                    style={{
-                      backgroundImage: `url("${contact.url}")`,
-                    }}
-                  />
-                )}
-                {!contact.media && <div className="image-area" />}
-                <div className="text-container">
-                  <div>{contact.title}</div>
-                  <div>{contact.name}</div>
-                  <div>{contact.email}</div>
-                  <div>{contact.phone}</div>
-                </div>
+          {mappedContacts.map((contact) => (
+            <div className="contact" key={contact.id}>
+              {contact.url && (
+                <div
+                  className="image-area"
+                  style={{
+                    backgroundImage: `url("${contact.url}")`,
+                  }}
+                />
+              )}
+              {!contact.media && <div className="image-area" />}
+              <div className="text-container">
+                <div>{contact.title}</div>
+                <div>{contact.name}</div>
+                <div>{contact.email}</div>
+                <div>{contact.phone}</div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
 
