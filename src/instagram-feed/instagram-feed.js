@@ -33,7 +33,7 @@ function InstagramFeed({ slide, content, run, slideDone }) {
   const animationDuration = 1500;
 
   const { feedData = [] } = slide;
-  const { hashtagText } = content;
+  const { hashtagText, orientation } = content;
 
   // @TODO: should duration depend on number of instagram posts to show?
   let { entryDuration: duration } = content;
@@ -84,16 +84,14 @@ function InstagramFeed({ slide, content, run, slideDone }) {
     return parse(DOMPurify.sanitize(textMarkup, {}));
   };
 
-  // @TODO: what does horizontal/portrait/vertical do?
-
   return (
     <>
       {currentPost && (
         <div
           className={
             show
-              ? "template-instagram-feed show"
-              : "template-instagram-feed hide"
+              ? `template-instagram-feed ${orientation} show`
+              : `template-instagram-feed ${orientation} hide`
           }
         >
           <div className="media-section">
@@ -161,6 +159,7 @@ InstagramFeed.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     hashtagText: PropTypes.string,
+    orientation: PropTypes.string,
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
   }).isRequired,
