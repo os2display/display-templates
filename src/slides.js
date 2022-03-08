@@ -351,16 +351,12 @@ const slides = [
           phone: "12341234",
           email: "mail@mail.dk",
           id: "uniqueContact1",
-          media: {
-            image: ["/v1/media/00000000000000000000000001"],
-          },
+          image: ["/v1/media/00000000000000000000000001"],
         },
         {
           title: "Forstander",
           name: "Janitor",
-          media: {
-            image: ["/v1/media/00000000000000000000000002"],
-          },
+          image: ["/v1/media/00000000000000000000000002"],
           phone: "12341234",
           email: "mail@mail.dk",
           id: "uniqueContact2",
@@ -369,9 +365,7 @@ const slides = [
           title: "Lady",
           name: "Dr. Cox",
           phone: "12341234",
-          media: {
-            image: ["/v1/media/00000000000000000000000003"],
-          },
+          image: ["/v1/media/00000000000000000000000003"],
           email: "mail@mail.dk",
           id: "uniqueContact3",
         },
