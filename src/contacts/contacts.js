@@ -26,12 +26,12 @@ function Contacts({ slide, content, run, slideDone }) {
     const contacts = content.contacts ?? [];
 
     const newMappedContacts = contacts.map((contact, index) =>
-      contact.media
+      contact.image
         ? {
             ...contact,
             url: getFirstMediaUrlFromField(
               slide.mediaData,
-              contact?.media?.image,
+              contact?.image,
               index
             ),
           }
