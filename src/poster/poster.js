@@ -198,9 +198,7 @@ function Poster({ slide, content, run, slideDone }) {
                   <span className="look-like-link">{url}</span>
                 )}
                 {overrideReadMoreUrl && (
-                  <span className="look-like-link">
-                    {overrideReadMoreUrl}
-                  </span>
+                  <span className="look-like-link">{overrideReadMoreUrl}</span>
                 )}
               </>
             </div>
