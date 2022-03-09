@@ -23,7 +23,7 @@
   },
   {
     "key": "image-text-form-4",
-    "input": "textarea",
+    "input": "rich-text-input",
     "name": "text",
     "label": "Tekst på slide",
     "helpText": "Her kan du skrive teksten til slidet",
