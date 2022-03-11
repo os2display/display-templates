@@ -24,7 +24,7 @@ import GlobalStyles from "../GlobalStyles";
 function Calendar({ slide, content, run, slideDone }) {
   const [translations, setTranslations] = useState();
 
-  const { layout = "multiple", duration } = content;
+  const { layout = "multiple", duration = 15000 } = content;
   const { feedData = [] } = slide;
 
   const classes = ["template-calendar"];

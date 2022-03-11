@@ -17,7 +17,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Quote({ slide, content, run, slideDone }) {
-  const { quotes, quoteInTwoLines, duration } = content;
+  const { quotes, quoteInTwoLines, duration = 15000 } = content;
   const quoteClasses = quoteInTwoLines ? "quote two-lines" : "quote";
   const [first] = quotes;
   const [currentQuote, setCurrentQuote] = useState(first);

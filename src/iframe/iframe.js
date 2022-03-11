@@ -13,7 +13,7 @@ import BaseSlideExecution from "../base-slide-execution";
  * @returns {object} The component.
  */
 function IFrame({ slide, content, run, slideDone }) {
-  const { source, duration } = content;
+  const { source, duration = 15000 } = content;
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);

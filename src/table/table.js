@@ -17,7 +17,14 @@ import GlobalStyles from "../GlobalStyles";
  */
 function Table({ slide, content, run, slideDone }) {
   // Content
-  const { table, title, text, fontSize, fontPlacement, duration } = content;
+  const {
+    table,
+    title,
+    text,
+    fontSize,
+    fontPlacement,
+    duration = 15000,
+  } = content;
   const textClasses = `text ${fontSize}`;
   let header;
 

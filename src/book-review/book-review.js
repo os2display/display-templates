@@ -18,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function BookReview({ slide, content, run, slideDone }) {
-  const { authorText, bookText, duration } = content;
+  const { authorText, bookText, duration = 15000 } = content;
   const sanitizedParsedBookText = bookText
     ? parse(DOMPurify.sanitize(bookText, {}))
     : "";

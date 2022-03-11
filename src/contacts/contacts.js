@@ -18,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { separator, duration } = content;
+  const { separator, duration = 15000 } = content;
   const [mappedContacts, setMappedContacts] = useState([]);
   const [translations, setTranslations] = useState();
 

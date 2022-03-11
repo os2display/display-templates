@@ -29,7 +29,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
     metaData,
     textAlign,
     backgroundImage,
-    duration,
+    duration = 15000,
   } = content;
   const occupiedText = content.occupiedText ? (
     content.occupiedText
