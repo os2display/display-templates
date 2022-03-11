@@ -18,7 +18,7 @@
     "input": "feed",
     "text": "Opsæt feed",
     "name": "feeds",
-    "feedType": "poster",
+    "supportedFeedOutputType": "poster",
     "formGroupClasses": "mb-3",
     "singleSelect": true
   },
