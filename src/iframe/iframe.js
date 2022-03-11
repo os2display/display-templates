@@ -13,13 +13,13 @@ import BaseSlideExecution from "../base-slide-execution";
  * @returns {object} The component.
  */
 function IFrame({ slide, content, run, slideDone }) {
-  const { source } = content;
+  const { source, duration = 15000 } = content;
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -47,9 +47,9 @@ IFrame.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    duration: PropTypes.number.isRequired,
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     source: PropTypes.string,
   }).isRequired,
 };

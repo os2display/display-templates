@@ -29,6 +29,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
     metaData,
     textAlign,
     backgroundImage,
+    duration = 15000,
   } = content;
   const occupiedText = content.occupiedText ? (
     content.occupiedText
@@ -47,7 +48,7 @@ function MeetingRoomSchedule({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -149,12 +150,12 @@ MeetingRoomSchedule.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     availableText: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string,
     backgroundImage: PropTypes.shape({

@@ -18,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Contacts({ slide, content, run, slideDone }) {
-  const { separator } = content;
+  const { separator, duration = 15000 } = content;
   const [mappedContacts, setMappedContacts] = useState([]);
   const [translations, setTranslations] = useState();
 
@@ -50,7 +50,7 @@ function Contacts({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -99,13 +99,13 @@ Contacts.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
     mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     separator: PropTypes.bool,
     contacts: PropTypes.arrayOf(
       PropTypes.shape({

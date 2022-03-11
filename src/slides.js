@@ -4,7 +4,6 @@ const slides = [
   {
     id: "slide1-image-text",
     type: "image-text",
-    duration: 5000,
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
     },
@@ -16,6 +15,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       title: "Slide 1",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       image: ["/v1/media/00000000000000000000000001"],
@@ -30,7 +30,6 @@ const slides = [
   {
     id: "slide2-book-review",
     type: "book-review",
-    duration: 5000,
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -44,6 +43,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       bookText:
         "<h1>Lorem Ipsum</h1>...Is simply <strong>dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       authorText:
@@ -55,7 +55,6 @@ const slides = [
   {
     id: "slide3-calendar-multiple-days",
     type: "calendar",
-    duration: 5000,
     feedData: [
       {
         id: "uniqueEvent1",
@@ -122,6 +121,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       // Options: multiple|multipleDays|single
       layout: "multipleDays",
       hasDateAndTime: true,
@@ -140,8 +140,8 @@ const slides = [
   {
     id: "slide4-meeting-room-schedule",
     type: "meeting-room-schedule",
-    duration: 5000,
     content: {
+      duration: 5000,
       backgroundColor: "#d2421e",
       metaData: "Ekstra info!",
       textAlign: "right",
@@ -325,7 +325,6 @@ const slides = [
   {
     id: "slide8-contacts",
     type: "contacts",
-    duration: 5000,
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -344,6 +343,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       contacts: [
         {
           title: "Pedel",
@@ -394,8 +394,8 @@ const slides = [
   {
     id: "slide9-instagram",
     type: "instagram-feed",
-    duration: 5000,
     content: {
+      duration: 5000,
       hashtagText: "#myhashtag",
       orientation: "landscape",
       imageWidth: 56.25,
@@ -435,8 +435,8 @@ const slides = [
   {
     id: "slide10-quote",
     type: "quote",
-    duration: 5000,
     content: {
+      duration: 5000,
       quoteInTwoLines: true,
       quotes: [
         {
@@ -470,8 +470,8 @@ const slides = [
   {
     id: "slide11-iframe",
     type: "iframe",
-    duration: 5000,
     content: {
+      duration: 5000,
       source:
         "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80",
     },
@@ -482,7 +482,6 @@ const slides = [
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
     },
-    duration: 5000,
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -491,6 +490,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       image: ["/v1/media/00000000000000000000000001"],
       title: "Overskrift",
       text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
@@ -529,7 +529,6 @@ const slides = [
   {
     id: "slide13-calendar2-multiple",
     type: "calendar",
-    duration: 5000,
     feedData: [
       {
         id: "uniqueEvent1",
@@ -596,6 +595,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
       backgroundColor: "",
@@ -613,7 +613,6 @@ const slides = [
   {
     id: "slide14-calendar3-single",
     type: "calendar",
-    duration: 5000,
     feedData: [
       {
         id: "uniqueEvent1",
@@ -680,6 +679,7 @@ const slides = [
       },
     },
     content: {
+      duration: 5000,
       layout: "single",
       backgroundColor: "",
       title: "Kalender",

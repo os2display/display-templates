@@ -24,7 +24,7 @@ import GlobalStyles from "../GlobalStyles";
 function Calendar({ slide, content, run, slideDone }) {
   const [translations, setTranslations] = useState();
 
-  const { layout = "multiple" } = content;
+  const { layout = "multiple", duration = 15000 } = content;
   const { feedData = [] } = slide;
 
   const classes = ["template-calendar"];
@@ -40,7 +40,7 @@ function Calendar({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -94,7 +94,6 @@ Calendar.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
@@ -111,6 +110,7 @@ Calendar.propTypes = {
     ),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     layout: PropTypes.string,
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
