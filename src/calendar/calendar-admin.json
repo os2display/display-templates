@@ -18,7 +18,7 @@
     "input": "feed",
     "text": "Opsæt feed",
     "name": "feed",
-    "supportedFeedType": "calendar",
+    "supportedFeedOutputType": "calendar",
     "formGroupClasses": "mb-3"
   },
   {

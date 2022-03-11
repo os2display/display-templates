@@ -18,7 +18,7 @@
     "input": "feed",
     "text": "Opsæt feed",
     "name": "feed",
-    "supportedFeedType": "rss",
+    "supportedFeedOutputType": "rss",
     "formGroupClasses": "mb-3"
   },
   {

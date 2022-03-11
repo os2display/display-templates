@@ -18,7 +18,7 @@
     "input": "feed",
     "text": "Opsæt feed",
     "name": "feeds",
-    "supportedFeedType": "instagram",
+    "supportedFeedOutputType": "instagram",
     "formGroupClasses": "mb-3",
     "singleSelect": true
   },
