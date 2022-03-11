@@ -18,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function BookReview({ slide, content, run, slideDone }) {
-  const { authorText, bookText } = content;
+  const { authorText, bookText, duration } = content;
   const sanitizedParsedBookText = bookText
     ? parse(DOMPurify.sanitize(bookText, {}))
     : "";
@@ -43,7 +43,7 @@ function BookReview({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -82,13 +82,13 @@ BookReview.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     mediaData: PropTypes.objectOf(PropTypes.any),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     authorText: PropTypes.string,
     bookText: PropTypes.string,
     authorImage: PropTypes.arrayOf(PropTypes.string),

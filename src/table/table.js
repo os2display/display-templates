@@ -17,7 +17,7 @@ import GlobalStyles from "../GlobalStyles";
  */
 function Table({ slide, content, run, slideDone }) {
   // Content
-  const { table, title, text, fontSize, fontPlacement } = content;
+  const { table, title, text, fontSize, fontPlacement, duration } = content;
   const textClasses = `text ${fontSize}`;
   let header;
 
@@ -39,7 +39,7 @@ function Table({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     } else {
       slideExecution.stop();
     }
@@ -95,12 +95,12 @@ Table.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     fontSize: PropTypes.string,
     fontPlacement: PropTypes.string,
     title: PropTypes.string,

@@ -17,7 +17,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Quote({ slide, content, run, slideDone }) {
-  const { quotes, quoteInTwoLines } = content;
+  const { quotes, quoteInTwoLines, duration } = content;
   const quoteClasses = quoteInTwoLines ? "quote two-lines" : "quote";
   const [first] = quotes;
   const [currentQuote, setCurrentQuote] = useState(first);
@@ -27,7 +27,7 @@ function Quote({ slide, content, run, slideDone }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      slideExecution.start(slide.duration);
+      slideExecution.start(duration);
     }
 
     return function cleanup() {
@@ -77,12 +77,12 @@ Quote.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     quotes: PropTypes.arrayOf(
       PropTypes.shape({ quote: PropTypes.string, author: PropTypes.string })
     ),

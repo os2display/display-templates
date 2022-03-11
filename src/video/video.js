@@ -68,7 +68,6 @@ Video.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),

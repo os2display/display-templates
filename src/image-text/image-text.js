@@ -36,11 +36,9 @@ function ImageText({ slide, content, run, slideDone }) {
   const imageTextStyle = {};
 
   // Content from content
-  const { title, text, textColor, boxColor, backgroundColor } = content;
+  const { title, text, textColor, boxColor, backgroundColor, duration } =
+    content;
   const sanitizedText = DOMPurify.sanitize(text);
-
-  // Duration
-  const { duration = 15000 } = slide;
 
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
@@ -133,12 +131,12 @@ ImageText.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
-    duration: PropTypes.number.isRequired,
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
+    duration: PropTypes.number.isRequired,
     image: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     text: PropTypes.string,
