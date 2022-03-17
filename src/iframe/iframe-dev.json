@@ -1,0 +1,14 @@
+{
+  "title": "IFrame",
+  "icon": "",
+  "id": "01FQBJQ2M3544ZKAADPWBXHY71",
+  "description": "Skabelon til iFrame.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/iframe.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/iframe/iframe-admin.json",
+    "schema": "",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
