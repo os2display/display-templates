@@ -36,12 +36,7 @@ const entry = devMode
       calendar: path.resolve(__dirname, "./src/calendar/calendar.js"),
       contacts: path.resolve(__dirname, "./src/contacts/contacts.js"),
       "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
-      "meeting-room-schedule": path.resolve(
-        __dirname,
-        "./src/meeting-room-schedule/meeting-room-schedule.js"
-      ),
       poster: path.resolve(__dirname, "./src/poster/poster.js"),
-      quote: path.resolve(__dirname, "./src/quote/quote.js"),
       rss: path.resolve(__dirname, "./src/rss/rss.js"),
       slideshow: path.resolve(__dirname, "./src/slideshow/slideshow.js"),
       "instagram-feed": path.resolve(

@@ -24,6 +24,7 @@ To add a template:
 * Create a folder in src with the name of the template, e.g. `my-template` that contains the following files:
   * `my-template.js` - The React component to render.
   * `my-template.json` - The file describing the where to find the files required for the template.
+  * `my-template-dev.json` - The file describing the where to find the files required for the template in a dev context.
   * `my-template-admin.json` - The file describing the content interface for populating the template.
   * `my-template-content-example.json` - An example content.
   * `my-template-schema.json` - Json Schema description of the content for the slide.
@@ -34,7 +35,7 @@ To compile the template it is necessary to add it to the webpack setup.
 
 Add it to `const entry = {}`:
 
-```js
+```
 {
   "my-template": path.resolve(__dirname, "./src/my-template/my-template.js")
 }

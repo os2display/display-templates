@@ -12,9 +12,7 @@ import slides from "./slides";
 import BookReview from "./book-review/book-review";
 import Calendar from "./calendar/calendar";
 import Contacts from "./contacts/contacts";
-import MeetingRoomSchedule from "./meeting-room-schedule/meeting-room-schedule";
 import Poster from "./poster/poster";
-import Quote from "./quote/quote";
 import RSS from "./rss/rss";
 import Slideshow from "./slideshow/slideshow";
 import InstagramFeed from "./instagram-feed/instagram-feed";
@@ -68,27 +66,9 @@ const renderSlide = (slide) => {
           slideDone={() => {}}
         />
       );
-    case "meeting-room-schedule":
-      return (
-        <MeetingRoomSchedule
-          content={slide.content}
-          slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
-        />
-      );
     case "poster":
       return (
         <Poster
-          content={slide.content}
-          slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
-        />
-      );
-    case "quote":
-      return (
-        <Quote
           content={slide.content}
           slide={slide}
           run={new Date().toISOString()}
