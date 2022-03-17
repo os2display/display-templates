@@ -12,7 +12,7 @@ jest.mock("./shape.svg", () => () => <span />);
 jest.mock("./instagram-logo.svg", () => () => <span />);
 
 test("Test that instagram-feed loads", () => {
-  const slide = slides[8];
+  const slide = slides.find((s) => s.id === "slide7-instagram");
   const wrapper = mount(
     <InstagramFeed
       run={new Date().toISOString()}

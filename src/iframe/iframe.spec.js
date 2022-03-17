@@ -7,7 +7,7 @@ import IFrame from "./iframe";
 configure({ adapter: new Adapter() });
 
 test("Test that iframe loads", () => {
-  const slide = slides[10];
+  const slide = slides.find((s) => s.id === "slide8-iframe");
   const wrapper = shallow(
     <IFrame
       run={new Date().toISOString()}

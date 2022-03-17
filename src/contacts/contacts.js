@@ -113,10 +113,7 @@ Contacts.propTypes = {
         phone: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        image: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          url: PropTypes.string.isRequired,
-        }),
+        image: PropTypes.arrayOf(PropTypes.string.isRequired),
       })
     ),
   }).isRequired,

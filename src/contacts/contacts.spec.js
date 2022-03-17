@@ -7,7 +7,7 @@ import Contacts from "./contacts";
 configure({ adapter: new Adapter() });
 
 test("Test that contacts loads", () => {
-  const slide = slides[7];
+  const slide = slides.find((s) => s.id === "slide6-contacts");
   const wrapper = mount(
     <Contacts
       run={new Date().toISOString()}

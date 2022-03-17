@@ -7,7 +7,7 @@ import ImageText from "./image-text";
 configure({ adapter: new Adapter() });
 
 test("Test that basic image-text loads", () => {
-  const slide = slides[0];
+  const slide = slides.find((s) => s.id === "slide0-image-text");
   const wrapper = shallow(
     <ImageText
       run={new Date().toISOString()}

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 const slides = [
   {
-    id: "slide1-image-text",
+    id: "slide0-image-text",
     type: "image-text",
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
@@ -28,7 +28,7 @@ const slides = [
     },
   },
   {
-    id: "slide2-book-review",
+    id: "slide1-book-review",
     type: "book-review",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -53,7 +53,7 @@ const slides = [
     },
   },
   {
-    id: "slide3-calendar-multiple-days",
+    id: "slide2-calendar-multiple-days",
     type: "calendar",
     feedData: [
       {
@@ -138,53 +138,7 @@ const slides = [
     },
   },
   {
-    id: "slide4-meeting-room-schedule",
-    type: "meeting-room-schedule",
-    content: {
-      duration: 5000,
-      backgroundColor: "#d2421e",
-      metaData: "Ekstra info!",
-      textAlign: "right",
-      occupiedText: "Optaget",
-      availableText: "Lokalet er ledigt",
-      backgroundImage: {
-        id: "uniqueMedia1",
-        url: "/fixtures/images/mountain1.jpeg",
-      },
-      title: "Meeting room schedule 1",
-      events: [
-        {
-          id: "uniqueRoomEvent1",
-          eventName: "Cake",
-          from: "2021-06-17T07:55:28.478Z",
-          to: "2021-06-17T08:55:28.478Z",
-          location: "M2",
-        },
-        {
-          id: "uniqueRoomEvent2",
-          from: "2021-06-17T10:30:00.202Z",
-          to: "2021-06-17T21:00:00.202Z",
-          location: "Home",
-        },
-        {
-          id: "uniqueRoomEvent3",
-          eventName: "GDPR",
-          from: "2021-06-17T20:00:00.202Z",
-          to: "2021-06-17T20:30:00.202Z",
-          location: "M3-4",
-        },
-        {
-          id: "uniqueRoomEvent4",
-          eventName: "Meeting",
-          from: "2021-06-17T19:30:00.202Z",
-          to: "2021-06-17T20:00:00.202Z",
-          location: "Workshopzonen",
-        },
-      ],
-    },
-  },
-  {
-    id: "slide5-poster-single",
+    id: "slide3-poster-single",
     type: "poster",
     feed: {
       configuration: {
@@ -227,7 +181,7 @@ const slides = [
     },
   },
   {
-    id: "slide6-rss",
+    id: "slide4-rss",
     type: "rss",
     feed: {
       configuration: {
@@ -283,7 +237,7 @@ const slides = [
     },
   },
   {
-    id: "slide7-slideshow",
+    id: "slide5-slideshow",
     type: "slideshow",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -323,7 +277,7 @@ const slides = [
     },
   },
   {
-    id: "slide8-contacts",
+    id: "slide6-contacts",
     type: "contacts",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -392,7 +346,7 @@ const slides = [
     },
   },
   {
-    id: "slide9-instagram",
+    id: "slide7-instagram",
     type: "instagram-feed",
     content: {
       duration: 5000,
@@ -433,42 +387,7 @@ const slides = [
     ],
   },
   {
-    id: "slide10-quote",
-    type: "quote",
-    content: {
-      duration: 5000,
-      quoteInTwoLines: true,
-      quotes: [
-        {
-          quote: "I Miss You So Much, It Hurts Sometimes.",
-          author: "John Michael Dorian",
-          duration: 5000,
-          id: "uniqueQuote1",
-        },
-        {
-          quote: "I Shouldn't Be Mopping Here Anyways...This Is A Rug.",
-          author: "Janitor",
-          duration: 5000,
-          id: "uniqueQuote2",
-        },
-        {
-          quote: "Ladies and gentlemen, allow me to present, Man Not Caring.",
-          author: "Dr. Cox",
-          duration: 5000,
-          id: "uniqueQuote3",
-        },
-        {
-          quote:
-            "You Would Hear Cricket's Chirping, But They Were Too Uncomfortable About Just How Unfunny That Actually Was.",
-          author: "Dr. Cox",
-          duration: 7000,
-          id: "uniqueQuote3",
-        },
-      ],
-    },
-  },
-  {
-    id: "slide11-iframe",
+    id: "slide8-iframe",
     type: "iframe",
     content: {
       duration: 5000,
@@ -477,7 +396,7 @@ const slides = [
     },
   },
   {
-    id: "slide12-table",
+    id: "slide9-table",
     type: "table",
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
@@ -525,9 +444,8 @@ const slides = [
       ],
     },
   },
-
   {
-    id: "slide13-calendar2-multiple",
+    id: "slide10-calendar2-multiple",
     type: "calendar",
     feedData: [
       {
@@ -611,7 +529,7 @@ const slides = [
     },
   },
   {
-    id: "slide14-calendar3-single",
+    id: "slide11-calendar3-single",
     type: "calendar",
     feedData: [
       {
@@ -692,7 +610,7 @@ const slides = [
     },
   },
   {
-    id: "slide15-poster-subscription",
+    id: "slide12-poster-subscription",
     type: "poster",
     feed: {
       configuration: {
@@ -752,6 +670,20 @@ const slides = [
       eventId: "",
       occurrenceId: "",
       entryDuration: 10,
+    },
+  },
+  {
+    id: "slide13-video",
+    type: "video",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "./fixtures/videos/test.mp4",
+        },
+      },
+    },
+    content: {
+      video: ["/v1/media/00000000000000000000000001"],
     },
   },
 ];
