@@ -7,7 +7,7 @@ import Calendar from "./calendar";
 configure({ adapter: new Adapter() });
 
 test("Test that calendar loads", () => {
-  const slide = slides[2];
+  const slide = slides.find((s) => s.id === "slide2-calendar-multiple-days");
   const wrapper = mount(
     <Calendar
       run={new Date().toISOString()}

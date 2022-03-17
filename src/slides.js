@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 const slides = [
   {
-    id: "slide1-image-text",
+    id: "slide0-image-text",
     type: "image-text",
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
@@ -28,7 +28,7 @@ const slides = [
     },
   },
   {
-    id: "slide2-book-review",
+    id: "slide1-book-review",
     type: "book-review",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -53,7 +53,7 @@ const slides = [
     },
   },
   {
-    id: "slide3-calendar-multiple-days",
+    id: "slide2-calendar-multiple-days",
     type: "calendar",
     feedData: [
       {
@@ -138,12 +138,7 @@ const slides = [
     },
   },
   {
-    id: "slide4-non-existing",
-    type: "empty",
-    content: {},
-  },
-  {
-    id: "slide5-poster-single",
+    id: "slide3-poster-single",
     type: "poster",
     feed: {
       configuration: {
@@ -186,7 +181,7 @@ const slides = [
     },
   },
   {
-    id: "slide6-rss",
+    id: "slide4-rss",
     type: "rss",
     feed: {
       configuration: {
@@ -242,7 +237,7 @@ const slides = [
     },
   },
   {
-    id: "slide7-slideshow",
+    id: "slide5-slideshow",
     type: "slideshow",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -282,7 +277,7 @@ const slides = [
     },
   },
   {
-    id: "slide8-contacts",
+    id: "slide6-contacts",
     type: "contacts",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -351,7 +346,7 @@ const slides = [
     },
   },
   {
-    id: "slide9-instagram",
+    id: "slide7-instagram",
     type: "instagram-feed",
     content: {
       duration: 5000,
@@ -392,12 +387,7 @@ const slides = [
     ],
   },
   {
-    id: "slide10-non-existing",
-    type: "empty",
-    content: {},
-  },
-  {
-    id: "slide11-iframe",
+    id: "slide8-iframe",
     type: "iframe",
     content: {
       duration: 5000,
@@ -406,7 +396,7 @@ const slides = [
     },
   },
   {
-    id: "slide12-table",
+    id: "slide9-table",
     type: "table",
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
@@ -454,9 +444,8 @@ const slides = [
       ],
     },
   },
-
   {
-    id: "slide13-calendar2-multiple",
+    id: "slide10-calendar2-multiple",
     type: "calendar",
     feedData: [
       {
@@ -540,7 +529,7 @@ const slides = [
     },
   },
   {
-    id: "slide14-calendar3-single",
+    id: "slide11-calendar3-single",
     type: "calendar",
     feedData: [
       {
@@ -621,7 +610,7 @@ const slides = [
     },
   },
   {
-    id: "slide15-poster-subscription",
+    id: "slide12-poster-subscription",
     type: "poster",
     feed: {
       configuration: {
@@ -681,6 +670,20 @@ const slides = [
       eventId: "",
       occurrenceId: "",
       entryDuration: 10,
+    },
+  },
+  {
+    id: "slide13-video",
+    type: "video",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "./fixtures/videos/test.mp4",
+        },
+      },
+    },
+    content: {
+      video: ["/v1/media/00000000000000000000000001"],
     },
   },
 ];

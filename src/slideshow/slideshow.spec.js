@@ -7,7 +7,7 @@ import Slideshow from "./slideshow";
 configure({ adapter: new Adapter() });
 
 test("Test that slideshow loads", () => {
-  const slide = slides[6];
+  const slide = slides.find((s) => s.id === "slide5-slideshow");
   const wrapper = shallow(
     <Slideshow
       run={new Date().toISOString()}

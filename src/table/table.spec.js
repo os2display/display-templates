@@ -7,7 +7,7 @@ import Table from "./table";
 configure({ adapter: new Adapter() });
 
 test("Test that basic table loads", () => {
-  const slide = slides[11];
+  const slide = slides.find((s) => s.id === "slide9-table");
   const wrapper = shallow(
     <Table
       run={new Date().toISOString()}

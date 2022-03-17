@@ -18,6 +18,7 @@ import Slideshow from "./slideshow/slideshow";
 import InstagramFeed from "./instagram-feed/instagram-feed";
 import IFrame from "./iframe/iframe";
 import Table from "./table/table";
+import Video from "./video/video";
 
 const renderSlide = (slide) => {
   switch (slide.type) {
@@ -105,6 +106,15 @@ const renderSlide = (slide) => {
     case "table":
       return (
         <Table
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
+      );
+    case "video":
+      return (
+        <Video
           content={slide.content}
           slide={slide}
           run={new Date().toISOString()}

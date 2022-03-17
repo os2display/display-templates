@@ -7,7 +7,7 @@ import Poster from "./poster";
 configure({ adapter: new Adapter() });
 
 test("Test that poster loads", () => {
-  const slide = slides[4];
+  const slide = slides.find((s) => s.id === "slide3-poster-single");
   const wrapper = mount(
     <Poster
       run={new Date().toISOString()}

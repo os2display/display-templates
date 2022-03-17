@@ -7,7 +7,7 @@ import slides from "../slides";
 configure({ adapter: new Adapter() });
 
 test("Test that book review loads", () => {
-  const slide = slides[1];
+  const slide = slides.find((s) => s.id === "slide1-book-review");
   const wrapper = shallow(
     <BookReview
       run={new Date().toISOString()}
