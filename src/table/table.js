@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import "./table.scss";
 import GlobalStyles from "../GlobalStyles";
 
 /**
@@ -23,6 +23,7 @@ function Table({ slide, content, run, slideDone }) {
     text,
     fontSize,
     fontPlacement,
+    separator = true,
     duration = 15000,
   } = content;
   const textClasses = `text ${fontSize}`;
@@ -62,39 +63,132 @@ function Table({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <div className="table" style={rootStyle}>
-        <h1 className="header">{title}</h1>
-        {fontPlacement === "top" && <div className={textClasses}>{text}</div>}
+      <Wrapper className="template-table" style={rootStyle}>
+        <Header className="template-table-header">
+          <Title>
+            {title}
+            {separator && <HeaderUnderline className="separator" />}
+          </Title>
+        </Header>
+        <ContentWrapper>
+          {fontPlacement === "top" && <Description className={textClasses}>{text}</Description>}
+          {header && (
+            <GridTable style={gridStyle}>
+              {header.columns.map((headerObject) => (
+                <TableHeader key={headerObject.Header} className="column-header">
+                  {headerObject.Header}
+                </TableHeader>
+              ))}
 
-        {header && (
-          <div style={gridStyle}>
-            {header.columns.map((headerObject) => (
-              <h2 key={headerObject.Header} className="column-header">
-                {headerObject.Header}
-              </h2>
-            ))}
-
-            {Array.isArray(table) &&
-              table.map((column) =>
-                header.columns.map(
-                  ({ accessor }) =>
-                    column[accessor] && (
-                      <div key={column[accessor]} className="column">
-                        {column[accessor]}
-                      </div>
-                    )
-                )
-              )}
-          </div>
-        )}
-        {fontPlacement === "bottom" && <div classes={textClasses}>{text}</div>}
-      </div>
+              {Array.isArray(table) &&
+                table.map((column) =>
+                  header.columns.map(
+                    ({ accessor }) =>
+                      column[accessor] && (
+                        <Column key={column[accessor]} className="column">
+                          {column[accessor]}
+                        </Column>
+                      )
+                  )
+                )}
+            </GridTable>
+          )}
+          {fontPlacement === "bottom" && <Description classes={textClasses}>{text}</Description>}
+        </ContentWrapper>
+      </Wrapper>
 
       <ThemeStyles name="template-table" css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
 }
+
+const Wrapper = styled.div`
+  /* Wrapper styling */
+  font-family: var(--font-family-base);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: hidden;
+
+  /* Position background from inline style */
+  background-size: cover;
+  background-position: center;
+`;
+
+const Header = styled.header`
+  /* Header styling */
+  background-color: var(--background-color-secondary);
+  padding: var(--padding-size-base);
+`;
+
+const Title = styled.h1`
+  /* H1 title styling */
+  font-size: var(--h1-font-size);
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--margin-size-base);
+`;
+
+const TableHeader = styled.h2`
+  /* H2 tableheader styling */
+  font-size: var(--h2-font-size);
+  color: var(--color-primary);
+`;
+
+const HeaderUnderline = styled.div`
+  /* HeaderUnderline styling */
+  /*
+  * TODO: Consider moving HeaderUnderline to at seperate reusable component. Maybe in combination with title.
+  */
+  opacity: 0;
+  position: absolute;
+  height: 0.2em;
+  width: 100%;
+  transition: width 0.3s ease-out;
+  animation: 0.7s normal 0.5s forwards 1 h1-underline ease-out;
+  background-color: var(--color-primary);
+`;
+
+const ContentWrapper = styled.main`
+  /* Content wrapper styling */
+  padding: var(--padding-size-base);
+`;
+
+const GridTable = styled.div`
+  /* Grid styling */
+  margin: var(--margin-size-base) 0;
+
+  &:nth-child(even){
+    background-color: var(--background-color-secondary);
+  }
+`;
+
+const Column = styled.div`
+  /* Column styling */
+  padding: calc(var(--padding-size-base) * 0.5) 0;
+`;
+
+const Description = styled.div`
+  /* Description text styling */
+  margin: var(--margin-size-base) 0;
+
+  &.s {
+      font-size: var(--font-size-sm);
+    }
+    &.m {
+      font-size: var(--font-size-base);
+    }
+    &.l {
+      font-size: var(--font-size-lg);
+    }
+    &.xl {
+      font-size: var(--font-size-xl);
+    }
+`;
+
 
 Table.propTypes = {
   run: PropTypes.string.isRequired,
