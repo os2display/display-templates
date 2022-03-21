@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     * Colors
     */
     --color-white: #fff;
-    --color-grey-100: hsl(0deg 0% 90%);
+    --color-grey-100: hsl(0deg 0% 95%);
     --color-grey-200: hsl(0deg 0% 85%);
     --color-grey-300: hsl(0deg 0% 80%);
     --color-grey-400: hsl(0deg 0% 75%);
@@ -126,12 +126,12 @@ const GlobalStyles = createGlobalStyle`
 
 
     /*
-    * Light / Dark mode
+    * Default Light mode colors.
+    * !! Go to bottom of this file for the dark replacement.
     */
-    --background-color: var(--bg-light, hsl(0deg, 0%, 100%));
+    --background-color: var(--color-grey-100, hsl(0deg, 0%, 95%));
+    --background-color-secondary: var(--bg-light, hsl(0deg, 0%, 100%));
     --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
-
-
   }
 
   /* Basic resets */
@@ -151,9 +151,40 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  /* Animations */
+
+  /* Underline animation used on titles */
+  @keyframes h1-underline {
+    0% {
+      opacity: 0;
+      width: 100%;
+    }
+    40% {
+      opacity: 1;
+      width: 100%;
+      margin-top: 0.938em;
+      height: 0.375em;
+    }
+    70% {
+      opacity: 1;
+      width: 100%;
+      margin-top: 0.625em;
+      height: 0.2em;
+    }
+    100% {
+      opacity: 1;
+      width: 5em;
+      margin-top: 0.625em;
+    }
+  }
+
   @media (prefers-color-scheme: dark) {
     html {
+      /*
+      * Default Dark mode colors. Also serves as fallback.
+      */
       --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+      --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
       --text-color: var(--text-light, hsl(0deg, 0%, 100%));
     }
   }
