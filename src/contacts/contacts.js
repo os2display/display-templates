@@ -126,6 +126,9 @@ const Title = styled.h1`
 
 const HeaderUnderline = styled.div`
   /* HeaderUnderline styling */
+  /*
+  * TODO: Consider moving HeaderUnderline to at seperate reusable component. Maybe in combination with title.
+  */
   opacity: 0;
   position: absolute;
   height: 0.2em;
