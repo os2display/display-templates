@@ -17,6 +17,6 @@ test("Test that basic table loads", () => {
     />
   );
 
-  expect(wrapper.find("h1").text()).toContain("Overskrift");
+  expect(wrapper.find(".title").text()).toContain("Overskrift");
   expect(wrapper.find("h2:first-child").text()).toContain("Column 1");
 });

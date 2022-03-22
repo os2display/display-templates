@@ -65,7 +65,7 @@ function Table({ slide, content, run, slideDone }) {
     <>
       <Wrapper className="template-table" style={rootStyle}>
         <Header className="template-table-header">
-          <Title>
+          <Title className="title">
             {title}
             {separator && <HeaderUnderline className="separator" />}
           </Title>
