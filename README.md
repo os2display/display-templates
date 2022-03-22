@@ -6,7 +6,7 @@ See [https://github.com/os2display/display-docs/blob/main/templates.md](https://
 ## Develop
 
 To enable easy development of templates, the supplied docker-compose setup serves a page where the
-slides in `src/slides.js` are displayed as a list of templates that can be open. The slides file contains 
+slides in `src/slides.js` are displayed as a list of templates that can be open. The slides file contains
 example content for the different templates.
 
 `index.html` serves a local setup for working with the templates.
@@ -66,4 +66,12 @@ docker-compose run node npm run check-coding-standards
 
 ```bash
 docker-compose run node npm run apply-coding-standards
+```
+
+### Tests
+
+Run tests
+
+```sh
+docker-compose run node npm run test-ci
 ```
