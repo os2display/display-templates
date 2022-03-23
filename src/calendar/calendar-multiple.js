@@ -187,6 +187,10 @@ const Wrapper = styled.div`
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  /*
+  --bg-color is local to this template file and is populated from configuration.
+  --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
+  */
   background-color: var(--bg-color, var(--background-color));
   background-image: var(--bg-image, none);
   color: var(--text-color);

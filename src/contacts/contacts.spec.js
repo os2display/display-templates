@@ -5,6 +5,7 @@ import slides from "../slides";
 import Contacts from "./contacts";
 
 configure({ adapter: new Adapter() });
+jest.mock("./person.svg", () => () => <span />);
 
 test("Test that contacts loads", () => {
   const slide = slides.find((s) => s.id === "slide6-contacts");
@@ -18,7 +19,7 @@ test("Test that contacts loads", () => {
   );
 
   expect(wrapper.find("h1").text()).toEqual("Kontakter");
-  expect(wrapper.find(".image-area").get(0).props.style.backgroundImage).toBe(
-    'url("/fixtures/images/author.jpg")'
-  );
+  expect(
+    wrapper.find(".contact-image").get(0).props.style.backgroundImage
+  ).toBe('url("/fixtures/images/author.jpg")');
 });
