@@ -1,0 +1,25 @@
+{
+  "title": "2-delt horisontal",
+  "id": "01FZR4VA1T2C264VT9B1WM6NKH",
+  "grid": {
+    "rows": 1,
+    "columns": 5
+  },
+  "regions": [
+    {
+      "title": "Top",
+      "gridArea": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "title": "Bund",
+      "gridArea": [
+        "d",
+        "e"
+      ]
+    }
+  ]
+}
