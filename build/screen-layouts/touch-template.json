@@ -43,6 +43,7 @@
     },
     {
       "title": "Seks",
+      "type": "touch-buttons",
       "gridArea": [
         "f",
         "rr"
