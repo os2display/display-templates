@@ -35,15 +35,15 @@
       ]
     },
     {
-      "title": "Fem",
+      "title": "Touch knapper",
+      "type": "touch-buttons",
       "gridArea": [
         "ss",
         "vv"
       ]
     },
     {
-      "title": "Seks",
-      "type": "touch-buttons",
+      "title": "Fem",
       "gridArea": [
         "f",
         "rr"
