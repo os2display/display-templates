@@ -7,6 +7,7 @@
   },
   "regions": [
     {
+      "id": "01G10FG3TK5FKSRAKD6ZH5EZS0",
       "title": "Venstre",
       "gridArea": [
         "a",
@@ -14,12 +15,14 @@
       ]
     },
     {
+      "id": "01G10FG9SB0G0C8MBTHVE8078T",
       "title": "Højre top",
       "gridArea": [
         "b"
       ]
     },
     {
+      "id": "01G10FGGXRCFMZ6EDZ4VQ80WEZ",
       "title": "Højre bund",
       "gridArea": [
         "d"

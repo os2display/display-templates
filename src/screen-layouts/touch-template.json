@@ -7,6 +7,7 @@
   },
   "regions": [
     {
+      "id": "01G10FDN9H4NWM7NTZHZ1VCM33",
       "title": "En",
       "gridArea": [
         "a",
@@ -14,6 +15,7 @@
       ]
     },
     {
+      "id": "01G10FDWNEDASCX4FDVHQREDZS",
       "title": "To",
       "gridArea": [
         "e",
@@ -21,6 +23,7 @@
       ]
     },
     {
+      "id": "01G10FE3HHF40RXWFTR7GXESJA",
       "title": "Tre",
       "gridArea": [
         "q",
@@ -28,6 +31,7 @@
       ]
     },
     {
+      "id": "01G10FEA5X7AZB0P2415C6NZR2",
       "title": "Fire",
       "gridArea": [
         "cc",
@@ -35,6 +39,7 @@
       ]
     },
     {
+      "id": "01G10FEMMDM0RE2NVG9DBMJ8TW",
       "title": "Touch knapper",
       "type": "touch-buttons",
       "gridArea": [
@@ -43,6 +48,7 @@
       ]
     },
     {
+      "id": "01G10FEXKZ73Q9A8MJ45T7EH5S",
       "title": "Fem",
       "gridArea": [
         "f",
