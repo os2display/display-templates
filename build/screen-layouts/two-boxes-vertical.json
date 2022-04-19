@@ -7,6 +7,7 @@
   },
   "regions": [
     {
+      "id": "01G10FCCJK4G3Q59AAPR1WZXFC",
       "title": "Top",
       "gridArea": [
         "a",
@@ -15,6 +16,7 @@
       ]
     },
     {
+      "id": "01G10FCN087HMFFAM1X7GHVARM",
       "title": "Bund",
       "gridArea": [
         "d",

@@ -7,12 +7,14 @@
   },
   "regions": [
     {
+      "id": "01G10FD229MWMWF1TB7HSG2Z01",
       "title": "Venstre",
       "gridArea": [
         "a"
       ]
     },
     {
+      "id": "01G10FDBARX9JP7WNDVEW31N0Z",
       "title": "Højre",
       "gridArea": [
         "b"
