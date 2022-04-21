@@ -20,24 +20,29 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function Poster({ slide, content, run, slideDone }) {
-  const [translations, setTranslations] = useState();
-
+  const [translations, setTranslations] = useState({});
   const [currentEvent, setCurrentEvent] = useState(null);
+  const [show, setShow] = useState(true);
 
-  const { feedData = [] } = slide;
-  const { feed } = slide;
+  // Imports language strings, sets localized formats and sets timer.
+  useEffect(() => {
+    dayjs.extend(localizedFormat);
 
-  if (!feed) {
-    return <></>;
+    setTranslations(da);
+  }, []);
+
+  if (!slide?.feed || !slide.feedData) {
+    return "";
   }
 
+  const { feed, feedData } = slide;
+
   // Animation.
-  const [show, setShow] = useState(true);
   const animationDuration = 500;
   const { entryDuration = 15 } = content; // default 15s.
   const entryDurationMilliseconds = entryDuration * 1000;
 
-  // Props from content.
+  // Props from currentEvent.
   const {
     endDate,
     startDate,
@@ -49,14 +54,7 @@ function Poster({ slide, content, run, slideDone }) {
     place,
   } = currentEvent ?? {};
 
-  useEffect(() => {
-    if (feedData?.length > 0) {
-      const [first] = feedData;
-      setCurrentEvent(first);
-    }
-  }, [feedData]);
-
-  const { configuration } = feed;
+  const { configuration = {} } = feed;
 
   const {
     overrideTitle = "",
@@ -65,21 +63,25 @@ function Poster({ slide, content, run, slideDone }) {
     overrideReadMoreUrl = "",
     hideTime = false,
     readMoreText = "",
-  } = configuration ?? {};
+  } = configuration;
 
   // Dates.
   const singleDayEvent =
     endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
 
-  /** Imports language strings, sets localized formats and sets timer. */
   useEffect(() => {
-    dayjs.extend(localizedFormat);
+    if (run && feedData && currentEvent === null) {
+      if (feedData?.length > 0) {
+        const [first] = feedData;
+        setCurrentEvent(first);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
+    }
+  }, [run]);
 
-    setTranslations(da);
-  }, []);
-
-  /** Setup feed entry switch and animation, if there is more than one post. */
+  // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
     if (!currentEvent) return;
 
@@ -109,16 +111,6 @@ function Poster({ slide, content, run, slideDone }) {
     };
   }, [currentEvent]);
 
-  useEffect(() => {
-    if (run) {
-      if (feedData?.length > 0) {
-        setCurrentEvent(feedData[0]);
-      } else {
-        setTimeout(() => slideDone(slide), 1000);
-      }
-    }
-  }, [run]);
-
   /**
    * Capitalize the datestring, as it starts with the weekday.
    *
@@ -145,7 +137,7 @@ function Poster({ slide, content, run, slideDone }) {
               backgroundImage: `url("${image}")`,
               ...(show
                 ? { animation: `fade-in ${animationDuration}ms` }
-                : { animation: `fade-out ${animationDuration}ms` }),
+                : { animation: `fade-out ${animationDuration}ms` })
             }}
           />
           <div className="header-area" style={{ backgroundColor: "Azure" }}>
