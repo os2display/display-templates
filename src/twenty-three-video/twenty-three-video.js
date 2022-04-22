@@ -13,8 +13,8 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
-  console.log("🚀 ~ file: twenty-three-video.js ~ line 16 ~ TwentyThreeVideo ~ content", content)
-  console.log("🚀 ~ file: twenty-three-video.js ~ line 16 ~ TwentyThreeVideo ~ slide", slide)
+  const iframeId = slide["@id"]
+
   // Content from content
   const { videoList = "" } = content;
 
@@ -50,7 +50,7 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
 
     // This activate player:video:ended message
     setTimeout(() => {
-      document.getElementById("myAppIframe")?.contentWindow.postMessage(
+      document.getElementById(iframeId)?.contentWindow.postMessage(
         JSON.stringify({
           f: "bind",
           args: ["player:video:ended"],
@@ -83,7 +83,7 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     if (!videoId) return <div className="">No ID</div>;
     return (
       <iframe
-        id="myAppIframe"
+        id={iframeId}
         src={`https://video.kk.dk/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&autoPlay=1&hideBigPlay=1&showLogo=0&socialSharing=0showBrowse=0&showTray=1`}
         style={{
           width: "100%",
