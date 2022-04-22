@@ -33,7 +33,7 @@ function InstagramFeed({ slide, content, run, slideDone }) {
   const animationDuration = 1500;
 
   const { feedData = [] } = slide;
-  const { hashtagText, orientation } = content;
+  const { hashtagText, orientation, imageWidth = null } = content;
 
   // @TODO: should duration depend on number of instagram posts to show?
   let { entryDuration: duration } = content;
@@ -84,15 +84,21 @@ function InstagramFeed({ slide, content, run, slideDone }) {
     return parse(DOMPurify.sanitize(textMarkup, {}));
   };
 
+  const rootStyle = {};
+
+  if (imageWidth !== null) {
+    rootStyle["--percentage-wide"] = `${imageWidth}%`;
+    rootStyle["--percentage-narrow"] = `${100 - imageWidth}%`;
+  }
+
   return (
     <>
       {currentPost && (
         <div
-          className={
-            show
-              ? `template-instagram-feed ${orientation} show`
-              : `template-instagram-feed ${orientation} hide`
-          }
+          style={rootStyle}
+          className={`template-instagram-feed ${orientation} ${
+            show ? "show" : "hide"
+          }`}
         >
           <div className="media-section">
             {!currentPost.videoUrl && (
@@ -162,6 +168,7 @@ InstagramFeed.propTypes = {
     orientation: PropTypes.string,
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
+    imageWidth: PropTypes.number,
   }).isRequired,
 };
 

@@ -68,8 +68,8 @@
     "type": "number",
     "min": 0,
     "max": 100.0,
-    "label": "Billedebredde",
-    "helpText": "Her kan du skrive billedebredden.",
+    "label": "Billedebredde %",
+    "helpText": "Her kan du skrive billedebredden i procent.",
     "formGroupClasses": "col-md-6"
   },
   {
