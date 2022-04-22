@@ -22,8 +22,12 @@ function RSS({ slide, content, run, slideDone }) {
   const [currentEntry, setCurrentEntry] = useState(null);
   const timeoutRef = useRef(null);
 
+  if (!slide?.feed) {
+    return "";
+  }
+
   const { fontSize = "m", image } = content;
-  const { feedData, feed } = slide;
+  const { feedData = [], feed = {} } = slide;
   const { configuration = {} } = feed;
   const { entryDuration = 10, numberOfEntries = 5 } = configuration;
 
@@ -104,6 +108,15 @@ function RSS({ slide, content, run, slideDone }) {
   );
 }
 
+RSS.defaultProps = {
+  slide: {
+    feed: {
+      configuration: {},
+    },
+    mediaData: {},
+  },
+};
+
 RSS.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
@@ -128,7 +141,7 @@ RSS.propTypes = {
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
-  }).isRequired,
+  }),
   content: PropTypes.shape({
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,

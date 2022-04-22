@@ -352,7 +352,7 @@ const slides = [
       duration: 5000,
       hashtagText: "#myhashtag",
       orientation: "landscape",
-      imageWidth: 56.25,
+      imageWidth: 40.0,
       entryDuration: 10,
       maxEntries: 5,
     },
