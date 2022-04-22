@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -23,12 +23,23 @@ function Poster({ slide, content, run, slideDone }) {
   const [translations, setTranslations] = useState({});
   const [currentEvent, setCurrentEvent] = useState(null);
   const [show, setShow] = useState(true);
+  const timerRef = useRef(null);
+  const animationTimerRef = useRef(null);
 
   // Imports language strings, sets localized formats and sets timer.
   useEffect(() => {
     dayjs.extend(localizedFormat);
 
     setTranslations(da);
+
+    return function cleanup() {
+      if (timerRef?.current !== null) {
+        clearInterval(timerRef.current);
+      }
+      if (animationTimerRef?.current !== null) {
+        clearInterval(animationTimerRef.current);
+      }
+    };
   }, []);
 
   if (!slide?.feed || !slide.feedData) {
@@ -70,22 +81,11 @@ function Poster({ slide, content, run, slideDone }) {
     endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
 
-  useEffect(() => {
-    if (run && feedData && currentEvent === null) {
-      if (feedData?.length > 0) {
-        const [first] = feedData;
-        setCurrentEvent(first);
-      } else {
-        setTimeout(() => slideDone(slide), 1000);
-      }
-    }
-  }, [run]);
-
   // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
     if (!currentEvent) return;
 
-    const timer = setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       const currentIndex = feedData.indexOf(currentEvent);
       const nextIndex = (currentIndex + 1) % feedData.length;
 
@@ -97,19 +97,23 @@ function Poster({ slide, content, run, slideDone }) {
       }
     }, entryDurationMilliseconds);
 
-    const animationTimer = setTimeout(() => {
+    animationTimerRef.current = setTimeout(() => {
       setShow(false);
     }, entryDurationMilliseconds - animationDuration);
-
-    return function cleanup() {
-      if (timer !== null) {
-        clearInterval(timer);
-      }
-      if (animationTimer !== null) {
-        clearInterval(animationTimer);
-      }
-    };
   }, [currentEvent]);
+
+  useEffect(() => {
+    if (run) {
+      if (feedData && currentEvent === null && feedData?.length > 0) {
+        const [first] = feedData;
+        setCurrentEvent(first);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
+    } else {
+      setCurrentEvent(null);
+    }
+  }, [run]);
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
