@@ -1,0 +1,24 @@
+[
+    {
+      "key": "video-form-1",
+      "input": "header",
+      "text": "Skabelon: 23Video",
+      "name": "header1",
+      "formGroupClasses": "h4 mb-3"
+    },
+    {
+      "key": "video-form-2",
+      "input": "header-h3",
+      "text": "Indhold",
+      "name": "header2",
+      "formGroupClasses": "h5 mb-3"
+    },
+    {
+      "key": "video-form-form-3",
+      "input": "textarea",
+      "name": "videoList",
+      "label": "VideoList",
+      "helpText": "Kommasepareret liste med id's fra 23video",
+      "formGroupClasses": "col-md-6"
+    }
+]

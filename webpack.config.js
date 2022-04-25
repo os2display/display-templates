@@ -29,6 +29,7 @@ const entry = devMode
       examples: path.resolve(__dirname, "./src/index.js"),
     }
   : {
+     twentyThreeVideo: path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.js"),
       "book-review": path.resolve(
         __dirname,
         "./src/book-review/book-review.js"
@@ -116,5 +117,8 @@ module.exports = {
       "display-templates.local.itkdev.dk",
     ],
     stats: "minimal",
+  },
+  optimization: {
+    minimize: true,
   },
 };

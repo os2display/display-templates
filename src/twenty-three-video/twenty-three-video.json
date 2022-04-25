@@ -1,0 +1,14 @@
+{
+    "title": "TwentyThreeVideo",
+    "icon": "",
+    "id": "01ARZ3NDEKTSV4RRFFQ69G5FAV",
+    "description": "Skabelon til twenty-three-video.",
+    "resources": {
+      "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twentyThreeVideo.js",
+      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twenty-three-video/twenty-three-video-admin.json",
+      "schema": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twenty-three-video/twenty-three-video-schema.json",
+      "assets": [],
+      "options": {},
+      "content": {}
+    }
+}
