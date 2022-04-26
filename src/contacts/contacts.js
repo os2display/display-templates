@@ -158,7 +158,6 @@ const Contact = styled.article`
 
 const ContactText = styled.div`
   /* Contact text styling */
-
 `;
 
 const ContactImage = styled.div`

@@ -141,7 +141,7 @@ function Poster({ slide, content, run, slideDone }) {
               backgroundImage: `url("${image}")`,
               ...(show
                 ? { animation: `fade-in ${animationDuration}ms` }
-                : { animation: `fade-out ${animationDuration}ms` })
+                : { animation: `fade-out ${animationDuration}ms` }),
             }}
           />
           <div className="header-area" style={{ backgroundColor: "Azure" }}>

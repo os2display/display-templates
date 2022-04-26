@@ -71,11 +71,16 @@ function Table({ slide, content, run, slideDone }) {
           </Title>
         </Header>
         <ContentWrapper>
-          {fontPlacement === "top" && <Description className={textClasses}>{text}</Description>}
+          {fontPlacement === "top" && (
+            <Description className={textClasses}>{text}</Description>
+          )}
           {header && (
             <GridTable style={gridStyle}>
               {header.columns.map((headerObject) => (
-                <TableHeader key={headerObject.Header} className="column-header">
+                <TableHeader
+                  key={headerObject.Header}
+                  className="column-header"
+                >
                   {headerObject.Header}
                 </TableHeader>
               ))}
@@ -93,7 +98,9 @@ function Table({ slide, content, run, slideDone }) {
                 )}
             </GridTable>
           )}
-          {fontPlacement === "bottom" && <Description classes={textClasses}>{text}</Description>}
+          {fontPlacement === "bottom" && (
+            <Description classes={textClasses}>{text}</Description>
+          )}
         </ContentWrapper>
       </Wrapper>
 
@@ -161,7 +168,7 @@ const GridTable = styled.div`
   /* Grid styling */
   margin: var(--margin-size-base) 0;
 
-  &:nth-child(even){
+  &:nth-child(even) {
     background-color: var(--background-color-secondary);
   }
 `;
@@ -176,19 +183,18 @@ const Description = styled.div`
   margin: var(--margin-size-base) 0;
 
   &.s {
-      font-size: var(--font-size-sm);
-    }
-    &.m {
-      font-size: var(--font-size-base);
-    }
-    &.l {
-      font-size: var(--font-size-lg);
-    }
-    &.xl {
-      font-size: var(--font-size-xl);
-    }
+    font-size: var(--font-size-sm);
+  }
+  &.m {
+    font-size: var(--font-size-base);
+  }
+  &.l {
+    font-size: var(--font-size-lg);
+  }
+  &.xl {
+    font-size: var(--font-size-xl);
+  }
 `;
-
 
 Table.propTypes = {
   run: PropTypes.string.isRequired,
