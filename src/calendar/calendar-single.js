@@ -144,10 +144,6 @@ const Meta = styled.div`
   color: inherit;
   opacity: 0.75;
   font-size: smaller;
-
-  /* @media (prefers-color-scheme: dark) {
-    color: var(--color-grey-700);
-  } */
 `;
 
 CalendarSingle.defaultProps = {
