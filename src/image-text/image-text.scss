@@ -1,4 +1,4 @@
-/* Themable variables
+/* Themeable variables
    To be overridden from frontend.
 
   Default:
@@ -17,10 +17,6 @@
 */
 
 .template-image-text {
-  /* Assign default colors to variables for easy light/dark mode switch */
-  --background-color: var(--bg-light);
-  --text-color: var(--text-dark);
-
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -138,13 +134,6 @@
       order: 2;
       font-size: 3em;
     }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /* Change colors for use in darkmode */
-
-    --background-color: var(--bg-dark);
-    --text-color: var(--text-light);
   }
 }
 
