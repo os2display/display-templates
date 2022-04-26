@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { render } from "react-dom";
 import {
   BrowserRouter,
@@ -130,6 +130,14 @@ const Slide = () => {
   const { slideId } = useParams();
 
   const selectedSlide = slides.find((slide) => slide.id === slideId);
+
+  useEffect(() => {
+    if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("color-scheme-dark");
+    } else {
+      document.documentElement.classList.add("color-scheme-light");
+    }
+  }, []);
 
   return <div>{selectedSlide && <div>{renderSlide(selectedSlide)}</div>}</div>;
 };
