@@ -16,8 +16,8 @@ const slides = [
     },
     content: {
       duration: 5000,
-      title: "Slide 1",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      title: "",
+      text: "",
       image: ["/v1/media/00000000000000000000000001"],
       boxAlign: "right",
       boxMargin: false,
@@ -684,6 +684,35 @@ const slides = [
     },
     content: {
       video: ["/v1/media/00000000000000000000000001"],
+    },
+  },
+  {
+    id: "slide13-travel",
+    type: "travel",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      station: [
+        {
+          name: "Skelbækvej v rådhuset",
+          x: "9420345",
+          y: "55023889",
+          id: "545004301",
+        },
+      ],
+      iframe_title: "Titel til iframe",
+      number_of_journeys: 3,
+      title: "Overskrift",
+      text: "<p>Tekst på slide</p>",
+      distance: "2 km",
+      time_moderate: "5-7 minutter",
+      time_fast: "3-23 minutter",
+      image: ["/v1/media/00000000000000000000000001"],
     },
   },
 ];
