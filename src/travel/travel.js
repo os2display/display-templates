@@ -5,7 +5,6 @@ import parse from "html-react-parser";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
 import da from "./lang/da.json";
 import "./travel.scss";
 /**
@@ -155,7 +154,7 @@ Travel.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
-    station: PropTypes.string,
+    station: PropTypes.shape(PropTypes.any),
     time_fast: PropTypes.number,
     time_moderate: PropTypes.number,
     title: PropTypes.string,
