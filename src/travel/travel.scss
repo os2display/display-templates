@@ -4,7 +4,7 @@
   font-family: var(--font);
   font-size: 1em;
   grid-template-rows: 50% 50%;
-  grid-template-columns: 33% 66%;
+  grid-template-columns: 33% 67%;
   background-color: #f4f4ec;
   display: grid;
   height: 100%;
@@ -13,7 +13,7 @@
   .info-box {
     grid-area: a;
     grid-template-rows: 15% 1fr 20%;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33% 33% 34%;
     margin: 1em;
     display: grid;
     grid-template-areas: "a b c" "d e f" "g h i";

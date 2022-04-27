@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 import da from "./lang/da.json";
 import "./travel.scss";
 /**
@@ -126,6 +127,7 @@ function Travel({ slide, content, run, slideDone }) {
           </div>
         )}
       </div>
+      <GlobalStyles />
     </IntlProvider>
   );
 }
