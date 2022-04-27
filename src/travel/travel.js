@@ -35,8 +35,10 @@ function Travel({ slide, content, run, slideDone }) {
   const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
   const [translations, setTranslations] = useState();
 
-  const stationId = station[0].id
-
+  let stationId;
+  if (station && station.length > 0) {
+    stationId = station[0].id
+  }
   const imageStyle = {};
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
   if (imageUrl) {
@@ -90,23 +92,42 @@ function Travel({ slide, content, run, slideDone }) {
           </div>
         </div>
         <div className="map" style={imageStyle} />
-        <div className="iframe">
-          <iframe
-            title="iframe title"
-            sandbox="allow-same-origin allow-scripts"
-            frameBorder="0"
-            scrolling="no"
-            src={`https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${number_of_journeys}&enableHIM=1&p1=bus&p1title=${iframe_title}&p1icons=&p2icons=&`}
-            width="100%"
-            height="100%"
-          />
-        </div>
+        {stationId &&
+          <div className="iframe">
+            <iframe
+              title="iframe title"
+              sandbox="allow-same-origin allow-scripts"
+              frameBorder="0"
+              scrolling="no"
+              src={`https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${number_of_journeys}&enableHIM=1&p1=bus&p1title=${iframe_title}&p1icons=&p2icons=&`}
+              width="100%"
+              height="100%"
+            />
+          </div>
+        }
       </div>
       <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
       <GlobalStyles />
     </IntlProvider>
   );
 }
+
+Travel.defaultProps = {
+  content: PropTypes.shape({
+    station: "",
+    time_fast: 0,
+    time_moderate: 0,
+    title: "",
+    text: "",
+    image: 0,
+    distance: 0,
+    iframe_title: "",
+    number_of_journeys: 1,
+    duration: 15000,
+  })
+}
+
+
 
 Travel.propTypes = {
   run: PropTypes.string.isRequired,
@@ -115,8 +136,16 @@ Travel.propTypes = {
     instanceId: PropTypes.string,
   }).isRequired,
   content: PropTypes.shape({
-    duration: PropTypes.number.isRequired,
-    source: PropTypes.string,
+    duration: PropTypes.number,
+    station: PropTypes.string,
+    time_fast: PropTypes.number,
+    time_moderate: PropTypes.number,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    image: PropTypes.number,
+    distance: PropTypes.number,
+    iframe_title: PropTypes.string,
+    number_of_journeys: PropTypes.number,
   }).isRequired,
 };
 
