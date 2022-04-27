@@ -154,7 +154,7 @@ Travel.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
-    station: PropTypes.shape(PropTypes.any),
+    station: PropTypes.arrayOf(PropTypes.any),
     time_fast: PropTypes.number,
     time_moderate: PropTypes.number,
     title: PropTypes.string,
