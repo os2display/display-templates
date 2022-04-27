@@ -4,8 +4,8 @@ import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from '../GlobalStyles';
+import { getFirstMediaUrlFromField } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 import da from "./lang/da.json";
 import "./travel.scss";
 /**
@@ -31,19 +31,33 @@ function Travel({ slide, content, run, slideDone }) {
     number_of_journeys,
     duration = 15000,
   } = content;
+  let infoBoxClass = "info-box";
+  let iFrameClass = "iframe";
 
-  const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
   const [translations, setTranslations] = useState();
 
+  // Rich text input sanitized
+  const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
+
+  // The id for the chosen station
   let stationId;
   if (station && station.length > 0) {
-    stationId = station[0].id
+    stationId = station[0].id;
   }
+
   const imageStyle = {};
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
   if (imageUrl) {
     imageStyle.backgroundImage = `url("${imageUrl}")`;
+  } else {
+    // If there is no image, the info box takes the space
+    infoBoxClass = "info-box grow";
   }
+  // If there is no text entries for the info box, the iframe takes the space
+  if (!title && !sanitizedtext && !distance && !time_fast && !time_moderate) {
+    iFrameClass = "iframe grow";
+  }
+
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
@@ -64,36 +78,43 @@ function Travel({ slide, content, run, slideDone }) {
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
       <div className="grid">
-        <div className="info-box">
-          <div className="header">
-            <h1>{title}</h1>
-          </div>
-          <div className="text">{sanitizedtext}</div>
-          <div className="distance">
-            <div>
-              <FormattedMessage id="distance" defaultMessage="distance" />
+        {(title || sanitizedtext || distance || time_fast || time_moderate) && (
+          <div className={infoBoxClass}>
+            <div className="header">
+              <h1>{title}</h1>
             </div>
-            <div className="text">{distance}</div>
-          </div>
-          <div className="time-fast">
-            <div>
-              <FormattedMessage id="time_fast" defaultMessage="time_fast" />
+            <div className="text">{sanitizedtext}</div>
+            <div className="distance">
+              <div>
+                <FormattedMessage id="distance" defaultMessage="distance" />
+              </div>
+              <div className="text">{distance}</div>
             </div>
-            <div className="text">{time_fast}</div>
-          </div>
-          <div className="time-moderat">
-            <div>
-              <FormattedMessage
-                id="time_moderate"
-                defaultMessage="time_moderate"
-              />
+            <div className="time-fast">
+              <div>
+                <FormattedMessage id="time_fast" defaultMessage="time_fast" />
+              </div>
+              <div className="text">{time_fast}</div>
             </div>
-            <div className="text"> {time_moderate}</div>
+            <div className="time-moderat">
+              <div>
+                <FormattedMessage
+                  id="time_moderate"
+                  defaultMessage="time_moderate"
+                />
+              </div>
+              <div className="text"> {time_moderate}</div>
+            </div>
           </div>
-        </div>
-        <div className="map" style={imageStyle} />
-        {stationId &&
-          <div className="iframe">
+        )}
+        {imageStyle &&
+          (title ||
+            sanitizedtext ||
+            distance ||
+            time_fast ||
+            time_moderate) && <div className="map" style={imageStyle} />}
+        {stationId && (
+          <div className={iFrameClass}>
             <iframe
               title="iframe title"
               sandbox="allow-same-origin allow-scripts"
@@ -104,10 +125,8 @@ function Travel({ slide, content, run, slideDone }) {
               height="100%"
             />
           </div>
-        }
+        )}
       </div>
-      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
-      <GlobalStyles />
     </IntlProvider>
   );
 }
@@ -124,16 +143,15 @@ Travel.defaultProps = {
     iframe_title: "",
     number_of_journeys: 1,
     duration: 15000,
-  })
-}
-
-
+  }),
+};
 
 Travel.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
+    mediaData: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
@@ -146,7 +164,7 @@ Travel.propTypes = {
     distance: PropTypes.number,
     iframe_title: PropTypes.string,
     number_of_journeys: PropTypes.number,
-  }).isRequired,
+  }),
 };
 
 export default Travel;

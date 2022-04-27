@@ -62,20 +62,23 @@
     }
 
     &.grow {
-      grid-area: a / a / h / h;
+      grid-area: a / c / c / c;
     }
   }
+
   .map {
     grid-area: c;
     background-size: cover;
     background-position: center center;
   }
+
   .iframe {
     border-left: 3px solid #e1ded7;
     grid-area: b / b / d / d;
 
     &.grow {
-      grid-area: a / a / l / l;
+      grid-area: a / a / d / d;
+      border-left: 0;
     }
   }
 }

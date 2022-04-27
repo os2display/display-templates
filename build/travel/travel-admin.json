@@ -73,7 +73,8 @@
     "key": "station-template-10",
     "input": "input",
     "name": "iframe_title",
-    "label": "Overskrift i rejseplan",
+    "label": "Text i rejseplan",
+    "helpText": "Her kan du skrive hvorfra bussen kører",
     "formGroupClasses": "col-md-6"
   },
   {
@@ -82,7 +83,7 @@
     "label": "Vælg relevante stoppesteder",
     "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
     "formGroupClasses": "col-md-6 mb-3",
-    "name": "stations"
+    "name": "station"
   },
   {
     "key": "station-template-12",
