@@ -2,14 +2,14 @@ import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import slides from "../slides";
-import IFrame from "./travel";
+import Travel from "./travel";
 
 configure({ adapter: new Adapter() });
 
-test("Test that iframe loads", () => {
-  const slide = slides.find((s) => s.id === "slide8-iframe");
+test("Test that travel loads", () => {
+  const slide = slides.find((s) => s.id === "slide13-travel");
   const wrapper = shallow(
-    <IFrame
+    <Travel
       run={new Date().toISOString()}
       slide={slide}
       content={slide.content}
