@@ -160,7 +160,7 @@ Travel.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
-    distance: PropTypes.number,
+    distance: PropTypes.string,
     iframe_title: PropTypes.string,
     number_of_journeys: PropTypes.number,
   }),
