@@ -59,7 +59,7 @@
     "input": "image",
     "name": "image",
     "label": "Billede",
-    "helpText": "Her uploades dit billede med indtegnet rute",
+    "helpText": "Her uploades dit billede med indtegnet rute"
   },
   {
     "key": "station-template-9",
