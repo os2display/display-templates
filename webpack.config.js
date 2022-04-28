@@ -46,6 +46,7 @@ const entry = devMode
       iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
       table: path.resolve(__dirname, "./src/table/table.js"),
       video: path.resolve(__dirname, "./src/video/video.js"),
+      travel: path.resolve(__dirname, "./src/travel/travel.js"),
     };
 
 const plugins = devMode

@@ -44,6 +44,7 @@ function ImageText({ slide, content, run, slideDone }) {
     backgroundColor,
     duration = 15000,
   } = content;
+
   const sanitizedText = DOMPurify.sanitize(text);
 
   // Display separator depends on whether the slide is reversed.

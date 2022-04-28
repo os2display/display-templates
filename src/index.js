@@ -19,6 +19,7 @@ import InstagramFeed from "./instagram-feed/instagram-feed";
 import IFrame from "./iframe/iframe";
 import Table from "./table/table";
 import Video from "./video/video";
+import Travel from "./travel/travel";
 
 const renderSlide = (slide) => {
   switch (slide.type) {
@@ -115,6 +116,15 @@ const renderSlide = (slide) => {
     case "video":
       return (
         <Video
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
+      );
+    case "travel":
+      return (
+        <Travel
           content={slide.content}
           slide={slide}
           run={new Date().toISOString()}
