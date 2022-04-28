@@ -26,7 +26,6 @@ function Table({ slide, content, run, slideDone }) {
     separator = true,
     duration = 15000,
   } = content;
-  const textClasses = `text ${fontSize}`;
   let header;
 
   if (Array.isArray(table) && table.length > 0 && table[0].type === "header") {
@@ -72,10 +71,10 @@ function Table({ slide, content, run, slideDone }) {
         </Header>
         <ContentWrapper>
           {fontPlacement === "top" && (
-            <Description className={textClasses}>{text}</Description>
+            <Description className="text">{text}</Description>
           )}
           {header && (
-            <GridTable style={gridStyle}>
+            <GridTable className={fontSize} style={gridStyle}>
               {header.columns.map((headerObject) => (
                 <TableHeader
                   key={headerObject.Header}
@@ -99,7 +98,7 @@ function Table({ slide, content, run, slideDone }) {
             </GridTable>
           )}
           {fontPlacement === "bottom" && (
-            <Description classes={textClasses}>{text}</Description>
+            <Description classes="text">{text}</Description>
           )}
         </ContentWrapper>
       </Wrapper>
@@ -171,16 +170,6 @@ const GridTable = styled.div`
   &:nth-child(even) {
     background-color: var(--background-color-secondary);
   }
-`;
-
-const Column = styled.div`
-  /* Column styling */
-  padding: calc(var(--padding-size-base) * 0.5) 0;
-`;
-
-const Description = styled.div`
-  /* Description text styling */
-  margin: var(--margin-size-base) 0;
 
   &.s {
     font-size: var(--font-size-sm);
@@ -194,6 +183,16 @@ const Description = styled.div`
   &.xl {
     font-size: var(--font-size-xl);
   }
+`;
+
+const Column = styled.div`
+  /* Column styling */
+  padding: calc(var(--padding-size-base) * 0.5) 0;
+`;
+
+const Description = styled.div`
+  /* Description text styling */
+  margin: var(--margin-size-base) 0;
 `;
 
 Table.propTypes = {
