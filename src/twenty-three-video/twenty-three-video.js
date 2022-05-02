@@ -16,7 +16,20 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
   const iframeId = slide["@id"]
 
   // Content from content
-  const { videoList = "" } = content;
+  const {
+    videoList = "",
+    autoPlay = true,
+    showTray = false,
+    mutedAutoPlay = true,
+    autoMute = false
+  } = content;
+
+
+  const convertedAutoplay = autoPlay === true ? "1" : "0"
+  const convertedShowtray = showTray === true ? "1" : "0"
+  const convertedMutedAutoPlay = mutedAutoPlay === true ? "1" : "0"
+  const convertedAutoMute = autoMute === true ? "1" : "0"
+
 
   // This fix normal typing errors and cleans the array for empty items
   const formattedVideoList = videoList
@@ -84,7 +97,7 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     return (
       <iframe
         id={iframeId}
-        src={`https://video.kk.dk/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&autoPlay=1&hideBigPlay=1&showLogo=0&socialSharing=0showBrowse=0&showTray=1`}
+        src={`https://video.kk.dk/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
         style={{
           width: "100%",
           height: "100%",
