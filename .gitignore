@@ -2,3 +2,4 @@ node_modules/
 dist/
 temp/
 docker-compose.override.yml
+/yarn.lock
