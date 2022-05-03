@@ -1,10 +1,17 @@
 # TwentyThreeVideo
+ [This slide can display one or more videos from 23video.](https://github.com/kkos2/display-templates/tree/kk-develop/build/twenty-three-video)
+ To add a video, add a comma-separated list of IDs in  [OS2 Admin](https://github.com/os2display/display-admin-client)
 
-## Link to see url parameters
+
+## Props
+in this component is the prop.content is a string(comma separated lists) with 23video IDs.
+
+
+## Link to see video player url parameters
 
 [see twentythree documentation ](https://www.twentythree.com/help/embedding-your-videos)
 
-## Player EventListener
+## Video player EventListener
 
 To be able to add listeners to the player in iframe we will normally use [GlueFrame](https://github.com/23/GlueFrame) but we can not make it work when we use remote components
 
