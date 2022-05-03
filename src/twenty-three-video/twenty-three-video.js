@@ -15,6 +15,9 @@ import GlobalStyles from "../GlobalStyles";
 function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
   const iframeId = slide["@id"]
 
+  // TODO: This has to be dynamic
+  const videoUrl = "video.kk.dk"
+
   // Content from content
   const {
     videoList = "",
@@ -24,7 +27,7 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     autoMute = false
   } = content;
 
-
+  // change boolean to number
   const convertedAutoplay = autoPlay === true ? "1" : "0"
   const convertedShowtray = showTray === true ? "1" : "0"
   const convertedMutedAutoPlay = mutedAutoPlay === true ? "1" : "0"
@@ -97,7 +100,7 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     return (
       <iframe
         id={iframeId}
-        src={`https://video.kk.dk/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
+        src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
         style={{
           width: "100%",
           height: "100%",
