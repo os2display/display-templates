@@ -117,22 +117,17 @@
 }
 
 /* Customize calender multiple template styling */
-.calendar-multiple {
+.calendar-multiple,
+.calendar-multiple-days {
   --padding-size-base: 2rem;
   --background-color: var(--bg-dark);
   --border: 1px solid var(--color-grey-100);
   --text-color: var(--color-light);
+  --color-primary: var(--color-yellow);
   --bg-image: none;
 }
 
-.calendar-multiple .header-title {
+.calendar-multiple .header-title,
+.calendar-multiple-days .header-title {
   color: var(--color-yellow);
-}
-
-.calendar-multiple-days {
-  --padding-size-base: 2rem;
-  --background-color: var(--color-grey-100);
-  --border: 1px solid var(--color-light);
-  --color-primary: var(--color-warning);
-  background-image: none;
 }
