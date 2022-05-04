@@ -119,10 +119,14 @@
 /* Customize calender multiple template styling */
 .calendar-multiple {
   --padding-size-base: 2rem;
-  --background-color: var(--color-primary);
-  --border: 1px solid var(--color-light);
+  --background-color: var(--bg-dark);
+  --border: 1px solid var(--color-grey-100);
   --text-color: var(--color-light);
-  background-image: none;
+  --bg-image: none;
+}
+
+.calendar-multiple .header-title {
+  color: var(--color-yellow);
 }
 
 .calendar-multiple-days {
