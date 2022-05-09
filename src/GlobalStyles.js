@@ -77,6 +77,7 @@ const GlobalStyles = createGlobalStyle`
     * Sizes
     */
     --font-size-base: 1rem; // Assumes the browser default, typically 16px
+    --font-size-xs: calc(var(--font-size-base) * 0.75);
     --font-size-sm: calc(var(--font-size-base) * 0.875);
     --font-size-lg: calc(var(--font-size-base) * 1.25);
     --font-size-xl: calc(var(--font-size-base) * 1.5);
