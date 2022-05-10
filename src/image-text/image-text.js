@@ -28,7 +28,7 @@ function ImageText({ slide, content, run, slideDone }) {
     fontSize,
     shadow,
   } = content || {};
-  const boxClasses = fontSize ? `box ${fontSize}` : "box";
+  let boxClasses = fontSize ? `box ${fontSize}` : "box";
   const rootClasses = ["template-image-text"];
 
   // Styling objects
@@ -67,6 +67,8 @@ function ImageText({ slide, content, run, slideDone }) {
   // Set background image.
   if (imageUrl) {
     rootStyle.backgroundImage = `url("${imageUrl}")`;
+  } else {
+    boxClasses = `${boxClasses} full-screen`;
   }
 
   // Set background color.

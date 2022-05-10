@@ -45,6 +45,11 @@
       margin-top: var(--spacer);
     }
 
+    &.full-screen {
+      width: 100%;
+      height: 100%;
+    }
+
     &.xs {
       font-size: var(--font-size-xs);
     }
