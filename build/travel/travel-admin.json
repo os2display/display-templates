@@ -73,7 +73,7 @@
     "key": "station-template-10",
     "input": "input",
     "name": "iframe_title",
-    "label": "Text i rejseplan",
+    "label": "Tekst til rejseplan",
     "helpText": "Her kan du skrive hvorfra bussen kører",
     "formGroupClasses": "col-md-6"
   },
