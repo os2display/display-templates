@@ -128,12 +128,13 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-size: 1.125rem;
     height: 100%;
-
+    
     /* Color defaults */
     background-color: var(--background-color);
     color: var(--text-color);
   }
   body {
+    cursor: none; 
     margin: 0;
     height: 100%;
   }
