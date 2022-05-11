@@ -1,0 +1,20 @@
+{
+    "distance": [
+        {
+            "type": 0,
+            "value": "Afstand"
+        }
+    ],
+    "time_fast": [
+        {
+            "type": 0,
+            "value": "Tid (hurtig)"
+        }
+    ],
+    "time_moderate": [
+        {
+            "type": 0,
+            "value": "Tid (moderat)"
+        }
+    ]
+}

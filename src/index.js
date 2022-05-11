@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { render } from "react-dom";
 import {
   BrowserRouter,
@@ -19,6 +19,7 @@ import InstagramFeed from "./instagram-feed/instagram-feed";
 import IFrame from "./iframe/iframe";
 import Table from "./table/table";
 import Video from "./video/video";
+import Travel from "./travel/travel";
 
 const renderSlide = (slide) => {
   switch (slide.type) {
@@ -121,6 +122,15 @@ const renderSlide = (slide) => {
           slideDone={() => {}}
         />
       );
+    case "travel":
+      return (
+        <Travel
+          content={slide.content}
+          slide={slide}
+          run={new Date().toISOString()}
+          slideDone={() => {}}
+        />
+      );
     default:
       return <div>Slide type not found!</div>;
   }
@@ -130,6 +140,14 @@ const Slide = () => {
   const { slideId } = useParams();
 
   const selectedSlide = slides.find((slide) => slide.id === slideId);
+
+  useEffect(() => {
+    if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("color-scheme-dark");
+    } else {
+      document.documentElement.classList.add("color-scheme-light");
+    }
+  }, []);
 
   return <div>{selectedSlide && <div>{renderSlide(selectedSlide)}</div>}</div>;
 };

@@ -352,7 +352,7 @@ const slides = [
       duration: 5000,
       hashtagText: "#myhashtag",
       orientation: "landscape",
-      imageWidth: 56.25,
+      imageWidth: 40.0,
       entryDuration: 10,
       maxEntries: 5,
     },
@@ -684,6 +684,35 @@ const slides = [
     },
     content: {
       video: ["/v1/media/00000000000000000000000001"],
+    },
+  },
+  {
+    id: "slide13-travel",
+    type: "travel",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      station: [
+        {
+          name: "Skelbækvej v rådhuset",
+          x: "9420345",
+          y: "55023889",
+          id: "545004301",
+        },
+      ],
+      iframe_title: "Titel til iframe",
+      number_of_journeys: 3,
+      title: "Overskrift",
+      text: "<p>Tekst på slide</p>",
+      distance: "2 km",
+      time_moderate: "5-7 minutter",
+      time_fast: "3-23 minutter",
+      image: ["/v1/media/00000000000000000000000001"],
     },
   },
 ];

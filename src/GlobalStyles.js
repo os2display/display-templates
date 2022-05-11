@@ -28,17 +28,6 @@ const GlobalStyles = createGlobalStyle`
     --color-grey-700: hsl(0deg 0% 30%);
     --color-grey-800: hsl(0deg 0% 20%);
     --color-grey-900: hsl(0deg 0% 10%);
-    @media (prefers-color-scheme: dark) {
-      --color-grey-100: hsl(0deg 0% 10%);
-      --color-grey-200: hsl(0deg 0% 15%);
-      --color-grey-300: hsl(0deg 0% 20%);
-      --color-grey-400: hsl(0deg 0% 25%);
-      --color-grey-500: hsl(0deg 0% 30%);
-      --color-grey-600: hsl(0deg 0% 45%);
-      --color-grey-700: hsl(0deg 0% 60%);
-      --color-grey-800: hsl(0deg 0% 75%);
-      --color-grey-900: hsl(0deg 0% 90%);
-    }
     --color-black: #000;
     --color-blue: hsl(219deg 89% 57%);
     --color-indigo: indigo;
@@ -88,6 +77,7 @@ const GlobalStyles = createGlobalStyle`
     * Sizes
     */
     --font-size-base: 1rem; // Assumes the browser default, typically 16px
+    --font-size-xs: calc(var(--font-size-base) * 0.75);
     --font-size-sm: calc(var(--font-size-base) * 0.875);
     --font-size-lg: calc(var(--font-size-base) * 1.25);
     --font-size-xl: calc(var(--font-size-base) * 1.5);
@@ -119,9 +109,6 @@ const GlobalStyles = createGlobalStyle`
     --border-size: 1px;
     --border-style: solid;
     --border-color: var(--color-grey-900);
-    @media (prefers-color-scheme: dark) {
-      --border-color: var(--color-light);
-    }
     --border: var(--border-size) var(--border-style) var(--border-color);
 
 
@@ -178,15 +165,25 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  @media (prefers-color-scheme: dark) {
-    html {
-      /*
-      * Default Dark mode colors. Also serves as fallback.
-      */
-      --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
-      --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
-      --text-color: var(--text-light, hsl(0deg, 0%, 100%));
-    }
+  /*
+  * Default Dark mode colors. Also serves as fallback.
+  */
+  html.color-scheme-dark {
+    --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+    --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
+    --text-color: var(--text-light, hsl(0deg, 0%, 100%));
+    
+    --border-color: var(--color-light);
+    
+    --color-grey-100: hsl(0deg 0% 10%);
+    --color-grey-200: hsl(0deg 0% 15%);
+    --color-grey-300: hsl(0deg 0% 20%);
+    --color-grey-400: hsl(0deg 0% 25%);
+    --color-grey-500: hsl(0deg 0% 30%);
+    --color-grey-600: hsl(0deg 0% 45%);
+    --color-grey-700: hsl(0deg 0% 60%);
+    --color-grey-800: hsl(0deg 0% 75%);
+    --color-grey-900: hsl(0deg 0% 90%);
   }
 
 `;

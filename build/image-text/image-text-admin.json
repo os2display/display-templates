@@ -27,7 +27,7 @@
     "name": "text",
     "label": "Tekst på slide",
     "helpText": "Her kan du skrive teksten til slidet",
-    "formGroupClasses": "col-md-6"
+    "formGroupClasses": "col-md"
   },
   {
     "key": "image-text-form-5",

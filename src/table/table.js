@@ -26,7 +26,6 @@ function Table({ slide, content, run, slideDone }) {
     separator = true,
     duration = 15000,
   } = content;
-  const textClasses = `text ${fontSize}`;
   let header;
 
   if (Array.isArray(table) && table.length > 0 && table[0].type === "header") {
@@ -71,11 +70,16 @@ function Table({ slide, content, run, slideDone }) {
           </Title>
         </Header>
         <ContentWrapper>
-          {fontPlacement === "top" && <Description className={textClasses}>{text}</Description>}
+          {fontPlacement === "top" && (
+            <Description className="text">{text}</Description>
+          )}
           {header && (
-            <GridTable style={gridStyle}>
+            <GridTable className={fontSize} style={gridStyle}>
               {header.columns.map((headerObject) => (
-                <TableHeader key={headerObject.Header} className="column-header">
+                <TableHeader
+                  key={headerObject.Header}
+                  className="column-header"
+                >
                   {headerObject.Header}
                 </TableHeader>
               ))}
@@ -93,7 +97,9 @@ function Table({ slide, content, run, slideDone }) {
                 )}
             </GridTable>
           )}
-          {fontPlacement === "bottom" && <Description classes={textClasses}>{text}</Description>}
+          {fontPlacement === "bottom" && (
+            <Description classes="text">{text}</Description>
+          )}
         </ContentWrapper>
       </Wrapper>
 
@@ -161,8 +167,21 @@ const GridTable = styled.div`
   /* Grid styling */
   margin: var(--margin-size-base) 0;
 
-  &:nth-child(even){
+  &:nth-child(even) {
     background-color: var(--background-color-secondary);
+  }
+
+  &.s {
+    font-size: var(--font-size-sm);
+  }
+  &.m {
+    font-size: var(--font-size-base);
+  }
+  &.l {
+    font-size: var(--font-size-lg);
+  }
+  &.xl {
+    font-size: var(--font-size-xl);
   }
 `;
 
@@ -174,21 +193,7 @@ const Column = styled.div`
 const Description = styled.div`
   /* Description text styling */
   margin: var(--margin-size-base) 0;
-
-  &.s {
-      font-size: var(--font-size-sm);
-    }
-    &.m {
-      font-size: var(--font-size-base);
-    }
-    &.l {
-      font-size: var(--font-size-lg);
-    }
-    &.xl {
-      font-size: var(--font-size-xl);
-    }
 `;
-
 
 Table.propTypes = {
   run: PropTypes.string.isRequired,

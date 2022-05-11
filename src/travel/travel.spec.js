@@ -2,14 +2,14 @@ import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import slides from "../slides";
-import Table from "./table";
+import Travel from "./travel";
 
 configure({ adapter: new Adapter() });
 
-test("Test that basic table loads", () => {
-  const slide = slides.find((s) => s.id === "slide9-table");
+test("Test that travel loads", () => {
+  const slide = slides.find((s) => s.id === "slide13-travel");
   const wrapper = shallow(
-    <Table
+    <Travel
       run={new Date().toISOString()}
       slide={slide}
       content={slide.content}
@@ -17,8 +17,5 @@ test("Test that basic table loads", () => {
     />
   );
 
-  expect(wrapper.find(".title").text()).toContain("Overskrift");
-  expect(wrapper.find(".column-header:first-child").text()).toContain(
-    "Column 1"
-  );
+  expect(wrapper.find("iframe").exists()).toBeTruthy();
 });
