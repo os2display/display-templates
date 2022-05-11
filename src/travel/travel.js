@@ -75,7 +75,9 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   useEffect(() => {
     setTranslations(da);
   }, []);
-
+  console.log(
+    "https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${number_of_journeys}&enableHIM=1&p1=bus&p1title=${iframe_title}&p1icons=&p2icons=&"
+  );
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
       <div className="grid">
@@ -121,11 +123,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
               sandbox="allow-same-origin allow-scripts"
               frameBorder="0"
               scrolling="no"
-              src={`https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-                number_of_journeys || 1
-              }&enableHIM=1&p1=bus&p1title=${
-                iframe_title || ""
-              }&p1icons=&p2icons=&`}
+              src={`https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${number_of_journeys}&enableHIM=1&p1=bus&p1title=${iframe_title}&p1icons=&p2icons=&p2=letbane&maxJourneys=${number_of_journeys}&station=${stationId}&p2title=sdf&p2icons=&`}
               width="100%"
               height="100%"
             />

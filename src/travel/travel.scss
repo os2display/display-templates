@@ -1,7 +1,10 @@
+@font-face {
+  font-family: 'rubics';
+  src: url('./fonts/rubik-regular.woff') format('woff');
+}
 .grid {
-  --font: var(--font-family-base, Arial);
+  font-family: 'rubics';
   color: #343433;
-  font-family: var(--font);
   font-size: 1em;
   grid-template-rows: 50% 50%;
   grid-template-columns: 33% 67%;
@@ -40,6 +43,7 @@
       flex-direction: column;
       justify-content: space-around;
       background-color: #e1ded7;
+
       .text {
         font-size: 1.1em;
       }

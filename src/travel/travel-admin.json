@@ -80,7 +80,7 @@
   {
     "key": "station-template-11",
     "input": "travel-plan",
-    "label": "Vælg relevante stoppesteder",
+    "label": "Vælg stoppested",
     "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
     "formGroupClasses": "col-md-6 mb-3",
     "name": "station"
