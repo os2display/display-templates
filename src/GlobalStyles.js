@@ -1,12 +1,6 @@
 // GlobalStyles.js
 import { createGlobalStyle } from "styled-components";
 
-/* TODO: Remove themes after testing  */
-// import "./themes/dokk1.css";
-// import "./themes/blixen.css"
-// import "./themes/mso.css"
-// import "./themes/aarhus.css"
-
 const GlobalStyles = createGlobalStyle`
   /*
   * We use the classes horizontal and vertical to define the orientation of the screen.
@@ -134,7 +128,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color);
   }
   body {
-    cursor: none; 
+    cursor: none;
     margin: 0;
     height: 100%;
   }
@@ -173,9 +167,9 @@ const GlobalStyles = createGlobalStyle`
     --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
     --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
     --text-color: var(--text-light, hsl(0deg, 0%, 100%));
-    
+
     --border-color: var(--color-light);
-    
+
     --color-grey-100: hsl(0deg 0% 10%);
     --color-grey-200: hsl(0deg 0% 15%);
     --color-grey-300: hsl(0deg 0% 20%);

@@ -1,0 +1,11 @@
+/*
+* Example theme file
+*/
+
+#SLIDE_ID .template-text-image {
+  background-color: hsl(240, 100, 99);
+}
+
+#SLIDE_ID h1 {
+  color: hsl(240, 3, 7);
+}

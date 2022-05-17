@@ -1,4 +1,4 @@
-.template-image-text {
+#SLIDE_ID .template-image-text {
   background-size: auto; /* We might wish to change this to `contain` instead of auto. Since larger images the will be forced inside the 544/416 container. */
   background-repeat: no-repeat;
   background-position: top left;
@@ -8,10 +8,10 @@
   height: 544px;
 }
 
-.template-image-text.preview {
+#SLIDE_ID .template-image-text.preview {
   background-size: cover;
 }
 
-.template-image-text .box {
+#SLIDE_ID .template-image-text .box {
   display: none !important;
 }
