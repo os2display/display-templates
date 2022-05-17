@@ -1,9 +1,9 @@
 /*
-** Aarhus theme css
+* Aarhus theme css
 */
 
-:root {
-  /* Defaults */
+#SLIDE_ID {
+  /* Default variables */
   --bg-light: #f6f6f6;
   --text-dark: #333333;
   --color-primary: #3761d9;

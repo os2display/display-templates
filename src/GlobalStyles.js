@@ -1,12 +1,6 @@
 // GlobalStyles.js
 import { createGlobalStyle } from "styled-components";
 
-/* TODO: Remove themes after testing  */
-// import "./themes/dokk1.css";
-// import "./themes/blixen.css"
-// import "./themes/mso.css"
-// import "./themes/aarhus.css"
-
 const GlobalStyles = createGlobalStyle`
   /*
   * We use the classes horizontal and vertical to define the orientation of the screen.
@@ -15,6 +9,64 @@ const GlobalStyles = createGlobalStyle`
 
   /* Common template variables */
   html {
+    /*
+    * Fonts
+    */
+
+    /* Import roboto slab font from google - Used with Blixen theme*/
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap");
+
+    /* Import Gipson font from typekit - Used with Dokk1 theme */
+    @import url("https://p.typekit.net/p.css?s=1&k=ilx8ovv&ht=tk&f=24355.24356.43309.43310&a=3352895&app=typekit&e=css");
+    @font-face {
+      font-family: "canada-type-gibson";
+      src: url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/l?subset_id=2&fvd=n6&v=3")
+          format("woff2"),
+        url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/d?subset_id=2&fvd=n6&v=3")
+          format("woff"),
+        url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/a?subset_id=2&fvd=n6&v=3")
+          format("opentype");
+      font-display: auto;
+      font-style: normal;
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: "canada-type-gibson";
+      src: url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/l?subset_id=2&fvd=i6&v=3")
+          format("woff2"),
+        url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/d?subset_id=2&fvd=i6&v=3")
+          format("woff"),
+        url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/a?subset_id=2&fvd=i6&v=3")
+          format("opentype");
+      font-display: auto;
+      font-style: italic;
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: "canada-type-gibson";
+      src: url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+          format("woff2"),
+        url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+          format("woff"),
+        url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+          format("opentype");
+      font-display: auto;
+      font-style: normal;
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: "canada-type-gibson";
+      src: url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/l?subset_id=2&fvd=i3&v=3")
+          format("woff2"),
+        url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/d?subset_id=2&fvd=i3&v=3")
+          format("woff"),
+        url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/a?subset_id=2&fvd=i3&v=3")
+          format("opentype");
+      font-display: auto;
+      font-style: italic;
+      font-weight: 300;
+    }
+
     /*
     * Colors
     */
@@ -134,7 +186,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color);
   }
   body {
-    cursor: none; 
+    cursor: none;
     margin: 0;
     height: 100%;
   }
@@ -173,9 +225,9 @@ const GlobalStyles = createGlobalStyle`
     --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
     --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
     --text-color: var(--text-light, hsl(0deg, 0%, 100%));
-    
+
     --border-color: var(--color-light);
-    
+
     --color-grey-100: hsl(0deg 0% 10%);
     --color-grey-200: hsl(0deg 0% 15%);
     --color-grey-300: hsl(0deg 0% 20%);
