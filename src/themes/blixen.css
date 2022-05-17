@@ -2,6 +2,9 @@
 ** Blixen theme css
 */
 
+/* Import roboto slab font from google - Used with Blixen theme */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap");
+
 #SLIDE_ID {
   /* Default variabels */
   --color-primary: #673ab7;
