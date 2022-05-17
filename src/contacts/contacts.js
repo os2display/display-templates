@@ -16,9 +16,10 @@ import PersonSvg from "./person.svg";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Contacts({ slide, content, run, slideDone }) {
+function Contacts({ slide, content, run, slideDone, executionId }) {
   const { separator, duration = 15000 } = content;
   const [mappedContacts, setMappedContacts] = useState([]);
   const [translations, setTranslations] = useState();
@@ -95,7 +96,7 @@ function Contacts({ slide, content, run, slideDone }) {
         </ContactsWrapper>
       </Wrapper>
 
-      <ThemeStyles name="template-contacts" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </IntlProvider>
   );
@@ -200,6 +201,7 @@ Contacts.propTypes = {
       })
     ),
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Contacts;

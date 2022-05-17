@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import {
   BrowserRouter,
@@ -30,6 +30,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "calendar":
@@ -39,6 +40,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "contacts":
@@ -48,6 +50,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "image-text":
@@ -57,6 +60,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "iframe":
@@ -66,6 +70,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "poster":
@@ -75,6 +80,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "rss":
@@ -84,6 +90,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "slideshow":
@@ -93,6 +100,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "instagram-feed":
@@ -102,6 +110,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "table":
@@ -111,6 +120,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "video":
@@ -120,6 +130,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     case "travel":
@@ -129,6 +140,7 @@ const renderSlide = (slide) => {
           slide={slide}
           run={new Date().toISOString()}
           slideDone={() => {}}
+          executionId="SLIDE_ID"
         />
       );
     default:
@@ -138,10 +150,29 @@ const renderSlide = (slide) => {
 
 const Slide = () => {
   const { slideId } = useParams();
+  const [selectedSlide, setSelectedSlide] = useState(null);
 
-  const selectedSlide = slides.find((slide) => slide.id === slideId);
+  const getTheme = (slide) => {
+    fetch(slide.themeFile)
+      .then((resp) => resp.text())
+      .then((data) => {
+        const newSelectedSlide = { ...slide };
+        newSelectedSlide.themeData = {
+          css: data,
+        };
+        setSelectedSlide(newSelectedSlide);
+      });
+  };
 
   useEffect(() => {
+    const foundSlide = slides.find((slide) => slide.id === slideId);
+    setSelectedSlide(foundSlide);
+
+    if (foundSlide?.themeFile) {
+      getTheme(foundSlide);
+    }
+
+    // Apply color scheme.
     if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("color-scheme-dark");
     } else {
@@ -149,7 +180,13 @@ const Slide = () => {
     }
   }, []);
 
-  return <div>{selectedSlide && <div>{renderSlide(selectedSlide)}</div>}</div>;
+  return (
+    <div className="app">
+      <div className="slide" id="SLIDE_ID">
+        {selectedSlide && renderSlide(selectedSlide)}
+      </div>
+    </div>
+  );
 };
 
 const Overview = () => {

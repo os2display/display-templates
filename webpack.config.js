@@ -62,6 +62,10 @@ const plugins = devMode
             from: path.resolve(__dirname, "./src/fixtures"),
             to: "fixtures",
           },
+          {
+            from: path.resolve(__dirname, "./src/themes"),
+            to: "themes",
+          },
         ],
       }),
     ]

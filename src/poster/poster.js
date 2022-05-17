@@ -17,9 +17,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Poster({ slide, content, run, slideDone }) {
+function Poster({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState({});
   const [currentEvent, setCurrentEvent] = useState(null);
   const [show, setShow] = useState(true);
@@ -202,7 +203,7 @@ function Poster({ slide, content, run, slideDone }) {
         </div>
       </IntlProvider>
 
-      <ThemeStyles name="template-poster" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -250,6 +251,7 @@ Poster.propTypes = {
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Poster;

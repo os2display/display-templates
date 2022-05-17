@@ -54,15 +54,16 @@ function getAllMediaUrlsFromField(mediaData, field) {
  * Create a theme style for a slide.
  *
  * @param {object} props Props.
- * @param {string} props.name Class name to target with the css.
+ * @param {string} props.id Slide execution id.
  * @param {string | null} props.css Css as a string.
  * @returns {object} The component.
  */
-function ThemeStyles({ name, css = null }) {
+function ThemeStyles({ id, css = null }) {
   if (!css) return <></>;
-  const ThemeComponent = createGlobalStyle`.${name} {
-      ${css}
-    }`;
+
+  const slideCss = css.replaceAll("#SLIDE_ID", `#${id}`);
+
+  const ThemeComponent = createGlobalStyle`${slideCss}`;
   return <ThemeComponent />;
 }
 
@@ -71,7 +72,7 @@ ThemeStyles.defaultProps = {
 };
 
 ThemeStyles.propTypes = {
-  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   css: PropTypes.string,
 };
 

@@ -15,9 +15,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function ImageText({ slide, content, run, slideDone }) {
+function ImageText({ slide, content, run, slideDone, executionId }) {
   // Styling from content
   const {
     separator,
@@ -128,7 +129,7 @@ function ImageText({ slide, content, run, slideDone }) {
           </div>
         )}
       </div>
-      <ThemeStyles name="template-image-text" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -138,7 +139,6 @@ ImageText.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
     themeData: PropTypes.shape({
       css: PropTypes.string,
@@ -162,6 +162,7 @@ ImageText.propTypes = {
       fontSize: PropTypes.string,
     }),
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default ImageText;
