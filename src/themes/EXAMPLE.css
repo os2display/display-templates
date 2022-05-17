@@ -1,5 +1,8 @@
 /*
 * Example theme file
+* #SLIDE_ID should always encapsulate all your theme styling
+* #SLIDE_ID will be replaced at runtime with the given slide execution id to make sure the theme styling
+* only applies to the given slide.
 */
 
 #SLIDE_ID .template-text-image {
