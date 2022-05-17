@@ -113,6 +113,7 @@ function CalendarMultipleDays({
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
   height: 100%;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   /*
