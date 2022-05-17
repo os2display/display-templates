@@ -4,6 +4,7 @@
   Default:
   --bg-light
   --text-dark
+  --font-size-xs
   --font-size-sm
   --font-size-base
   --font-size-lg
@@ -44,15 +45,27 @@
       margin-top: var(--spacer);
     }
 
+    &.full-screen {
+      width: 100%;
+      height: 100%;
+    }
+
+    &.xs {
+      font-size: var(--font-size-xs);
+    }
+
     &.s {
       font-size: var(--font-size-sm);
     }
+
     &.m {
       font-size: var(--font-size-base);
     }
+
     &.l {
       font-size: var(--font-size-lg);
     }
+
     &.xl {
       font-size: var(--font-size-xl);
     }
@@ -96,6 +109,7 @@
       display: flex;
       flex-direction: column;
     }
+
     h1 {
       position: relative;
       display: inline-block;
@@ -142,18 +156,21 @@
     opacity: 0;
     width: 100%;
   }
+
   40% {
     opacity: 1;
     width: 100%;
     margin-top: 0.938em;
     height: 0.375em;
   }
+
   70% {
     opacity: 1;
     width: 100%;
     margin-top: 0.625em;
     height: 0.2em;
   }
+
   100% {
     opacity: 1;
     width: 5em;

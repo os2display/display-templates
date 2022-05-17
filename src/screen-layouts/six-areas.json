@@ -1,13 +1,13 @@
 {
-  "title": "Touch",
-  "id": "01FMYMB5PEKZRX63H98YPMB280",
+  "title": "Seks områder",
+  "id": "01G2MDB2P53W4EZ9627FX07JWV",
   "grid": {
     "rows": 4,
     "columns": 12
   },
   "regions": [
     {
-      "id": "01G10FDN9H4NWM7NTZHZ1VCM33",
+      "id": "01G2MDB9R3894FYCRZJ2A3FV8G",
       "title": "En - 1920x90",
       "gridArea": [
         "a",
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "id": "01G10FDWNEDASCX4FDVHQREDZS",
+      "id": "01G2MDBCSZ156DPSWS9XED1PTN",
       "title": "To",
       "gridArea": [
         "e",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "id": "01G10FE3HHF40RXWFTR7GXESJA",
+      "id": "01G2MDBFZ6F7CW66SWCNRHSKGR",
       "title": "Tre",
       "gridArea": [
         "q",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "id": "01G10FEA5X7AZB0P2415C6NZR2",
+      "id": "01G2MDBKJH4R4EKNRCRE0PPJEJ",
       "title": "Fire - 4x3",
       "gridArea": [
         "cc",
@@ -39,17 +39,16 @@
       ]
     },
     {
-      "id": "01G10FEMMDM0RE2NVG9DBMJ8TW",
-      "title": "Touch knapper",
-      "type": "touch-buttons",
+      "id": "01G2MDBPWE56ES863YCY48PCKW",
+      "title": "Fem",
       "gridArea": [
         "ss",
         "vv"
       ]
     },
     {
-      "id": "01G10FEXKZ73Q9A8MJ45T7EH5S",
-      "title": "Fem",
+      "id": "01G2MDBV28R3SRC5VTCC2P20C9",
+      "title": "Seks",
       "gridArea": [
         "f",
         "rr"

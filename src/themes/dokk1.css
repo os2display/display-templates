@@ -2,25 +2,8 @@
 ** DOKK1 theme css
 */
 
-/* Custom Gibson font from https://use.typekit.net/ilx8ovv.css (Adobe/typeKit) */
-/*
- * The Typekit service used to deliver this font or fonts for use on websites
- * is provided by Adobe and is subject to these Terms of Use
- * http://www.adobe.com/products/eulas/tou_typekit. For font license
- * information, see the list below.
- *
- * canada-type-gibson:
- *   - http://typekit.com/eulas/00000000000000007735a544
- *   - http://typekit.com/eulas/00000000000000007735a545
- *   - http://typekit.com/eulas/00000000000000007735a548
- *   - http://typekit.com/eulas/00000000000000007735a549
- *
- * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
- */
-/*{"last_published":"2021-06-21 09:57:20 UTC"}*/
-
+/* Import Gibson font from typekit - Used with Dokk1 theme */
 @import url("https://p.typekit.net/p.css?s=1&k=ilx8ovv&ht=tk&f=24355.24356.43309.43310&a=3352895&app=typekit&e=css");
-
 @font-face {
   font-family: "canada-type-gibson";
   src: url("https://use.typekit.net/af/6c50f4/00000000000000007735a544/30/l?subset_id=2&fvd=n6&v=3")
@@ -33,7 +16,6 @@
   font-style: normal;
   font-weight: 600;
 }
-
 @font-face {
   font-family: "canada-type-gibson";
   src: url("https://use.typekit.net/af/56af16/00000000000000007735a545/30/l?subset_id=2&fvd=i6&v=3")
@@ -46,7 +28,6 @@
   font-style: italic;
   font-weight: 600;
 }
-
 @font-face {
   font-family: "canada-type-gibson";
   src: url("https://use.typekit.net/af/37e7f5/00000000000000007735a548/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
@@ -59,7 +40,6 @@
   font-style: normal;
   font-weight: 300;
 }
-
 @font-face {
   font-family: "canada-type-gibson";
   src: url("https://use.typekit.net/af/e171bf/00000000000000007735a549/30/l?subset_id=2&fvd=i3&v=3")
@@ -73,12 +53,8 @@
   font-weight: 300;
 }
 
-.tk-canada-type-gibson {
-  font-family: "canada-type-gibson", sans-serif;
-}
-
 /* Defaults */
-:root {
+#SLIDE_ID {
   --bg-light: #f1f0ef;
   --text-dark: #222;
   --color-primary: #003764;
@@ -105,7 +81,7 @@
 }
 
 /* Customize calender single template styling */
-.calendar-single {
+#SLIDE_ID .calendar-single {
   --h1-font-size: 5rem;
   --h4-font-size: 3rem;
   --font-size-base: 2rem;
@@ -117,8 +93,15 @@
 }
 
 /* Customize calender multiple template styling */
-.calendar-multiple,
-.calendar-multiple-days {
+#SLIDE_ID .calendar-multiple {
+  --padding-size-base: 2rem;
+  --background-color: var(--color-primary);
+  --border: 1px solid var(--color-light);
+  --text-color: var(--color-light);
+  background-image: none;
+}
+
+#SLIDE_ID .calendar-multiple-days {
   --padding-size-base: 2rem;
   --background-color: var(--bg-dark);
   --border: 1px solid var(--color-grey-100);
@@ -127,7 +110,7 @@
   --bg-image: none;
 }
 
-.calendar-multiple .header-title,
-.calendar-multiple-days .header-title {
+#SLIDE_ID .calendar-multiple .header-title,
+#SLIDE_ID .calendar-multiple-days .header-title {
   color: var(--color-yellow);
 }
