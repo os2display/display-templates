@@ -15,9 +15,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function BookReview({ slide, content, run, slideDone }) {
+function BookReview({ slide, content, run, slideDone, executionId }) {
   const { authorText, bookText, duration = 15000 } = content;
   const sanitizedParsedBookText = bookText
     ? parse(DOMPurify.sanitize(bookText, {}))
@@ -73,7 +74,7 @@ function BookReview({ slide, content, run, slideDone }) {
         </div>
       </div>
 
-      <ThemeStyles name="template-book-review" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -94,6 +95,7 @@ BookReview.propTypes = {
     authorImage: PropTypes.arrayOf(PropTypes.string),
     bookImage: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default BookReview;

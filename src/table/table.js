@@ -13,9 +13,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Table({ slide, content, run, slideDone }) {
+function Table({ slide, content, run, slideDone, executionId }) {
   // Content
   const {
     table,
@@ -103,7 +104,7 @@ function Table({ slide, content, run, slideDone }) {
         </ContentWrapper>
       </Wrapper>
 
-      <ThemeStyles name="template-table" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -214,6 +215,7 @@ Table.propTypes = {
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
     image: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Table;

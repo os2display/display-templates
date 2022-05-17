@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Video component.
@@ -10,9 +11,10 @@ import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Video({ slide, content, run, slideDone }) {
+function Video({ slide, content, run, slideDone, executionId }) {
   const videoUrls = getAllMediaUrlsFromField(slide.mediaData, content.video);
   const videoRef = useRef();
 
@@ -51,13 +53,15 @@ function Video({ slide, content, run, slideDone }) {
 
   return (
     <>
-      <ThemeStyles name="template-video" css={slide?.themeData?.css} />
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video width="100%" height="100%" ref={videoRef}>
         {videoUrls.map((url) => (
           <source key={url} src={url} />
         ))}
       </video>
+
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <GlobalStyles />
     </>
   );
 }
@@ -75,6 +79,7 @@ Video.propTypes = {
   content: PropTypes.shape({
     video: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Video;

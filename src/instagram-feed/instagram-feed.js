@@ -20,9 +20,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function InstagramFeed({ slide, content, run, slideDone }) {
+function InstagramFeed({ slide, content, run, slideDone, executionId }) {
   dayjs.extend(localizedFormat);
   dayjs.extend(relativeTime);
 
@@ -139,7 +140,7 @@ function InstagramFeed({ slide, content, run, slideDone }) {
         </div>
       )}
 
-      <ThemeStyles name="template-instagram-feed" css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -170,6 +171,7 @@ InstagramFeed.propTypes = {
     maxEntries: PropTypes.number,
     imageWidth: PropTypes.number,
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default InstagramFeed;

@@ -12,9 +12,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Slideshow({ slide, content, run, slideDone }) {
+function Slideshow({ slide, content, run, slideDone, executionId }) {
   const {
     images,
     imageDuration = 5000,
@@ -229,9 +230,9 @@ function Slideshow({ slide, content, run, slideDone }) {
               </div>
             );
           })}
-        {/* @TODO: { logoImageUrl && <img className={logoClasses} alt="slide" src={logoImageUrl} /> } */}
       </div>
-      <ThemeStyles name="template-slideshow" css={slide?.themeData?.css} />
+
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
@@ -255,6 +256,7 @@ Slideshow.propTypes = {
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Slideshow;

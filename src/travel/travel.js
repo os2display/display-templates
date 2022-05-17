@@ -4,7 +4,7 @@ import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from "../slide-util";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 import da from "./lang/da.json";
 import "./travel.scss";
@@ -16,9 +16,10 @@ import "./travel.scss";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Travel({ slide, content, run, slideDone }) {
+function Travel({ slide, content, run, slideDone, executionId }) {
   const {
     station,
     time_fast,
@@ -131,6 +132,8 @@ function Travel({ slide, content, run, slideDone }) {
           </div>
         )}
       </div>
+
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
       <GlobalStyles />
     </IntlProvider>
   );
@@ -157,6 +160,9 @@ Travel.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
@@ -170,6 +176,7 @@ Travel.propTypes = {
     iframe_title: PropTypes.string,
     number_of_journeys: PropTypes.number,
   }),
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Travel;

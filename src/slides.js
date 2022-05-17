@@ -4,9 +4,7 @@ const slides = [
   {
     id: "slide0-image-text",
     type: "image-text",
-    themeData: {
-      css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
-    },
+    themeFile: "themes/example.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
