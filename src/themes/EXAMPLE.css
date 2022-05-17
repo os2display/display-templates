@@ -5,10 +5,15 @@
 * only applies to the given slide.
 */
 
-#SLIDE_ID .template-text-image {
-  background-color: hsl(240, 100, 99);
+#SLIDE_ID {
+  --bg-light: red;
+  --bg-dark: blue;
+  --text-light: purple;
+  --text-dark: green;
+  --text-color: yellow;
 }
 
-#SLIDE_ID h1 {
-  color: hsl(240, 3, 7);
+#SLIDE_ID .text {
+  background-color: var(--bg-light);
+  color: var(--text-color);
 }
