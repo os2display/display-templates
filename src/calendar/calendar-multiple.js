@@ -184,6 +184,7 @@ function CalendarMultiple({
 
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
+  overflow: hidden;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
