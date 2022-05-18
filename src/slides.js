@@ -4,7 +4,7 @@ const slides = [
   {
     id: "slide0-image-text",
     type: "image-text",
-    themeFile: "themes/EXAMPLE.css",
+    themeFile: "themes/dokk1.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -28,6 +28,7 @@ const slides = [
   {
     id: "slide1-book-review",
     type: "book-review",
+    themeFile: "themes/dokk1.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -53,6 +54,7 @@ const slides = [
   {
     id: "slide2-calendar-multiple-days",
     type: "calendar",
+    themeFile: "themes/dokk1.css",
     feedData: [
       {
         id: "uniqueEvent1",
@@ -138,6 +140,7 @@ const slides = [
   {
     id: "slide3-poster-single",
     type: "poster",
+    themeFile: "themes/dokk1.css",
     feed: {
       configuration: {
         overrideTitle: null,
@@ -181,6 +184,7 @@ const slides = [
   {
     id: "slide4-rss",
     type: "rss",
+    themeFile: "themes/dokk1.css",
     feed: {
       configuration: {
         numberOfEntries: 5,
@@ -237,6 +241,7 @@ const slides = [
   {
     id: "slide5-slideshow",
     type: "slideshow",
+    themeFile: "themes/dokk1.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -277,6 +282,7 @@ const slides = [
   {
     id: "slide6-contacts",
     type: "contacts",
+    themeFile: "themes/dokk1.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -346,6 +352,7 @@ const slides = [
   {
     id: "slide7-instagram",
     type: "instagram-feed",
+    themeFile: "themes/dokk1.css",
     content: {
       duration: 5000,
       hashtagText: "#myhashtag",
@@ -396,6 +403,7 @@ const slides = [
   {
     id: "slide9-table",
     type: "table",
+    themeFile: "themes/dokk1.css",
     themeData: {
       css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
     },
@@ -445,6 +453,7 @@ const slides = [
   {
     id: "slide10-calendar2-multiple",
     type: "calendar",
+    themeFile: "themes/dokk1.css",
     feedData: [
       {
         id: "uniqueEvent1",
@@ -529,6 +538,7 @@ const slides = [
   {
     id: "slide11-calendar3-single",
     type: "calendar",
+    themeFile: "themes/dokk1.css",
     feedData: [
       {
         id: "uniqueEvent1",
@@ -610,6 +620,7 @@ const slides = [
   {
     id: "slide12-poster-subscription",
     type: "poster",
+    themeFile: "themes/dokk1.css",
     feed: {
       configuration: {
         overrideTitle: null,
@@ -673,6 +684,7 @@ const slides = [
   {
     id: "slide13-video",
     type: "video",
+    themeFile: "themes/dokk1.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {

@@ -78,6 +78,8 @@
   /* Darkmode overrides */
   --bg-dark: #212529;
   --text-light: #ffffff;
+
+  font-family: var(--font-family-base);
 }
 
 /* Customize calender single template styling */
@@ -93,24 +95,21 @@
 }
 
 /* Customize calender multiple template styling */
-#SLIDE_ID .calendar-multiple {
-  --padding-size-base: 2rem;
-  --background-color: var(--color-primary);
-  --border: 1px solid var(--color-light);
-  --text-color: var(--color-light);
-  background-image: none;
-}
-
+#SLIDE_ID .calendar-multiple,
 #SLIDE_ID .calendar-multiple-days {
   --padding-size-base: 2rem;
   --background-color: var(--bg-dark);
   --border: 1px solid var(--color-grey-100);
-  --text-color: var(--color-light);
   --color-primary: var(--color-yellow);
-  --bg-image: none;
+  --text-color: var(--color-light);
+  background-image: none;
 }
 
 #SLIDE_ID .calendar-multiple .header-title,
 #SLIDE_ID .calendar-multiple-days .header-title {
   color: var(--color-yellow);
+}
+
+#SLIDE_ID .separator {
+  background-color: var(--color-primary);
 }
