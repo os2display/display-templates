@@ -98,7 +98,7 @@
     "formGroupClasses": "h5 mb-3"
   },
   {
-    "key": "image-text-form-9",
+    "key": "slideshow-form-9",
     "input": "checkbox",
     "label": "Vis logo fra tema",
     "name": "logoEnabled",

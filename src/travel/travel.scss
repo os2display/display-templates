@@ -1,9 +1,10 @@
 @font-face {
-  font-family: 'rubics';
-  src: url('./fonts/rubik-regular.woff') format('woff');
+  font-family: "rubics";
+  src: url("./fonts/rubik-regular.woff") format("woff");
 }
+
 .grid {
-  font-family: 'rubics';
+  font-family: "rubics", Helvetica, sans-serif;
   color: #343433;
   font-size: 1em;
   grid-template-rows: 50% 50%;
