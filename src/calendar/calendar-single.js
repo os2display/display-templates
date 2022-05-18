@@ -78,10 +78,7 @@ function CalendarSingle({
   return (
     <Wrapper
       className={`calendar-single ${templateClasses.join(" ")}`}
-      style={{
-        "--bg-image": templateRootStyle.backgroundImage,
-        "--bg-color": templateRootStyle.backgroundColor,
-      }}
+      style={templateRootStyle}
     >
       <Title className="title">{title}</Title>
       {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
@@ -169,7 +166,6 @@ CalendarSingle.propTypes = {
     subTitle: PropTypes.string,
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
-    fontSize: PropTypes.string,
   }).isRequired,
 };
 
