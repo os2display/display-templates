@@ -78,9 +78,17 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "station-template-12",
+    "input": "travel-plan",
+    "label": "Vælg stoppested",
+    "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
+    "formGroupClasses": "col-md-6 mb-3",
+    "name": "station"
+  },
+  {
     "key": "station-template-11",
     "input": "radio",
-    "label": "Margin rundt om tekst",
+    "label": "Er det valgte stoppested bus eller letbane",
     "options": [
       {
         "id": "bus",
@@ -93,14 +101,6 @@
     ],
     "name": "busOrTram",
     "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "station-template-12",
-    "input": "travel-plan",
-    "label": "Vælg stoppested",
-    "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
-    "formGroupClasses": "col-md-6 mb-3",
-    "name": "station"
   },
   {
     "key": "station-template-13",
