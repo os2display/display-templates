@@ -40,7 +40,7 @@
   {
     "key": "station-template-6",
     "input": "input",
-    "name": "time_moderate",
+    "name": "timeModerate",
     "label": "Tid (Moderat)",
     "helpText": "Her kan du skrive teksten til tidsfeltet (moderat)",
     "formGroupClasses": "col-md-6"
@@ -48,7 +48,7 @@
   {
     "key": "station-template-7",
     "input": "input",
-    "name": "time_fast",
+    "name": "timeFast",
     "label": "Tid (Hurtigt)",
     "helpText": "Her kan du skrive teksten til tidsfeltet (hurtigt)",
     "formGroupClasses": "col-md-6"
@@ -64,7 +64,7 @@
   {
     "key": "station-template-9",
     "input": "input",
-    "name": "number_of_journeys",
+    "name": "numberOfJourneys",
     "label": "Antal afgange der skal vises",
     "helpText": "Hvis du for eksempel skriver 3, vises de næste 3 afgange fra stoppestedet",
     "formGroupClasses": "col-md-6"
@@ -72,21 +72,38 @@
   {
     "key": "station-template-10",
     "input": "input",
-    "name": "iframe_title",
-    "label": "Tekst til rejseplan",
+    "name": "iframeTitle",
+    "label": "Tekst i rejseplan",
     "helpText": "Her kan du skrive hvorfra bussen kører",
     "formGroupClasses": "col-md-6"
   },
   {
     "key": "station-template-11",
+    "input": "radio",
+    "label": "Margin rundt om tekst",
+    "options": [
+      {
+        "id": "bus",
+        "label": "Bus"
+      },
+      {
+        "id": "tram",
+        "label": "Letbane"
+      }
+    ],
+    "name": "busOrTram",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "station-template-12",
     "input": "travel-plan",
-    "label": "Vælg relevante stoppesteder",
+    "label": "Vælg stoppested",
     "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
     "formGroupClasses": "col-md-6 mb-3",
     "name": "station"
   },
   {
-    "key": "station-template-12",
+    "key": "station-template-13",
     "input": "duration",
     "name": "duration",
     "min": "1",
