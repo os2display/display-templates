@@ -128,7 +128,6 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color);
   }
   body {
-    cursor: none;
     margin: 0;
     height: 100%;
   }

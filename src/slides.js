@@ -125,8 +125,6 @@ const slides = [
       // Options: multiple|multipleDays|single
       layout: "multipleDays",
       hasDateAndTime: true,
-      // backgroundColor: "hsl(0deg 0% 20%)",
-      backgroundColor: "red",
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
@@ -135,6 +133,7 @@ const slides = [
       // image: ["/v1/media/00000000000000000000000001"],
       image: [],
       footerText: "Se mere på localhost/events",
+      fontSize: "m",
     },
   },
   {
@@ -523,7 +522,6 @@ const slides = [
       duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
-      backgroundColor: "",
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
@@ -533,6 +531,7 @@ const slides = [
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
+      fontSize: "xl",
     },
   },
   {
@@ -615,6 +614,7 @@ const slides = [
       resourceUnavailableText: "Det er optaget",
       image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
+      fontSize: "xl",
     },
   },
   {

@@ -93,10 +93,7 @@ function CalendarMultipleDays({
   return (
     <Wrapper
       className={`calendar-multiple-days ${templateClasses.join(" ")}`}
-      style={{
-        "--bg-image": templateRootStyle.backgroundImage,
-        "--bg-color": templateRootStyle.backgroundColor,
-      }}
+      style={templateRootStyle}
     >
       <>
         <Title className="title">{title}</Title>
