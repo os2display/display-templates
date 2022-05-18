@@ -64,6 +64,41 @@
     ]
   },
   {
+    "key": "calendar-form-form-14",
+    "input": "select",
+    "required": true,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "l"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "xl"
+      }
+    ],
+    "name": "fontSize"
+  },
+  {
     "key": "calendar-form-title",
     "input": "input",
     "name": "title",
