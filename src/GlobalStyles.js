@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   */
 
   /* Common template variables */
-  html {
+  #SLIDE_ID {
     /*
     * Colors
     */
@@ -110,8 +110,8 @@ const GlobalStyles = createGlobalStyle`
     * Default Light mode colors.
     * !! Go to bottom of this file for the dark replacement.
     */
-    --background-color: var(--color-grey-100, hsl(0deg, 0%, 95%));
-    --background-color-secondary: var(--bg-light, hsl(0deg, 0%, 100%));
+    --background-color: var(--bg-light, hsl(0deg, 0%, 100%));
+    --background-color-secondary: var(--color-grey-100, hsl(0deg, 0%, 95%));
     --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
   }
 
@@ -162,22 +162,24 @@ const GlobalStyles = createGlobalStyle`
   /*
   * Default Dark mode colors. Also serves as fallback.
   */
-  html.color-scheme-dark {
-    --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
-    --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
-    --text-color: var(--text-light, hsl(0deg, 0%, 100%));
+  #SLIDE_ID {
+    .color-scheme-dark && {
+      --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+      --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
+      --text-color: var(--text-light, hsl(0deg, 0%, 100%));
 
-    --border-color: var(--color-light);
+      --border-color: var(--color-light);
 
-    --color-grey-100: hsl(0deg 0% 10%);
-    --color-grey-200: hsl(0deg 0% 15%);
-    --color-grey-300: hsl(0deg 0% 20%);
-    --color-grey-400: hsl(0deg 0% 25%);
-    --color-grey-500: hsl(0deg 0% 30%);
-    --color-grey-600: hsl(0deg 0% 45%);
-    --color-grey-700: hsl(0deg 0% 60%);
-    --color-grey-800: hsl(0deg 0% 75%);
-    --color-grey-900: hsl(0deg 0% 90%);
+      --color-grey-100: hsl(0deg 0% 10%);
+      --color-grey-200: hsl(0deg 0% 15%);
+      --color-grey-300: hsl(0deg 0% 20%);
+      --color-grey-400: hsl(0deg 0% 25%);
+      --color-grey-500: hsl(0deg 0% 30%);
+      --color-grey-600: hsl(0deg 0% 45%);
+      --color-grey-700: hsl(0deg 0% 60%);
+      --color-grey-800: hsl(0deg 0% 75%);
+      --color-grey-900: hsl(0deg 0% 90%);
+    }
   }
 
 `;

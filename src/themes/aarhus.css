@@ -4,7 +4,8 @@
 
 #SLIDE_ID {
   /* Default variables */
-  --bg-light: #f6f6f6;
+  /* --bg-light: #f6f6f6; */
+  --bg-light: #0f0;
   --text-dark: #333333;
   --color-primary: #3761d9;
   --color-secondary: #ef0043;
@@ -25,4 +26,6 @@
   /* Darkmode overrides */
   --bg-dark: #333333;
   --text-light: #ffffff;
+
+  font-family: "Arial", sans-serif;
 }
