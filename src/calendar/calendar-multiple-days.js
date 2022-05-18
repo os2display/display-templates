@@ -222,6 +222,7 @@ CalendarMultipleDays.propTypes = {
     displayHeaders: PropTypes.bool,
     footerText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
+    fontSize: PropTypes.string,
   }).isRequired,
 };
 

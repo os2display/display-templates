@@ -169,6 +169,7 @@ CalendarSingle.propTypes = {
     subTitle: PropTypes.string,
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
+    fontSize: PropTypes.string,
   }).isRequired,
 };
 

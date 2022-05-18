@@ -25,6 +25,7 @@ function CalendarMultiple({
   const [currentDate, setCurrentDate] = useState(new Date());
   const {
     title = "",
+    fontSize,
     hasDateAndTime,
     resourceUnavailableText = null,
     displayHeaders = true,
@@ -77,13 +78,43 @@ function CalendarMultiple({
 
   const borderStyle = hideGrid ? { "--border": "0" } : {};
 
+  const wrapperStyle = {
+    "--bg-image": templateRootStyle.backgroundImage,
+    "--bg-color": templateRootStyle.backgroundColor,
+  };
+
+  if (fontSize) {
+    let selectedFontSize = 1;
+
+    switch (fontSize) {
+      case "xs":
+        selectedFontSize = 0.5;
+        break;
+      case "s":
+        selectedFontSize = 0.75;
+        break;
+      case "m":
+        selectedFontSize = 1;
+        break;
+      case "l":
+        selectedFontSize = 1.25;
+        break;
+      case "xl":
+        selectedFontSize = 1.5;
+        break;
+      default:
+    }
+
+    wrapperStyle["--font-size-base"] = `${selectedFontSize}rem`;
+    wrapperStyle["--h1-font-size"] = "calc(var(--font-size-base) * 2.5)";
+    wrapperStyle["--h3-font-size"] = "calc(var(--font-size-base) * 1.75)";
+    wrapperStyle["--padding-size-base"] = `${selectedFontSize}rem`;
+  }
+
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
-      style={{
-        "--bg-image": templateRootStyle.backgroundImage,
-        "--bg-color": templateRootStyle.backgroundColor,
-      }}
+      style={wrapperStyle}
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
@@ -184,6 +215,7 @@ function CalendarMultiple({
 
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   overflow: hidden;
   height: 100%;
   background-repeat: no-repeat;
@@ -298,6 +330,7 @@ CalendarMultiple.propTypes = {
     dateAsBox: PropTypes.bool,
     resourceUnavailableText: PropTypes.string,
     hideGrid: PropTypes.bool,
+    fontSize: PropTypes.string,
   }).isRequired,
 };
 

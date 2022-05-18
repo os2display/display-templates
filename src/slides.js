@@ -533,6 +533,7 @@ const slides = [
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
+      fontSize: "xs",
     },
   },
   {
