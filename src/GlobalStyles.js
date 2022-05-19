@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   */
 
   /* Common template variables */
-  #SLIDE_ID {
+  .slide {
     /*
     * Colors
     */
@@ -162,7 +162,7 @@ const GlobalStyles = createGlobalStyle`
   /*
   * Default Dark mode colors. Also serves as fallback.
   */
-  #SLIDE_ID {
+  .slide {
     .color-scheme-dark && {
       --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
       --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
