@@ -1,0 +1,14 @@
+{
+  "title": "Plakat",
+  "icon": "",
+  "id": "01FWJZQ25A1868V63CWYYHQFKQ",
+  "description": "Mulighed for at vise plakat indhold.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/poster.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/poster-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/poster-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

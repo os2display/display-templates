@@ -1,0 +1,14 @@
+{
+  "title": "Kontakter",
+  "icon": "",
+  "id": "01FPZ19YEHX7MQ5Q6ZS0WK0VEA",
+  "description": "Skabelon til kontakter.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/contacts.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/contacts-admin.json",
+    "schema": "",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

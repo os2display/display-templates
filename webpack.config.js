@@ -73,8 +73,29 @@ const plugins = devMode
       new CopyPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, "./src/*/*.json"),
+            from: path.resolve(__dirname, "./src/*/*-admin.json"),
             context: path.resolve(__dirname, "src"),
+          },
+        ],
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, "./src/*/*-config.json"),
+            to: "[name]-main[ext]",
+            context: path.resolve(__dirname, "src"),
+            toType: "template",
+            transform(content) {
+              return content
+                .toString()
+                .replace(
+                  new RegExp(
+                    "https://display-templates.local.itkdev.dk/build/",
+                    "g"
+                  ),
+                  "https://raw.githubusercontent.com/os2display/display-templates/main/build/"
+                );
+            },
           },
         ],
       }),

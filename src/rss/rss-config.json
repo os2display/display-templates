@@ -1,0 +1,14 @@
+{
+  "title": "RSS",
+  "icon": "",
+  "id": "01FQC300GGWCA7A8H0SXY6P9FG",
+  "description": "Mulighed for at vise et rss feed.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/rss.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/rss-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/rss-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
