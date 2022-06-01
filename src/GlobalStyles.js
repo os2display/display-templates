@@ -54,8 +54,7 @@ const GlobalStyles = createGlobalStyle`
     /*
     * Fonts
     */
-    --font-family-base: system-ui, -apple-system, Roboto, "Helvetica Neue", Arial,
-      sans-serif;
+    --font-family-base: system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-bold: 700;
