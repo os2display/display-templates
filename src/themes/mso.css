@@ -1,0 +1,28 @@
+/*
+** MSO theme css
+*/
+
+#SLIDE_ID {
+  /* Defaults */
+  --bg-light: #f6f6f6;
+  --text-dark: #333333;
+  --color-primary: #008488;
+  --color-secondary: #ff5f31;
+  --color-success: #008850;
+  --color-info: #3761d9;
+  --color-warning: #fee13d;
+  --color-danger: #d32f2e;
+
+  --color-blue: var(--color-info);
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-green: var(--color-success);
+
+  --font-family-base: Arial, "sans-serif";
+  --font-weight-light: 300;
+  --font-weight-bold: 600;
+
+  /* Darkmode overrides */
+  --bg-dark: #333333;
+  --text-light: #ffffff;
+}

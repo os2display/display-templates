@@ -1,0 +1,31 @@
+/*
+* Aarhus theme css
+*/
+
+#SLIDE_ID {
+  /* Default variables */
+  /* --bg-light: #f6f6f6; */
+  --bg-light: #f6f6f6;
+  --text-dark: #333333;
+  --color-primary: #3761d9;
+  --color-secondary: #ef0043;
+  --color-success: #008850;
+  --color-info: #008488;
+  --color-warning: #fee13d;
+  --color-danger: #d32f2e;
+
+  --color-blue: var(--color-primary);
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-green: var(--color-success);
+
+  --font-family-base: Arial, "sans-serif";
+  --font-weight-light: 300;
+  --font-weight-bold: 600;
+
+  /* Darkmode overrides */
+  --bg-dark: #333333;
+  --text-light: #ffffff;
+
+  font-family: "Arial", sans-serif;
+}

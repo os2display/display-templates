@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/os2display/display-templates/blob/develop/build/book-review/book-review-schema.json",
+  "title": "book-review schema",
+  "description": "Content schema for book-review",
+  "type": "object",
+  "properties": {
+    "bookImage": {
+      "description": "@id for the media for the review",
+      "type": "string"
+    },
+    "authorImage": {
+      "description": "@id for the media for the author",
+      "type": "string"
+    },
+    "bookText": {
+      "description": "Review rich text",
+      "type": "string"
+    },
+    "authorText": {
+      "description": "Author text",
+      "type": "string"
+    }
+  }
+}

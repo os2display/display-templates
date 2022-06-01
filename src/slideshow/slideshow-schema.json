@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/os2display/display-templates/blob/develop/build/slideshow/slideshow-schema.json",
+  "title": "slideshow schema",
+  "description": "Content schema for slideshow",
+  "type": "object",
+  "properties": {
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "animations": {
+      "type": "string"
+    },
+    "logoPosition": {
+      "type": "string"
+    },
+    "logoSize": {
+      "type": "string"
+    },
+    "logoEnabled": {
+      "type": "boolean"
+    },
+    "transitions": {
+      "type": "string"
+    },
+    "imageDuration": {
+      "type": "number"
+    }
+  }
+}

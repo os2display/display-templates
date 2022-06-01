@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "rubics";
+  src: url("./fonts/rubik-regular.woff") format("woff");
+}
+
+.grid {
+  font-family: "rubics", Helvetica, sans-serif;
+  color: #343433;
+  font-size: 1em;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 33% 67%;
+  background-color: #f4f4ec;
+  display: grid;
+  height: 100%;
+  grid-template-areas: "a b" "c d";
+
+  .info-box {
+    grid-area: a;
+    grid-template-rows: 15% 1fr 20%;
+    grid-template-columns: 33% 33% 34%;
+    margin: 1em;
+    display: grid;
+    grid-template-areas: "a b c" "d e f" "g h i";
+
+    .header {
+      display: flex;
+      align-items: center;
+      font-size: 1.4em;
+      grid-area: a / a / c / c;
+
+      h1 {
+        margin: 0;
+      }
+    }
+
+    .text {
+      grid-area: d / d / f / f;
+      font-size: 1.5em;
+    }
+
+    @mixin boxes {
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: #e1ded7;
+
+      .text {
+        font-size: 1.1em;
+      }
+    }
+
+    .distance {
+      @include boxes;
+      grid-area: g;
+    }
+
+    .time-fast {
+      @include boxes;
+      grid-area: h;
+      background-color: #f4f4ec;
+    }
+
+    .time-moderat {
+      @include boxes;
+      grid-area: i;
+    }
+
+    &.grow {
+      grid-area: a / c / c / c;
+    }
+  }
+
+  .map {
+    grid-area: c;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .iframe {
+    border-left: 3px solid #e1ded7;
+    grid-area: b / b / d / d;
+
+    &.grow {
+      grid-area: a / a / d / d;
+      border-left: 0;
+    }
+  }
+}

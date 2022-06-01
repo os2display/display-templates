@@ -1,0 +1,116 @@
+[
+  {
+    "key": "station-template-1",
+    "input": "header",
+    "text": "Skabelon: Rejseplanen",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "station-template-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "station-template-3",
+    "input": "input",
+    "name": "title",
+    "label": "Overskrift på slide",
+    "helpText": "Her kan du skrive overskriften til slidet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-4",
+    "input": "rich-text-input",
+    "name": "text",
+    "label": "Tekst på slide",
+    "helpText": "Her kan du skrive teksten til slidet",
+    "formGroupClasses": "col-md-6 me-1"
+  },
+  {
+    "key": "station-template-5",
+    "input": "input",
+    "name": "distance",
+    "label": "Afstand",
+    "helpText": "Her kan du skrive teksten til afstandsfeltet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-6",
+    "input": "input",
+    "name": "timeModerate",
+    "label": "Tid (Moderat)",
+    "helpText": "Her kan du skrive teksten til tidsfeltet (moderat)",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-7",
+    "input": "input",
+    "name": "timeFast",
+    "label": "Tid (Hurtigt)",
+    "helpText": "Her kan du skrive teksten til tidsfeltet (hurtigt)",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-8",
+    "multipleImages": false,
+    "input": "image",
+    "name": "image",
+    "label": "Billede",
+    "helpText": "Her uploades dit billede med indtegnet rute"
+  },
+  {
+    "key": "station-template-9",
+    "input": "input",
+    "name": "numberOfJourneys",
+    "label": "Antal afgange der skal vises",
+    "helpText": "Hvis du for eksempel skriver 3, vises de næste 3 afgange fra stoppestedet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-10",
+    "input": "input",
+    "name": "iframeTitle",
+    "label": "Tekst i rejseplan",
+    "helpText": "Her kan du skrive hvorfra bussen kører",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "station-template-12",
+    "input": "travel-plan",
+    "label": "Vælg stoppested",
+    "helpText": "Hvis du er i tvivl om hvilke stoppesteder, henviser vi til din lokale busservice",
+    "formGroupClasses": "col-md-6 mb-3",
+    "name": "station"
+  },
+  {
+    "key": "station-template-11",
+    "input": "radio",
+    "label": "Er det valgte stoppested bus eller letbane",
+    "options": [
+      {
+        "id": "bus",
+        "label": "Bus"
+      },
+      {
+        "id": "tram",
+        "label": "Letbane"
+      }
+    ],
+    "name": "busOrTram",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "station-template-13",
+    "input": "duration",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "title": "3-delt horisontalt",
+  "id": "01FMYMAQQK3R8PXGK9CKYVRXYY",
+  "grid": {
+    "rows": 3,
+    "columns": 1
+  },
+  "regions": [
+    {
+      "id": "01G10FF8WGG76A2BHA7AN13NZP",
+      "title": "Første område",
+      "gridArea": [
+        "a"
+      ]
+    },
+    {
+      "id": "01G10FFGD9R8V28RN27PC8PMZ0",
+      "title": "Andet område",
+      "gridArea": [
+        "b"
+      ]
+    },
+    {
+      "id": "01G10FFSGBSZQXRRQH0NYW8YKZ",
+      "title": "Tredje område",
+      "gridArea": [
+        "c"
+      ]
+    }
+  ]
+}

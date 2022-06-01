@@ -1,0 +1,51 @@
+{
+  "title": "table-content-example",
+  "description": "Auto generated JSON schema based on the 'table-content-example' file",
+  "type": "object",
+  "properties": {
+    "styling": {
+      "type": "object",
+      "properties": {
+        "fontPlacement": {
+          "type": "string"
+        },
+        "fontSize": {
+          "type": "string"
+        }
+      }
+    },
+    "backgroundImage": {
+      "type": "array",
+      "items": {}
+    },
+    "text": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "table": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

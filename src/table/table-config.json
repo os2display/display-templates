@@ -1,0 +1,14 @@
+{
+  "title": "Tabel",
+  "icon": "",
+  "id": "01FQBJFKM0YFX1VW5K94VBSNCP",
+  "description": "Skabelon til tabel.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/table.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/table-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/table-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

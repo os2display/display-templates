@@ -1,0 +1,26 @@
+{
+    "what": [
+        {
+            "type": 0,
+            "value": "Hvad"
+        }
+    ],
+    "where": [
+        {
+            "type": 0,
+            "value": "Hvor"
+        }
+    ],
+    "when": [
+        {
+            "type": 0,
+            "value": "Hvornår"
+        }
+    ],
+    "unavailable": [
+        {
+            "type": 0,
+            "value": "Optaget"
+        }
+    ]
+}

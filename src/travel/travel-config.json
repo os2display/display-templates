@@ -1,0 +1,14 @@
+{
+  "title": "Rejseplanen - dev",
+  "icon": "",
+  "id": "01FZD7K807VAKZ99BGSSCHRJM6",
+  "description": "Skabelon til rejseplanen.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/travel.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/travel-admin.json",
+    "schema": "",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

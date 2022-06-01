@@ -1,0 +1,14 @@
+{
+  "title": "Billede og tekst",
+  "icon": "",
+  "id": "01FP2SNGFN0BZQH03KCBXHKYHG",
+  "description": "Mulighed for at sætte billede og tekst, med forskellige visninger.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/image-text.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/image-text-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/image-text-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

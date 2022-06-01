@@ -1,0 +1,73 @@
+[
+  {
+    "key": "book-review-form-1",
+    "input": "header",
+    "text": "Skabelon: Anmeldelse",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "book-review-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "book-review-form-3",
+    "input": "rich-text-input",
+    "name": "bookText",
+    "label": "Teksten til anmeldelsen",
+    "helpText": "Her kan du skrive teksten til anmeldelsen"
+  },
+  {
+    "key": "book-review-form-4",
+    "multipleImages": false,
+    "input": "image",
+    "name": "bookImage",
+    "label": "Billede",
+    "helpText": "Billede af det som bliver anmeldt"
+  },
+  {
+    "key": "book-review-form-5",
+    "input": "header-h3",
+    "text": "Forfatter",
+    "name": "header3",
+    "formGroupClasses": "h5 mt-3 mb-3"
+  },
+  {
+    "key": "book-review-form-6",
+    "input": "input",
+    "name": "authorText",
+    "type": "text",
+    "label": "Forfattertekst",
+    "helpText": "Her kan du skrive tekst til forfatteren",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-review-form-7",
+    "multipleImages": false,
+    "input": "image",
+    "name": "authorImage",
+    "label": "Billede",
+    "helpText": "Billede til forfatteren"
+  },
+  {
+    "key": "book-review-form-8",
+    "input": "header-h3",
+    "text": "Opsætning",
+    "name": "header3",
+    "formGroupClasses": "h5 mt-3 mb-3"
+  },
+  {
+    "key": "book-review-form-9",
+    "input": "duration",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

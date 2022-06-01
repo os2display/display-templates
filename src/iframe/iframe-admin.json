@@ -1,0 +1,27 @@
+[
+  {
+    "key": "iframe-form-1",
+    "input": "header",
+    "text": "Skabelon: IFrame",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "iframe-form-2",
+    "input": "input",
+    "name": "source",
+    "label": "URL til iframe",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "iframe-form-3",
+    "input": "duration",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

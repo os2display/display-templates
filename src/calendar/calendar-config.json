@@ -1,0 +1,14 @@
+{
+  "title": "Kalender",
+  "icon": "",
+  "id": "01FRJPF4XATRN8PBZ35XN84PS6",
+  "description": "Mulighed for at vise et kalenderfeed.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/calendar.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/calendar-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/calendar-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

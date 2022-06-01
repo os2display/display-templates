@@ -1,0 +1,58 @@
+{
+  "title": "Seks områder",
+  "id": "01G2MDB2P53W4EZ9627FX07JWV",
+  "grid": {
+    "rows": 4,
+    "columns": 12
+  },
+  "regions": [
+    {
+      "id": "01G2MDB9R3894FYCRZJ2A3FV8G",
+      "title": "En - 1920x90",
+      "gridArea": [
+        "a",
+        "d"
+      ]
+    },
+    {
+      "id": "01G2MDBCSZ156DPSWS9XED1PTN",
+      "title": "To",
+      "gridArea": [
+        "e",
+        "m"
+      ]
+    },
+    {
+      "id": "01G2MDBFZ6F7CW66SWCNRHSKGR",
+      "title": "Tre",
+      "gridArea": [
+        "q",
+        "y"
+      ]
+    },
+    {
+      "id": "01G2MDBKJH4R4EKNRCRE0PPJEJ",
+      "title": "Fire - 4x3",
+      "gridArea": [
+        "cc",
+        "oo"
+      ]
+    },
+    {
+      "id": "01G2MDBPWE56ES863YCY48PCKW",
+      "title": "Fem",
+      "gridArea": [
+        "ss",
+        "vv"
+      ]
+    },
+    {
+      "id": "01G2MDBV28R3SRC5VTCC2P20C9",
+      "title": "Seks",
+      "gridArea": [
+        "f",
+        "rr"
+      ]
+    }
+  ]
+}
