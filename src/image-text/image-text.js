@@ -5,7 +5,7 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../global-styles";
 
 /**
  * ImageText component.

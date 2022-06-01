@@ -9,7 +9,7 @@ import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../global-styles";
 
 /**
  * Calendar component.

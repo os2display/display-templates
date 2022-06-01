@@ -1,0 +1,14 @@
+{
+  "title": "Anmeldelse",
+  "icon": "",
+  "id": "01FP2SME0ENTXWF362XHM6Z1B4",
+  "description": "Skabelon til anmeldelser.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/book-review.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/book-review-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/book-review-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

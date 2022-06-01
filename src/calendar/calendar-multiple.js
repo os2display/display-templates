@@ -151,7 +151,7 @@ function CalendarMultiple({
                   {entry.endTime && (
                     <>
                       <span> - </span>
-                      {dayjs(entry.startTime * 1000)
+                      {dayjs(entry.endTime * 1000)
                         .locale(localeDa)
                         .format("LT")}
                     </>
@@ -166,7 +166,7 @@ function CalendarMultiple({
                   )}
                 </ContentItem>
                 <ContentItem
-                  className="content-item-resouce"
+                  className="content-item-resource"
                   style={borderStyle}
                 >
                   {entry.resourceTitle ?? entry.resourceId ?? ""}

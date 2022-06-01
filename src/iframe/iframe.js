@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../global-styles";
 
 /**
  * IFrame component.

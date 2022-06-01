@@ -1,0 +1,14 @@
+{
+  "title": "Video",
+  "icon": "",
+  "id": "01FQBJFKM0YFX1VW5K94VBSNCC",
+  "description": "Skabelon til video.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/video.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/video-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/video-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
