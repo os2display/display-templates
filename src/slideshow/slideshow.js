@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./slideshow.scss";
 import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../global-styles";
 
 /**
  * Slideshow component.

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../global-styles";
 
 /**
  * Table component.
