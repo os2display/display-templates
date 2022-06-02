@@ -1,6 +1,7 @@
 // GlobalStyles.js
 import { createGlobalStyle } from "styled-components";
 
+
 const GlobalStyles = createGlobalStyle`
   /*
   * We use the classes horizontal and vertical to define the orientation of the screen.
@@ -161,25 +162,22 @@ const GlobalStyles = createGlobalStyle`
   /*
   * Default Dark mode colors. Also serves as fallback.
   */
-  .slide {
-    .color-scheme-dark && {
-      --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
-      --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
-      --text-color: var(--text-light, hsl(0deg, 0%, 100%));
+  .color-scheme-dark .slide {
+    --background-color: var(--bg-dark, hsl(0deg, 0%, 10%));
+    --background-color-secondary: var(--bg-dark-secondary, hsl(0deg, 0%, 20%));
+    --text-color: var(--text-light, hsl(0deg, 0%, 100%));
 
-      --border-color: var(--color-light);
+    --border-color: var(--color-light);
 
-      --color-grey-100: hsl(0deg 0% 10%);
-      --color-grey-200: hsl(0deg 0% 15%);
-      --color-grey-300: hsl(0deg 0% 20%);
-      --color-grey-400: hsl(0deg 0% 25%);
-      --color-grey-500: hsl(0deg 0% 30%);
-      --color-grey-600: hsl(0deg 0% 45%);
-      --color-grey-700: hsl(0deg 0% 60%);
-      --color-grey-800: hsl(0deg 0% 75%);
-      --color-grey-900: hsl(0deg 0% 90%);
-    }
+    --color-grey-100: hsl(0deg 0% 10%);
+    --color-grey-200: hsl(0deg 0% 15%);
+    --color-grey-300: hsl(0deg 0% 20%);
+    --color-grey-400: hsl(0deg 0% 25%);
+    --color-grey-500: hsl(0deg 0% 30%);
+    --color-grey-600: hsl(0deg 0% 45%);
+    --color-grey-700: hsl(0deg 0% 60%);
+    --color-grey-800: hsl(0deg 0% 75%);
+    --color-grey-900: hsl(0deg 0% 90%);
   }
-
 `;
 export default GlobalStyles;
