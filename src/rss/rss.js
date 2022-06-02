@@ -5,7 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import "./rss.scss";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../global-styles";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * RSS component.

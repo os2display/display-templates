@@ -5,7 +5,7 @@ import styled from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../global-styles";
+import GlobalStyles from "../GlobalStyles";
 import PersonSvg from "./person.svg";
 
 /**

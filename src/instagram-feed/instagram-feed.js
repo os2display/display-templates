@@ -10,7 +10,7 @@ import Shape from "./shape.svg";
 import InstagramLogo from "./instagram-logo.svg";
 import "./instagram-feed.scss";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../global-styles";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Sparkle component.

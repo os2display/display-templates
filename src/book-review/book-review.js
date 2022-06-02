@@ -5,7 +5,7 @@ import "./book-review.scss";
 import DOMPurify from "dompurify";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../global-styles";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Book review component.

@@ -7,7 +7,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import "./poster.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../global-styles";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Poster component.
