@@ -6,7 +6,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import PersonSvg from "./person.svg";
-import "../global-styles.css";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * Contacts component.
@@ -97,6 +97,7 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
       </Wrapper>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <GlobalStyles />
     </IntlProvider>
   );
 }

@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import '../global-styles.css';
+import "../global-styles.css";
 import "./book-review.scss";
 
 /**
