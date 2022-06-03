@@ -402,10 +402,7 @@ const slides = [
   {
     id: "slide9-table",
     type: "table",
-    themeFile: "themes/dokk1.css",
-    themeData: {
-      css: "--bg-light: #eee; --text-dark: #000; --bg-dark: #111; --text-light: #fff;",
-    },
+    themeFile: "themes/aarhus.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {

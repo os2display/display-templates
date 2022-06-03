@@ -8,9 +8,9 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import Shape from "./shape.svg";
 import InstagramLogo from "./instagram-logo.svg";
-import "./instagram-feed.scss";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./instagram-feed.scss";
 
 /**
  * Sparkle component.
@@ -141,7 +141,6 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
       )}
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }

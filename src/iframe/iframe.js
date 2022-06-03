@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
 
 /**
  * IFrame component.
@@ -42,7 +42,6 @@ function IFrame({ slide, content, run, slideDone, executionId }) {
         height="100%"
       />
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }

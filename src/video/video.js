@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
 
 /**
  * Video component.
@@ -61,7 +61,6 @@ function Video({ slide, content, run, slideDone, executionId }) {
       </video>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }

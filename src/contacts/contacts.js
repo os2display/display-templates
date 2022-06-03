@@ -5,8 +5,8 @@ import styled from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
 import PersonSvg from "./person.svg";
+import "../global-styles.css";
 
 /**
  * Contacts component.
@@ -97,7 +97,6 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
       </Wrapper>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </IntlProvider>
   );
 }

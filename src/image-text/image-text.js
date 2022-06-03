@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import "./image-text.scss";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./image-text.scss";
 
 /**
  * ImageText component.
@@ -130,7 +130,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }

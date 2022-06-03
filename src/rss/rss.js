@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import "./rss.scss";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./rss.scss";
 
 /**
  * RSS component.
@@ -105,7 +105,6 @@ function RSS({ slide, content, run, slideDone, executionId }) {
       </div>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }
