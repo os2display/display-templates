@@ -4,10 +4,10 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
-import "./poster.scss";
 import da from "./lang/da.json";
 import { ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./poster.scss";
 
 /**
  * Poster component.
@@ -204,7 +204,6 @@ function Poster({ slide, content, run, slideDone, executionId }) {
       </IntlProvider>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }

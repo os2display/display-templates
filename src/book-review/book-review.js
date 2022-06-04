@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
-import "./book-review.scss";
 import DOMPurify from "dompurify";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./book-review.scss";
 
 /**
  * Book review component.
@@ -75,7 +75,6 @@ function BookReview({ slide, content, run, slideDone, executionId }) {
       </div>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.css} />
-      <GlobalStyles />
     </>
   );
 }
