@@ -135,7 +135,7 @@ const Title = styled.h1`
   grid-area: title;
   color: var(--color-primary);
   padding: 0 var(--this-padding-size-base);
-  font-weight: var(--font-wight-light);
+  font-weight: var(--font-weight-light);
 `;
 
 const Content = styled.div`
