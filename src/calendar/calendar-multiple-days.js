@@ -139,11 +139,10 @@ const Content = styled.div`
   grid-area: content;
   display: grid;
   grid-gap: 1px;
-
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 25%);
 
   @media (orientation: portrait) {
-    grid-template-rows: auto;
+    grid-template-rows: repeat(1fr, auto);
     grid-template-columns: revert;
     font-size: calc(var(--font-size-base) * 2);
   }
