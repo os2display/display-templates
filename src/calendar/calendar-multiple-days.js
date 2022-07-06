@@ -126,12 +126,15 @@ const Wrapper = styled.div`
     "content"
     "footer";
   grid-template-rows: 1fr 14fr 1fr;
+
+  /* Padding size for this template */
+  --this-padding-size-base: calc(var(--padding-size-base, 30px) / 2);
 `;
 
 const Title = styled.h1`
   grid-area: title;
   color: var(--color-primary);
-  padding: 0 calc(var(--padding-size-base, 30px) / 2);
+  padding: 0 var(--this-padding-size-base);
   font-weight: var(--font-wight-light);
 `;
 
@@ -154,14 +157,13 @@ const Col = styled.section`
 
 const ColTitle = styled.h3`
   background-color: var(--color-grey-100);
-  padding: calc(var(--padding-size-base, 30px) / 2);
+  padding: var(--this-padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
 `;
 
 const ColItem = styled.article`
-  padding: calc(var(--padding-size-base, 30px) / 2)
-    calc(var(--padding-size-base, 30px) / 2);
+  padding: var(--this-padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
@@ -175,7 +177,7 @@ const Time = styled.div`
 `;
 
 const Event = styled.div`
-  padding-left: calc(var(--padding-size-base, 30px) / 2);
+  padding-left: calc(var(--this-padding-size-base) * 2);
   line-height: 1.5;
 `;
 
@@ -189,7 +191,7 @@ const EventResourceTitle = styled.div`
 
 const Footer = styled.div`
   grid-area: footer;
-  padding-left: calc(var(--padding-size-base, 30px) / 2);
+  padding-left: var(--this-padding-size-base);
   display: flex;
   align-items: center;
   justify-content: center;
