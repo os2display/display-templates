@@ -70,14 +70,14 @@ function CalendarMultipleDays({
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <EventTitle>
+                  <div>
                     {event.title ?? resourceUnavailableText ?? (
                       <FormattedMessage
                         id="unavailable"
                         defaultMessage="Unavailable"
                       />
                     )}
-                  </EventTitle>
+                  </div>
                   <EventResourceTitle>
                     {event.resourceTitle ?? event.resourceId}
                   </EventResourceTitle>
@@ -179,10 +179,6 @@ const Time = styled.div`
 const Event = styled.div`
   padding-left: calc(var(--this-padding-size-base) * 2);
   line-height: 1.5;
-`;
-
-const EventTitle = styled.div`
-  font-weight: var(--font-weight-bold);
 `;
 
 const EventResourceTitle = styled.div`
