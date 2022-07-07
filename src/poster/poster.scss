@@ -70,8 +70,7 @@
     width: 100%;
     overflow: hidden;
     background-color: var(--bg-primary);
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
   }
 
   &.vertical {

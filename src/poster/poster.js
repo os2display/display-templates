@@ -28,13 +28,11 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const animationTimerRef = useRef(null);
   const logo = slide?.themeData?.logo;
   const { showLogo } = content;
-  const logoStyle = {};
 
   let logoUrl = "";
   // If showlogo is set, get the logo url
   if (logo && showLogo) {
     logoUrl = getFirstMediaUrlFromField(slide.mediaData, logo);
-    logoStyle.backgroundImage = `url("${logoUrl}")`;
   }
 
   // Imports language strings, sets localized formats and sets timer.
@@ -210,7 +208,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
               </>
             </div>
           </div>
-          {showLogo && <div className="logo" style={logoStyle} />}
+          {showLogo && <img className="logo" src={logoUrl} />}
         </div>
       </IntlProvider>
 
