@@ -109,6 +109,7 @@ function CalendarMultipleDays({
 
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   height: 100%;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -126,15 +127,12 @@ const Wrapper = styled.div`
     "content"
     "footer";
   grid-template-rows: 1fr 14fr 1fr;
-
-  /* Padding size for this template */
-  --this-padding-size-base: calc(var(--padding-size-base, 30px) / 2);
 `;
 
 const Title = styled.h1`
   grid-area: title;
   color: var(--color-primary);
-  padding: 0 var(--this-padding-size-base);
+  padding: 0 var(--padding-size-base);
   font-weight: var(--font-weight-light);
 `;
 
@@ -157,13 +155,13 @@ const Col = styled.section`
 
 const ColTitle = styled.h3`
   background-color: var(--color-grey-100);
-  padding: var(--this-padding-size-base);
+  padding: calc(var(--padding-size-base) * 1.5) var(--padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
 `;
 
 const ColItem = styled.article`
-  padding: var(--this-padding-size-base);
+  padding: var(--padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
@@ -187,7 +185,7 @@ const EventResourceTitle = styled.div`
 
 const Footer = styled.div`
   grid-area: footer;
-  padding-left: var(--this-padding-size-base);
+  padding-left: var(--padding-size-base);
   display: flex;
   align-items: center;
   justify-content: center;
