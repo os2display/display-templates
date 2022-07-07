@@ -375,7 +375,7 @@ const slides = [
       {
         text: "#mountains #horizon",
         textMarkup:
-          '<div class="text"></div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> Lorem ipsum ...</div>',
+          '<div class="text">Sed nulla lorem, varius sodales justo ac, ultrices placerat nunc.</div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> Lorem ipsum ...</div>',
         mediaUrl: "./fixtures/images/mountain1.jpeg",
         videoUrl: null,
         username: "username",
@@ -384,7 +384,7 @@ const slides = [
       {
         text: "#mountains #horizon #sky",
         textMarkup:
-          '<div class="text"></div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> <span class="tag">#sky</span> Lorem ipsum and mountains ...</div>',
+          '<div class="text">Aenean consequat sem ut tortor auctor, eget volutpat libero consequat. Donec lacinia varius quam, ut efficitur diam ultrices et. Aliquam eget augue at felis rhoncus egestas. Sed porttitor elit a tellus tempus, sed tempus sapien finibus. Nam at dapibus sem. Aliquam sit amet feugiat ex. Ut dapibus, mi eu fermentum dignissim, sem ipsum vulputate est, sit amet euismod orci odio pharetra massa.</div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> <span class="tag">#sky</span> Lorem ipsum and mountains ...</div>',
         mediaUrl: "./fixtures/images/mountain2.jpeg",
         videoUrl: null,
         username: "username2",
@@ -393,7 +393,7 @@ const slides = [
       {
         text: "#video",
         textMarkup:
-          '<div class="text"></div>\n<div class="tags"><span class="tag">#video</span> Lorem ipsum and video ...</div>',
+          '<div class="text">Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse rhoncus metus nec consequat commodo. Duis a rhoncus lorem. Vestibulum nec blandit ipsum, ut lobortis purus. In ultrices mauris vel felis pellentesque imperdiet. Sed ultricies mauris vel nisi mattis, tincidunt dictum nisl finibus. Nunc in ultrices dui.</div>\n<div class="tags"><span class="tag">#video</span> Lorem ipsum and video ...</div>',
         mediaUrl: null,
         videoUrl: "./fixtures/videos/test.mp4",
         username: "username2",
