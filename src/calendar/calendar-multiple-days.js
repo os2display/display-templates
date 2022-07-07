@@ -134,6 +134,7 @@ const Title = styled.h1`
   color: var(--color-primary);
   padding: 0 var(--padding-size-base);
   font-weight: var(--font-weight-light);
+  font-size: var(--h2-font-size);
 `;
 
 const Content = styled.div`
@@ -153,7 +154,7 @@ const Col = styled.section`
   background-color: var(--color-grey-200);
 `;
 
-const ColTitle = styled.h3`
+const ColTitle = styled.p`
   background-color: var(--color-grey-100);
   padding: calc(var(--padding-size-base) * 1.5) var(--padding-size-base);
   margin: 0;
@@ -175,7 +176,7 @@ const Time = styled.div`
 `;
 
 const Event = styled.div`
-  padding-left: calc(var(--this-padding-size-base) * 2);
+  padding-left: calc(var(--padding-size-base) * 2);
   line-height: 1.5;
 `;
 
