@@ -69,6 +69,16 @@
   --color-yellow: var(--color-warning);
   --color-green: var(--color-success);
 
+  --color-grey-100: hsl(0deg 0% 95%);
+  --color-grey-200: hsl(0deg 0% 85%);
+  --color-grey-300: hsla(0, 0%, 69%, 1);
+  --color-grey-400: hsla(0, 0%, 52%, 1);
+  --color-grey-500: hsla(0, 0%, 35%, 1);
+  --color-grey-600: hsla(0, 0%, 20%, 1);
+  --color-grey-700: hsla(0, 0%, 18%, 1);
+  --color-grey-800: hsla(0, 0%, 13%, 1);
+  --color-grey-900: hsla(0, 0%, 9%, 1);
+
   --font-family-base: "canada-type-gibson", Gibson, Arial, "sans-serif";
   --font-weight-light: 300;
   --font-weight-bold: 600;
@@ -99,15 +109,15 @@
   background-image: none;
 }
 
-/* Customize calender multiple template styling */
+/*
+*
+* Customize calender multiple template styling
+*
+*/
 #SLIDE_ID .calendar-multiple,
 #SLIDE_ID .calendar-multiple-days {
   /* Use same colors for both light and dark */
   --text-light: #ffffff;
-  --color-grey-900: hsla(0, 0%, 9%, 1);
-  --color-grey-800: hsla(0, 0%, 13%, 1);
-  --color-grey-700: hsla(0, 0%, 18%, 1);
-  --color-grey-600: hsla(0, 0%, 20%, 1);
   --color-grey-100: var(--color-grey-900);
   --color-grey-200: var(--color-grey-800);
   --color-grey-300: var(--color-grey-700);
@@ -134,4 +144,33 @@
 #SLIDE_ID .calendar-multiple .col-title,
 #SLIDE_ID .calendar-multiple-days .col-title {
   background-color: var(--color-grey-800);
+}
+
+/*
+*
+* Customize Instagram template styling
+*
+*/
+#SLIDE_ID .template-instagram-feed {
+  --h1-font-size: calc(var(--font-size-base) * 3.5);
+  --h4-font-size: calc(var(--font-size-base) * 1.75);
+  --font-size-xl: calc(var(--font-size-base) * 2);
+
+  background-color: var(--color-white);
+}
+
+#SLIDE_ID .template-instagram-feed .author-section {
+  background-color: var(--color-white);
+}
+
+#SLIDE_ID .template-instagram-feed .author-section .date {
+  color: var(--color-grey-400);
+}
+
+#SLIDE_ID .template-instagram-feed .shape svg {
+  fill: var(--color-grey-100);
+}
+
+#SLIDE_ID .template-instagram-feed .brand {
+  color: var(--color-grey-500);
 }
