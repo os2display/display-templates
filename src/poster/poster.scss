@@ -64,13 +64,11 @@
     }
   }
 
-  .logo {
+  .logo-area {
     grid-area: d;
     height: 100%;
     width: 100%;
-    overflow: hidden;
     background-color: var(--bg-primary);
-    object-fit: cover;
   }
 
   &.vertical {

@@ -208,7 +208,11 @@ function Poster({ slide, content, run, slideDone, executionId }) {
               </>
             </div>
           </div>
-          {showLogo && <img className="logo" src={logoUrl} />}
+          {showLogo && (
+            <div className="logo-area">
+              <img src={logoUrl} />
+            </div>
+          )}
         </div>
       </IntlProvider>
 
