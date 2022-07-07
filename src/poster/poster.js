@@ -5,7 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import da from "./lang/da.json";
-import { ThemeStyles } from "../slide-util";
+import { ThemeStyles, getFirstMediaUrlFromField } from "../slide-util";
 import "../global-styles.css";
 import "./poster.scss";
 
@@ -26,6 +26,16 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const [show, setShow] = useState(true);
   const timerRef = useRef(null);
   const animationTimerRef = useRef(null);
+  const logo = slide?.themeData?.logo;
+  const { showLogo } = content;
+  const logoStyle = {};
+
+  let logoUrl = "";
+  // If showlogo is set, get the logo url
+  if (logo && showLogo) {
+    logoUrl = getFirstMediaUrlFromField(slide.mediaData, logo);
+    logoStyle.backgroundImage = `url("${logoUrl}")`;
+  }
 
   // Imports language strings, sets localized formats and sets timer.
   useEffect(() => {
@@ -135,7 +145,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     <>
       {/* TODO: Adjust styling to variables from Theme */}
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
-        <div className="template-poster">
+        <div className={`template-poster ${showLogo && "with-logo"}`}>
           <div
             className="image-area"
             style={{
@@ -145,7 +155,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
                 : { animation: `fade-out ${animationDuration}ms` }),
             }}
           />
-          <div className="header-area" style={{ backgroundColor: "Azure" }}>
+          <div className="header-area">
             <div className="center">
               <h1>
                 {!overrideTitle && name}
@@ -157,7 +167,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
               </p>
             </div>
           </div>
-          <div className="info-area" style={{ backgroundColor: "Aquamarine" }}>
+          <div className="info-area">
             <div className="center">
               {!hideTime && startDate && (
                 <span>
@@ -200,6 +210,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
               </>
             </div>
           </div>
+          {showLogo && <div className="logo" style={logoStyle} />}
         </div>
       </IntlProvider>
 
@@ -212,8 +223,10 @@ Poster.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
+    mediaData: PropTypes.objectOf(PropTypes.any),
     themeData: PropTypes.shape({
       css: PropTypes.string,
+      logo: PropTypes.arrayOf(PropTypes.string),
     }),
     feed: PropTypes.shape({
       configuration: PropTypes.shape({
@@ -249,6 +262,7 @@ Poster.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
+    showLogo: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

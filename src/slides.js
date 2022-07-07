@@ -139,7 +139,17 @@ const slides = [
   {
     id: "slide3-poster-single",
     type: "poster",
-    themeFile: "themes/dokk1.css",
+    themeFile: "themes/mso.css",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
     feed: {
       configuration: {
         overrideTitle: null,
@@ -178,6 +188,7 @@ const slides = [
       eventId: "",
       occurrenceId: "",
       entryDuration: 10,
+      showLogo: true,
     },
   },
   {

@@ -31,5 +31,12 @@
     "helpText": "Her skal du skrive varigheden pr. begivenhed.",
     "required": true,
     "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "poster-form-4",
+    "input": "checkbox",
+    "label": "Vis logo fra tema",
+    "name": "showLogo",
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

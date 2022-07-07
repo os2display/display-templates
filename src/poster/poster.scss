@@ -12,6 +12,14 @@
   word-wrap: break-word;
   background-color: var(--bg-dark);
 
+  &.with-logo {
+    grid-template-rows: 55% 35% 10%;
+    grid-template-areas:
+      "a b"
+      "a c"
+      "a d";
+  }
+
   .image-area {
     grid-area: a;
     background-size: cover;
@@ -55,6 +63,17 @@
       }
     }
   }
+
+  .logo {
+    grid-area: d;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    background-size: cover;
+    background-position: center;
+  }
+
   &.vertical {
     grid-template-columns: 55% 45%;
     grid-template-rows: 65% 35%;
