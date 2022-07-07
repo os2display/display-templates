@@ -61,6 +61,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
 
     rootStyle["--font-size-base"] = `${selectedFontSize}rem`;
     rootStyle["--h1-font-size"] = "calc(var(--font-size-base) * 2.5)";
+    rootStyle["--h2-font-size"] = "calc(var(--font-size-base) * 2)";
     rootStyle["--h3-font-size"] = "calc(var(--font-size-base) * 1.75)";
     rootStyle["--padding-size-base"] = `${selectedFontSize}rem`;
   }
