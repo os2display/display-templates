@@ -72,7 +72,7 @@
     justify-content: center;
     justify-items: center;
     position: absolute;
-    bottom: 3.5%;
+    bottom: 2.5%;
     right: 0;
     width: var(--percentage-wide);
 
@@ -103,7 +103,7 @@
     }
   }
 
-  &.vertical {
+  @media (orientation: portrait) {
     flex-flow: column;
 
     .media-section {
@@ -122,7 +122,6 @@
 
     .brand {
       width: 100%;
-      bottom: 2.5%;
     }
   }
 
