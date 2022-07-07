@@ -139,7 +139,7 @@ const slides = [
   {
     id: "slide3-poster-single",
     type: "poster",
-    themeFile: "themes/mso.css",
+    themeFile: "themes/aakb.css",
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -628,7 +628,7 @@ const slides = [
   {
     id: "slide12-poster-subscription",
     type: "poster",
-    themeFile: "themes/dokk1.css",
+    themeFile: "themes/aarhus.css",
     feed: {
       configuration: {
         overrideTitle: null,
