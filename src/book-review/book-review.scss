@@ -115,7 +115,7 @@
       }
     }
   }
-  &.vertical {
+  @media (orientation: portrait) {
     grid-template-columns: 100%;
     grid-template-rows: 45% 45% 10%;
     grid-template-areas: "c" "a" "b";

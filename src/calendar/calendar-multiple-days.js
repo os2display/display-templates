@@ -70,14 +70,14 @@ function CalendarMultipleDays({
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <EventTitle>
+                  <div>
                     {event.title ?? resourceUnavailableText ?? (
                       <FormattedMessage
                         id="unavailable"
                         defaultMessage="Unavailable"
                       />
                     )}
-                  </EventTitle>
+                  </div>
                   <EventResourceTitle>
                     {event.resourceTitle ?? event.resourceId}
                   </EventResourceTitle>
@@ -109,6 +109,7 @@ function CalendarMultipleDays({
 
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   height: 100%;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -131,19 +132,19 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   grid-area: title;
   color: var(--color-primary);
-  padding: 0 calc(var(--padding-size-base, 30px) / 2);
-  font-weight: var(--font-wight-light);
+  padding: 0 var(--padding-size-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--h2-font-size);
 `;
 
 const Content = styled.div`
   grid-area: content;
   display: grid;
   grid-gap: 1px;
-
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 25%);
 
   @media (orientation: portrait) {
-    grid-template-rows: auto;
+    grid-template-rows: repeat(1fr, auto);
     grid-template-columns: revert;
     font-size: calc(var(--font-size-base) * 2);
   }
@@ -153,16 +154,15 @@ const Col = styled.section`
   background-color: var(--color-grey-200);
 `;
 
-const ColTitle = styled.h3`
+const ColTitle = styled.p`
   background-color: var(--color-grey-100);
-  padding: calc(var(--padding-size-base, 30px) / 2);
+  padding: calc(var(--padding-size-base) * 1.5) var(--padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
 `;
 
 const ColItem = styled.article`
-  padding: calc(var(--padding-size-base, 30px) / 2)
-    calc(var(--padding-size-base, 30px) / 2);
+  padding: var(--padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
@@ -176,12 +176,8 @@ const Time = styled.div`
 `;
 
 const Event = styled.div`
-  padding-left: calc(var(--padding-size-base, 30px) / 2);
+  padding-left: calc(var(--padding-size-base) * 2);
   line-height: 1.5;
-`;
-
-const EventTitle = styled.div`
-  font-weight: var(--font-weight-bold);
 `;
 
 const EventResourceTitle = styled.div`
@@ -190,7 +186,7 @@ const EventResourceTitle = styled.div`
 
 const Footer = styled.div`
   grid-area: footer;
-  padding-left: calc(var(--padding-size-base, 30px) / 2);
+  padding-left: var(--padding-size-base);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,76 @@
+/*
+* Aarhus theme css
+*/
+
+/* Import Gibson font from typekit - Used with Dokk1 theme */
+@font-face {
+  font-family: "FaktPro-Normal";
+  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-Normal.woff")
+    format("woff");
+  font-display: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FaktPro-SemiBold";
+  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-Light.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FaktPro-Light";
+  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-SemiBold.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+#SLIDE_ID {
+  /* Default variables */
+  /* --bg-light: #f6f6f6; */
+  --bg-light: #fff;
+  --text-dark: #000;
+  --color-primary: #f26306;
+  --color-secondary: #ef0043;
+  --color-success: #008850;
+  --color-info: #008488;
+  --color-warning: #fee13d;
+  --color-danger: #d32f2e;
+
+  --color-blue: var(--color-primary);
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-green: var(--color-success);
+
+  --font-family-base: "FaktPro-Normal", sans-serif;
+  --font-family-light: "FaktPro-Light", sans-serif;
+  --font-family-bold: "FaktPro-SemiBold", sans-serif;
+  --font-weight-base: 400;
+  --font-weight-light: 400;
+  --font-weight-bold: 400;
+
+  /* Darkmode overrides */
+  --bg-dark: #333333;
+  --text-light: #ffffff;
+
+  font-family: "Arial", sans-serif;
+}
+
+/*
+*
+* Customizations for poster template
+*
+*/
+
+#SLIDE_ID .template-poster h1 {
+  font-family: var(--font-family-light);
+  font-weight: var(--font-weight-light);
+}
+
+#SLIDE_ID .template-poster .lead {
+  font-family: var(--font-family-bold);
+  font-weight: var(--font-weight-bold);
+}
