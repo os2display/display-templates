@@ -32,7 +32,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   let logoUrl = "";
   // If showlogo is set, get the logo url
   if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, logo);
+    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
   }
 
   // Imports language strings, sets localized formats and sets timer.
