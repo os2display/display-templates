@@ -17,6 +17,7 @@ import "../global-styles.css";
 function Video({ slide, content, run, slideDone, executionId }) {
   const videoUrls = getAllMediaUrlsFromField(slide.mediaData, content.video);
   const videoRef = useRef();
+  const { sound } = content;
 
   const onEnded = () => {
     slideDone(slide);
@@ -31,6 +32,11 @@ function Video({ slide, content, run, slideDone, executionId }) {
       videoRef?.current?.load();
       videoRef?.current?.addEventListener("ended", onEnded);
       videoRef?.current?.addEventListener("error", onError);
+      videoRef.current.muted = true;
+      if (sound) {
+        videoRef.current.muted = false;
+      }
+      console.log(videoRef.current.muted);
 
       const promise = videoRef.current.play();
 
@@ -56,7 +62,7 @@ function Video({ slide, content, run, slideDone, executionId }) {
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video width="100%" height="100%" ref={videoRef}>
         {videoUrls.map((url) => (
-          <source key={url} src={url} />
+          <source muted={!sound} key={url} src={url} />
         ))}
       </video>
 
@@ -76,6 +82,7 @@ Video.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
+    sound: PropTypes.bool,
     video: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   executionId: PropTypes.string.isRequired,
