@@ -21,5 +21,13 @@
     "acceptedMimetypes": ["video/webm", "video/mp4"],
     "formGroupClasses": "h5 mb-3",
     "helpText": "Følgende formatter accepteres: .webm, mp4"
+  },
+  {
+    "key": "video-form-sound",
+    "input": "checkbox",
+    "label": "Afspil lyd",
+    "name": "sound",
+    "formGroupClasses": "col-md-9 mt-3",
+    "helpText": "Hvis videoen har lyd, skal enheden konfigureres til at automatisk afspilning er muligt."
   }
 ]
