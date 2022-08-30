@@ -36,7 +36,6 @@ function Video({ slide, content, run, slideDone, executionId }) {
       if (sound) {
         videoRef.current.muted = false;
       }
-      console.log(videoRef.current.muted);
 
       const promise = videoRef.current.play();
 
