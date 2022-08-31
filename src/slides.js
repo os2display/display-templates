@@ -527,6 +527,7 @@ const slides = [
       },
     },
     content: {
+      headerOrder: "whatwherewhen",
       duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
