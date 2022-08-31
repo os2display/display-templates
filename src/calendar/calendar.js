@@ -37,35 +37,6 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
     rootStyle["--bg-image"] = `url("${imageUrl}")`;
   }
 
-  // if (fontSize) {
-  //   let selectedFontSize = 1;
-
-  //   switch (fontSize) {
-  //     case "xs":
-  //       selectedFontSize = 0.5;
-  //       break;
-  //     case "s":
-  //       selectedFontSize = 0.75;
-  //       break;
-  //     case "m":
-  //       selectedFontSize = 1;
-  //       break;
-  //     case "l":
-  //       selectedFontSize = 1.25;
-  //       break;
-  //     case "xl":
-  //       selectedFontSize = 1.5;
-  //       break;
-  //     default:
-  //   }
-
-  //   rootStyle["--font-size-base"] = `${selectedFontSize}rem`;
-  //   rootStyle["--h1-font-size"] = "calc(var(--font-size-base) * 2.5)";
-  //   rootStyle["--h2-font-size"] = "calc(var(--font-size-base) * 2)";
-  //   rootStyle["--h3-font-size"] = "calc(var(--font-size-base) * 1.75)";
-  //   rootStyle["--padding-size-base"] = `${selectedFontSize}rem`;
-  // }
-
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
