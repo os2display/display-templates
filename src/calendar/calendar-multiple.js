@@ -30,12 +30,18 @@ function CalendarMultiple({
     displayHeaders = true,
     hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
+    headerOrder = "whenwhatwhere",
   } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
     dayjs.extend(localizedFormat);
   }, []);
+
+  // Numbers used in css to switch the order of the elements, both headers and "items"
+  const orderWhere = headerOrder === "whenwhatwhere" ? 3 : 2;
+  const orderWhat = headerOrder === "whenwhatwhere" ? 2 : 1;
+  const orderWhen = headerOrder === "whenwhatwhere" ? 1 : 3;
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -76,7 +82,7 @@ function CalendarMultiple({
   }, [hasDateAndTime]);
 
   const borderStyle = hideGrid ? { "--border": "0" } : {};
-
+  let counterForOrder = 0;
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
@@ -120,21 +126,21 @@ function CalendarMultiple({
             <ContentHeaderItem
               className="content-item"
               key={2}
-              style={borderStyle}
+              style={(borderStyle, { order: orderWhen })}
             >
               <FormattedMessage id="when" defaultMessage="when" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={1}
-              style={borderStyle}
+              style={(borderStyle, { order: orderWhat })}
             >
               <FormattedMessage id="what" defaultMessage="what" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={3}
-              style={borderStyle}
+              style={(borderStyle, { order: orderWhere })}
             >
               <FormattedMessage id="where" defaultMessage="where" />
             </ContentHeaderItem>
@@ -142,37 +148,53 @@ function CalendarMultiple({
         )}
         <ContentItemsWrapper>
           {calendarEvents?.length > 0 &&
-            getSortedEvents(calendarEvents).map((entry) => (
-              <Fragment key={entry.id}>
-                <ContentItem className="content-item-time" style={borderStyle}>
-                  {dayjs(entry.startTime * 1000)
-                    .locale(localeDa)
-                    .format("LT")}
-                  {entry.endTime && (
-                    <>
-                      <span> - </span>
-                      {dayjs(entry.endTime * 1000)
-                        .locale(localeDa)
-                        .format("LT")}
-                    </>
-                  )}
-                </ContentItem>
-                <ContentItem className="content-item-title" style={borderStyle}>
-                  {entry.title ?? resourceUnavailableText ?? (
-                    <FormattedMessage
-                      id="unavailable"
-                      defaultMessage="Unavailable"
-                    />
-                  )}
-                </ContentItem>
-                <ContentItem
-                  className="content-item-resource"
-                  style={borderStyle}
-                >
-                  {entry.resourceTitle ?? entry.resourceId ?? ""}
-                </ContentItem>
-              </Fragment>
-            ))}
+            getSortedEvents(calendarEvents).map((entry) => {
+              const returnFragment = (
+                <Fragment key={entry.id}>
+                  <ContentItem
+                    className="content-item-time"
+                    style={
+                      (borderStyle, { order: counterForOrder + orderWhen })
+                    }
+                  >
+                    {dayjs(entry.startTime * 1000)
+                      .locale(localeDa)
+                      .format("LT")}
+                    {entry.endTime && (
+                      <>
+                        <span> - </span>
+                        {dayjs(entry.endTime * 1000)
+                          .locale(localeDa)
+                          .format("LT")}
+                      </>
+                    )}
+                  </ContentItem>
+                  <ContentItem
+                    className="content-item-title"
+                    style={
+                      (borderStyle, { order: counterForOrder + orderWhat })
+                    }
+                  >
+                    {entry.title ?? resourceUnavailableText ?? (
+                      <FormattedMessage
+                        id="unavailable"
+                        defaultMessage="Unavailable"
+                      />
+                    )}
+                  </ContentItem>
+                  <ContentItem
+                    className="content-item-resource"
+                    style={
+                      (borderStyle, { order: counterForOrder + orderWhere })
+                    }
+                  >
+                    {entry.resourceTitle ?? entry.resourceId ?? ""}
+                  </ContentItem>
+                </Fragment>
+              );
+              counterForOrder += 3;
+              return returnFragment;
+            })}
         </ContentItemsWrapper>
       </Content>
     </Wrapper>
@@ -290,6 +312,7 @@ CalendarMultiple.propTypes = {
     })
   ).isRequired,
   content: PropTypes.shape({
+    headerOrder: PropTypes.string,
     title: PropTypes.string,
     hasDateAndTime: PropTypes.bool,
     displayHeaders: PropTypes.bool,

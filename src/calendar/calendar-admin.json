@@ -177,5 +177,25 @@
     "label": "Vis tabeloverskrifter",
     "name": "displayHeaders",
     "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "calendar-form-header-orders",
+    "input": "select",
+    "label": "Hvilken rækkefølge skal overskrifterne i tabellen være i",
+    "options": [
+      {
+        "key": "whenwhatwhere",
+        "value": "whenwhatwhere",
+        "title": "Hvornår, hvad, hvor"
+      },
+      {
+        "key": "whatwherewhen",
+        "value": "whatwherewhen",
+        "title": "Hvad, hvor, hvornår"
+      }
+    ],
+    "name": "headerOrder",
+    "formGroupClasses": "col-md-6 mb-3",
+    "helpText": "Dette er kun relevant hvis \"Flere resurser\" er valgt under \"layout\". Standard er \"Hvornår, hvad, hvor.\""
   }
 ]
