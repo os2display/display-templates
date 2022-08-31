@@ -12,6 +12,7 @@
   word-wrap: break-word;
   background-color: var(--bg-dark);
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
 
   &.with-logo {
     grid-template-rows: 55% 35% 10%;

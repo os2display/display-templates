@@ -105,6 +105,7 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
 const Wrapper = styled.div`
   /* Wrapper styling */
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;

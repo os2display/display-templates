@@ -5,6 +5,7 @@
   height: 100%;
   position: relative;
   background-color: var(--bg-light);
+  font-size: var(--font-size-base);
 
   @mixin text($font-size) {
     .progress {

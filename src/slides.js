@@ -23,6 +23,7 @@ const slides = [
       separator: true,
       halfSize: true,
       reversed: false,
+      fontSize: "font-size-xs",
     },
   },
   {
@@ -133,7 +134,7 @@ const slides = [
       // image: ["/v1/media/00000000000000000000000001"],
       image: [],
       footerText: "Se mere på localhost/events",
-      fontSize: "m",
+      fontSize: "font-size-m",
     },
   },
   {
@@ -245,7 +246,7 @@ const slides = [
     },
     content: {
       image: ["/v1/media/00000000000000000000000001"],
-      fontSize: "m",
+      fontSize: "font-size-m",
     },
   },
   {
@@ -427,7 +428,7 @@ const slides = [
       title: "Overskrift",
       text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
       fontPlacement: "bottom",
-      fontSize: "s",
+      fontSize: "font-size-s",
       table: [
         {
           type: "header",
@@ -540,7 +541,7 @@ const slides = [
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
-      fontSize: "xl",
+      fontSize: "font-size-xl",
     },
   },
   {
@@ -623,7 +624,7 @@ const slides = [
       resourceUnavailableText: "Det er optaget",
       image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
-      fontSize: "xl",
+      fontSize: "font-size-xl",
     },
   },
   {
