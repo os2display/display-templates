@@ -89,7 +89,6 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const singleDayEvent =
     endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
-
   // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
     if (!currentEvent) return;
@@ -136,7 +135,17 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   const formatDate = (date) => {
     if (!date) return "";
-    return capitalize(dayjs(date).locale(localeDa).format("LLLL"));
+    return capitalize(dayjs(date).locale(localeDa).format("ll"));
+  };
+
+  const formatTime = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("LT"));
+  };
+
+  const formatDateNoYear = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
   };
 
   return (
@@ -171,16 +180,22 @@ function Poster({ slide, content, run, slideDone, executionId }) {
                 <span>
                   {singleDayEvent && (
                     <span>
-                      <p className="date">{formatDate(startDate)}</p>
+                      <div className="date">{formatDate(startDate)}</div>
+                      <div className="date">
+                        {formatTime(startDate)} - {formatTime(endDate)}
+                      </div>
                     </span>
                   )}
                   {/* todo if startdate is not equal to enddate */}
                   {!singleDayEvent && (
                     <span>
-                      <p className="date">
-                        {startDate && formatDate(startDate)} -
+                      <div className="date">
+                        {startDate && formatDateNoYear(startDate)} -{" "}
                         {endDate && formatDate(endDate)}
-                      </p>
+                      </div>
+                      <div className="date">
+                        {formatTime(startDate)} - {formatTime(endDate)}
+                      </div>
                     </span>
                   )}
                 </span>
