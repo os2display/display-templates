@@ -63,7 +63,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <Wrapper className="template-table" style={rootStyle}>
+      <Wrapper className={`template-table ${fontSize}`} style={rootStyle}>
         <Header className="template-table-header">
           <Title className="title">
             {title}
@@ -75,7 +75,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
             <Description className="text">{text}</Description>
           )}
           {header && (
-            <GridTable className={fontSize} style={gridStyle}>
+            <GridTable style={gridStyle}>
               {header.columns.map((headerObject) => (
                 <TableHeader
                   key={headerObject.Header}
@@ -113,6 +113,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
 const Wrapper = styled.div`
   /* Wrapper styling */
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;

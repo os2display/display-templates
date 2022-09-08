@@ -29,8 +29,8 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     fontSize,
     shadow,
   } = content || {};
-  let boxClasses = fontSize ? `box ${fontSize}` : "box";
-  const rootClasses = ["template-image-text"];
+  let boxClasses = "box";
+  const rootClasses = ["template-image-text", fontSize];
 
   // Styling objects
   const rootStyle = {};

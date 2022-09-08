@@ -67,15 +67,26 @@
   * Sizes
   */
   --font-size-base: 1rem; /* Assumes the browser default, typically 16px */
-  --font-size-xs: calc(var(--font-size-base) * 0.75);
-  --font-size-sm: calc(var(--font-size-base) * 0.875);
-  --font-size-lg: calc(var(--font-size-base) * 1.25);
-  --font-size-xl: calc(var(--font-size-base) * 1.5);
-  --h1-font-size: calc(var(--font-size-base) * 2.5);
-  --h2-font-size: calc(var(--font-size-base) * 2);
-  --h3-font-size: calc(var(--font-size-base) * 1.75);
-  --h4-font-size: calc(var(--font-size-base) * 1.5);
-  --h5-font-size: calc(var(--font-size-base) * 1.25);
+
+  --font-size-multiplier-050: 0.5;
+  --font-size-multiplier-075: 0.75;
+  --font-size-multiplier-090: 0.9;
+  --font-size-multiplier-125: 1.25;
+  --font-size-multiplier-150: 1.5;
+  --font-size-multiplier-175: 1.75;
+  --font-size-multiplier-200: 2;
+  --font-size-multiplier-250: 2.5;
+
+  --font-size-xs: calc(var(--font-size-base) * var(--font-size-multiplier-050));
+  --font-size-sm: calc(var(--font-size-base) * var(--font-size-multiplier-075));
+  --font-size-m: calc(var(--font-size-base) * 1);
+  --font-size-lg: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+  --font-size-xl: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
   --h6-font-size: calc(var(--font-size-base));
 
   /*
@@ -175,4 +186,59 @@ body {
   --color-grey-700: hsl(0deg 0% 60%);
   --color-grey-800: hsl(0deg 0% 75%);
   --color-grey-900: hsl(0deg 0% 90%);
+}
+
+/* Target landscape 4K */
+@media screen and (min-width: 1921px) and (orientation: landscape) {
+  .slide {
+    --font-size-base: 2rem;
+  }
+}
+
+/* Target portrait 4K */
+@media screen and (min-width: 1081px) and (orientation: portrait) {
+  .slide {
+    --font-size-base: 2rem;
+  }
+}
+
+.slide .font-size-xs {
+  --font-size-base: var(--font-size-xs);
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+}
+.slide .font-size-s {
+  --font-size-base: var(--font-size-sm);
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+}
+.slide .font-size-m {
+  --font-size-base: var(--font-size-m);
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+}
+.slide .font-size-lg {
+  --font-size-base: var(--font-size-lg);
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+}
+.slide .font-size-xl {
+  --font-size-base: var(--font-size-xl);
+  --h1-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-250));
+  --h2-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-200));
+  --h3-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-175));
+  --h4-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-150));
+  --h5-font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
 }
