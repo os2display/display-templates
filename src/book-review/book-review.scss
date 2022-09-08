@@ -4,7 +4,6 @@
   --bg-color: var(--bg-white, hsl(0deg, 0%, 100%));
   --bg-color-light: var(--bg-light, hsl(0deg, 0%, 90%));
   --bg-color-dark: var(--bg-dark, hsl(0deg, 5%, 20%));
-  --title-font-size: var(--h1-font-size, 4rem);
   --blur: var(--image-blur, 10px);
 
   font-family: var(--font);
@@ -19,20 +18,20 @@
   grid-template-areas: "a c" "b c";
   grid-gap: 0;
   overflow: hidden;
+  font-size: var(--font-size-base);
 
   .text-area {
     background: var(--bg-color);
     grid-area: a;
     padding: 8% 10% 0 10%;
     word-wrap: break-word;
-    font-size: 2em;
 
     dfn {
       font-style: italic;
     }
 
     h1 {
-      font-size: var(--title-font-size);
+      font-size: calc(var(--h1-font-size));
       margin: 0 0 2% 0;
       text-align: left;
     }
@@ -54,11 +53,12 @@
     grid-area: b;
 
     .author-image {
+      --image-size: calc(var(--font-size-base) * 7);
       position: absolute;
-      top: -5em;
-      left: calc(50% - 5em);
-      width: 10em;
-      height: 10em;
+      top: calc(var(--image-size) * -0.5);
+      left: calc(50% - calc(var(--image-size) * 0.5));
+      width: var(--image-size);
+      height: var(--image-size);
       border-radius: 50%;
       overflow: hidden;
       background-size: cover;
@@ -70,7 +70,7 @@
       padding: 5% 1% 1% 1%;
       text-align: center;
       color: var(--text-color);
-      font-size: 1.5em;
+      font-size: calc(var(--font-size-base) * 0.75);
       margin-top: 2em;
       margin-bottom: 1em;
     }
@@ -115,7 +115,7 @@
       }
     }
   }
-  &.vertical {
+  @media (orientation: portrait) {
     grid-template-columns: 100%;
     grid-template-rows: 45% 45% 10%;
     grid-template-areas: "c" "a" "b";

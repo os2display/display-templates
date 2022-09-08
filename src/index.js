@@ -159,6 +159,7 @@ const Slide = () => {
         const newSelectedSlide = { ...slide };
         newSelectedSlide.themeData = {
           css: data,
+          logo: newSelectedSlide?.themeData?.logo,
         };
         setSelectedSlide(newSelectedSlide);
       });

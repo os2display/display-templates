@@ -57,27 +57,27 @@
       {
         "key": "fontsize1",
         "title": "xs",
-        "value": "xs"
+        "value": "font-size-xs"
       },
       {
         "key": "fontsize2",
         "title": "s",
-        "value": "s"
+        "value": "font-size-s"
       },
       {
         "key": "fontsize3",
         "title": "m",
-        "value": "m"
+        "value": "font-size-m"
       },
       {
         "key": "fontsize4",
         "title": "l",
-        "value": "l"
+        "value": "font-size-l"
       },
       {
         "key": "fontsize5",
         "title": "xl",
-        "value": "xl"
+        "value": "font-size-xl"
       }
     ],
     "name": "fontSize"

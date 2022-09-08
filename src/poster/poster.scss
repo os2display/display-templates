@@ -11,6 +11,16 @@
   word-break: break-word;
   word-wrap: break-word;
   background-color: var(--bg-dark);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+
+  &.with-logo {
+    grid-template-rows: 55% 35% 10%;
+    grid-template-areas:
+      "a b"
+      "a c"
+      "a d";
+  }
 
   .image-area {
     grid-area: a;
@@ -21,24 +31,28 @@
     grid-area: b;
     display: grid;
     padding: 5%;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+
+    h1 {
+      font-size: var(--h1-font-size);
+    }
+
     .center {
       align-self: center;
     }
 
     .lead {
-      font-size: 1em;
-      font-weight: bold;
+      font-size: var(--h4-font-size);
       margin-block-start: 0;
       margin-block-end: 0;
     }
   }
   .info-area {
     grid-area: c;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     padding: 5%;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-light);
     color: var(--text-dark);
     .ticket,
     .date,
@@ -55,12 +69,27 @@
       }
     }
   }
-  &.vertical {
+
+  .logo-area {
+    grid-area: d;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-primary);
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (orientation: portrait) {
     grid-template-columns: 55% 45%;
     grid-template-rows: 65% 35%;
     grid-template-areas:
       "a a"
-      "b c";
+      "b c"
+      "d d";
   }
 
   @keyframes fade-in {

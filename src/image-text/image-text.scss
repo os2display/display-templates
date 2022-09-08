@@ -31,6 +31,7 @@
   justify-content: flex-start;
   align-content: stretch;
   align-items: flex-start;
+  font-size: var(--font-size-base);
 
   .box {
     padding: 2%;
@@ -140,13 +141,13 @@
       height: 90%;
       justify-content: space-between;
       background-color: transparent;
-      font-size: 2em;
+      font-size: var(--font-size-h2);
       display: flex;
     }
 
     h1 {
       order: 2;
-      font-size: 3em;
+      font-size: var(--font-size-h1);
     }
   }
 }
