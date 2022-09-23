@@ -23,8 +23,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const imageTimeoutRef = useRef();
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState();
-  const [rootClasses, setRootClasses] = useState([]);
-
   const [themeCss, setThemeCss] = useState(null);
 
   // Set theme styles.
@@ -97,34 +95,30 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     imageTextStyle.color = textColor;
   }
 
-  useEffect(() => {
-    const newRootClasses = ["template-image-text", fontSize];
+  const rootClasses = ["template-image-text", fontSize];
 
-    // Position text-box.
-    if (boxAlign === "left" || boxAlign === "right") {
-      newRootClasses.push("column");
-    }
-    if (boxAlign === "bottom" || boxAlign === "right") {
-      newRootClasses.push("flex-end");
-    }
-    if (reversed) {
-      newRootClasses.push("reversed");
-    }
-    if (boxMargin || reversed) {
-      newRootClasses.push("box-margin");
-    }
-    if (halfSize && !reversed) {
-      newRootClasses.push("half-size");
-    }
-    if (separator && !reversed) {
-      newRootClasses.push("animated-header");
-    }
-    if (shadow) {
-      newRootClasses.push("shadow");
-    }
-
-    setRootClasses(newRootClasses);
-  }, []);
+  // Position text-box.
+  if (boxAlign === "left" || boxAlign === "right") {
+    rootClasses.push("column");
+  }
+  if (boxAlign === "bottom" || boxAlign === "right") {
+    rootClasses.push("flex-end");
+  }
+  if (reversed) {
+    rootClasses.push("reversed");
+  }
+  if (boxMargin || reversed) {
+    rootClasses.push("box-margin");
+  }
+  if (halfSize && !reversed) {
+    rootClasses.push("half-size");
+  }
+  if (separator && !reversed) {
+    rootClasses.push("animated-header");
+  }
+  if (shadow) {
+    rootClasses.push("shadow");
+  }
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
