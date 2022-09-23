@@ -167,12 +167,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     };
   }, [run]);
 
-  const imageStyles = (url) => {
-    return {
-      backgroundImage: url ? `url("${url}")` : "",
-    };
-  };
-
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
@@ -186,7 +180,11 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
                 classNames="background-image"
               >
                 <div
-                  style={imageStyles(currentImage.url)}
+                  style={{
+                    backgroundImage: currentImage?.url
+                      ? `url("${currentImage.url}")`
+                      : "",
+                  }}
                   ref={currentImage.nodeRef}
                   className="background-image"
                 />
@@ -200,15 +198,12 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
               <h1>
                 {title}
                 {/* Todo theme the color of the below */}
-                {displaySeparator && (
-                  <div
-                    className="separator"
-                    style={{ backgroundColor: "#ee0043" }}
-                  />
-                )}
+                {displaySeparator && <div className="separator" />}
               </h1>
             )}
-            {text && <div className="text">{parse(sanitizedText)}</div>}
+            {sanitizedText && (
+              <div className="text">{parse(sanitizedText)}</div>
+            )}
           </div>
         )}
       </div>
