@@ -104,6 +104,10 @@
     }
   }
 
+  &.separator {
+    background-color: #ee0043;
+  }
+
   &.animated-header {
     .box {
       box-shadow: var(--box-shadow-lg);
@@ -160,16 +164,14 @@
     right: 0;
     bottom: 0;
   }
+
   .background-image-exit {
     opacity: 1;
   }
+
   .background-image-exit-active {
     opacity: 0;
     transition: opacity 1000ms linear;
-  }
-
-  .separator {
-    background-color: #ee0043;
   }
 }
 

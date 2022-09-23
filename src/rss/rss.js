@@ -16,7 +16,7 @@ import "./rss.scss";
  * @param {number} props.run Timestamp of when to start run.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function RSS({ slide, content, run, slideDone, executionId }) {
   const [entryIndex, setEntryIndex] = useState(0);
