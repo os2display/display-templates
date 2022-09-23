@@ -13,7 +13,7 @@ import "../global-styles.css";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function IFrame({ slide, content, run, slideDone, executionId }) {
   const { source, duration = 15000 } = content;

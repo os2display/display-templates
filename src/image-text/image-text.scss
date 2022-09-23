@@ -104,6 +104,10 @@
     }
   }
 
+  &.separator {
+    background-color: #ee0043;
+  }
+
   &.animated-header {
     .box {
       box-shadow: var(--box-shadow-lg);
@@ -149,6 +153,25 @@
       order: 2;
       font-size: var(--font-size-h1);
     }
+  }
+
+  .background-image {
+    z-index: -1;
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .background-image-exit {
+    opacity: 1;
+  }
+
+  .background-image-exit-active {
+    opacity: 0;
+    transition: opacity 1000ms linear;
   }
 }
 

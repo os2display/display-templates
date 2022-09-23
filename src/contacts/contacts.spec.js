@@ -15,6 +15,7 @@ test("Test that contacts loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
+      executionId="1234"
     />
   );
 

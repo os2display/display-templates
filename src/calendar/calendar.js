@@ -20,7 +20,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function Calendar({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState();
@@ -115,6 +115,7 @@ Calendar.propTypes = {
     layout: PropTypes.string,
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
+    fontSize: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
