@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./image-text.scss";
 
@@ -19,6 +20,20 @@ import "./image-text.scss";
  * @returns {object} The component.
  */
 function ImageText({ slide, content, run, slideDone, executionId }) {
+  const imageTimeoutRef = useRef();
+  const [images, setImages] = useState([]);
+  const [currentImage, setCurrentImage] = useState();
+  const [rootClasses, setRootClasses] = useState([]);
+
+  const [themeCss, setThemeCss] = useState(null);
+
+  // Set theme styles.
+  useEffect(() => {
+    if (slide?.themeData?.css) {
+      setThemeCss(<ThemeStyles id={executionId} css={slide?.themeData?.css} />);
+    }
+  }, [slide]);
+
   // Styling from content
   const {
     separator,
@@ -29,8 +44,8 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     fontSize,
     shadow,
   } = content || {};
+
   let boxClasses = "box";
-  const rootClasses = ["template-image-text", fontSize];
 
   // Styling objects
   const rootStyle = {};
@@ -51,24 +66,21 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
-  useEffect(() => {
-    if (run) {
-      slideExecution.start(duration);
+  const changeImage = (newIndex) => {
+    if (newIndex < images.length) {
+      setCurrentImage(images[newIndex]);
+
+      if (newIndex < images.length - 1) {
+        imageTimeoutRef.current = setTimeout(
+          () => changeImage(newIndex + 1),
+          duration / images.length
+        );
+      }
     }
-
-    return function cleanup() {
-      slideExecution.stop();
-    };
-  }, [run]);
-
-  const imageUrl = getFirstMediaUrlFromField(slide.mediaData, content.image);
+  };
 
   // Set background image.
-  if (imageUrl) {
-    rootStyle.backgroundImage = `url("${imageUrl}")`;
-  } else {
+  if (!(images?.length > 0)) {
     boxClasses = `${boxClasses} full-screen`;
   }
 
@@ -85,32 +97,103 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     imageTextStyle.color = textColor;
   }
 
-  // Position text-box.
-  if (boxAlign === "left" || boxAlign === "right") {
-    rootClasses.push("column");
-  }
-  if (boxAlign === "bottom" || boxAlign === "right") {
-    rootClasses.push("flex-end");
-  }
-  if (reversed) {
-    rootClasses.push("reversed");
-  }
-  if (boxMargin || reversed) {
-    rootClasses.push("box-margin");
-  }
-  if (halfSize && !reversed) {
-    rootClasses.push("half-size");
-  }
-  if (separator && !reversed) {
-    rootClasses.push("animated-header");
-  }
-  if (shadow) {
-    rootClasses.push("shadow");
-  }
+  useEffect(() => {
+    const newRootClasses = ["template-image-text", fontSize];
+
+    // Position text-box.
+    if (boxAlign === "left" || boxAlign === "right") {
+      newRootClasses.push("column");
+    }
+    if (boxAlign === "bottom" || boxAlign === "right") {
+      newRootClasses.push("flex-end");
+    }
+    if (reversed) {
+      newRootClasses.push("reversed");
+    }
+    if (boxMargin || reversed) {
+      newRootClasses.push("box-margin");
+    }
+    if (halfSize && !reversed) {
+      newRootClasses.push("half-size");
+    }
+    if (separator && !reversed) {
+      newRootClasses.push("animated-header");
+    }
+    if (shadow) {
+      newRootClasses.push("shadow");
+    }
+
+    setRootClasses(newRootClasses);
+  }, []);
+
+  /** Setup slide run function. */
+  const slideExecution = new BaseSlideExecution(slide, slideDone);
+  useEffect(() => {
+    if (run) {
+      const imageUrls = getAllMediaUrlsFromField(
+        slide.mediaData,
+        content.image
+      );
+
+      if (imageUrls?.length > 0) {
+        const newImages = imageUrls.map((url) => {
+          return {
+            url,
+            nodeRef: createRef(),
+          };
+        });
+
+        setImages(newImages);
+        setCurrentImage(newImages[0]);
+
+        // If more than one image, start image changes.
+        if (newImages?.length > 1) {
+          imageTimeoutRef.current = setTimeout(
+            () => changeImage(1),
+            duration / imageUrls.length - 250
+          );
+        }
+      }
+
+      slideExecution.start(duration);
+    }
+
+    return function cleanup() {
+      slideExecution.stop();
+
+      if (imageTimeoutRef.current) {
+        clearTimeout(imageTimeoutRef.current);
+      }
+    };
+  }, [run]);
+
+  const imageStyles = (url) => {
+    return {
+      backgroundImage: url ? `url("${url}")` : "",
+    };
+  };
 
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
+        <div className="background-image-container">
+          <TransitionGroup component={null}>
+            {currentImage && (
+              <CSSTransition
+                key={currentImage.url}
+                timeout={1000}
+                nodeRef={currentImage.nodeRef}
+                classNames="background-image"
+              >
+                <div
+                  style={imageStyles(currentImage.url)}
+                  ref={currentImage.nodeRef}
+                  className="background-image"
+                />
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </div>
         {(title || text) && (
           <div className={boxClasses} style={imageTextStyle}>
             {title && (
@@ -129,7 +212,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
           </div>
         )}
       </div>
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      {themeCss}
     </>
   );
 }
