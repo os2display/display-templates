@@ -140,11 +140,18 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     }
   }, [slide]);
 
+  useEffect(() => {
+    if (images?.length > 0 && !currentImage) {
+      setCurrentImage(images[0]);
+    }
+  }, [images]);
+
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
-      if (images.length > 0) {
+      // Reset initial image.
+      if (images?.length > 0) {
         setCurrentImage(images[0]);
       }
 
