@@ -64,19 +64,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
 
-  const changeImage = (newIndex) => {
-    if (newIndex < images.length) {
-      setCurrentImage(images[newIndex]);
-
-      if (newIndex < images.length - 1) {
-        imageTimeoutRef.current = setTimeout(
-          () => changeImage(newIndex + 1),
-          duration / images.length
-        );
-      }
-    }
-  };
-
   // Set background image.
   if (!(images?.length > 0)) {
     boxClasses = `${boxClasses} full-screen`;
@@ -120,10 +107,21 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     rootClasses.push("shadow");
   }
 
-  /** Setup slide run function. */
-  const slideExecution = new BaseSlideExecution(slide, slideDone);
+  const changeImage = (newIndex) => {
+    if (newIndex < images.length) {
+      setCurrentImage(images[newIndex]);
+
+      if (newIndex < images.length - 1) {
+        imageTimeoutRef.current = setTimeout(
+          () => changeImage(newIndex + 1),
+          duration / images.length
+        );
+      }
+    }
+  };
+
   useEffect(() => {
-    if (run) {
+    if (slide?.mediaData) {
       const imageUrls = getAllMediaUrlsFromField(
         slide.mediaData,
         content.image
@@ -139,14 +137,20 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
 
         setImages(newImages);
         setCurrentImage(newImages[0]);
+      }
+    }
+  }, [slide]);
 
-        // If more than one image, start image changes.
-        if (newImages?.length > 1) {
-          imageTimeoutRef.current = setTimeout(
-            () => changeImage(1),
-            duration / imageUrls.length - 250
-          );
-        }
+  /** Setup slide run function. */
+  const slideExecution = new BaseSlideExecution(slide, slideDone);
+  useEffect(() => {
+    if (run) {
+      // If more than one image, start image changes.
+      if (images?.length > 1) {
+        imageTimeoutRef.current = setTimeout(
+          () => changeImage(1),
+          duration / images.length
+        );
       }
 
       slideExecution.start(duration);
