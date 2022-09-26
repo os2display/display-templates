@@ -164,28 +164,26 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        <div className="background-image-container">
-          <TransitionGroup component={null}>
-            {currentImage && (
-              <CSSTransition
-                key={currentImage.url}
-                timeout={1000}
-                nodeRef={currentImage.nodeRef}
-                classNames="background-image"
-              >
-                <div
-                  style={{
-                    backgroundImage: currentImage?.url
-                      ? `url("${currentImage.url}")`
-                      : "",
-                  }}
-                  ref={currentImage.nodeRef}
-                  className="background-image"
-                />
-              </CSSTransition>
-            )}
-          </TransitionGroup>
-        </div>
+        <TransitionGroup component={null}>
+          {currentImage && (
+            <CSSTransition
+              key={currentImage.url}
+              timeout={1000}
+              nodeRef={currentImage.nodeRef}
+              classNames="background-image"
+            >
+              <div
+                style={{
+                  backgroundImage: currentImage?.url
+                    ? `url("${currentImage.url}")`
+                    : "",
+                }}
+                ref={currentImage.nodeRef}
+                className="background-image"
+              />
+            </CSSTransition>
+          )}
+        </TransitionGroup>
         {(title || text) && (
           <div className={boxClasses} style={imageTextStyle}>
             {title && (
