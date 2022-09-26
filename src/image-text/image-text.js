@@ -136,7 +136,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
         });
 
         setImages(newImages);
-        setCurrentImage(newImages[0]);
       }
     }
   }, [slide]);
@@ -145,6 +144,10 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
+      if (images.length > 0) {
+        setCurrentImage(images[0]);
+      }
+
       // If more than one image, start image changes.
       if (images?.length > 1) {
         imageTimeoutRef.current = setTimeout(
