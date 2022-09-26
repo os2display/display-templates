@@ -136,15 +136,25 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
         });
 
         setImages(newImages);
-        setCurrentImage(newImages[0]);
       }
     }
   }, [slide]);
+
+  useEffect(() => {
+    if (images?.length > 0 && !currentImage) {
+      setCurrentImage(images[0]);
+    }
+  }, [images]);
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
+      // Reset initial image.
+      if (images?.length > 0) {
+        setCurrentImage(images[0]);
+      }
+
       // If more than one image, start image changes.
       if (images?.length > 1) {
         imageTimeoutRef.current = setTimeout(
