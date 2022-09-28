@@ -4,8 +4,8 @@
   "id": "01FQBJQ2M3544ZKAADPWBXHY71",
   "description": "Skabelon til iFrame.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/iframe.js?ts=1663931637050",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/iframe-admin.json?ts=1663931637050",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/iframe.js?ts=1664349718751",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/iframe-admin.json?ts=1664349718751",
     "schema": "",
     "assets": [],
     "options": {},
