@@ -21,7 +21,7 @@ import "./instagram-feed.scss";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function InstagramFeed({ slide, content, run, slideDone, executionId }) {
   dayjs.extend(localizedFormat);

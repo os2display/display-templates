@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import {
   BrowserRouter,
   Link,
@@ -206,15 +206,14 @@ const Overview = () => {
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/:slideId" element={<Slide />} />
-        <Route index element={<Overview />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-render(<App />, document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/:slideId" element={<Slide />} />
+      <Route index element={<Overview />} />
+    </Routes>
+  </BrowserRouter>
+);

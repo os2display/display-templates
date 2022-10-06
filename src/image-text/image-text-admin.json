@@ -31,10 +31,11 @@
   },
   {
     "key": "image-text-form-5",
-    "multipleImages": false,
+    "multipleImages": true,
     "input": "image",
     "name": "image",
-    "label": "Billede"
+    "label": "Billeder",
+    "helpText": "Hvis du tilføjer mere end et billede bliver de vist i (varighed / antal_billeder) sekunder hver."
   },
   {
     "key": "image-text-form-6",
