@@ -10,8 +10,8 @@
     "lint:js:fix": "eslint --ext .js --ext .jsx --fix ./src",
     "lint:scss": "stylelint \"./src/**/*.scss\"",
     "lint:scss:fix": "stylelint --fix \"./src/**/*.scss\"",
-    "check-coding-standards": "npm run lint:js && npm run lint:scss",
-    "apply-coding-standards": "npm run lint:js:fix && npm run lint:scss:fix",
+    "check-coding-standards": "yarn lint:js && yarn lint:scss",
+    "apply-coding-standards": "yarn lint:js:fix && yarn lint:scss:fix",
     "build": "NODE_ENV=production webpack",
     "build-watch": "NODE_ENV=production webpack --watch",
     "start": "NODE_ENV=development webpack serve --mode development --env development"

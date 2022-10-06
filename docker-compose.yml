@@ -27,7 +27,7 @@ services:
 
   node:
     image: node:14
-    command: npm start
+    command: yarn start
     # @TODO: Fix setup so the ws connection between browser and webpack-dev-server can be achieved without exposing port.
     # ports:
     #  - '3000:3000'
