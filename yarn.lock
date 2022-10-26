@@ -3952,7 +3952,7 @@ eslint-plugin-import@^2.24.0:
     resolve "^1.22.0"
     tsconfig-paths "^3.14.1"
 
-eslint-plugin-jsdoc@^36.0.7:
+eslint-plugin-jsdoc@^36.0.6, eslint-plugin-jsdoc@^36.0.7:
   version "36.1.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-36.1.1.tgz#124cd0e53a5d07f01ebde916a96dd1a6009625d6"
   integrity sha512-nuLDvH1EJaKx0PCa9oeQIxH6pACIhZd1gkalTUxZbaxxwokjs7TplqY0Q8Ew3CoZaf5aowm0g/Z3JGHCatt+gQ==
@@ -7050,6 +7050,13 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
+
+os2display-grid-generator@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/os2display-grid-generator/-/os2display-grid-generator-1.0.8.tgz#ad0a52ff8d7982ebc317ae103dd9cceea6f9b8f1"
+  integrity sha512-3IaJpkVGk8oNlevR3H5WUFTJ1wug9AyQf8dkE6x722T1qlcXSoIt3CTYM0W/v9KaeZxiHPucux1pL5SSWwHT6Q==
+  dependencies:
+    eslint-plugin-jsdoc "^36.0.6"
 
 p-finally@^1.0.0:
   version "1.0.0"
