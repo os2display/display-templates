@@ -205,7 +205,7 @@ export const Slide = ({ slide: inputSlide }) => {
     } else {
       document.documentElement.classList.add("color-scheme-light");
     }
-  }, [slide]);
+  }, []);
 
   return (
     <div className="app">
