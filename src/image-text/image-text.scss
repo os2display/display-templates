@@ -21,10 +21,6 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-
-  background-size: cover;
-  background-position: center;
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -159,6 +155,7 @@
     z-index: -1;
     position: absolute;
     background-size: cover;
+    background-position: center;
     top: 0;
     left: 0;
     right: 0;
