@@ -176,17 +176,17 @@ const Col = styled.section`
 
 const ColTitle = styled.p`
   background-color: var(--color-grey-100);
-  padding: calc(var(--padding-size-base)*0.7) var(--padding-size-base);
+  padding: calc(var(--padding-size-base)*0.5) var(--padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
 
   @media (orientation: portrait) {
-    padding: calc(var(--padding-size-base)*0.5) calc(var(--padding-size-base)*2);
+    padding: calc(var(--padding-size-base)*1.1) calc(var(--padding-size-base)*2);
   }
 `;
 
 const ColItem = styled.article`
-  padding: calc(var(--padding-size-base)*0.5) var(--padding-size-base);
+  padding: calc(var(--padding-size-base)*0.65) var(--padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
@@ -195,7 +195,7 @@ const ColItem = styled.article`
   }
 
   @media (orientation: portrait) {
-    padding: calc(var(--padding-size-base)*0.5) calc(var(--padding-size-base)*2);
+    padding: calc(var(--padding-size-base)*0.65) calc(var(--padding-size-base)*2);
   }
 `;
 
