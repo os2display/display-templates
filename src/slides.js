@@ -59,10 +59,10 @@ const slides = [
     feedData: [
       {
         id: "uniqueEvent1",
-        title: "Cake",
+        title: "Dette er en meget lang titel som bliver på en linje og dotter ud",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
-        resourceTitle: "Det første rum",
+        resourceTitle: "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
         resourceId: "M1",
       },
       {
@@ -89,6 +89,7 @@ const slides = [
         resourceTitle: null,
         resourceId: "M4",
       },
+
       {
         id: "uniqueEvent5",
         title: "Tea",
@@ -112,6 +113,30 @@ const slides = [
         endTime: dayjs().add(3, "hour").add(6, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent8",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent8",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent8",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
       },
     ],
     mediaData: {
