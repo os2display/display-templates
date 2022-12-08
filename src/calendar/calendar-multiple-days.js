@@ -70,14 +70,14 @@ function CalendarMultipleDays({
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <div>
+                  <EventTitle>
                     {event.title ?? resourceUnavailableText ?? (
                       <FormattedMessage
                         id="unavailable"
                         defaultMessage="Unavailable"
                       />
                     )}
-                  </div>
+                  </EventTitle>
                   <EventResourceTitle>
                     {event.resourceTitle ?? event.resourceId}
                   </EventResourceTitle>
@@ -135,13 +135,33 @@ const Title = styled.h1`
   padding: 0 var(--padding-size-base);
   font-weight: var(--font-weight-light);
   font-size: var(--h2-font-size);
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base)*1.5) calc(var(--padding-size-base)*2) 0 calc(var(--padding-size-base)*2);
+    font-size: calc(var(--h1-font-size)*2);
+  }
 `;
 
 const Content = styled.div`
   grid-area: content;
   display: grid;
   grid-gap: 1px;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(5, 20%);
+  overflow: hidden;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, hsla(0, 0%, 18%, 1) 0%, hsla(0, 0%, 18%, 0) 100%);
+    @media (orientation: portrait) {
+      height: 30px;
+    }
+  }
 
   @media (orientation: portrait) {
     grid-template-rows: repeat(1fr, auto);
@@ -156,32 +176,71 @@ const Col = styled.section`
 
 const ColTitle = styled.p`
   background-color: var(--color-grey-100);
-  padding: calc(var(--padding-size-base) * 1.5) var(--padding-size-base);
+  padding: calc(var(--padding-size-base)*0.5) var(--padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base)*1.1) calc(var(--padding-size-base)*2);
+  }
 `;
 
 const ColItem = styled.article`
-  padding: var(--padding-size-base);
+  padding: calc(var(--padding-size-base)*0.65) var(--padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
   &:nth-child(odd) {
     background-color: var(--color-grey-400);
   }
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base)*0.65) calc(var(--padding-size-base)*2);
+  }
 `;
 
 const Time = styled.div`
   line-height: 1.5;
+  min-width: fit-content;
+
+  @media (orientation: portrait) {
+    div {
+      display: inline-block;
+
+      &:nth-last-of-type(1){
+        margin-left: 5px;
+      }
+    }
+  }
 `;
 
 const Event = styled.div`
-  padding-left: calc(var(--padding-size-base) * 2);
+  padding: 0 calc(var(--padding-size-base)*0.5) 0 var(--padding-size-base);
   line-height: 1.5;
+  max-width: 100%;
+`;
+
+const EventTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+
+  @media (orientation: portrait) {
+    max-width: 740px;
+  }
 `;
 
 const EventResourceTitle = styled.div`
   opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+
+  @media (orientation: portrait) {
+    max-width: 740px;
+  }
 `;
 
 const Footer = styled.div`
@@ -190,6 +249,9 @@ const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (orientation: portrait) {
+    font-size: calc(var(--font-size-base) * 2);
+  }
 `;
 
 CalendarMultipleDays.defaultProps = {
