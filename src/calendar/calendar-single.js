@@ -41,35 +41,38 @@ function CalendarSingle({
   };
 
   const renderSingle = (calendarEventsToRender) => {
+    const now = dayjs();
     const elements = [];
 
     if (calendarEventsToRender.length > 0) {
-      calendarEventsToRender.forEach((event) => {
-        if (elements.length < 3) {
-          elements.push(
-            <ContentItem
-              key={event.id}
-              className={
-                elements.length === 0
-                  ? "content-item single--now"
-                  : "content-item single--next"
-              }
-            >
-              <Meta>
-                {renderTimeOfDay(event.startTime)}
-                {" - "}
-                {renderTimeOfDay(event.endTime)}
-              </Meta>
-              {event?.title ?? resourceUnavailableText ?? (
-                <FormattedMessage
-                  id="unavailable"
-                  defaultMessage="Unavailable"
-                />
-              )}
-            </ContentItem>
-          );
-        }
-      });
+      calendarEventsToRender
+        .filter((e) => e.startTime > now.unix() && e.endTime <= now.endOf('day').unix())
+        .forEach((event) => {
+          if (elements.length < 3) {
+            elements.push(
+              <ContentItem
+                key={event.id}
+                className={
+                  elements.length === 0
+                    ? "content-item single--now"
+                    : "content-item single--next"
+                }
+              >
+                <Meta>
+                  {renderTimeOfDay(event.startTime)}
+                  {" - "}
+                  {renderTimeOfDay(event.endTime)}
+                </Meta>
+                {event?.title ?? resourceUnavailableText ?? (
+                  <FormattedMessage
+                    id="unavailable"
+                    defaultMessage="Unavailable"
+                  />
+                )}
+              </ContentItem>
+            );
+          }
+        });
     }
 
     return elements.concat();
