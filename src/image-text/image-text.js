@@ -144,7 +144,10 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     if (images?.length > 0 && !currentImage) {
       setCurrentImage(images[0]);
     }
+
+    // If there are multiple images, we are going to loop through these WITHIN the set duration. 
     if (images?.length > 1) {
+      // Kickoff the display of multiple images with the zero indexed
       changeImage(0);
     }
   }, [images]);
