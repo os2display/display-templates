@@ -45,9 +45,8 @@ const slides = [
     content: {
       duration: 5000,
       bookText:
-      "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
-      authorText:
-        "Hval Ocean",
+        "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
+      authorText: "Hval Ocean",
       authorImage: ["/v1/media/00000000000000000000000001"],
       bookImage: ["/v1/media/00000000000000000000000002"],
     },
@@ -71,10 +70,12 @@ const slides = [
       },
       {
         id: "uniqueEvent1",
-        title: "Dette er en meget lang titel som bliver på en linje og dotter ud",
+        title:
+          "Dette er en meget lang titel som bliver på en linje og dotter ud",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
-        resourceTitle: "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
         resourceId: "M1",
       },
       {

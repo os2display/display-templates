@@ -32,13 +32,13 @@
     }
 
     h1 {
-      font-size: calc(var(--h1-font-size)*2);
+      font-size: calc(var(--h1-font-size) * 2);
       margin: 0 0 2% 0;
       text-align: left;
     }
 
     p {
-      font-size: calc(var(--font-size-base)*2.5);
+      font-size: calc(var(--font-size-base) * 2.5);
       margin: 0 0 2% 0;
       text-align: left;
       line-height: 1.1em;
@@ -72,7 +72,7 @@
       padding: 5% 1% 1% 1%;
       text-align: center;
       color: var(--text-color);
-      font-size: calc(var(--font-size-base) *2.5);
+      font-size: calc(var(--font-size-base) * 2.5);
       margin-top: 1em;
       margin-bottom: 1em;
     }
