@@ -33,6 +33,12 @@ function CalendarMultipleDays({
     dayjs.extend(localizedFormat);
   }, []);
 
+  /**
+   * Groups events by days and filter away events that are done.
+   *
+   * @param {Array} events Array of events.
+   * @returns {object} Events grouped by day.
+   */
   const groupEventsByDays = (events) => {
     const now = dayjs();
     const days = {};
