@@ -38,16 +38,16 @@ const slides = [
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/vertical.jpg",
         },
       },
     },
     content: {
       duration: 5000,
       bookText:
-        "<h1>Lorem Ipsum</h1>...Is simply <strong>dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
       authorText:
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+        "Hval Ocean",
       authorImage: ["/v1/media/00000000000000000000000001"],
       bookImage: ["/v1/media/00000000000000000000000002"],
     },

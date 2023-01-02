@@ -174,3 +174,17 @@
 #SLIDE_ID .template-instagram-feed .brand {
   color: var(--color-grey-500);
 }
+
+/*
+*
+* Customize Book review template styling
+*
+*/
+
+#SLIDE_ID .template-book-review {
+  --text-color: var(--color-grey-700);
+}
+
+#SLIDE_ID .template-book-review .author {
+  --text-color: var(--color-grey-500);
+}
