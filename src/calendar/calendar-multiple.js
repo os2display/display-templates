@@ -14,7 +14,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
- * @returns {string} - The component.
+ * @returns {JSX.Element} - The component.
  */
 function CalendarMultiple({
   content,
@@ -43,6 +43,10 @@ function CalendarMultiple({
   const orderWhat = headerOrder === "whenwhatwhere" ? 2 : 1;
   const orderWhen = headerOrder === "whenwhatwhere" ? 1 : 3;
 
+  const borderStyle = hideGrid ? { "--border": "0" } : {};
+
+  let counterForOrder = 0;
+
   /**
    * Capitalize the datestring, as it starts with the weekday.
    *
@@ -61,7 +65,7 @@ function CalendarMultiple({
         const startDate = dayjs(e.startTime * 1000);
 
         return (
-          e.startTime * 1000 > now.unix() && startDate.date() === now.date()
+          e.startTime > now.unix() && startDate.date() === now.date()
         );
       })
       .sort((a, b) => a - b);
@@ -81,8 +85,6 @@ function CalendarMultiple({
     };
   }, [hasDateAndTime]);
 
-  const borderStyle = hideGrid ? { "--border": "0" } : {};
-  let counterForOrder = 0;
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
