@@ -38,16 +38,15 @@ const slides = [
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/vertical.jpg",
         },
       },
     },
     content: {
       duration: 5000,
       bookText:
-        "<h1>Lorem Ipsum</h1>...Is simply <strong>dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      authorText:
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+        "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
+      authorText: "Hval Ocean",
       authorImage: ["/v1/media/00000000000000000000000001"],
       bookImage: ["/v1/media/00000000000000000000000002"],
     },
@@ -58,11 +57,25 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
         id: "uniqueEvent1",
-        title: "Cake",
+        title:
+          "Dette er en meget lang titel som bliver på en linje og dotter ud",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
-        resourceTitle: "Det første rum",
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
         resourceId: "M1",
       },
       {
@@ -92,13 +105,133 @@ const slides = [
       {
         id: "uniqueEvent5",
         title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent6",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent7",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent8",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent9",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent10",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent11",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent12",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent13",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent14",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent15",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent16",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent17",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent18",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent19",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent20",
+        title: "Tea",
         startTime: dayjs().add(1, "hour").add(1, "day").unix(),
         endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
       },
       {
-        id: "uniqueEvent6",
+        id: "uniqueEvent21",
         title: "Tea",
         startTime: dayjs().add(3, "hour").add(3, "day").unix(),
         endTime: dayjs().add(4, "hour").add(3, "day").unix(),
@@ -106,12 +239,36 @@ const slides = [
         resourceId: "M4",
       },
       {
-        id: "uniqueEvent7",
+        id: "uniqueEvent22",
         title: "Tea",
         startTime: dayjs().add(2, "hour").add(6, "day").unix(),
         endTime: dayjs().add(3, "hour").add(6, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent23",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent24",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent25",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
       },
     ],
     mediaData: {
@@ -464,6 +621,18 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
         id: "uniqueEvent1",
         title: "Cake",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
@@ -497,7 +666,7 @@ const slides = [
       },
       {
         id: "uniqueEvent5",
-        title: "Tea",
+        title: "Tea Tomorrow",
         startTime: dayjs().add(1, "hour").add(1, "day").unix(),
         endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
@@ -505,7 +674,7 @@ const slides = [
       },
       {
         id: "uniqueEvent6",
-        title: "Tea",
+        title: "Tea Later",
         startTime: dayjs().add(3, "hour").add(3, "day").unix(),
         endTime: dayjs().add(4, "hour").add(3, "day").unix(),
         resourceTitle: null,
@@ -513,7 +682,7 @@ const slides = [
       },
       {
         id: "uniqueEvent7",
-        title: "Tea",
+        title: "Tea Later again",
         startTime: dayjs().add(2, "hour").add(6, "day").unix(),
         endTime: dayjs().add(3, "hour").add(6, "day").unix(),
         resourceTitle: null,
@@ -550,12 +719,32 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
         id: "uniqueEvent1",
         title: "Cake",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
         resourceTitle: "Det første rum",
         resourceId: "M1",
+      },
+      {
+        id: "uniqueEvent51",
+        title: "Tea Tomorrow",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
       },
       {
         id: "uniqueEvent2",
@@ -576,8 +765,8 @@ const slides = [
       {
         id: "uniqueEvent4",
         title: "Tea",
-        startTime: dayjs().add(5, "hour").unix(),
-        endTime: dayjs().add(8, "hour").unix(),
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
       },

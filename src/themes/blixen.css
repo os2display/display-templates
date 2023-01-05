@@ -13,6 +13,8 @@
   --text-color: var(--color-light);
   --padding-size-base: 60px;
   --margin-size-base: 60px;
+
+  font-family: var(--font-family-base);
 }
 
 /* Customize calender single template styling */

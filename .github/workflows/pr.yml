@@ -19,10 +19,10 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: install
-        run: npm install
+        run: yarn
 
       - name: Build production assets
-        run: npm run build
+        run: yarn build
 
   templates-coding-standards:
     name: Templates coding standards
@@ -43,10 +43,10 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: install
-        run: npm install
+        run: yarn
 
       - name: React coding standards
-        run: npm run check-coding-standards
+        run: yarn check-coding-standards
 
   templates-tests:
     name: Templates tests
@@ -61,13 +61,30 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ~/.npm
+          path: ~/.yarn
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: install
-        run: npm install
+        run: yarn
       - name: Run tests
-        run: npm run test-ci
+        run: yarn test-ci
+
+  changelog:
+    runs-on: ubuntu-20.04
+    name: Changelog should be updated
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Git fetch
+        run: git fetch
+
+      - name: Check that changelog has been updated.
+        run: git diff --exit-code origin/develop -- CHANGELOG.md && exit 1 || exit 0

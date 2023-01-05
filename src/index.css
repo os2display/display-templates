@@ -1,0 +1,10 @@
+.grid-index {
+  display: grid;
+  background-color: black;
+  grid-gap: 1px;
+  height: 100vh;
+}
+.grid-element {
+  background-color: #add8e6;
+  font-size: 30px;
+}
