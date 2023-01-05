@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- [#]()
-  Added changelog.
-  Added github action to enforce that PRs should always include an update of the changelog.
+- [#100](https://github.com/os2display/display-templates/pull/100)
+Added changelog.
+Added github action to enforce that PRs should always include an update of the changelog.
 - [#99](https://github.com/os2display/display-templates/pull/99)
 Add book-review styling to aakb theme
 - [#98](https://github.com/os2display/display-templates/pull/98)
