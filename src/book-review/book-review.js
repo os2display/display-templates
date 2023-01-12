@@ -74,7 +74,7 @@ function BookReview({ slide, content, run, slideDone, executionId }) {
         </div>
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
   );
 }
@@ -82,7 +82,10 @@ BookReview.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
