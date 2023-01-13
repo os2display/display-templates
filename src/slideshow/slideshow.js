@@ -232,7 +232,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
           })}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
   );
 }
@@ -241,7 +241,10 @@ Slideshow.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.objectOf(PropTypes.any).isRequired,
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),

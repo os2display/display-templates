@@ -41,7 +41,7 @@ function IFrame({ slide, content, run, slideDone, executionId }) {
         width="100%"
         height="100%"
       />
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
   );
 }

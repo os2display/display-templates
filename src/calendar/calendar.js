@@ -85,7 +85,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
       </IntlProvider>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </>
   );
@@ -98,7 +98,10 @@ Calendar.propTypes = {
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,

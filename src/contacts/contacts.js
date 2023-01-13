@@ -96,7 +96,7 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
         </ContactsWrapper>
       </Wrapper>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </IntlProvider>
   );
@@ -187,7 +187,10 @@ Contacts.propTypes = {
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,

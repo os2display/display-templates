@@ -104,7 +104,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
   );
 }
@@ -122,7 +122,10 @@ RSS.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.shape({}),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     feed: PropTypes.shape({
       configuration: PropTypes.shape({
         numberOfEntries: PropTypes.number,

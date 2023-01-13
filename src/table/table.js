@@ -104,7 +104,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
         </ContentWrapper>
       </Wrapper>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </>
   );
@@ -202,7 +202,10 @@ Table.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
     }),

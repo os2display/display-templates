@@ -140,7 +140,7 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
         </div>
       )}
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
   );
 }

@@ -27,8 +27,10 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
 
   // Set theme styles.
   useEffect(() => {
-    if (slide?.themeData?.css) {
-      setThemeCss(<ThemeStyles id={executionId} css={slide?.themeData?.css} />);
+    if (slide?.themeData?.cssStyles) {
+      setThemeCss(
+        <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      );
     }
   }, [slide]);
 
@@ -216,9 +218,12 @@ ImageText.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
