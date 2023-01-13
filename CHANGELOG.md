@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.0] - 2023-01-05
 
-- [#102](sdf)
+- [#101](https://github.com/os2display/display-templates/pull/102)
 Create "four-area" screen template
 Update ids to be english
 Add title to screens previewer
