@@ -34,15 +34,18 @@ export const renderScreen = (screen) => {
 
   return (
     <div style={gridTemplateAreas} className="grid-index">
-      {screen.screenLayout.regions.map((region) => (
+      {screen.screenLayout.regions.map(({id, gridArea, title}) => (
         <div
-          key={region.id}
+          key={id}
           className="grid-element"
-          style={{ gridArea: createGridArea(region.gridArea) }}
+          style={{ gridArea: createGridArea(gridArea) }}
         >
-          gridarea:{" "}
+          {title}
+          <br />
+          gridarea:
+          <br />
           <div>
-            {region.gridArea.map((area) => (
+            {gridArea.map((area) => (
               <div>{area}</div>
             ))}
           </div>

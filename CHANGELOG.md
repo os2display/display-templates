@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.0] - 2023-01-05
 
+- [#102](sdf)
+Create "four-area" screen template
+Update ids to be english
+Add title to screens previewer
 - [#101](https://github.com/os2display/display-templates/pull/101)
 Change css to cssstyles on theme object, update ".any" proptype
 - [#100](https://github.com/os2display/display-templates/pull/100)

@@ -5,14 +5,15 @@ import twoBoxesVertical from "./screen-layouts/two-boxes-vertical.json";
 import touchTemplate from "./screen-layouts/touch-template.json";
 import sixAreas from "./screen-layouts/six-areas.json";
 import fullScreen from "./screen-layouts/full-screen.json";
+import fourAreas from "./screen-layouts/four-areas.json";
 
 const screens = [
   {
-    id: "2-delt",
+    id: "two-split",
     screenLayout: twoBoxes,
   },
   {
-    id: "2-delt-vertikalt",
+    id: "two-split-vertical",
     screenLayout: twoBoxesVertical,
   },
   {
@@ -20,20 +21,24 @@ const screens = [
     screenLayout: touchTemplate,
   },
   {
-    id: "3-delt",
+    id: "three-split",
     screenLayout: threeBoxes,
   },
   {
-    id: "3-delt-horisontalt",
+    id: "three-split-horizontal",
     screenLayout: threeBoxesHorizontal,
   },
   {
-    id: "seks-områder",
+    id: "six-areas",
     screenLayout: sixAreas,
   },
   {
-    id: "fuld-skærm",
+    id: "full-screen",
     screenLayout: fullScreen,
+  },
+  {
+    id: "four-areas",
+    screenLayout: fourAreas,
   },
 ];
 
