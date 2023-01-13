@@ -1,0 +1,30 @@
+{
+  "title": "Fire områder",
+  "id": "01GPN76FXW0NBQ3Z4SM5KZ965K",
+  "grid": {
+    "rows": 2,
+    "columns": 2
+  },
+  "regions": [
+    {
+      "id": "01GPN76M4YM8T4369FQ5ZCFT0Z",
+      "title": "Top venstre",
+      "gridArea": ["a"]
+    },
+    {
+      "id": "01GPN76PZNXBT2BT4BZ45CZ659",
+      "title": "Top højre",
+      "gridArea": ["b"]
+    },
+    {
+      "id": "01GPN76TVCWTAK1TB9WEX3QZ2K",
+      "title": "Bund venstre",
+      "gridArea": ["c"]
+    },
+    {
+      "id": "01GPN76Z8VQFBWCTT3HQAZ9NM8",
+      "title": "Bund højre",
+      "gridArea": ["d"]
+    }
+  ]
+}
