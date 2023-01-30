@@ -190,7 +190,7 @@ export const Slide = ({ slide: inputSlide }) => {
       .then((data) => {
         const newSelectedSlide = { ...s };
         newSelectedSlide.themeData = {
-          css: data,
+          cssStyles: data,
           logo: newSelectedSlide?.themeData?.logo,
         };
         setSlide(newSelectedSlide);
