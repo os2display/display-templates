@@ -618,7 +618,8 @@ const slides = [
   {
     id: "slide10-calendar2-multiple",
     type: "calendar",
-    themeFile: "themes/dokk1.css",
+    themeFile: "themes/bautavej.css",
+    css: "themes/bautavej.css",
     feedData: [
       {
         id: "uniqueEvent0",
@@ -701,16 +702,16 @@ const slides = [
       duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
-      title: "Kalender",
+      title: "Møder i dag på Bautavej",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
-      image: ["/v1/media/00000000000000000000000001"],
+      // image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
-      fontSize: "font-size-xl",
+      fontSize: "font-size-m",
     },
   },
   {
