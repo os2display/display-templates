@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.0] - 2023-01-05
 
+- [#103](https://github.com/os2display/display-templates/pull/103)
+Add Bautavej theme
 - [#102](https://github.com/os2display/display-templates/pull/102)
 Create "four-area" screen template
 Update ids to be english
@@ -76,7 +78,7 @@ Added logo to poster.
 
 - [#78](https://github.com/os2display/display-templates/pull/78)
 Fixed global styles issues.
-  
+
 ## [1.0.1] - 2022-06-02
 
 - [#77](https://github.com/os2display/display-templates/pull/77)
