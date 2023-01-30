@@ -64,9 +64,7 @@ function CalendarMultiple({
       .filter((e) => {
         const startDate = dayjs(e.startTime * 1000);
 
-        return (
-          e.startTime > now.unix() && startDate.date() === now.date()
-        );
+        return e.startTime > now.unix() && startDate.date() === now.date();
       })
       .sort((a, b) => a - b);
   };

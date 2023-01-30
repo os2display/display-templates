@@ -34,7 +34,7 @@ export const renderScreen = (screen) => {
 
   return (
     <div style={gridTemplateAreas} className="grid-index">
-      {screen.screenLayout.regions.map(({id, gridArea, title}) => (
+      {screen.screenLayout.regions.map(({ id, gridArea, title }) => (
         <div
           key={id}
           className="grid-element"
