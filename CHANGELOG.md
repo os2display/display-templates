@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#106](https://github.com/os2display/display-templates/pull/106)
+Added logo to image-text.
 - [#105](https://github.com/os2display/display-templates/pull/105)
 Fixed separator default styling.
 

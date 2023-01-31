@@ -4,7 +4,7 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BaseSlideExecution from "../base-slide-execution";
-import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
+import { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./image-text.scss";
 
@@ -24,6 +24,26 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
+  const logo = slide?.themeData?.logo;
+  const { showLogo, logoSize, logoPosition, logoMargin } = content;
+
+  let logoUrl = "";
+  // If showlogo is set, get the logo url
+  if (logo && showLogo) {
+    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
+  }
+
+  const logoClasses = ["logo"];
+
+  if (logoMargin) {
+    logoClasses.push("logo-margin");
+  }
+  if (logoSize) {
+    logoClasses.push(logoSize);
+  }
+  if (logoPosition) {
+    logoClasses.push(logoPosition);
+  }
 
   // Set theme styles.
   useEffect(() => {
@@ -208,7 +228,12 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
             )}
           </div>
         )}
+
+        {showLogo && logoUrl && (
+          <img className={logoClasses.join(" ")} src={logoUrl} alt="" />
+        )}
       </div>
+
       {themeCss}
     </>
   );
@@ -224,6 +249,7 @@ ImageText.propTypes = {
     }),
     themeData: PropTypes.shape({
       cssStyles: PropTypes.string,
+      logo: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
@@ -243,6 +269,10 @@ ImageText.propTypes = {
       halfSize: PropTypes.bool,
       fontSize: PropTypes.string,
     }),
+    showLogo: PropTypes.bool,
+    logoSize: PropTypes.string,
+    logoMargin: PropTypes.bool,
+    logoPosition: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
