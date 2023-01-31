@@ -263,7 +263,7 @@ Slideshow.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
       logo: PropTypes.string,
     }),
   }).isRequired,

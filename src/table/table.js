@@ -207,7 +207,7 @@ Table.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({

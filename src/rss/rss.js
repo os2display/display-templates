@@ -143,7 +143,7 @@ RSS.propTypes = {
       ),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }),
   content: PropTypes.shape({
