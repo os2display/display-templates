@@ -42,8 +42,10 @@ function CalendarMultiple({
   const orderWhere = headerOrder === "whenwhatwhere" ? 3 : 2;
   const orderWhat = headerOrder === "whenwhatwhere" ? 2 : 1;
   const orderWhen = headerOrder === "whenwhatwhere" ? 1 : 3;
-
-  const borderStyle = hideGrid ? { "--border": "0" } : {};
+  const borderStyle = {};
+  if (hideGrid) {
+    borderStyle["--border"] = 0;
+  }
 
   let counterForOrder = 0;
 
@@ -86,7 +88,7 @@ function CalendarMultiple({
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
-      style={templateRootStyle}
+      style={Object.assign(borderStyle, templateRootStyle)}
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
@@ -126,21 +128,21 @@ function CalendarMultiple({
             <ContentHeaderItem
               className="content-item"
               key={2}
-              style={(borderStyle, { order: orderWhen })}
+              style={{ order: orderWhen }}
             >
               <FormattedMessage id="when" defaultMessage="when" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={1}
-              style={(borderStyle, { order: orderWhat })}
+              style={{ order: orderWhat }}
             >
               <FormattedMessage id="what" defaultMessage="what" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={3}
-              style={(borderStyle, { order: orderWhere })}
+              style={{ order: orderWhere }}
             >
               <FormattedMessage id="where" defaultMessage="where" />
             </ContentHeaderItem>
@@ -153,9 +155,7 @@ function CalendarMultiple({
                 <Fragment key={entry.id}>
                   <ContentItem
                     className="content-item-time"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhen })
-                    }
+                    style={{ order: counterForOrder + orderWhen }}
                   >
                     {dayjs(entry.startTime * 1000)
                       .locale(localeDa)
@@ -171,9 +171,7 @@ function CalendarMultiple({
                   </ContentItem>
                   <ContentItem
                     className="content-item-title"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhat })
-                    }
+                    style={{ order: counterForOrder + orderWhat }}
                   >
                     {entry.title ?? resourceUnavailableText ?? (
                       <FormattedMessage
@@ -184,9 +182,7 @@ function CalendarMultiple({
                   </ContentItem>
                   <ContentItem
                     className="content-item-resource"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhere })
-                    }
+                    style={{ order: counterForOrder + orderWhere }}
                   >
                     {entry.resourceTitle ?? entry.resourceId ?? ""}
                   </ContentItem>

@@ -11,6 +11,8 @@ Disable test github action until it is refactored for react 18.
 Added logo to image-text.
 - [#105](https://github.com/os2display/display-templates/pull/105)
 Fixed separator default styling.
+- [#109]https://github.com/os2display/display-templates/pull/109
+Make "hideGrid" work on calendar
 - [#108]https://github.com/os2display/display-templates/pull/110
 It slideshow restarts now and calls the done function. 
 rename transitions to transition, rename animations to animation.
