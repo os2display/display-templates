@@ -42,8 +42,10 @@ function CalendarMultiple({
   const orderWhere = headerOrder === "whenwhatwhere" ? 3 : 2;
   const orderWhat = headerOrder === "whenwhatwhere" ? 2 : 1;
   const orderWhen = headerOrder === "whenwhatwhere" ? 1 : 3;
-
-  const borderStyle = hideGrid ? { "--border": "0" } : {};
+  const borderStyle = {};
+  if (hideGrid) {
+    borderStyle["--border"] = 0;
+  }
 
   let counterForOrder = 0;
 
@@ -64,9 +66,7 @@ function CalendarMultiple({
       .filter((e) => {
         const startDate = dayjs(e.startTime * 1000);
 
-        return (
-          e.startTime > now.unix() && startDate.date() === now.date()
-        );
+        return e.startTime > now.unix() && startDate.date() === now.date();
       })
       .sort((a, b) => a - b);
   };
@@ -88,7 +88,7 @@ function CalendarMultiple({
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
-      style={templateRootStyle}
+      style={Object.assign(borderStyle, templateRootStyle)}
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
