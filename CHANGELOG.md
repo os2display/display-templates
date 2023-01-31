@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ## [1.2.0] - 2023-01-05
-
+- [#104]https://github.com/os2display/display-templates/pull/104
+Make "hideGrid" work on calendar
+Rename some screen template titles
 - [#102](https://github.com/os2display/display-templates/pull/102)
 Create "four-area" screen template
 Update ids to be english
