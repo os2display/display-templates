@@ -32,13 +32,13 @@
     "input": "input",
     "name": "imageDuration",
     "type": "number",
-    "label": "Varighed pr. billede (i sekunder)",
+    "label": "Varighed pr. billede (i millisekunder)",
     "helpText": "Her skal du skrive varigheden pr. billede.",
     "required": true,
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "name": "animations",
+    "name": "animation",
     "key": "slideshow-form-6",
     "input": "select",
     "label": "Vælg animation",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "name": "transitions",
+    "name": "transition",
     "key": "slideshow-form-7",
     "input": "select",
     "label": "Vælg overgang",

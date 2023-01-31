@@ -20,9 +20,9 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5000, transitions, animations } = content;
+  const { images, imageDuration = 5000, transition, animation } = content;
   const [index, setIndex] = useState(0);
-  const fadeEnabled = transitions === "fade";
+  const fadeEnabled = transition === "fade";
   const fadeDuration = 1000;
   const [fade, setFade] = useState(false);
 
@@ -116,7 +116,6 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     ];
 
     const randomPercent = `${random(100) + 1}% ${random(100) + 1}%`;
-
     switch (animationType) {
       case "zoom-in-middle":
         return createAnimation(true);
@@ -136,40 +135,40 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
 
   // Setup animation
   useEffect(() => {
-    if (animations !== null) {
+    if (animation !== null) {
       // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
       const styleSheet = document.styleSheets[0];
       styleSheet.insertRule(
-        getCurrentAnimation(animations),
+        getCurrentAnimation(animation),
         styleSheet.cssRules.length
       );
     }
   }, []);
 
   // Get image style for the given image url.
-  const getImageStyle = (imageUrl, animation, localAnimationDuration) => {
+  const getImageStyle = (imageUrl, localAnimation, localAnimationDuration) => {
     const imageStyle = {
       backgroundImage: `url(${imageUrl})`,
     };
 
-    if (animation) {
+    if (localAnimation) {
       imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
     }
 
     return imageStyle;
   };
-
   // Setup image progress.
   useEffect(() => {
     if (run) {
       if (imageUrls.length > 0) {
         timeoutRef.current = setTimeout(() => {
-          const newIndex = index + 1;
-
-          if (newIndex > imageUrls.length - 1) {
+          let newIndex = index + 1;
+          if (newIndex === imageUrls.length) {
+            newIndex = 0;
             // No more images to show.
             slideDone(slide);
-          } else if (fadeEnabled) {
+          }
+          if (fadeEnabled) {
             // Fade to next image.
             setFade(true);
             setAnimationIndex(newIndex);
@@ -271,9 +270,8 @@ Slideshow.propTypes = {
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
     imageDuration: PropTypes.number,
-    logoEnabled: PropTypes.bool,
-    animations: PropTypes.string,
-    transitions: PropTypes.string,
+    animation: PropTypes.string,
+    transition: PropTypes.string,
     showLogo: PropTypes.bool,
     logoSize: PropTypes.string,
     logoMargin: PropTypes.bool,
