@@ -16,14 +16,7 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const {
-    images,
-    imageDuration = 5000,
-    transitions,
-    animations,
-    // @TODO: Add when logo is available from theme
-    // , logoEnabled, logoSize, logoPosition
-  } = content;
+  const { images, imageDuration = 5000, transitions, animations } = content;
   const [index, setIndex] = useState(0);
   const fadeEnabled = transitions === "fade";
   const fadeDuration = 1000;
@@ -40,10 +33,6 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
 
   const timeoutRef = useRef(null);
   const fadeRef = useRef(null);
-
-  // @TODO: Get logo from theme.
-  // const logoImageUrl = null;
-  // const logoClasses = `logo ${logoPosition} ${logoSize}`;
 
   /**
    * A random function to simplify the code where random is used
@@ -144,18 +133,18 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
 
     return imageStyle;
   };
-
   // Setup image progress.
   useEffect(() => {
     if (run) {
       if (imageUrls.length > 0) {
         timeoutRef.current = setTimeout(() => {
-          const newIndex = index + 1;
-
-          if (newIndex > imageUrls.length - 1) {
+          let newIndex = index + 1;
+          if (newIndex === imageUrls.length) {
+            newIndex = 0;
             // No more images to show.
             slideDone(slide);
-          } else if (fadeEnabled) {
+          }
+          if (fadeEnabled) {
             // Fade to next image.
             setFade(true);
             setAnimationIndex(newIndex);
@@ -252,9 +241,6 @@ Slideshow.propTypes = {
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
     imageDuration: PropTypes.number,
-    logoEnabled: PropTypes.bool,
-    logoSize: PropTypes.string,
-    logoPosition: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
   }).isRequired,
