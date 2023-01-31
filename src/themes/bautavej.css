@@ -1,0 +1,42 @@
+/*
+* Bautavej theme file
+*
+* #SLIDE_ID should always encapsulate all your theme styling
+* #SLIDE_ID will be replaced at runtime with the given slide execution id to make sure the theme styling
+* only applies to the given slide.
+*/
+
+#SLIDE_ID {
+  --color-primary: hsla(125, 49%, 42%, 1);
+  --color-grey-100: hsl(0, 100%, 900%);
+}
+
+/*
+* Styling for Calendar multiple
+*/
+#SLIDE_ID .calendar-multiple {
+  /* Remove borders */
+  --border: 0px;
+  /* Reduce space between items */
+  --content-item-padding: calc(var(--padding) * 0.5);
+  padding: 0;
+  color: black;
+  background-color: var(--color-grey-100);
+}
+
+#SLIDE_ID .calendar-multiple .header {
+  color: white;
+  background-color: var(--color-primary);
+  align-items: center;
+}
+
+#SLIDE_ID .calendar-multiple .header-title {
+  font-size: var(--h3-font-size);
+}
+
+#SLIDE_ID .calendar-multiple .content-item,
+#SLIDE_ID .calendar-multiple .content-item-time,
+#SLIDE_ID .calendar-multiple .content-item-title,
+#SLIDE_ID .calendar-multiple .content-item-resource {
+  padding-bottom: var(--content-item-padding);
+}

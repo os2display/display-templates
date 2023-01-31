@@ -34,7 +34,7 @@ export const renderScreen = (screen) => {
 
   return (
     <div style={gridTemplateAreas} className="grid-index">
-      {screen.screenLayout.regions.map(({id, gridArea, title}) => (
+      {screen.screenLayout.regions.map(({ id, gridArea, title }) => (
         <div
           key={id}
           className="grid-element"
@@ -190,7 +190,7 @@ export const Slide = ({ slide: inputSlide }) => {
       .then((data) => {
         const newSelectedSlide = { ...s };
         newSelectedSlide.themeData = {
-          css: data,
+          cssStyles: data,
           logo: newSelectedSlide?.themeData?.logo,
         };
         setSlide(newSelectedSlide);
