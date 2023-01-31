@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#105](https://github.com/os2display/display-templates/pull/105)
+Fixed separator default styling.
+
 ## [1.2.0] - 2023-01-05
 
 - [#102](https://github.com/os2display/display-templates/pull/102)
