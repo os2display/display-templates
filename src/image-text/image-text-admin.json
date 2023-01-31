@@ -229,7 +229,7 @@
     "key": "image-text-form-18",
     "input": "checkbox",
     "label": "Deaktiver fade ved flere billeder",
-    "name": "logoMargin",
+    "name": "disableImageFade",
     "formGroupClasses": "col-md-6 mb-3"
   }
 ]

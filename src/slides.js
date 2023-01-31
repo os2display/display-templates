@@ -1044,6 +1044,51 @@ const slides = [
       logoPosition: "logo-position-bottom-right",
     },
   },
+  {
+    id: "slide16-slideshow-no-stuff",
+    type: "slideshow",
+    themeFile: "themes/dokk1.css",
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000002": {
+        assets: {
+          uri: "/fixtures/images/mountain2.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000003": {
+        assets: {
+          uri: "/fixtures/images/mountain3.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000004": {
+        assets: {
+          uri: "/fixtures/images/mountain4.jpeg",
+        },
+      },
+    },
+    content: {
+      imageDuration: 5000,
+      images: [
+        "/v1/media/00000000000000000000000001",
+        "/v1/media/00000000000000000000000002",
+        "/v1/media/00000000000000000000000003",
+        "/v1/media/00000000000000000000000004",
+      ],
+      transitions: null,
+      animations: null,
+      showLogo: true,
+      logoMargin: true,
+      logoSize: "logo-size-l",
+      logoPosition: "logo-position-bottom-left",
+    },
+  },
 ];
 
 export default slides;

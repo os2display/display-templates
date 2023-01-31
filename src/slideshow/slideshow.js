@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
+import { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./slideshow.scss";
 
@@ -21,8 +21,6 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     imageDuration = 5000,
     transitions,
     animations,
-    // @TODO: Add when logo is available from theme
-    // , logoEnabled, logoSize, logoPosition
   } = content;
   const [index, setIndex] = useState(0);
   const fadeEnabled = transitions === "fade";
@@ -38,12 +36,29 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     imageDuration + fadeDuration
   );
 
+  const logo = slide?.themeData?.logo;
+  const { showLogo, logoSize, logoPosition, logoMargin } = content;
+
+  let logoUrl = "";
+  // If showlogo is set, get the logo url
+  if (logo && showLogo) {
+    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
+  }
+
+  const logoClasses = ["logo"];
+
+  if (logoMargin) {
+    logoClasses.push("logo-margin");
+  }
+  if (logoSize) {
+    logoClasses.push(logoSize);
+  }
+  if (logoPosition) {
+    logoClasses.push(logoPosition);
+  }
+
   const timeoutRef = useRef(null);
   const fadeRef = useRef(null);
-
-  // @TODO: Get logo from theme.
-  // const logoImageUrl = null;
-  // const logoClasses = `logo ${logoPosition} ${logoSize}`;
 
   /**
    * A random function to simplify the code where random is used
@@ -230,6 +245,10 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
               </div>
             );
           })}
+
+        {showLogo && logoUrl && (
+          <img className={logoClasses.join(" ")} src={logoUrl} alt="" />
+        )}
       </div>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
@@ -247,16 +266,19 @@ Slideshow.propTypes = {
     }),
     themeData: PropTypes.shape({
       css: PropTypes.string,
+      logo: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
     imageDuration: PropTypes.number,
     logoEnabled: PropTypes.bool,
-    logoSize: PropTypes.string,
-    logoPosition: PropTypes.string,
     animations: PropTypes.string,
     transitions: PropTypes.string,
+    showLogo: PropTypes.bool,
+    logoSize: PropTypes.string,
+    logoMargin: PropTypes.bool,
+    logoPosition: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

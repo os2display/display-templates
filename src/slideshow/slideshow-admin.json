@@ -38,12 +38,17 @@
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "name": "animation",
+    "name": "animations",
     "key": "slideshow-form-6",
     "input": "select",
     "label": "Vælg animation",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
+      {
+        "key": "animation0",
+        "title": "Ingen animation",
+        "value": null
+      },
       {
         "key": "animation1",
         "title": "Tilfældig",
@@ -72,7 +77,7 @@
     ]
   },
   {
-    "name": "transition",
+    "name": "transitions",
     "key": "slideshow-form-7",
     "input": "select",
     "label": "Vælg overgang",
@@ -92,81 +97,71 @@
   },
   {
     "key": "slideshow-form-8",
-    "input": "header-h3",
-    "text": "Logo",
-    "name": "header3",
-    "formGroupClasses": "h5 mb-3"
-  },
-  {
-    "key": "slideshow-form-9",
     "input": "checkbox",
     "label": "Vis logo fra tema",
-    "name": "logoEnabled",
+    "name": "showLogo",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "key": "slideshow-form-10",
+    "key": "slideshow-form-9",
     "input": "select",
-    "required": true,
-    "label": "Logo size",
+    "required": false,
+    "label": "Logostørrelse",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
       {
         "key": "logosize1",
-        "title": "xs",
-        "value": "xs"
+        "title": "s",
+        "value": "logo-size-s"
       },
       {
         "key": "logosize2",
-        "title": "s",
-        "value": "s"
+        "title": "m",
+        "value": "logo-size-m"
       },
       {
         "key": "logosize3",
-        "title": "m",
-        "value": "m"
-      },
-      {
-        "key": "logosize4",
         "title": "l",
-        "value": "l"
-      },
-      {
-        "key": "logosize5",
-        "title": "xl",
-        "value": "xl"
+        "value": "logo-size-l"
       }
     ],
     "name": "logoSize"
   },
   {
-    "key": "slideshow-form-11",
+    "key": "slideshow-form-10",
     "input": "select",
-    "required": true,
-    "label": "Logo position",
+    "required": false,
+    "label": "Logoposition",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
       {
         "key": "logoposition1",
-        "title": "top venstre",
-        "value": ""
+        "title": "Top/venstre",
+        "value": "logo-position-top-left"
       },
       {
         "key": "logoposition2",
-        "title": "top højre",
-        "value": "right"
+        "title": "Top/højre",
+        "value": "logo-position-top-right"
       },
       {
         "key": "logoposition3",
-        "title": "bund venstre",
-        "value": "bottom"
+        "title": "Bund/venstre",
+        "value": "logo-position-bottom-left"
       },
       {
         "key": "logoposition4",
-        "title": "bund højre",
-        "value": "bottom right"
+        "title": "Bund/højre",
+        "value": "logo-position-bottom-right"
       }
     ],
     "name": "logoPosition"
+  },
+  {
+    "key": "slideshow-form-11",
+    "input": "checkbox",
+    "label": "Margin om logo",
+    "name": "logoMargin",
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

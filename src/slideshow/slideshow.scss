@@ -74,4 +74,41 @@
       opacity: 0;
     }
   }
+
+  .logo {
+    position: absolute;
+    width: 10%;
+    z-index: 1000;
+  }
+
+  .logo-size-s {
+    width: 5%;
+  }
+  .logo-size-m {
+    width: 10%;
+  }
+  .logo-size-l {
+    width: 15%;
+  }
+
+  .logo-position-top-left {
+    top: 0;
+    left: 0;
+  }
+  .logo-position-top-right {
+    top: 0;
+    right: 0;
+  }
+  .logo-position-bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  .logo-position-bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  .logo-margin {
+    margin: 1%;
+  }
 }
