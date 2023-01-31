@@ -32,7 +32,7 @@
     "input": "input",
     "name": "imageDuration",
     "type": "number",
-    "label": "Varighed pr. billede (i sekunder)",
+    "label": "Varighed pr. billede (i millisekunder)",
     "helpText": "Her skal du skrive varigheden pr. billede.",
     "required": true,
     "formGroupClasses": "col-md-6 mb-3"
