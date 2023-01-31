@@ -13,7 +13,8 @@ Added logo to image-text.
 Fixed separator default styling.
 - [#109]https://github.com/os2display/display-templates/pull/109
 Make "hideGrid" work on calendar
-
+- [#112](https://github.com/os2display/display-templates/pull/112)
+Rename titles in screen layout six areas.
 
 ## [1.2.0] - 2023-01-05
 
