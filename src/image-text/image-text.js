@@ -4,7 +4,11 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BaseSlideExecution from "../base-slide-execution";
-import { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import {
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  ThemeStyles,
+} from "../slide-util";
 import "../global-styles.css";
 import "./image-text.scss";
 

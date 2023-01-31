@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import {
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  ThemeStyles,
+} from "../slide-util";
 import "../global-styles.css";
 import "./slideshow.scss";
 
@@ -16,12 +20,7 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const {
-    images,
-    imageDuration = 5000,
-    transitions,
-    animations,
-  } = content;
+  const { images, imageDuration = 5000, transitions, animations } = content;
   const [index, setIndex] = useState(0);
   const fadeEnabled = transitions === "fade";
   const fadeDuration = 1000;
