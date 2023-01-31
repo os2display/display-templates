@@ -1009,6 +1009,7 @@ const slides = [
       halfSize: true,
       reversed: false,
       fontSize: "font-size-m",
+      disableImageFade: false,
     },
   },
   {

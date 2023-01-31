@@ -26,6 +26,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [themeCss, setThemeCss] = useState(null);
   const logo = slide?.themeData?.logo;
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
+  const { disableImageFade } = content;
 
   let logoUrl = "";
   // If showlogo is set, get the logo url
@@ -200,7 +201,9 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
               key={currentImage.url}
               timeout={1000}
               nodeRef={currentImage.nodeRef}
-              classNames="background-image"
+              classNames={`background-image${
+                disableImageFade ? "-animation-disabled" : ""
+              }`}
             >
               <div
                 style={{
@@ -273,6 +276,7 @@ ImageText.propTypes = {
     logoSize: PropTypes.string,
     logoMargin: PropTypes.bool,
     logoPosition: PropTypes.string,
+    disableImageFade: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

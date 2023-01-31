@@ -147,14 +147,14 @@
     "label": "Overskriften er under teksten",
     "helpText": "Denne kan ikke kombineres med den animerede tekst under overskriften",
     "name": "reversed",
-    "formGroupClasses": "col-md-6"
+    "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "image-text-form-13",
     "input": "checkbox",
     "label": "Skyggeeffekt på tekstboksen",
     "name": "shadow",
-    "formGroupClasses": "col-md-6"
+    "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "image-text-form-14",
@@ -222,6 +222,13 @@
     "key": "image-text-form-17",
     "input": "checkbox",
     "label": "Margin om logo",
+    "name": "logoMargin",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-18",
+    "input": "checkbox",
+    "label": "Deaktiver fade ved flere billeder",
     "name": "logoMargin",
     "formGroupClasses": "col-md-6 mb-3"
   }
