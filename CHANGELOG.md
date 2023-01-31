@@ -13,6 +13,7 @@ Added logo to image-text.
 Fixed separator default styling.
 - [#108]https://github.com/os2display/display-templates/pull/110
 It slideshow restarts now and calls the done function. 
+rename transitions to transition, rename animations to animation.
 Changed "sekunder" to "millisekunder" on a label
 
 ## [1.2.0] - 2023-01-05
