@@ -86,7 +86,7 @@
     "name": "boxAlign"
   },
   {
-    "key": "image-text-form-14",
+    "key": "image-text-form-81",
     "input": "select",
     "required": true,
     "label": "Tekststørrelse",
@@ -155,5 +155,74 @@
     "label": "Skyggeeffekt på tekstboksen",
     "name": "shadow",
     "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "image-text-form-14",
+    "input": "checkbox",
+    "label": "Vis logo fra tema",
+    "name": "showLogo",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-15",
+    "input": "select",
+    "required": false,
+    "label": "Logostørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logosize1",
+        "title": "s",
+        "value": "logo-size-s"
+      },
+      {
+        "key": "logosize2",
+        "title": "m",
+        "value": "logo-size-m"
+      },
+      {
+        "key": "logosize3",
+        "title": "l",
+        "value": "logo-size-l"
+      }
+    ],
+    "name": "logoSize"
+  },
+  {
+    "key": "image-text-form-16",
+    "input": "select",
+    "required": false,
+    "label": "Logoposition",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logoposition1",
+        "title": "Top/venstre",
+        "value": "logo-position-top-left"
+      },
+      {
+        "key": "logoposition2",
+        "title": "Top/højre",
+        "value": "logo-position-top-right"
+      },
+      {
+        "key": "logoposition3",
+        "title": "Bund/venstre",
+        "value": "logo-position-bottom-left"
+      },
+      {
+        "key": "logoposition4",
+        "title": "Bund/højre",
+        "value": "logo-position-bottom-right"
+      }
+    ],
+    "name": "logoPosition"
+  },
+  {
+    "key": "image-text-form-17",
+    "input": "checkbox",
+    "label": "Margin om logo",
+    "name": "logoMargin",
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]
