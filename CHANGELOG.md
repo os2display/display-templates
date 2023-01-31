@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#107](https://github.com/os2display/display-templates/pull/107)
+Allow for disabling fades in image-text.
+Disable test github action until it is refactored for react 18.
 - [#106](https://github.com/os2display/display-templates/pull/106)
 Added logo to image-text.
 - [#105](https://github.com/os2display/display-templates/pull/105)
