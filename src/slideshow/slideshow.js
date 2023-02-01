@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
+import {
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  ThemeStyles,
+} from "../slide-util";
 import "../global-styles.css";
 import "./slideshow.scss";
 
@@ -30,6 +34,27 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
   const [animationDuration, setAnimationDuration] = useState(
     imageDuration + fadeDuration
   );
+
+  const logo = slide?.themeData?.logo;
+  const { showLogo, logoSize, logoPosition, logoMargin } = content;
+
+  let logoUrl = "";
+  // If showlogo is set, get the logo url
+  if (logo && showLogo) {
+    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
+  }
+
+  const logoClasses = ["logo"];
+
+  if (logoMargin) {
+    logoClasses.push("logo-margin");
+  }
+  if (logoSize) {
+    logoClasses.push(logoSize);
+  }
+  if (logoPosition) {
+    logoClasses.push(logoPosition);
+  }
 
   const timeoutRef = useRef(null);
   const fadeRef = useRef(null);
@@ -121,12 +146,12 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
   }, []);
 
   // Get image style for the given image url.
-  const getImageStyle = (imageUrl, animation, localAnimationDuration) => {
+  const getImageStyle = (imageUrl, localAnimation, localAnimationDuration) => {
     const imageStyle = {
       backgroundImage: `url(${imageUrl})`,
     };
 
-    if (animation) {
+    if (localAnimation) {
       imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
     }
 
@@ -218,6 +243,10 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
               </div>
             );
           })}
+
+        {showLogo && logoUrl && (
+          <img className={logoClasses.join(" ")} src={logoUrl} alt="" />
+        )}
       </div>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
@@ -234,7 +263,8 @@ Slideshow.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
+      logo: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
@@ -242,6 +272,10 @@ Slideshow.propTypes = {
     imageDuration: PropTypes.number,
     animation: PropTypes.string,
     transition: PropTypes.string,
+    showLogo: PropTypes.bool,
+    logoSize: PropTypes.string,
+    logoMargin: PropTypes.bool,
+    logoPosition: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

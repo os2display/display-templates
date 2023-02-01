@@ -153,8 +153,8 @@ function Travel({ slide, content, run, slideDone, executionId }) {
 }
 
 Travel.defaultProps = {
-  content: PropTypes.shape({
-    station: "",
+  content: {
+    station: [],
     timeFast: 0,
     timeModerate: 0,
     title: "",
@@ -164,7 +164,7 @@ Travel.defaultProps = {
     iframeTitle: "",
     numberOfJourneys: 1,
     duration: 15000,
-  }),
+  },
 };
 
 Travel.propTypes = {
@@ -177,12 +177,12 @@ Travel.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
-    station: PropTypes.arrayOf(PropTypes.any),
+    station: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string })),
     timeFast: PropTypes.string,
     timeModerate: PropTypes.string,
     title: PropTypes.string,

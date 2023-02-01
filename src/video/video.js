@@ -59,9 +59,9 @@ function Video({ slide, content, run, slideDone, executionId }) {
   return (
     <>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video width="100%" height="100%" ref={videoRef}>
+      <video width="100%" height="100%" ref={videoRef} muted={!sound}>
         {videoUrls.map((url) => (
-          <source muted={!sound} key={url} src={url} />
+          <source key={url} src={url} />
         ))}
       </video>
 
@@ -80,7 +80,7 @@ Video.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({

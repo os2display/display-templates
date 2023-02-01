@@ -185,7 +185,7 @@ Contacts.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
     mediaData: PropTypes.shape({
       url: PropTypes.string,
