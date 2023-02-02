@@ -433,7 +433,7 @@ const slides = [
       },
     },
     content: {
-      imageDuration: 5000,
+      imageDuration: 5,
       images: [
         "/v1/media/00000000000000000000000001",
         "/v1/media/00000000000000000000000002",

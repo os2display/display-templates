@@ -25,14 +25,14 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
   const fadeEnabled = transition === "fade";
   const fadeDuration = 1000;
   const [fade, setFade] = useState(false);
-
+  const imageDurationInSeconds = imageDuration * 1000;
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
   const animationName = "animationForImage";
   const [animationIndex, setAnimationIndex] = useState(0);
   const [animationDuration, setAnimationDuration] = useState(
-    imageDuration + fadeDuration
+    imageDurationInSeconds + fadeDuration
   );
 
   const logo = slide?.themeData?.logo;
@@ -172,7 +172,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
             // Fade to next image.
             setFade(true);
             setAnimationIndex(newIndex);
-            setAnimationDuration(imageDuration + fadeDuration * 2);
+            setAnimationDuration(imageDurationInSeconds + fadeDuration * 2);
             fadeRef.current = setTimeout(() => {
               setFade(false);
               setIndex(newIndex);
@@ -181,9 +181,9 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
             // Change to next.
             setIndex(newIndex);
             setAnimationIndex(newIndex);
-            setAnimationDuration(imageDuration);
+            setAnimationDuration(imageDurationInSeconds);
           }
-        }, imageDuration);
+        }, imageDurationInSeconds);
       } else {
         // If there are no images in slide, wait for 2s before continuing to avoid crashes.
         setTimeout(() => {
