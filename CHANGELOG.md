@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#113](https://github.com/os2display/display-templates/pull/113)
+When no animation is specified, it will not og into "random"
+Change milliseconds to seconds
 - [#111](https://github.com/os2display/display-templates/pull/111)
 Allow for disabling animations for slideshow.
 - [#107](https://github.com/os2display/display-templates/pull/107)
