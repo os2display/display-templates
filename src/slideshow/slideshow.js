@@ -125,11 +125,12 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         return createAnimation(true, randomPercent);
       case "zoom-out-random":
         return createAnimation(false, randomPercent);
-      default:
       case "random":
         return getCurrentAnimation(
           animationTypes[random(animationTypes.length)]
         );
+      default:
+        return null;
     }
   }
 
@@ -138,10 +139,13 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     if (animation !== null) {
       // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
       const styleSheet = document.styleSheets[0];
-      styleSheet.insertRule(
-        getCurrentAnimation(animation),
-        styleSheet.cssRules.length
-      );
+      const currentAnimation = getCurrentAnimation(animation);
+      if (currentAnimation !== null) {
+        styleSheet.insertRule(
+          getCurrentAnimation(animation),
+          styleSheet.cssRules.length
+        );
+      }
     }
   }, []);
 
