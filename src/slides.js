@@ -1089,6 +1089,42 @@ const slides = [
       logoPosition: "logo-position-bottom-left",
     },
   },
+  {
+    id: "slide17-calendar-multiple-days",
+    type: "calendar",
+    feedData: [
+      {
+        id: "uniqueEvent0",
+        title: null,
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent1",
+        title: "",
+        startTime: dayjs().add(2, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
+        resourceId: "M1",
+      },
+    ],
+    content: {
+      duration: 5000,
+      layout: "multipleDays",
+      hasDateAndTime: true,
+      title: "Kalender",
+      subTitle: "Underoverskrift",
+     // resourceUnavailableText: "DEt er tAGET!!!",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      image: [],
+      footerText: "Se mere på localhost/events",
+      fontSize: "font-size-m",
+    },
+  },
 ];
 
 export default slides;

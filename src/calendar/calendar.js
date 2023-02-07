@@ -2,7 +2,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import { IntlProvider } from "react-intl";
+import { FormattedMessage, IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
@@ -25,7 +25,7 @@ import GlobalStyles from "../GlobalStyles";
 function Calendar({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState();
 
-  const { layout = "multiple", duration = 15000, fontSize } = content;
+  const { layout = "multiple", duration = 15000, fontSize, resourceUnavailableText } = content;
   const { feedData = [] } = slide;
 
   const classes = ["template-calendar", fontSize];
@@ -56,6 +56,18 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
     setTranslations(da);
   }, []);
 
+  const getTitle = (eventTitle) => {
+    if (!eventTitle || eventTitle === "") {
+      if (resourceUnavailableText) {
+        return resourceUnavailableText;
+      }
+
+      return <FormattedMessage id="unavailable" defaultMessage="Unavailable" />;
+    }
+
+    return eventTitle;
+  };
+
   return (
     <>
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
@@ -65,6 +77,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
         {layout === "multiple" && (
@@ -73,6 +86,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
         {layout === "multipleDays" && (
@@ -81,6 +95,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
       </IntlProvider>
@@ -119,6 +134,7 @@ Calendar.propTypes = {
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
+    resourceUnavailableText: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
