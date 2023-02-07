@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#114](https://github.com/os2display/display-templates/pull/114)
+Make sure empty titles are replaced by default busy text for calendar
 - [#113](https://github.com/os2display/display-templates/pull/113)
 When no animation is specified, it will not og into "random"
 Change milliseconds to seconds
