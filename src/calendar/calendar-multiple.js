@@ -14,6 +14,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
+ * @param {Function} props.getTitle - Function to get title for event.
  * @returns {JSX.Element} - The component.
  */
 function CalendarMultiple({
@@ -21,12 +22,12 @@ function CalendarMultiple({
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const {
     title = "",
     hasDateAndTime,
-    resourceUnavailableText = null,
     displayHeaders = true,
     hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
@@ -173,12 +174,7 @@ function CalendarMultiple({
                     className="content-item-title"
                     style={{ order: counterForOrder + orderWhat }}
                   >
-                    {entry.title ?? resourceUnavailableText ?? (
-                      <FormattedMessage
-                        id="unavailable"
-                        defaultMessage="Unavailable"
-                      />
-                    )}
+                    {getTitle(entry.title)}
                   </ContentItem>
                   <ContentItem
                     className="content-item-resource"
@@ -316,6 +312,7 @@ CalendarMultiple.propTypes = {
     resourceUnavailableText: PropTypes.string,
     hideGrid: PropTypes.bool,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarMultiple;
