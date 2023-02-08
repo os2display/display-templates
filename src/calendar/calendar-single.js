@@ -14,6 +14,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
+ * @param {Function} props.getTitle - Function to get title for event.
  * @returns {string} - The component.
  */
 function CalendarSingle({
@@ -21,13 +22,9 @@ function CalendarSingle({
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
-  const {
-    title = "",
-    subTitle = null,
-    resourceAvailableText = null,
-    resourceUnavailableText = null,
-  } = content;
+  const { title = "", subTitle = null, resourceAvailableText = null } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -46,7 +43,10 @@ function CalendarSingle({
 
     if (calendarEventsToRender.length > 0) {
       calendarEventsToRender
-        .filter((e) => e.startTime > now.unix() && e.endTime <= now.endOf('day').unix())
+        .filter(
+          (e) =>
+            e.startTime > now.unix() && e.endTime <= now.endOf("day").unix()
+        )
         .forEach((event) => {
           if (elements.length < 3) {
             elements.push(
@@ -63,12 +63,7 @@ function CalendarSingle({
                   {" - "}
                   {renderTimeOfDay(event.endTime)}
                 </Meta>
-                {event?.title ?? resourceUnavailableText ?? (
-                  <FormattedMessage
-                    id="unavailable"
-                    defaultMessage="Unavailable"
-                  />
-                )}
+                {getTitle(event.title)}
               </ContentItem>
             );
           }
@@ -153,7 +148,7 @@ CalendarSingle.defaultProps = {
 
 CalendarSingle.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
-  templateRootStyle: PropTypes.objectOf(PropTypes.any),
+  templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -170,6 +165,7 @@ CalendarSingle.propTypes = {
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarSingle;

@@ -8,6 +8,7 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
+import PropTypes from "prop-types";
 import ImageText from "./image-text/image-text";
 import slides from "./slides";
 import screens from "./screens";
@@ -34,7 +35,7 @@ export const renderScreen = (screen) => {
 
   return (
     <div style={gridTemplateAreas} className="grid-index">
-      {screen.screenLayout.regions.map(({id, gridArea, title}) => (
+      {screen.screenLayout.regions.map(({ id, gridArea, title }) => (
         <div
           key={id}
           className="grid-element"
@@ -190,7 +191,7 @@ export const Slide = ({ slide: inputSlide }) => {
       .then((data) => {
         const newSelectedSlide = { ...s };
         newSelectedSlide.themeData = {
-          css: data,
+          cssStyles: data,
           logo: newSelectedSlide?.themeData?.logo,
         };
         setSlide(newSelectedSlide);
@@ -218,6 +219,11 @@ export const Slide = ({ slide: inputSlide }) => {
     </div>
   );
 };
+
+Slide.propTypes = {
+  slide: PropTypes.shape({}).isRequired,
+};
+
 export const DisplayElement = () => {
   const { id } = useParams();
 
@@ -229,10 +235,15 @@ export const DisplayElement = () => {
   if (foundScreen) {
     return <Screen screen={foundScreen} />;
   }
+  return "";
 };
 
 export const Screen = ({ screen }) => {
   return <div className="app">{screen && renderScreen(screen)}</div>;
+};
+
+Screen.propTypes = {
+  screen: PropTypes.shape({}).isRequired,
 };
 
 export const Overview = () => {

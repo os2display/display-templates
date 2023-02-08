@@ -52,7 +52,7 @@ IFrame.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({

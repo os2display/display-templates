@@ -245,7 +245,7 @@ Poster.propTypes = {
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
       logo: PropTypes.arrayOf(PropTypes.string),
     }),
     feed: PropTypes.shape({

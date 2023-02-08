@@ -433,7 +433,7 @@ const slides = [
       },
     },
     content: {
-      imageDuration: 5000,
+      imageDuration: 5,
       images: [
         "/v1/media/00000000000000000000000001",
         "/v1/media/00000000000000000000000002",
@@ -443,8 +443,8 @@ const slides = [
       logoEnabled: false,
       logoSize: "l",
       logoPosition: "bottom right",
-      transitions: "fade",
-      animations: "random",
+      transition: "fade",
+      animation: "random",
     },
   },
   {
@@ -618,7 +618,7 @@ const slides = [
   {
     id: "slide10-calendar2-multiple",
     type: "calendar",
-    themeFile: "themes/dokk1.css",
+    themeFile: "themes/bautavej.css",
     feedData: [
       {
         id: "uniqueEvent0",
@@ -665,6 +665,54 @@ const slides = [
         resourceId: "M4",
       },
       {
+        id: "uniqueEvent41",
+        title: "Test",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent42",
+        title: "Test 2",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent43",
+        title: "Test 3",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent44",
+        title: "Test 4",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent45",
+        title: "Test 5",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent46",
+        title: "Test 6",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
         id: "uniqueEvent5",
         title: "Tea Tomorrow",
         startTime: dayjs().add(1, "hour").add(1, "day").unix(),
@@ -701,12 +749,12 @@ const slides = [
       duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
-      title: "Kalender",
+      title: "Møder i dag på Bautavej",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
-      image: ["/v1/media/00000000000000000000000001"],
+      // image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
@@ -960,6 +1008,120 @@ const slides = [
       separator: true,
       halfSize: true,
       reversed: false,
+      fontSize: "font-size-m",
+      disableImageFade: false,
+    },
+  },
+  {
+    id: "slide15-image-text-logo",
+    type: "image-text",
+    themeFile: "themes/dokk1.css",
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 5000,
+      title: "Slide 1",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: ["/v1/media/00000000000000000000000001"],
+      boxAlign: "right",
+      boxMargin: false,
+      shadow: true,
+      separator: true,
+      halfSize: true,
+      reversed: false,
+      fontSize: "font-size-xs",
+      showLogo: true,
+      logoMargin: true,
+      logoSize: "logo-size-m",
+      logoPosition: "logo-position-bottom-right",
+    },
+  },
+  {
+    id: "slide16-slideshow-no-stuff",
+    type: "slideshow",
+    themeFile: "themes/dokk1.css",
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000002": {
+        assets: {
+          uri: "/fixtures/images/mountain2.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000003": {
+        assets: {
+          uri: "/fixtures/images/mountain3.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000004": {
+        assets: {
+          uri: "/fixtures/images/mountain4.jpeg",
+        },
+      },
+    },
+    content: {
+      imageDuration: 5000,
+      images: [
+        "/v1/media/00000000000000000000000001",
+        "/v1/media/00000000000000000000000002",
+        "/v1/media/00000000000000000000000003",
+        "/v1/media/00000000000000000000000004",
+      ],
+      transition: null,
+      animation: null,
+      showLogo: true,
+      logoMargin: true,
+      logoSize: "logo-size-l",
+      logoPosition: "logo-position-bottom-left",
+    },
+  },
+  {
+    id: "slide17-calendar-multiple-days",
+    type: "calendar",
+    feedData: [
+      {
+        id: "uniqueEvent0",
+        title: null,
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent1",
+        title: "",
+        startTime: dayjs().add(2, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
+        resourceId: "M1",
+      },
+    ],
+    content: {
+      duration: 5000,
+      layout: "multipleDays",
+      hasDateAndTime: true,
+      title: "Kalender",
+      subTitle: "Underoverskrift",
+     // resourceUnavailableText: "DEt er tAGET!!!",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      image: [],
+      footerText: "Se mere på localhost/events",
       fontSize: "font-size-m",
     },
   },

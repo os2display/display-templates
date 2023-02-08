@@ -150,7 +150,7 @@ InstagramFeed.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({

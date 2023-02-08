@@ -14,6 +14,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
+ * @param {Function} props.getTitle - Function to get title for event.
  * @returns {string} - The component.
  */
 function CalendarMultipleDays({
@@ -21,10 +22,10 @@ function CalendarMultipleDays({
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
   const {
     title = "",
-    resourceUnavailableText = null,
     footerText = null,
   } = content;
 
@@ -79,14 +80,7 @@ function CalendarMultipleDays({
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <EventTitle>
-                    {event.title ?? resourceUnavailableText ?? (
-                      <FormattedMessage
-                        id="unavailable"
-                        defaultMessage="Unavailable"
-                      />
-                    )}
-                  </EventTitle>
+                  <EventTitle>{getTitle(event.title)}</EventTitle>
                   <EventResourceTitle>
                     {event.resourceTitle ?? event.resourceId}
                   </EventResourceTitle>
@@ -278,7 +272,7 @@ CalendarMultipleDays.defaultProps = {
 
 CalendarMultipleDays.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
-  templateRootStyle: PropTypes.objectOf(PropTypes.any),
+  templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -293,8 +287,8 @@ CalendarMultipleDays.propTypes = {
     title: PropTypes.string,
     displayHeaders: PropTypes.bool,
     footerText: PropTypes.string,
-    resourceUnavailableText: PropTypes.string,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarMultipleDays;
