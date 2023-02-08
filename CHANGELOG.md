@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.2.2] - 2023-02-02
+## [1.2.2] - 2023-02-08
 
 - [#114](https://github.com/os2display/display-templates/pull/114)
 Make sure empty titles are replaced by default busy text for calendar
