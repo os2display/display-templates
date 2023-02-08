@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.2] - 2023-02-02
+
 - [#114](https://github.com/os2display/display-templates/pull/114)
 Make sure empty titles are replaced by default busy text for calendar
 - [#113](https://github.com/os2display/display-templates/pull/113)
@@ -18,25 +20,28 @@ Disable test github action until it is refactored for react 18.
 Added logo to image-text.
 - [#105](https://github.com/os2display/display-templates/pull/105)
 Fixed separator default styling.
-- [#109]https://github.com/os2display/display-templates/pull/109
+- [#109](https://github.com/os2display/display-templates/pull/109)
 Make "hideGrid" work on calendar
-- [#108]https://github.com/os2display/display-templates/pull/110
+- [#108](https://github.com/os2display/display-templates/pull/110)
 It slideshow restarts now and calls the done function. 
 rename transitions to transition, rename animations to animation.
 Changed "sekunder" to "millisekunder" on a label
 - [#112](https://github.com/os2display/display-templates/pull/112)
 Rename titles in screen layout six areas.
-
-## [1.2.0] - 2023-01-05
-
 - [#103](https://github.com/os2display/display-templates/pull/103)
-Add Bautavej theme
+  Add Bautavej theme
+
+## [1.2.1] - 2023-01-13
+
 - [#102](https://github.com/os2display/display-templates/pull/102)
 Create "four-area" screen template
 Update ids to be english
 Add title to screens previewer
 - [#101](https://github.com/os2display/display-templates/pull/101)
 Change css to cssstyles on theme object, update ".any" proptype
+
+## [1.2.0] - 2023-01-05
+
 - [#100](https://github.com/os2display/display-templates/pull/100)
 Added changelog.
 Added github action to enforce that PRs should always include an update of the changelog.
