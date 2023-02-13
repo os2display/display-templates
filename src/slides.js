@@ -20,10 +20,10 @@ const slides = [
       boxAlign: "right",
       boxMargin: false,
       shadow: true,
-      separator: true,
+      separator: false,
       halfSize: true,
       reversed: false,
-      fontSize: "font-size-xs",
+      fontSize: "font-size-xl",
     },
   },
   {
@@ -357,47 +357,48 @@ const slides = [
       configuration: {
         numberOfEntries: 5,
         entryDuration: 10,
+        showFeedProgress: false,
       },
     },
     feedData: {
-      title: "Ut enim ad.",
+      title: "Jyllands-Posten",
       entries: [
         {
-          title: "Lorem ipsum dolor sit amet.",
-          lastModified: "2021-08-11T11:08:31.360Z",
+          title: "I et gammelt hospital bliver nye virksomheder født i Aarhus",
+          lastModified: "2023-02-13T07:00:00.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Det gamle kommunehospital er centrum for nystartede virksomheder. Her arbejdes der på at lokke flere investorer til og skabe gode  forbindelser.",
         },
         {
-          title: "Ut enim ad minim veniam,.",
+          title: "Aarhus Kommune får ny venskabsby i Ukraine.",
           lastModified: "2021-08-12T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Aarhus udskifter russiske Skt. Petersborg med ukrainske Lviv på sin liste over venskabsbyer.",
         },
         {
-          title: "Duis aute irure dolor i.",
+          title: "Farligt T-kryds i Sabro skal sikres",
           lastModified: "2021-08-13T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Med 17,1 mio. kr. fra en trafikpulje skal fremkommeligheden og sikkerheden ved et vejkryds i Sabro forbedres.",
         },
         {
-          title: "Excepteur sint occaecat cupidatat non proident.",
+          title: "Hun kunne ikke slippe den populære tv-serie igen:  »Det er social satire, når det er bedst«",
           lastModified: "2021-08-14T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Hjemme hører hun alt fra jazz til reggae, og så elsker Marianne Grymer Bargeman en særlig bog, der bor hos hende »længe efter at have læst den«. Direktøren på Godsbanen fortæller om sit kulturforbrug.",
         },
         {
-          title: "Sed ut perspiciatis unde omnis.",
+          title: "Konfliktmægling i Enhedslisten er slået fejl:  Partiet er disket op med en »danmarkshistorisk nyskabelse«",
           lastModified: "2021-08-15T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Drama i Enhedslisten Århus. Igen igen. Efter konfliktmægling og hjælp fra landspartiet er årelang intern strid kulmineret i en helt usædvanlig løsning.",
         },
       ],
     },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/dokk1-rss-template-bg.jpg",
         },
       },
     },
