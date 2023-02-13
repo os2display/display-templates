@@ -3,9 +3,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- [#115](https://github.com/os2display/display-templates/pull/115)
+Update rss template. Add theme style for Dokk1 and Aakb
 
 ## [1.2.2] - 2023-02-08
-
 - [#114](https://github.com/os2display/display-templates/pull/114)
 Make sure empty titles are replaced by default busy text for calendar
 - [#113](https://github.com/os2display/display-templates/pull/113)
@@ -23,7 +24,7 @@ Fixed separator default styling.
 - [#109](https://github.com/os2display/display-templates/pull/109)
 Make "hideGrid" work on calendar
 - [#108](https://github.com/os2display/display-templates/pull/110)
-It slideshow restarts now and calls the done function. 
+It slideshow restarts now and calls the done function.
 rename transitions to transition, rename animations to animation.
 Changed "sekunder" to "millisekunder" on a label
 - [#112](https://github.com/os2display/display-templates/pull/112)
