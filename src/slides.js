@@ -361,37 +361,37 @@ const slides = [
       },
     },
     feedData: {
-      title: "Jyllands-Posten",
+      title: "Lorem Ipsum",
       entries: [
         {
-          title: "I et gammelt hospital bliver nye virksomheder født i Aarhus",
+          title: "Lorem ipsum dolor sit amet.",
           lastModified: "2023-02-13T07:00:00.360Z",
           content:
-            "Det gamle kommunehospital er centrum for nystartede virksomheder. Her arbejdes der på at lokke flere investorer til og skabe gode  forbindelser.",
+            "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
         },
         {
-          title: "Aarhus Kommune får ny venskabsby i Ukraine.",
+          title: "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
           lastModified: "2021-08-12T11:08:31.360Z",
           content:
-            "Aarhus udskifter russiske Skt. Petersborg med ukrainske Lviv på sin liste over venskabsbyer.",
+            "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante. Maecenas diam tortor, eleifend ac pretium at, sagittis eget justo.",
         },
         {
-          title: "Farligt T-kryds i Sabro skal sikres",
+          title: "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
           lastModified: "2021-08-13T11:08:31.360Z",
           content:
-            "Med 17,1 mio. kr. fra en trafikpulje skal fremkommeligheden og sikkerheden ved et vejkryds i Sabro forbedres.",
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Donec et eros non quam aliquet porta vestibulum sodales est.",
         },
         {
-          title: "Hun kunne ikke slippe den populære tv-serie igen:  »Det er social satire, når det er bedst«",
+          title: "Proin tempor lacinia velit, et gravida nunc faucibus eget.",
           lastModified: "2021-08-14T11:08:31.360Z",
           content:
-            "Hjemme hører hun alt fra jazz til reggae, og så elsker Marianne Grymer Bargeman en særlig bog, der bor hos hende »længe efter at have læst den«. Direktøren på Godsbanen fortæller om sit kulturforbrug.",
+            "Etiam lobortis diam purus, a condimentum nunc feugiat nec. Nunc porttitor tortor eget tortor fermentum, ac porttitor nulla imperdiet. Donec feugiat ipsum in purus congue semper. Cras ligula ipsum, porttitor eu neque at, interdum tincidunt tellus.",
         },
         {
-          title: "Konfliktmægling i Enhedslisten er slået fejl:  Partiet er disket op med en »danmarkshistorisk nyskabelse«",
+          title: "Sed ut massa eros.",
           lastModified: "2021-08-15T11:08:31.360Z",
           content:
-            "Drama i Enhedslisten Århus. Igen igen. Efter konfliktmægling og hjælp fra landspartiet er årelang intern strid kulmineret i en helt usædvanlig løsning.",
+            "Suspendisse a dapibus purus, ac lacinia urna. Maecenas lobortis dui in nisl feugiat ultricies. Nulla turpis dolor, pharetra eget ligula eget, porta tempus est. Suspendisse et odio ultricies, interdum turpis in, efficitur eros.",
         },
       ],
     },
