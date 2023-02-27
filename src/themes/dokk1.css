@@ -188,3 +188,35 @@
 #SLIDE_ID .template-book-review .author {
   --text-color: var(--color-grey-500);
 }
+
+/*
+*
+* Customize RSS template styling
+*
+*/
+
+#SLIDE_ID .template-rss {
+  padding: calc(var(--spacer) * 4);
+  gap: calc(var(--spacer) * 6);
+}
+
+#SLIDE_ID .template-rss .feed-info--date {
+  border-right: 3px solid var(--color-white);
+  padding-right: calc(var(--spacer) * 2);
+  font-size: calc(var(--font-size-base) * 2);
+}
+
+#SLIDE_ID .template-rss .feed-info--title,
+#SLIDE_ID .template-rss .feed-info--date,
+#SLIDE_ID .template-rss .feed-info--progress {
+  font-size: calc(var(--font-size-base) * 2);
+}
+
+#SLIDE_ID .template-rss .title {
+  font-size: calc(var(--font-size-base) * 5);
+  font-weight: var(--font-weight-bold);
+}
+
+#SLIDE_ID .template-rss .description {
+  font-size: calc(var(--font-size-base) * 3);
+}

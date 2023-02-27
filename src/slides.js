@@ -20,10 +20,10 @@ const slides = [
       boxAlign: "right",
       boxMargin: false,
       shadow: true,
-      separator: true,
+      separator: false,
       halfSize: true,
       reversed: false,
-      fontSize: "font-size-xs",
+      fontSize: "font-size-xl",
     },
   },
   {
@@ -357,47 +357,48 @@ const slides = [
       configuration: {
         numberOfEntries: 5,
         entryDuration: 10,
+        showFeedProgress: false,
       },
     },
     feedData: {
-      title: "Ut enim ad.",
+      title: "Lorem Ipsum",
       entries: [
         {
           title: "Lorem ipsum dolor sit amet.",
-          lastModified: "2021-08-11T11:08:31.360Z",
+          lastModified: "2023-02-13T07:00:00.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
         },
         {
-          title: "Ut enim ad minim veniam,.",
+          title: "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
           lastModified: "2021-08-12T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante. Maecenas diam tortor, eleifend ac pretium at, sagittis eget justo.",
         },
         {
-          title: "Duis aute irure dolor i.",
+          title: "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
           lastModified: "2021-08-13T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Donec et eros non quam aliquet porta vestibulum sodales est.",
         },
         {
-          title: "Excepteur sint occaecat cupidatat non proident.",
+          title: "Proin tempor lacinia velit, et gravida nunc faucibus eget.",
           lastModified: "2021-08-14T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Etiam lobortis diam purus, a condimentum nunc feugiat nec. Nunc porttitor tortor eget tortor fermentum, ac porttitor nulla imperdiet. Donec feugiat ipsum in purus congue semper. Cras ligula ipsum, porttitor eu neque at, interdum tincidunt tellus.",
         },
         {
-          title: "Sed ut perspiciatis unde omnis.",
+          title: "Sed ut massa eros.",
           lastModified: "2021-08-15T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Suspendisse a dapibus purus, ac lacinia urna. Maecenas lobortis dui in nisl feugiat ultricies. Nulla turpis dolor, pharetra eget ligula eget, porta tempus est. Suspendisse et odio ultricies, interdum turpis in, efficitur eros.",
         },
       ],
     },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/dokk1-rss-template-bg.jpg",
         },
       },
     },

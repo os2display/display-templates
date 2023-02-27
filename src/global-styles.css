@@ -192,6 +192,7 @@ body {
 @media screen and (min-width: 1921px) and (orientation: landscape) {
   .slide {
     --font-size-base: 2rem;
+    --spacer: 24px;
   }
 }
 
@@ -199,6 +200,7 @@ body {
 @media screen and (min-width: 1081px) and (orientation: portrait) {
   .slide {
     --font-size-base: 2rem;
+    --spacer: 24px;
   }
 }
 
