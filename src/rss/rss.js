@@ -4,10 +4,8 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-// import "../global-styles.css";
 import styled from "styled-components";
 import GlobalStyles from "../GlobalStyles";
-// import "./rss.scss";
 
 /**
  * RSS component.
