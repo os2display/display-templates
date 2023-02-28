@@ -58,6 +58,7 @@
   --bg-light: #f1f0ef;
   --text-dark: #222;
   --color-primary: #003764;
+  --color-primary-opaque: hsla(207, 100%, 20%, 0.9);
   --color-secondary: #887c76;
   --color-success: #006c3b;
   --color-info: #0dcaf0;
@@ -84,6 +85,8 @@
   --font-weight-bold: 600;
 
   --bg-primary: var(--color-primary);
+
+  --shadow-text-m: 0px 4px 16px hsla(0, 0%, 0%, 0.4);
 
   /* Darkmode overrides */
   --bg-dark: #212529;
@@ -219,4 +222,27 @@
 
 #SLIDE_ID .template-rss .description {
   font-size: calc(var(--font-size-base) * 3);
+}
+
+/*
+*
+* Customize Image text template
+*
+*/
+
+#SLIDE_ID .template-image-text .box {
+  background-color: var(--color-primary-opaque);
+  color: var(--text-light);
+}
+
+#SLIDE_ID .template-image-text.reversed .box {
+  background-color: transparent;
+}
+#SLIDE_ID .template-image-text.reversed {
+  color: var(--text-light);
+  text-shadow: var(--shadow-text-m);
+}
+
+#SLIDE_ID .template-image-text.reversed h1 {
+  font-size: calc(var(--font-size-base) * 2);
 }
