@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- [#116](https://github.com/os2display/display-templates/pull/116)
+Text and image themes Dokk1 and Aakb
 - [#115](https://github.com/os2display/display-templates/pull/115)
 Update rss template. Add theme style for Dokk1 and Aakb
 
