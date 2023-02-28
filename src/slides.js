@@ -370,13 +370,15 @@ const slides = [
             "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
         },
         {
-          title: "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
+          title:
+            "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
           lastModified: "2021-08-12T11:08:31.360Z",
           content:
             "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante. Maecenas diam tortor, eleifend ac pretium at, sagittis eget justo.",
         },
         {
-          title: "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
+          title:
+            "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
           lastModified: "2021-08-13T11:08:31.360Z",
           content:
             "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Donec et eros non quam aliquet porta vestibulum sodales est.",
@@ -1118,7 +1120,7 @@ const slides = [
       hasDateAndTime: true,
       title: "Kalender",
       subTitle: "Underoverskrift",
-     // resourceUnavailableText: "DEt er tAGET!!!",
+      // resourceUnavailableText: "DEt er tAGET!!!",
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       image: [],

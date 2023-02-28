@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";

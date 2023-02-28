@@ -25,7 +25,12 @@ import GlobalStyles from "../GlobalStyles";
 function Calendar({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState();
 
-  const { layout = "multiple", duration = 15000, fontSize, resourceUnavailableText } = content;
+  const {
+    layout = "multiple",
+    duration = 15000,
+    fontSize,
+    resourceUnavailableText,
+  } = content;
   const { feedData = [] } = slide;
 
   const classes = ["template-calendar", fontSize];
