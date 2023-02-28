@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- [#117](https://github.com/os2display/display-templates/pull/117)
+Changed admin label.
+Changed global styles to include header font-sizes.
 - [#115](https://github.com/os2display/display-templates/pull/115)
 Update rss template. Add theme style for Dokk1 and Aakb
 
