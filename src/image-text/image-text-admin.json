@@ -145,7 +145,7 @@
   {
     "key": "image-text-form-12",
     "input": "checkbox",
-    "label": "Overskriften er under teksten",
+    "label": "Alternativt layout uden tekstboks",
     "helpText": "Denne kan ikke kombineres med den animerede tekst under overskriften",
     "name": "reversed",
     "formGroupClasses": "col-md-6 mb-3"

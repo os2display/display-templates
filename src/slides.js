@@ -1141,7 +1141,7 @@ const slides = [
     },
     content: {
       duration: 5000,
-      title: "Slide 1",
+      title: "Slide 123121",
       text: "<h1>Fisk</h1><h2>Hest</h2><h3>Ræv</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       image: ["/v1/media/00000000000000000000000001"],
       boxAlign: "right",
@@ -1150,7 +1150,7 @@ const slides = [
       separator: true,
       halfSize: true,
       reversed: false,
-      fontSize: "font-size-xs",
+      fontSize: "font-size-m",
     },
   },
 ];
