@@ -47,27 +47,18 @@
       height: 100%;
     }
 
-    &.xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &.s {
-      font-size: var(--font-size-sm);
-    }
-
-    &.m {
-      font-size: var(--font-size-base);
-    }
-
-    &.l {
-      font-size: var(--font-size-lg);
-    }
-
-    &.xl {
-      font-size: var(--font-size-xl);
-    }
-
     h1 {
+      font-size: var(--h1-font-size);
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: var(--h2-font-size);
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: var(--h3-font-size);
       margin-top: 0;
     }
   }
