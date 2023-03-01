@@ -30,6 +30,42 @@
     "formGroupClasses": "col-md"
   },
   {
+    "key": "image-text-form-81",
+    "input": "select",
+    "required": true,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "font-size-xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "font-size-s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "font-size-m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "font-size-l"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "font-size-xl"
+      }
+    ],
+    "name": "fontSize"
+  },
+
+  {
     "key": "image-text-form-5",
     "multipleImages": true,
     "input": "image",
@@ -86,41 +122,6 @@
     "name": "boxAlign"
   },
   {
-    "key": "image-text-form-81",
-    "input": "select",
-    "required": true,
-    "label": "Tekststørrelse",
-    "formGroupClasses": "col-md-6 mb-3",
-    "options": [
-      {
-        "key": "fontsize1",
-        "title": "xs",
-        "value": "font-size-xs"
-      },
-      {
-        "key": "fontsize2",
-        "title": "s",
-        "value": "font-size-s"
-      },
-      {
-        "key": "fontsize3",
-        "title": "m",
-        "value": "font-size-m"
-      },
-      {
-        "key": "fontsize4",
-        "title": "l",
-        "value": "font-size-l"
-      },
-      {
-        "key": "fontsize5",
-        "title": "xl",
-        "value": "font-size-xl"
-      }
-    ],
-    "name": "fontSize"
-  },
-  {
     "key": "image-text-form-9",
     "input": "checkbox",
     "label": "Margin rundt om tekst",
@@ -144,7 +145,7 @@
   {
     "key": "image-text-form-12",
     "input": "checkbox",
-    "label": "Overskriften er under teksten",
+    "label": "Alternativt layout uden tekstboks",
     "helpText": "Denne kan ikke kombineres med den animerede tekst under overskriften",
     "name": "reversed",
     "formGroupClasses": "col-md-6 mb-3"

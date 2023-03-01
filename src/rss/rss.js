@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import styled from "styled-components";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 
 /**
@@ -93,8 +93,10 @@ function RSS({ slide, content, run, slideDone, executionId }) {
               )}
             </>
           )}
-          <FeedTitle className="feed-info--title">{slide?.feedData?.title}</FeedTitle>
-          {slide?.feed.configuration.showFeedProgress &&
+          <FeedTitle className="feed-info--title">
+            {slide?.feedData?.title}
+          </FeedTitle>
+          {slide?.feed.configuration.showFeedProgress && (
             <FeedProgress className="feed-info--progress">
               {feedLength > 0 && (
                 <span className="feed-info--progress-numbers">
@@ -102,7 +104,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
                 </span>
               )}
             </FeedProgress>
-          }
+          )}
         </FeedInfo>
         <Content className="content">
           {currentEntry && (
@@ -133,7 +135,7 @@ const Wrapper = styled.div`
   padding: var(--spacer);
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacer)*3);
+  gap: calc(var(--spacer) * 3);
 
   /* Position background from inline style */
   background-size: cover;
@@ -166,8 +168,6 @@ const Content = styled.div`
 const Title = styled.div`
   font-size: var(--font-size-lg);
 `;
-
-
 
 RSS.defaultProps = {
   slide: {

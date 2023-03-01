@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -24,10 +23,7 @@ function CalendarMultipleDays({
   templateRootStyle,
   getTitle,
 }) {
-  const {
-    title = "",
-    footerText = null,
-  } = content;
+  const { title = "", footerText = null } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
