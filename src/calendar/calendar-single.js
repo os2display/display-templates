@@ -43,8 +43,7 @@ function CalendarSingle({
     if (calendarEventsToRender.length > 0) {
       calendarEventsToRender
         .filter(
-          (e) =>
-            e.startTime > now.unix() && e.endTime <= now.endOf("day").unix()
+          (e) => e.endDate > now.unix() && e.endTime <= now.endOf("day").unix()
         )
         .forEach((event) => {
           if (elements.length < 3) {
