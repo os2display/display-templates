@@ -57,6 +57,22 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEventMinusTwo",
+        title: "Cake is in the past",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().subtract(15, "minutes").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEventMinusOne",
+        title: "Cake is gone",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
         id: "uniqueEvent0",
         title: "Cake is a lie",
         startTime: dayjs()
@@ -623,6 +639,22 @@ const slides = [
     type: "calendar",
     themeFile: "themes/bautavej.css",
     feedData: [
+      {
+        id: "uniqueEventMinusTwo",
+        title: "Cake is in the past",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().subtract(15, "minutes").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEventMinusOne",
+        title: "Cake is gone",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
       {
         id: "uniqueEvent0",
         title: "Cake is a lie",

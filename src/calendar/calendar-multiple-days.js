@@ -41,7 +41,7 @@ function CalendarMultipleDays({
     const days = {};
 
     events
-      .filter((e) => e.startTime > now.unix())
+      .filter((e) => e.endTime > now.unix())
       .forEach((event) => {
         const dayString = dayjs(event.startTime * 1000)
           .locale(localeDa)
