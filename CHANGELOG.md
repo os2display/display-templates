@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#119](https://github.com/os2display/display-admin-client/pull/119)
+  Added license.
 - [#118](https://github.com/os2display/display-templates/pull/118)
   Changed when events will disappear from calendar templates.
 - [#117](https://github.com/os2display/display-templates/pull/117)
