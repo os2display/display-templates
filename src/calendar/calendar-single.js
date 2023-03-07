@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -44,8 +43,7 @@ function CalendarSingle({
     if (calendarEventsToRender.length > 0) {
       calendarEventsToRender
         .filter(
-          (e) =>
-            e.startTime > now.unix() && e.endTime <= now.endOf("day").unix()
+          (e) => e.endDate > now.unix() && e.endTime <= now.endOf("day").unix()
         )
         .forEach((event) => {
           if (elements.length < 3) {

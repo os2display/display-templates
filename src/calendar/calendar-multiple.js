@@ -63,11 +63,12 @@ function CalendarMultiple({
   // Sort events by datetime and filter away events that are done.
   const getSortedEvents = (data) => {
     const now = dayjs();
+
     return data
       .filter((e) => {
         const startDate = dayjs(e.startTime * 1000);
 
-        return e.startTime > now.unix() && startDate.date() === now.date();
+        return e.endTime > now.unix() && startDate.date() === now.date();
       })
       .sort((a, b) => a - b);
   };

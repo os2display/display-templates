@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import styled from "styled-components";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import "../global-styles.css";
-import "./rss.scss";
+import GlobalStyles from "../GlobalStyles";
 
 /**
  * RSS component.
@@ -78,36 +78,96 @@ function RSS({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <div className={`template-rss ${fontSize}`} style={rootStyle}>
-        <div className="progress">
-          {slide?.feedData?.title}
-          {feedLength > 0 && (
-            <span className="progress-numbers">
-              {entryIndex + 1} / {feedLength}
-            </span>
+      <Wrapper className={`template-rss ${fontSize}`} style={rootStyle}>
+        <FeedInfo className="feed-info">
+          {currentEntry && (
+            <>
+              {currentEntry.lastModified && (
+                <FeedDate className="feed-info--date">
+                  {capitalize(
+                    dayjs(currentEntry.lastModified)
+                      .locale(localeDa)
+                      .format("LLLL")
+                  )}
+                </FeedDate>
+              )}
+            </>
           )}
-        </div>
-        {currentEntry && (
-          <>
-            <div className="title">{currentEntry.title}</div>
-            {currentEntry.lastModified && (
-              <div className="date">
-                {capitalize(
-                  dayjs(currentEntry.lastModified)
-                    .locale(localeDa)
-                    .format("LLLL")
-                )}
-              </div>
-            )}
-            <div className="description">{currentEntry.content}</div>
-          </>
-        )}
-      </div>
+          <FeedTitle className="feed-info--title">
+            {slide?.feedData?.title}
+          </FeedTitle>
+          {slide?.feed.configuration.showFeedProgress && (
+            <FeedProgress className="feed-info--progress">
+              {feedLength > 0 && (
+                <span className="feed-info--progress-numbers">
+                  {entryIndex + 1} / {feedLength}
+                </span>
+              )}
+            </FeedProgress>
+          )}
+        </FeedInfo>
+        <Content className="content">
+          {currentEntry && (
+            <>
+              <Title className="title">{currentEntry.title}</Title>
+              <div className="description">{currentEntry.content}</div>
+            </>
+          )}
+        </Content>
+      </Wrapper>
 
       <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <GlobalStyles />
     </>
   );
 }
+
+const Wrapper = styled.div`
+  /* Wrapper styling */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: hidden;
+  padding: var(--spacer);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacer) * 3);
+
+  /* Position background from inline style */
+  background-size: cover;
+  background-position: center;
+`;
+
+const FeedInfo = styled.div`
+  display: flex;
+  gap: var(--spacer);
+`;
+
+const FeedTitle = styled.div`
+  font-size: var(--font-size-base);
+`;
+
+const FeedDate = styled.div`
+  font-size: var(--font-size-base);
+`;
+
+const FeedProgress = styled.div`
+  font-size: var(--font-size-base);
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer);
+`;
+
+const Title = styled.div`
+  font-size: var(--font-size-lg);
+`;
 
 RSS.defaultProps = {
   slide: {
@@ -130,6 +190,7 @@ RSS.propTypes = {
       configuration: PropTypes.shape({
         numberOfEntries: PropTypes.number,
         entryDuration: PropTypes.number,
+        showFeedProgress: PropTypes.bool,
       }),
     }),
     feedData: PropTypes.shape({
