@@ -147,3 +147,7 @@
   color: var(--text-light);
   text-shadow: var(--shadow-text-m);
 }
+#SLIDE_ID .template-image-text.reversed .box {
+  background-color: transparent;
+  box-shadow: none;
+}
