@@ -95,6 +95,10 @@
   font-size: calc(var(--font-size-base) * 1.25);
 }
 
+#SLIDE_ID .template-poster .look-like-link {
+  color: var(--color-primary);
+}
+
 /*
 *
 * Customize Book review template styling
