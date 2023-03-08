@@ -43,15 +43,18 @@ function CalendarMultipleDays({
     events
       .filter((e) => e.endTime > now.unix())
       .forEach((event) => {
-        const dayString = dayjs(event.startTime * 1000)
-          .locale(localeDa)
-          .format("dddd D. MMMM");
+        const startDate = dayjs(event.startTime * 1000);
+        const dayTitle = startDate.locale(localeDa).format("dddd D. MMMM");
+        const dateString = startDate.format("YYYY-MM-DD");
 
-        if (!Object.prototype.hasOwnProperty.call(days, dayString)) {
-          days[dayString] = [];
+        if (!Object.prototype.hasOwnProperty.call(days, dateString)) {
+          days[dateString] = {
+            events: [],
+            title: dayTitle,
+          };
         }
 
-        days[dayString].push(event);
+        days[dateString].events.push(event);
       });
 
     return days;
@@ -64,12 +67,14 @@ function CalendarMultipleDays({
   };
 
   const renderDays = (days) => {
-    return Object.keys(days).map((dayString, index) => (
-      <Fragment key={dayString}>
+    const sortedKeys = Object.keys(days).sort();
+
+    return sortedKeys.map((dateString, index) => (
+      <Fragment key={dateString}>
         {index < 5 && (
           <Col className="content-col">
-            <ColTitle className="col-title">{dayString}</ColTitle>
-            {days[dayString].map((event) => (
+            <ColTitle className="col-title">{days[dateString].title}</ColTitle>
+            {days[dateString].events.map((event) => (
               <ColItem key={event.id} className="col-item">
                 <Time className="col-item-time">
                   <div>{renderTimeOfDay(event.startTime)} -</div>

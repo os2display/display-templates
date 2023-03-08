@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#124](https://github.com/os2display/display-templates/pull/124)
+  Fixed event sorting for calendar (multiple days).
 - [#122](https://github.com/os2display/display-templates/pull/122)
   Changed admin texts.
 
