@@ -124,21 +124,21 @@
   {
     "key": "image-text-form-9",
     "input": "checkbox",
-    "label": "Margin rundt om tekst",
+    "label": "Margin rundt om boks",
     "name": "boxMargin",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "image-text-form-10",
     "input": "checkbox",
-    "label": "Animeret tekst under overskrift",
+    "label": "Animeret streg under overskrift",
     "name": "separator",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "image-text-form-11",
     "input": "checkbox",
-    "label": "Teksten optager højest 50% af skærmen",
+    "label": "Gør tekstboksen mindre",
     "name": "halfSize",
     "formGroupClasses": "col-md-6 mb-3"
   },
