@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.3] - 2023-03-07
 
+- [#123](https://github.com/os2display/display-templates/pull/123)
+  Fix aakb theme poster layout
 - [#121](https://github.com/os2display/display-templates/pull/121)
   Fix aakb theme reversed layout
 - [#120](https://github.com/os2display/display-templates/pull/120)
