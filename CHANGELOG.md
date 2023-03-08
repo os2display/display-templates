@@ -4,8 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#125](https://github.com/os2display/display-templates/pull/125)
+  Fixed font loading for blixen theme.
 - [#124](https://github.com/os2display/display-templates/pull/124)
   Fixed event sorting for calendar (multiple days).
+- [#123](https://github.com/os2display/display-templates/pull/123)
+  Fix aakb theme poster layout
 - [#122](https://github.com/os2display/display-templates/pull/122)
   Changed admin texts.
 
