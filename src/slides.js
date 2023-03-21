@@ -1242,7 +1242,7 @@ const slides = [
     },
     content: {
       image: ["/v1/media/00000000000000000000000001"],
-      fontSize: "font-size-l",
+      fontSize: "font-size-lg",
     },
   },
 ];
