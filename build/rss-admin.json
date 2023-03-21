@@ -28,5 +28,40 @@
     "name": "image",
     "label": "Baggrundsbillede",
     "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "rss-form-5",
+    "input": "select",
+    "required": false,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "font-size-xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "font-size-s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "font-size-m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "font-size-lg"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "font-size-xl"
+      }
+    ],
+    "name": "fontSize"
   }
 ]

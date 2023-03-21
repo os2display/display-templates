@@ -1185,6 +1185,66 @@ const slides = [
       fontSize: "font-size-m",
     },
   },
+  {
+    id: "slide19-rss",
+    type: "rss",
+    themeFile: null,
+    feed: {
+      configuration: {
+        numberOfEntries: 5,
+        entryDuration: 10,
+        showFeedProgress: false,
+      },
+    },
+    feedData: {
+      title: "Lorem Ipsum",
+      entries: [
+        {
+          title: "Lorem ipsum dolor sit amet.",
+          lastModified: "2023-02-13T07:00:00.360Z",
+          content:
+            "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
+        },
+        {
+          title:
+            "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
+          lastModified: "2021-08-12T11:08:31.360Z",
+          content:
+            "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante. Maecenas diam tortor, eleifend ac pretium at, sagittis eget justo.",
+        },
+        {
+          title:
+            "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
+          lastModified: "2021-08-13T11:08:31.360Z",
+          content:
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Donec et eros non quam aliquet porta vestibulum sodales est.",
+        },
+        {
+          title: "Proin tempor lacinia velit, et gravida nunc faucibus eget.",
+          lastModified: "2021-08-14T11:08:31.360Z",
+          content:
+            "Etiam lobortis diam purus, a condimentum nunc feugiat nec. Nunc porttitor tortor eget tortor fermentum, ac porttitor nulla imperdiet. Donec feugiat ipsum in purus congue semper. Cras ligula ipsum, porttitor eu neque at, interdum tincidunt tellus.",
+        },
+        {
+          title: "Sed ut massa eros.",
+          lastModified: "2021-08-15T11:08:31.360Z",
+          content:
+            "Suspendisse a dapibus purus, ac lacinia urna. Maecenas lobortis dui in nisl feugiat ultricies. Nulla turpis dolor, pharetra eget ligula eget, porta tempus est. Suspendisse et odio ultricies, interdum turpis in, efficitur eros.",
+        },
+      ],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      image: ["/v1/media/00000000000000000000000001"],
+      fontSize: "font-size-l",
+    },
+  },
 ];
 
 export default slides;

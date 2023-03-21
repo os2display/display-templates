@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#126](https://github.com/os2display/display-templates/pull/126)
+  Added admin option to change font size for rss template.
 - [#125](https://github.com/os2display/display-templates/pull/125)
   Fixed font loading for blixen theme.
 - [#124](https://github.com/os2display/display-templates/pull/124)
