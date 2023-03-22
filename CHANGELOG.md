@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#127](https://github.com/os2display/display-templates/pull/127)
+  Fixed filter for calendar single.
 - [#126](https://github.com/os2display/display-templates/pull/126)
   Added admin option to change font size for rss template.
 - [#125](https://github.com/os2display/display-templates/pull/125)
