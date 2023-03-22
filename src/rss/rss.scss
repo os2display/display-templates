@@ -7,55 +7,47 @@
   background-color: var(--bg-light);
   font-size: var(--font-size-base);
 
-  @mixin text($font-size) {
-    .progress {
-      padding: 2%;
-      font-size: 1em * $font-size;
-      color: var(--text-primary);
-    }
+  .progress {
+    padding: 2%;
+    font-size: 2em;
+    color: var(--text-primary);
+  }
 
-    .progress-numbers {
-      margin-left: 1em;
-    }
+  .progress-numbers {
+    margin-left: 1em;
+  }
 
-    .title {
-      font-size: 2.5em * $font-size;
-      padding: 1% 2%;
+  .title {
+    font-size: 5em;
+    padding: 1% 2%;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+
+  .date {
+    font-size: 2em;
+    padding: 1% 2%;
+    color: var(--text-primary);
+  }
+
+  .description {
+    font-size: 3em;
+    padding: 1% 2%;
+    color: var(--text-dark);
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
       color: var(--text-dark);
-      line-height: 1.1;
-    }
-
-    .date {
-      font-size: 1em * $font-size;
-      padding: 1% 2%;
-      color: var(--text-primary);
-    }
-    .description {
-      font-size: 1.5em * $font-size;
-      padding: 1% 2%;
-      color: var(--text-dark);
-      a,
-      a:link,
-      a:visited,
-      a:hover,
-      a:focus,
-      a:active {
-        text-decoration: none;
-        color: var(--text-dark);
-      }
     }
   }
 
-  &.s {
-    @include text(1);
-  }
-  &.m {
-    @include text(2);
-  }
-  &.l {
-    @include text(3);
-  }
-  &.xl {
-    @include text(3.5);
+  .feed-info--date,
+  .feed-info--title,
+  .feed-info--progress {
+    font-size: 2em;
   }
 }
