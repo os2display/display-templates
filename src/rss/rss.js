@@ -6,6 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
+import "./rss.scss";
 
 /**
  * RSS component.
@@ -138,7 +139,6 @@ const Wrapper = styled.div`
   gap: calc(var(--spacer) * 3);
 
   /* Position background from inline style */
-  background-size: cover;
   background-position: center;
 `;
 

@@ -4,8 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.4] - 2023-03-24
+
+- [#127](https://github.com/os2display/display-templates/pull/127)
+  Fixed filter for calendar single.
+- [#126](https://github.com/os2display/display-templates/pull/126)
+  Added admin option to change font size for rss template.
+- [#125](https://github.com/os2display/display-templates/pull/125)
+  Fixed font loading for blixen theme.
+- [#124](https://github.com/os2display/display-templates/pull/124)
+  Fixed event sorting for calendar (multiple days).
+- [#123](https://github.com/os2display/display-templates/pull/123)
+  Fix aakb theme poster layout
+- [#122](https://github.com/os2display/display-templates/pull/122)
+  Changed admin texts.
+
 ## [1.2.3] - 2023-03-07
 
+- [#123](https://github.com/os2display/display-templates/pull/123)
+  Fix aakb theme poster layout
 - [#121](https://github.com/os2display/display-templates/pull/121)
   Fix aakb theme reversed layout
 - [#120](https://github.com/os2display/display-templates/pull/120)

@@ -65,6 +65,25 @@
 *
 */
 
+#SLIDE_ID .template-poster .header-area {
+  padding: 10%;
+}
+
+#SLIDE_ID .template-poster .info-area {
+  padding: 10%;
+  font-size: calc(var(--font-size-base) * 1.25);
+  font-weight: 300;
+}
+
+#SLIDE_ID .template-poster .logo-area {
+  padding: 3% 10% 0 10%;
+  background-color: var(--bg-light);
+}
+
+#SLIDE_ID .template-poster img {
+  margin-right: 0;
+}
+
 #SLIDE_ID .template-poster h1 {
   font-family: var(--font-family-light);
   font-weight: var(--font-weight-light);
@@ -73,6 +92,15 @@
 #SLIDE_ID .template-poster .lead {
   font-family: var(--font-family-bold);
   font-weight: var(--font-weight-bold);
+  font-size: calc(var(--font-size-base) * 1.25);
+}
+
+#SLIDE_ID .template-poster .info-area .date {
+  margin-bottom: 2%;
+}
+
+#SLIDE_ID .template-poster .look-like-link {
+  color: var(--color-primary);
 }
 
 /*
