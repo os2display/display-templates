@@ -6,7 +6,6 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
-import "./rss.scss";
 
 /**
  * RSS component.
@@ -111,7 +110,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
           {currentEntry && (
             <>
               <Title className="title">{currentEntry.title}</Title>
-              <div className="description">{currentEntry.content}</div>
+              <Description className="description">{currentEntry.content}</Description>
             </>
           )}
         </Content>
@@ -124,9 +123,11 @@ function RSS({ slide, content, run, slideDone, executionId }) {
 }
 
 const Wrapper = styled.div`
+  --template-font-size: calc(var(--font-size-base) * 2.5);
+
   /* Wrapper styling */
   font-family: var(--font-family-base);
-  font-size: var(--font-size-base);
+  font-size: var(--template-font-size);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -135,6 +136,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   padding: var(--spacer);
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: calc(var(--spacer) * 3);
 
@@ -148,15 +150,21 @@ const FeedInfo = styled.div`
 `;
 
 const FeedTitle = styled.div`
-  font-size: var(--font-size-base);
+  && { // Override h1 font-size form styles applied with former class
+    font-size: calc(var(--template-font-size) * 0.75);
+  }
 `;
 
 const FeedDate = styled.div`
-  font-size: var(--font-size-base);
+  && { // Override h1 font-size form styles applied with former class
+    font-size: calc(var(--template-font-size) * 0.75);
+  }
 `;
 
 const FeedProgress = styled.div`
-  font-size: var(--font-size-base);
+  && { // Override h1 font-size form styles applied with former class
+    font-size: calc(var(--template-font-size) * 0.75);
+  }
 `;
 
 const Content = styled.div`
@@ -165,8 +173,24 @@ const Content = styled.div`
   gap: var(--spacer);
 `;
 
-const Title = styled.div`
-  font-size: var(--font-size-lg);
+const Title = styled.h1`
+  && { // Override h1 font-size form styles applied with former class
+    font-size: calc(var(--template-font-size) * 2);
+  }
+  margin: 0;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+    color: var(--text-color);
+  }
 `;
 
 RSS.defaultProps = {
