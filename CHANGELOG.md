@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.5] - 2023-03-24
 
+- [#130](https://github.com/os2display/display-templates/pull/130)
+  Invert light/dark color for rss template in dokk1 and aakb themes.
 - [#129](https://github.com/os2display/display-templates/pull/129)
   Added missing build files for rss template.
 - [#128](https://github.com/os2display/display-templates/pull/128)
