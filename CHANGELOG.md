@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#129](https://github.com/os2display/display-templates/pull/129)
+  Added missing build files for rss template.
 - [#128](https://github.com/os2display/display-templates/pull/128)
   Fixed font color in rss template.
 
