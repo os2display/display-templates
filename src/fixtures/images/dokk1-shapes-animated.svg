@@ -1,0 +1,71 @@
+<svg class="shapes-animated" viewBox="0 0 921 176" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css" >
+      <![CDATA[
+        .shapes-animated {
+          width: 100%;
+          height: 100%;
+
+          --animationOffsetFrom: calc(100px + 10vw);
+          --animationOffsetTo: calc(100px - 10vw);
+        }
+        .shape {
+          animation-name: pano;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+        .t-100 {
+          opacity: .05;
+          animation-duration: 90s;
+          animation-direction: reverse;
+        }
+        .t-200 {
+          opacity: .10;
+          animation-duration: 95s;
+          animation-direction: reverse;
+        }
+        .t-300 {
+          opacity: .10;
+          animation-duration: 100s;
+        }
+        .t-400 {
+          opacity: .05;
+          animation-duration: 105s;
+          animation-direction: reverse;
+        }
+        .t-500 {
+          opacity: .05;
+          animation-duration: 110s;
+        }
+        .t-600 {
+          opacity: .01;
+          animation-duration: 115s;
+        }
+        .t-700 {
+          opacity: .05;
+          animation-duration: 120s;
+          animation-direction: reverse;
+        }
+        @keyframes pano {
+          0% {
+            transform: translateX(0%);
+          }
+          25% {
+            transform: translateX(var(--animationOffsetFrom));
+          }
+          75% {
+            transform: translateX(var(--animationOffsetTo));
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+      ]]>
+  </style>
+  <path class="shape t-100" d="M121.928 176L0 1.52588e-05H217.349L321.253 176H121.928Z" fill="white" />
+  <path class="shape t-200" d="M295.807 1.52588e-05H277.783L342.458 176H386.988L295.807 1.52588e-05Z" fill="white" />
+  <path class="shape t-300" d="M486.651 176L342.458 1.52588e-05H697.639L796.241 176H486.651Z" fill="white" />
+  <path class="shape t-400" d="M920.289 1.52588e-05H787.759L824.867 176H920.289V1.52588e-05Z" fill="white" />
+  <path class="shape t-500" d="M188.723 176L107.084 0H179.181L213.109 176H188.723Z" fill="white" />
+  <path class="shape t-600" d="M572.53 176L443.181 0H554.506L631.904 176H572.53Z" fill="white" />
+  <path class="shape t-700" d="M698.699 176L484.53 0H680.675L741.108 176H698.699Z" fill="white" />
+</svg>

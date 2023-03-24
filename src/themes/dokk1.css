@@ -201,6 +201,8 @@
 #SLIDE_ID .template-rss {
   padding: calc(var(--spacer) * 4);
   gap: calc(var(--spacer) * 6);
+  --text-color: white;
+  background-color: var(--color-primary);
 }
 
 #SLIDE_ID .template-rss .feed-info--date {
