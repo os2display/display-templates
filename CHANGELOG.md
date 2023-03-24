@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.5] - 2023-03-24
+
 - [#129](https://github.com/os2display/display-templates/pull/129)
   Added missing build files for rss template.
 - [#128](https://github.com/os2display/display-templates/pull/128)
