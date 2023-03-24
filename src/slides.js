@@ -416,7 +416,7 @@ const slides = [
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "/fixtures/images/dokk1-rss-template-bg.jpg",
+          uri: "/fixtures/images/dokk1-shapes-animated.svg",
         },
       },
     },
@@ -1182,7 +1182,7 @@ const slides = [
       separator: true,
       halfSize: true,
       reversed: false,
-      fontSize: "font-size-m",
+      fontSize: "font-size-lg",
     },
   },
   {
@@ -1193,7 +1193,7 @@ const slides = [
       configuration: {
         numberOfEntries: 5,
         entryDuration: 10,
-        showFeedProgress: false,
+        showFeedProgress: true,
       },
     },
     feedData: {
@@ -1242,7 +1242,7 @@ const slides = [
     },
     content: {
       image: ["/v1/media/00000000000000000000000001"],
-      fontSize: "font-size-lg",
+      fontSize: "font-size-m",
     },
   },
 ];
