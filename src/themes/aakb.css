@@ -124,9 +124,15 @@
 */
 
 #SLIDE_ID .template-rss {
+  --text-color: var(--text-light, hsl(0deg, 0%, 100%));
   padding: calc(var(--spacer) * 4);
   gap: calc(var(--spacer) * 6);
   background-color: var(--color-primary);
+  color: var(--text-color);
+}
+
+.color-scheme-dark #SLIDE_ID .template-rss {
+  --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
 }
 
 #SLIDE_ID .template-rss .feed-info {
