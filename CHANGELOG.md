@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+- [#132](https://github.com/os2display/display-templates/pull/132)
+  Dokk1 theme: change seperator color
 - [#131](https://github.com/os2display/display-templates/pull/131)
   Use color variable for seperator in image-text
 
