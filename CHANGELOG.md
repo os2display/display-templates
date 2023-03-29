@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- [#131](https://github.com/os2display/display-templates/pull/131)
+  Use color variable for seperator in image-text
 
 ## [1.2.5] - 2023-03-24
 
