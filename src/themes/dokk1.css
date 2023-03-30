@@ -97,7 +97,7 @@
 
 /* Set seperator default color. */
 #SLIDE_ID .separator {
-  background-color: var(--color-primary);
+  background-color: white;
 }
 
 /* Customize calender single template styling */
