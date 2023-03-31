@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#131](https://github.com/os2display/display-templates/pull/133)
+  Logo on the right, background color the same as box above.
 - [#132](https://github.com/os2display/display-templates/pull/132)
   Dokk1 theme: change seperator color
 - [#131](https://github.com/os2display/display-templates/pull/131)
