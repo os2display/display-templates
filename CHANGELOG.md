@@ -4,8 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.6] - 2023-06-01
+
+- [#133](https://github.com/os2display/display-templates/pull/133)
+  Logo on the right, background color the same as box above.
+- [#132](https://github.com/os2display/display-templates/pull/132)
+  Dokk1 theme: change separator color
+- [#131](https://github.com/os2display/display-templates/pull/131)
+  Use color variable for separator in image-text
+
 ## [1.2.5] - 2023-03-24
 
+- [#130](https://github.com/os2display/display-templates/pull/130)
+  Invert light/dark color for rss template in dokk1 and aakb themes.
 - [#129](https://github.com/os2display/display-templates/pull/129)
   Added missing build files for rss template.
 - [#128](https://github.com/os2display/display-templates/pull/128)
