@@ -4,12 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- [#131](https://github.com/os2display/display-templates/pull/133)
+## [1.2.6] - 2023-06-01
+
+- [#133](https://github.com/os2display/display-templates/pull/133)
   Logo on the right, background color the same as box above.
 - [#132](https://github.com/os2display/display-templates/pull/132)
-  Dokk1 theme: change seperator color
+  Dokk1 theme: change separator color
 - [#131](https://github.com/os2display/display-templates/pull/131)
-  Use color variable for seperator in image-text
+  Use color variable for separator in image-text
 
 ## [1.2.5] - 2023-03-24
 
