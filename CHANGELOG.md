@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#134](https://github.com/os2display/display-templates/pull/134)
+  Update poster template with trimming of url and default duration.  
+
 ## [1.2.6] - 2023-06-01
 
 - [#133](https://github.com/os2display/display-templates/pull/133)
