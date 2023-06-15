@@ -4,8 +4,8 @@
   "id": "01FWJZQ25A1868V63CWYYHQFKQ",
   "description": "Mulighed for at vise plakat indhold.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/poster.js?ts=1677590005936",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/poster-admin.json?ts=1677590005936",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/poster.js?ts=1686835949830",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/poster-admin.json?ts=1686835949830",
     "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/poster-schema.json",
     "assets": [],
     "options": {},
