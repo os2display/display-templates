@@ -148,10 +148,8 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
   };
 
-  const trimUrl = (urlToTrim) => {
-    if (!urlToTrim) return "";
-    return urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
-  };
+  const trimUrl = (urlToTrim) =>
+    urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
 
   return (
     <>
