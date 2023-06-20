@@ -6,6 +6,7 @@ import touchTemplate from "./screen-layouts/touch-template.json";
 import sixAreas from "./screen-layouts/six-areas.json";
 import fullScreen from "./screen-layouts/full-screen.json";
 import fourAreas from "./screen-layouts/four-areas.json";
+import twoBoxesVerticalReversed from "./screen-layouts/two-boxes-vertical-reversed.json";
 
 const screens = [
   {
@@ -15,6 +16,10 @@ const screens = [
   {
     id: "two-split-vertical",
     screenLayout: twoBoxesVertical,
+  },
+  {
+    id: "two-split-vertical-reversed",
+    screenLayout: twoBoxesVerticalReversed,
   },
   {
     id: "touch-template",
