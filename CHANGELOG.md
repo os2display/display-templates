@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#135](https://github.com/os2display/display-templates/pull/135)
+  Add new screen template, two boxes, vertical (40%/60%)
 - [#134](https://github.com/os2display/display-templates/pull/134)
   Update poster template with trimming of url and default duration.  
 
