@@ -46,7 +46,7 @@ services:
       - nginx
     environment:
       - CYPRESS_VIDEO=false
-      - CYPRESS_baseUrl=http://nginx:8080/
+      - CYPRESS_baseUrl=http://nginx:80/
     volumes:
       - .:/e2e
       - /tmp/.X11-unix:/tmp/.X11-unix

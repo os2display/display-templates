@@ -74,4 +74,5 @@ Run tests
 
 ```sh
 docker compose run cypress run --component
+docker compose run cypress run
 ```
