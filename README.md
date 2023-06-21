@@ -73,5 +73,5 @@ docker-compose run node yarn apply-coding-standards
 Run tests
 
 ```sh
-docker-compose run node yarn test-ci
+docker compose run cypress run --component
 ```

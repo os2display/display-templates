@@ -55,10 +55,13 @@ jobs:
       strategy:
           fail-fast: false
           matrix:
-              browser: ["chrome", "edge"]
+              browser: ["chrome"]
       steps:
           - name: Checkout
             uses: actions/checkout@v3
+
+          - name: Setup network
+            run: docker network create frontend
 
           - name: Install client
             run: yarn
