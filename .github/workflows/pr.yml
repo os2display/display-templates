@@ -50,6 +50,7 @@ jobs:
 
   cypress:
       name: Cypress
+      container: node:14
       runs-on: ubuntu-latest
       strategy:
           fail-fast: false
