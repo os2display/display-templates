@@ -42,13 +42,13 @@ services:
     networks:
       - app
       - frontend
+    depends_on:
+      - nginx
     environment:
       - CYPRESS_VIDEO=false
+      # - CYPRESS_baseUrl=http://nginx:8080/
     volumes:
       - .:/e2e
       - /tmp/.X11-unix:/tmp/.X11-unix
     working_dir: /e2e
     entrypoint: cypress
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=frontend"
