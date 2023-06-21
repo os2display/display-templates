@@ -51,6 +51,7 @@ jobs:
   cypress:
       name: Cypress
       runs-on: ubuntu-latest
+      container: node:14
       strategy:
           fail-fast: false
           matrix:
@@ -61,6 +62,9 @@ jobs:
 
           - name: Setup network
             run: docker network create frontend
+
+          - name: Install client
+            run: yarn
 
           - name: Cypress run
             run: docker compose run cypress run --component --browser ${{ matrix.browser }}
