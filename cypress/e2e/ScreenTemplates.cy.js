@@ -1,5 +1,6 @@
 describe("template spec", () => {
   it("passes", () => {
-    cy.visit("https://display-templates.local.itkdev.dk/");
+    cy.visit("/two-split");
+    cy.wait(2000);
   });
 });

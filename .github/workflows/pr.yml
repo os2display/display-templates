@@ -65,7 +65,10 @@ jobs:
       - name: Install client
         run: docker-compose run node yarn
 
-      - name: Cypress run
+      - name: Cypress run components
+        run: docker-compose run cypress run --browser --component ${{ matrix.browser }}
+
+      - name: Cypress run e2e
         run: docker-compose run cypress run --browser ${{ matrix.browser }}
 
       - name: Archive screenshots
