@@ -7051,10 +7051,10 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
-os2display-grid-generator@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/os2display-grid-generator/-/os2display-grid-generator-1.0.8.tgz#ad0a52ff8d7982ebc317ae103dd9cceea6f9b8f1"
-  integrity sha512-3IaJpkVGk8oNlevR3H5WUFTJ1wug9AyQf8dkE6x722T1qlcXSoIt3CTYM0W/v9KaeZxiHPucux1pL5SSWwHT6Q==
+os2display-grid-generator@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/os2display-grid-generator/-/os2display-grid-generator-1.0.9.tgz#4b4a52b32de1722344958ac5f11c13c15a67d14f"
+  integrity sha512-bShHQAiujywDKmBj7YpGBd8Xh4gyrfwPfnjK+HL7ea5eJRknkrhA4LQeFGFhBUDX3sbJSYAf0SWS8ukmCWRjcg==
   dependencies:
     eslint-plugin-jsdoc "^36.0.6"
 
