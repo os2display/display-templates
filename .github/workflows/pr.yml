@@ -48,30 +48,33 @@ jobs:
       - name: React coding standards
         run: yarn check-coding-standards
 
-# TODO: Readd when tests have been refactored to work with react 18.
-#  templates-tests:
-#    name: Templates tests
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v1
-#        with:
-#          node-version: '14.x'
-#      - name: Cache node modules
-#        uses: actions/cache@v2
-#        env:
-#          cache-name: cache-node-modules
-#        with:
-#          path: ~/.yarn
-#          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-build-${{ env.cache-name }}-
-#            ${{ runner.os }}-build-
-#            ${{ runner.os }}-
-#      - name: install
-#        run: yarn
-#      - name: Run tests
-#        run: yarn test-ci
+  cypress:
+      name: Cypress
+      runs-on: ubuntu-latest
+      strategy:
+          fail-fast: false
+          matrix:
+              browser: ["chrome", "edge"]
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+
+          - name: Setup network
+            run: docker network create frontend
+
+          - name: Install client
+            run: docker compose run frontend npm install
+
+          - name: Cypress run
+            run: docker compose run cypress run --component --browser ${{ matrix.browser }}
+
+          - name: Archive screenshots
+            if: ${{ failure() }}
+            uses: actions/upload-artifact@v3
+            with:
+                name: cypress-screenshots-${{ matrix.browser }}
+                path: cypress/screenshots
+                retention-days: 7
 
   changelog:
     runs-on: ubuntu-20.04
