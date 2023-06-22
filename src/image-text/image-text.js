@@ -90,9 +90,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
 
   // Display separator depends on whether the slide is reversed.
   const displaySeparator = separator && !reversed;
-  console.log(displaySeparator, "displaySeparator");
-  console.log(reversed,"reversed");
-  console.log(separator,"separator");
 
   // Set background image.
   if (!(images?.length > 0)) {
