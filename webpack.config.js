@@ -180,6 +180,7 @@ module.exports = {
       "display-admin.local.itkdev.dk",
       "display-client.local.itkdev.dk",
       "display-templates.local.itkdev.dk",
+      "nginx",
     ],
     stats: "minimal",
   },
