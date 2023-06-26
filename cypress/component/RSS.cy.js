@@ -63,6 +63,19 @@ describe("RSS", () => {
         />
       </div>
     );
+
+    // font size is set
+    cy.get(".font-size-m").should("exist");
+    // Image is set
+    cy.get(".template-rss")
+      .should("have.css", "background-image")
+      .should("include", "/fixtures/images/dokk1-shapes-animated.svg");
+    // Theme is used
+    cy.get(".template-rss")
+      .should("have.css", "background-color")
+      .should("include", "rgb(0, 55, 100)");
+
+    // Title and text
     cy.get("h1").should("have.text", "Lorem ipsum dolor sit amet.");
     cy.get("p").should(
       "have.text",
@@ -79,10 +92,12 @@ describe("RSS", () => {
       { matchCase: false }
     );
 
+    // Feed title
     cy.get(".feed-info--title").should("have.text", "Lorem Ipsum");
 
     // SO, if you are experiencing errors with this tests and not sure why, then perhaps add
     // the dreaded "cy.wait(1000)" here. It works without, because cypress retries due to default config
+    // Title and text
     cy.get("h1").should(
       "have.text",
       "Morbi lorem augue, consequat non eros in, commodo sagittis lectus."
@@ -101,5 +116,8 @@ describe("RSS", () => {
       dayjs("2021-08-12T11:08:31.360Z").locale("da").format("dddd"),
       { matchCase: false }
     );
+
+    // Feed title
+    cy.get(".feed-info--title").should("have.text", "Lorem Ipsum");
   });
 });
