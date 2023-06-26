@@ -826,7 +826,7 @@ describe("Calendar", () => {
     cy.get(".template-calendar").should(
       "have.attr",
       "style",
-      '--bg-image: url("/fixtures/images/mountain1.jpeg");'
+      '--bg-image:url("/fixtures/images/mountain1.jpeg");;'
     );
   });
 });
