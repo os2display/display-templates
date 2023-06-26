@@ -14,4 +14,10 @@ module.exports = defineConfig({
       bundler: "webpack",
     },
   },
+  retries: {
+    runMode: 3,
+    openMode: 0,
+  },
+  viewportWidth: 2500,
+  viewportHeight: 1500,
 });
