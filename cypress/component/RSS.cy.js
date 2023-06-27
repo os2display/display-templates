@@ -1,6 +1,5 @@
 import React from "react";
 import dayjs from "dayjs";
-import localeDa from "dayjs/locale/da";
 import RSS from "../../src/rss/rss";
 
 describe("RSS", () => {
