@@ -94,8 +94,11 @@ describe("RSS", () => {
     // Feed title
     cy.get(".feed-info--title").should("have.text", "Lorem Ipsum");
 
-    // SO, if you are experiencing errors with this tests and not sure why, then perhaps add
-    // the dreaded "cy.wait(1000)" here. It works without, because cypress retries due to default config
+    // So, wait is bad practice,
+    // But seeing as we actually have to wait for a new feed entry,
+    // I am not sure how to do this in another way.
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
     // Title and text
     cy.get("h1").should(
       "have.text",
