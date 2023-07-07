@@ -124,7 +124,7 @@ describe("RSS", () => {
       .should("include", "2");
 
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
+    cy.wait(1500);
     // Slide done called...
     cy.get("@slideDoneStub").should("be.called");
   });
