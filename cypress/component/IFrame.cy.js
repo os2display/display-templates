@@ -2,13 +2,13 @@ import React from "react";
 import Iframe from "../../src/iframe/iframe";
 
 describe("Iframe template", () => {
-  const mock = {
-    slideDone: (arg) => {
-      return arg;
-    },
-  };
-  cy.stub(mock, "slideDone").as("slideDoneStub");
   it("Iframe basic", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <Iframe
