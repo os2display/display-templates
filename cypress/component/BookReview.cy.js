@@ -2,13 +2,13 @@ import React from "react";
 import BookReview from "../../src/book-review/book-review";
 
 describe("Book review template", () => {
-  const mock = {
-    slideDone: (arg) => {
-      return arg;
-    },
-  };
-  cy.stub(mock, "slideDone").as("slideDoneStub");
   it("Book review basic", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <BookReview
