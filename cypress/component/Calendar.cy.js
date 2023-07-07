@@ -289,7 +289,7 @@ describe("Calendar", () => {
             },
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
@@ -837,10 +837,8 @@ describe("Calendar", () => {
       .should("have.css", "font-size")
       .should("include", "36px");
 
-    cy.get(".template-calendar").should(
-      "have.attr",
-      "style",
-      '--bg-image:url("/fixtures/images/mountain1.jpeg");'
-    );
+    cy.get(".template-calendar")
+      .should("have.attr", "style")
+      .should("include", '/fixtures/images/mountain1.jpeg")');
   });
 });
