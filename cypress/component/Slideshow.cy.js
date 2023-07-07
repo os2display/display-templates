@@ -3,6 +3,12 @@ import Slideshow from "../../src/slideshow/slideshow";
 
 describe("RSS", () => {
   it("Slideshow - two slides", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <Slideshow
@@ -40,11 +46,14 @@ describe("RSS", () => {
             animation: "random",
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
 
     cy.get(".template-slideshow").should("exist");
     cy.get(".fade-container").should("have.length", 2);
@@ -113,6 +122,11 @@ describe("RSS", () => {
     cy.get('[data-index="0"]')
       .should("have.css", "z-index")
       .should("include", "2");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 
   it("Slideshow - 1 image, logo", () => {

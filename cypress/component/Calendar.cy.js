@@ -5,11 +5,17 @@ import Calendar from "../../src/calendar/calendar";
 
 describe("Calendar", () => {
   it("Calendar multiple days", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <Calendar
           content={{
-            duration: 5000,
+            duration: 500,
             layout: "multipleDays",
             hasDateAndTime: true,
             title: "Kalender",
@@ -265,7 +271,7 @@ describe("Calendar", () => {
               },
             },
             content: {
-              duration: 5000,
+              duration: 500,
               layout: "multipleDays",
               hasDateAndTime: true,
               title: "Kalender",
@@ -288,6 +294,9 @@ describe("Calendar", () => {
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
 
     // Header displayed correctly
     cy.get("h1").should("have.text", "Kalender");
@@ -376,6 +385,11 @@ describe("Calendar", () => {
       .find(".col-item-event div")
       .eq(1)
       .should("have.text", "Det tomme rum");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 
   it("Calendar multiple", () => {

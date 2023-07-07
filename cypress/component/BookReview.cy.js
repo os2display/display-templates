@@ -2,12 +2,18 @@ import React from "react";
 import BookReview from "../../src/book-review/book-review";
 
 describe("Book review template", () => {
+  const mock = {
+    slideDone: (arg) => {
+      return arg;
+    },
+  };
+  cy.stub(mock, "slideDone").as("slideDoneStub");
   it("Book review basic", () => {
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <BookReview
           content={{
-            duration: 5000,
+            duration: 500,
             bookText:
               "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
             authorText: "Hval Ocean",
@@ -31,7 +37,7 @@ describe("Book review template", () => {
               },
             },
             content: {
-              duration: 5000,
+              duration: 500,
               bookText:
                 "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
               authorText: "Hval Ocean",
@@ -44,11 +50,14 @@ describe("Book review template", () => {
             },
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
     cy.get("h1").should("have.text", "I bølgen blå");
     cy.get("p").eq(0).should("have.text", "Af Hval Ocean");
     cy.get("p").eq(1).should("have.text", "");
@@ -69,5 +78,10 @@ describe("Book review template", () => {
       .should("exist")
       .should("have.css", "background-image")
       .should("include", "/fixtures/images/vertical.jpg");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 });

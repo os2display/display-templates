@@ -112,12 +112,19 @@ describe("Contacts template", () => {
       .should("include", "none");
     cy.get(".contacts").find(".contact").eq(3).find("svg").should("exist");
   });
-  it("Contacts no seperator", () => {
+
+  it("Contacts no seperator + slidedone called", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <Contacts
           content={{
-            duration: 5000,
+            duration: 500,
             contacts: [
               {
                 title: "Pedel",
@@ -157,11 +164,14 @@ describe("Contacts template", () => {
             },
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
     cy.get(".separator").should("not.exist");
     cy.get("h1").should("have.text", "Kontakter");
     cy.get(".contacts").find(".contact").should("have.length", 1);
@@ -175,5 +185,10 @@ describe("Contacts template", () => {
       .find(".contact-image")
       .should("have.css", "background-image")
       .should("include", "/fixtures/images/author.jpg");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 });

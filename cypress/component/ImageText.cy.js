@@ -3,11 +3,17 @@ import ImageText from "../../src/image-text/image-text";
 
 describe("Image text template", () => {
   it("Box top, theme blue", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <ImageText
           content={{
-            duration: 5000,
+            duration: 500,
             title: "Title",
             text: "Dette er brødtekst lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             image: ["/v1/media/00000000000000000000000001"],
@@ -31,7 +37,7 @@ describe("Image text template", () => {
               },
             },
             content: {
-              duration: 5000,
+              duration: 500,
               title: "Title",
               text: "Dette er brødtekst lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
               image: ["/v1/media/00000000000000000000000001"],
@@ -49,11 +55,14 @@ describe("Image text template", () => {
             },
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
     cy.get("h1").should("include.text", "Title");
     cy.get(".text").should(
       "include.text",
@@ -81,6 +90,11 @@ describe("Image text template", () => {
 
     // font size is set
     cy.get(".font-size-xs").should("exist");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 
   it("Box bottom, theme pink", () => {

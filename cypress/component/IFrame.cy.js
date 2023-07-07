@@ -2,12 +2,18 @@ import React from "react";
 import Iframe from "../../src/iframe/iframe";
 
 describe("Iframe template", () => {
+  const mock = {
+    slideDone: (arg) => {
+      return arg;
+    },
+  };
+  cy.stub(mock, "slideDone").as("slideDoneStub");
   it("Iframe basic", () => {
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <Iframe
           content={{
-            duration: 5000,
+            duration: 500,
             source:
               "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80",
           }}
@@ -23,17 +29,20 @@ describe("Iframe template", () => {
               },
             },
             content: {
-              duration: 5000,
+              duration: 500,
               source:
                 "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80",
             },
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
     cy.get("iframe")
       .should("exist")
       .should(
@@ -41,5 +50,10 @@ describe("Iframe template", () => {
         "src",
         "https://images.unsplash.com/photo-1551373884-8a0750074df7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80"
       );
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 });
