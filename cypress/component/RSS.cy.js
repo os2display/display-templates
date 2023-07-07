@@ -4,6 +4,12 @@ import RSS from "../../src/rss/rss";
 
 describe("RSS", () => {
   it("Box top, theme blue", () => {
+    const mock = {
+      slideDone: (arg) => {
+        return arg;
+      },
+    };
+    cy.stub(mock, "slideDone").as("slideDoneStub");
     cy.mount(
       <div className="slide" id="SLIDE_ID">
         <RSS
@@ -57,11 +63,14 @@ describe("RSS", () => {
             fontSize: "font-size-m",
           }}
           run={new Date().toISOString()}
-          slideDone={() => {}}
+          slideDone={mock.slideDone}
           executionId="SLIDE_ID"
         />
       </div>
     );
+
+    // Slide done not called yet...
+    cy.get("@slideDoneStub").should("not.be.called");
 
     // font size is set
     cy.get(".font-size-m").should("exist");
@@ -121,5 +130,10 @@ describe("RSS", () => {
 
     // Feed title
     cy.get(".feed-info--title").should("have.text", "Lorem Ipsum");
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500);
+    // Slide done called...
+    cy.get("@slideDoneStub").should("be.called");
   });
 });
