@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- [#16](https://github.com/os2display/display-templates/pull/136)
+- [#137](https://github.com/os2display/display-templates/pull/137)
+  Add cypress tests.
+- [#136](https://github.com/os2display/display-templates/pull/136)
   Add screen template creation, update grid-generator to 1.0.9.
 - [#135](https://github.com/os2display/display-templates/pull/135)
   Add new screen template, two boxes, vertical (40%/60%)

@@ -272,7 +272,7 @@ export const Overview = () => {
         ))}
       </ul>
       <h2>Lav en skærm</h2>
-      <Link to={`/create-screen`}>Lav en skærmtemplate</Link>
+      <Link to="/create-screen">Lav en skærmtemplate</Link>
     </>
   );
 };
