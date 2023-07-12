@@ -1,7 +1,7 @@
 import React from "react";
 import Slideshow from "../../src/slideshow/slideshow";
 
-describe("RSS", () => {
+describe("Slideshow", () => {
   it("Slideshow - two slides", () => {
     const mock = {
       slideDone: (arg) => {
