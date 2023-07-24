@@ -8,3 +8,24 @@
   background-color: #add8e6;
   font-size: 30px;
 }
+
+
+.inputs-container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: beige;
+
+}
+
+pre {
+  position: absolute;
+    top: 0;
+    overflow: scroll;
+    background: white;
+}

@@ -24,8 +24,8 @@
   },
   {
     "key": "poster-form-entry-duration",
-    "input": "input",
-    "name": "entryDuration",
+    "input": "duration",
+    "name": "duration",
     "type": "number",
     "label": "Varighed pr. begivenhed (i sekunder)",
     "helpText": "Her skal du skrive varigheden pr. begivenhed.",

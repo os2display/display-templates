@@ -1,24 +1,24 @@
 {
-  "title": "2-delt vertikalt 60/40",
-  "id": "01FZR4VA1T2C264VT9B1WM6NKH",
+  "title": "2-delt vertikalt 40/60",
+  "id": "01H3C5YP93QTSFC3CQW83K4BY2",
   "grid": {
     "rows": 1,
     "columns": 5
   },
   "regions": [
     {
-      "id": "01G10FCCJK4G3Q59AAPR1WZXFC",
+      "id": "01H3C5YWY0EBETM6FA6N2RDWFE",
       "title": "Top",
       "gridArea": [
         "a",
-        "b",
-        "c"
+        "b"
       ]
     },
     {
-      "id": "01G10FCN087HMFFAM1X7GHVARM",
+      "id": "01H3C5Z0EZQJBRRJJ4ADVF91R7",
       "title": "Bund",
       "gridArea": [
+        "c",
         "d",
         "e"
       ]
