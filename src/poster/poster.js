@@ -30,60 +30,10 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const { showLogo } = content;
   let logoUrl = "";
 
-  // Setup feed entry switch and animation, if there is more than one post.
-  useEffect(() => {
-    if (!currentEvent) return;
-
-    timerRef.current = setTimeout(() => {
-      const currentIndex = feedData.indexOf(currentEvent);
-      const nextIndex = (currentIndex + 1) % feedData.length;
-
-      if (nextIndex === 0) {
-        slideDone(slide);
-      } else {
-        setCurrentEvent(feedData[nextIndex]);
-        setShow(true);
-      }
-    }, entryDurationMilliseconds);
-
-    animationTimerRef.current = setTimeout(() => {
-      setShow(false);
-    }, entryDurationMilliseconds - animationDuration);
-  }, [currentEvent]);
-
-  useEffect(() => {
-    if (run) {
-      if (feedData && currentEvent === null && feedData?.length > 0) {
-        const [first] = feedData;
-        setCurrentEvent(first);
-      } else {
-        setTimeout(() => slideDone(slide), 1000);
-      }
-    } else {
-      setCurrentEvent(null);
-    }
-  }, [run]);
-
   // If showlogo is set, get the logo url
   if (logo && showLogo) {
     logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
   }
-
-  // Imports language strings, sets localized formats and sets timer.
-  useEffect(() => {
-    dayjs.extend(localizedFormat);
-
-    setTranslations(da);
-
-    return function cleanup() {
-      if (timerRef?.current !== null) {
-        clearInterval(timerRef.current);
-      }
-      if (animationTimerRef?.current !== null) {
-        clearInterval(animationTimerRef.current);
-      }
-    };
-  }, []);
 
   const { feed, feedData } = slide;
 
@@ -147,6 +97,56 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   const trimUrl = (urlToTrim) =>
     urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
+
+  // Setup feed entry switch and animation, if there is more than one post.
+  useEffect(() => {
+    if (!currentEvent) return;
+
+    timerRef.current = setTimeout(() => {
+      const currentIndex = feedData.indexOf(currentEvent);
+      const nextIndex = (currentIndex + 1) % feedData.length;
+
+      if (nextIndex === 0) {
+        slideDone(slide);
+      } else {
+        setCurrentEvent(feedData[nextIndex]);
+        setShow(true);
+      }
+    }, entryDurationMilliseconds);
+
+    animationTimerRef.current = setTimeout(() => {
+      setShow(false);
+    }, entryDurationMilliseconds - animationDuration);
+  }, [currentEvent]);
+
+  useEffect(() => {
+    if (run) {
+      if (feedData && currentEvent === null && feedData?.length > 0) {
+        const [first] = feedData;
+        setCurrentEvent(first);
+      } else {
+        setTimeout(() => slideDone(slide), 1000);
+      }
+    } else {
+      setCurrentEvent(null);
+    }
+  }, [run]);
+
+  // Imports language strings, sets localized formats and sets timer.
+  useEffect(() => {
+    dayjs.extend(localizedFormat);
+
+    setTranslations(da);
+
+    return function cleanup() {
+      if (timerRef?.current !== null) {
+        clearInterval(timerRef.current);
+      }
+      if (animationTimerRef?.current !== null) {
+        clearInterval(animationTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>

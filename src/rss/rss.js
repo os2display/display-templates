@@ -110,7 +110,9 @@ function RSS({ slide, content, run, slideDone, executionId }) {
           {currentEntry && (
             <>
               <Title className="title">{currentEntry.title}</Title>
-              <Description className="description">{currentEntry.content}</Description>
+              <Description className="description">
+                {currentEntry.content}
+              </Description>
             </>
           )}
         </Content>
@@ -150,19 +152,22 @@ const FeedInfo = styled.div`
 `;
 
 const FeedTitle = styled.div`
-  && { // Override h1 font-size form styles applied with former class
+  && {
+    // Override h1 font-size form styles applied with former class
     font-size: calc(var(--template-font-size) * 0.75);
   }
 `;
 
 const FeedDate = styled.div`
-  && { // Override h1 font-size form styles applied with former class
+  && {
+    // Override h1 font-size form styles applied with former class
     font-size: calc(var(--template-font-size) * 0.75);
   }
 `;
 
 const FeedProgress = styled.div`
-  && { // Override h1 font-size form styles applied with former class
+  && {
+    // Override h1 font-size form styles applied with former class
     font-size: calc(var(--template-font-size) * 0.75);
   }
 `;
@@ -174,7 +179,8 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  && { // Override h1 font-size form styles applied with former class
+  && {
+    // Override h1 font-size form styles applied with former class
     font-size: calc(var(--template-font-size) * 2);
   }
   margin: 0;
