@@ -278,7 +278,7 @@ Poster.propTypes = {
         ticketPurchaseUrl: PropTypes.string,
         url: PropTypes.string,
       })
-    ).isRequired,
+    ),
   }).isRequired,
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
