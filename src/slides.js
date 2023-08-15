@@ -1245,6 +1245,40 @@ const slides = [
       fontSize: "font-size-m",
     },
   },
+  {
+    id: "slide20-poster-single-no-feed",
+    type: "poster",
+    themeFile: "themes/aakb.css",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    feed: {
+      configuration: {
+        overrideTitle: null,
+        overrideSubTitle: null,
+        overrideTicketPrice: null,
+        overrideReadMoreUrl: null,
+        readMoreText: "Læs mere her: www.example.com",
+        hideTime: false,
+      },
+    },
+    feedData: null,
+    content: {
+      // "single" or "subscription"
+      feedType: "single",
+      eventId: "",
+      occurrenceId: "",
+      entryDuration: 10,
+      showLogo: true,
+    },
+  },
 ];
 
 export default slides;
