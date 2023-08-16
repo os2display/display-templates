@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#138](https://github.com/os2display/display-templates/pull/138)
+  Fixed issue with poster template ending in blank screen when feed is null.
 - [#137](https://github.com/os2display/display-templates/pull/137)
   Add cypress tests.
 - [#136](https://github.com/os2display/display-templates/pull/136)
