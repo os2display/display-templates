@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+
+- [#139](https://github.com/os2display/display-templates/pull/139)
+  Change aakb.css font source
 - [#137](https://github.com/os2display/display-templates/pull/137)
   Add cypress tests.
 - [#136](https://github.com/os2display/display-templates/pull/136)
@@ -11,7 +14,7 @@ All notable changes to this project will be documented in this file.
 - [#135](https://github.com/os2display/display-templates/pull/135)
   Add new screen template, two boxes, vertical (40%/60%)
 - [#134](https://github.com/os2display/display-templates/pull/134)
-  Update poster template with trimming of url and default duration.  
+  Update poster template with trimming of url and default duration.
 
 ## [1.2.6] - 2023-06-01
 
