@@ -989,12 +989,13 @@ const slides = [
       },
     },
     content: {
+      numberOfJourneys: 3,
       station: [
         {
           name: "Skelbækvej v rådhuset",
           x: "9420345",
           y: "55023889",
-          id: "545004301",
+          id: "751434104",
         },
       ],
       iframe_title: "Titel til iframe",
