@@ -3,9 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
--
+
 - [#140](https://github.com/os2display/display-templates/pull/140)
   create multiple ids from one id in the travel template
+- [#139](https://github.com/os2display/display-templates/pull/139)
+  Change aakb.css font source
 - [#138](https://github.com/os2display/display-templates/pull/138)
   Fixed issue with poster template ending in blank screen when feed is null.
 - [#137](https://github.com/os2display/display-templates/pull/137)
@@ -15,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - [#135](https://github.com/os2display/display-templates/pull/135)
   Add new screen template, two boxes, vertical (40%/60%)
 - [#134](https://github.com/os2display/display-templates/pull/134)
-  Update poster template with trimming of url and default duration.  
+  Update poster template with trimming of url and default duration.
 
 ## [1.2.6] - 2023-06-01
 
