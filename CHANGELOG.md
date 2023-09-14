@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.3.0] - 2023-09-14
+
 - [#140](https://github.com/os2display/display-templates/pull/140)
   create multiple ids from one id in the travel template
 - [#139](https://github.com/os2display/display-templates/pull/139)
