@@ -2,10 +2,10 @@
 * Aarhus Kommunes Biblioteker theme css
 */
 
-/* Import Gibson font from typekit - Used with Dokk1 theme */
+/* Import FaktPro font */
 @font-face {
   font-family: "FaktPro-Normal";
-  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-Normal.woff")
+  src: url("https://db.onlinewebfonts.com/t/fdd40b399610a1e015242521427561b1.woff")
     format("woff");
   font-display: auto;
   font-weight: 400;
@@ -14,19 +14,12 @@
 
 @font-face {
   font-family: "FaktPro-SemiBold";
-  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-Light.woff")
+  src: url("https://db.onlinewebfonts.com/t/2eed23505916e842a2d6b7eeb0e4def0.woff")
     format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
-@font-face {
-  font-family: "FaktPro-Light";
-  src: url("https://www.aakb.dk/profiles/ding2/themes/ddbasic/fonts/FaktPro-SemiBold.woff")
-    format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
 
 #SLIDE_ID {
   /* Default variables */
@@ -46,10 +39,8 @@
   --color-green: var(--color-success);
 
   --font-family-base: "FaktPro-Normal", sans-serif;
-  --font-family-light: "FaktPro-Light", sans-serif;
   --font-family-bold: "FaktPro-SemiBold", sans-serif;
   --font-weight-base: 400;
-  --font-weight-light: 400;
   --font-weight-bold: 400;
 
   /* Darkmode overrides */
@@ -85,8 +76,8 @@
 }
 
 #SLIDE_ID .template-poster h1 {
-  font-family: var(--font-family-light);
-  font-weight: var(--font-weight-light);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-base);
 }
 
 #SLIDE_ID .template-poster .lead {

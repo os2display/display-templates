@@ -28,31 +28,11 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const animationTimerRef = useRef(null);
   const logo = slide?.themeData?.logo;
   const { showLogo } = content;
-
   let logoUrl = "";
+
   // If showlogo is set, get the logo url
   if (logo && showLogo) {
     logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
-
-  // Imports language strings, sets localized formats and sets timer.
-  useEffect(() => {
-    dayjs.extend(localizedFormat);
-
-    setTranslations(da);
-
-    return function cleanup() {
-      if (timerRef?.current !== null) {
-        clearInterval(timerRef.current);
-      }
-      if (animationTimerRef?.current !== null) {
-        clearInterval(animationTimerRef.current);
-      }
-    };
-  }, []);
-
-  if (!slide?.feed || !slide.feedData) {
-    return "";
   }
 
   const { feed, feedData } = slide;
@@ -89,6 +69,35 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const singleDayEvent =
     endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
+
+  /**
+   * Capitalize the datestring, as it starts with the weekday.
+   *
+   * @param {string} s The string to capitalize.
+   * @returns {string} The capitalized string.
+   */
+  const capitalize = (s) => {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("ll"));
+  };
+
+  const formatTime = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("LT"));
+  };
+
+  const formatDateNoYear = (date) => {
+    if (!date) return "";
+    return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
+  };
+
+  const trimUrl = (urlToTrim) =>
+    urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
+
   // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
     if (!currentEvent) return;
@@ -123,33 +132,21 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     }
   }, [run]);
 
-  /**
-   * Capitalize the datestring, as it starts with the weekday.
-   *
-   * @param {string} s The string to capitalize.
-   * @returns {string} The capitalized string.
-   */
-  const capitalize = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
+  // Imports language strings, sets localized formats and sets timer.
+  useEffect(() => {
+    dayjs.extend(localizedFormat);
 
-  const formatDate = (date) => {
-    if (!date) return "";
-    return capitalize(dayjs(date).locale(localeDa).format("ll"));
-  };
+    setTranslations(da);
 
-  const formatTime = (date) => {
-    if (!date) return "";
-    return capitalize(dayjs(date).locale(localeDa).format("LT"));
-  };
-
-  const formatDateNoYear = (date) => {
-    if (!date) return "";
-    return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
-  };
-
-  const trimUrl = (urlToTrim) =>
-    urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
+    return function cleanup() {
+      if (timerRef?.current !== null) {
+        clearInterval(timerRef.current);
+      }
+      if (animationTimerRef?.current !== null) {
+        clearInterval(animationTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -281,7 +278,7 @@ Poster.propTypes = {
         ticketPurchaseUrl: PropTypes.string,
         url: PropTypes.string,
       })
-    ).isRequired,
+    ),
   }).isRequired,
   content: PropTypes.shape({
     entryDuration: PropTypes.number,

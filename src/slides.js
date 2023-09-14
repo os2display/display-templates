@@ -989,12 +989,13 @@ const slides = [
       },
     },
     content: {
+      numberOfJourneys: 3,
       station: [
         {
           name: "Skelbækvej v rådhuset",
           x: "9420345",
           y: "55023889",
-          id: "545004301",
+          id: "751434104",
         },
       ],
       iframe_title: "Titel til iframe",
@@ -1243,6 +1244,40 @@ const slides = [
     content: {
       image: ["/v1/media/00000000000000000000000001"],
       fontSize: "font-size-m",
+    },
+  },
+  {
+    id: "slide20-poster-single-no-feed",
+    type: "poster",
+    themeFile: "themes/aakb.css",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    feed: {
+      configuration: {
+        overrideTitle: null,
+        overrideSubTitle: null,
+        overrideTicketPrice: null,
+        overrideReadMoreUrl: null,
+        readMoreText: "Læs mere her: www.example.com",
+        hideTime: false,
+      },
+    },
+    feedData: null,
+    content: {
+      // "single" or "subscription"
+      feedType: "single",
+      eventId: "",
+      occurrenceId: "",
+      entryDuration: 10,
+      showLogo: true,
     },
   },
 ];

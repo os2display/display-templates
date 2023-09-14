@@ -283,7 +283,11 @@ const CreateScreenTemplate = () => {
   const [displayJSON, setDisplayJSON] = useState(false);
   const [regions, setRegions] = useState([]);
 
-  /** Generate JSON from regions. */
+  /**
+   * Generate JSON from regions.
+   *
+   * @returns {Array} Array of objects.
+   */
   function getRegionsForJson() {
     return regions.map(({ gridArea }) => {
       return {

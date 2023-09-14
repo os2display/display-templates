@@ -43,11 +43,24 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   // Rich text input sanitized
   const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
 
-  // The id for the chosen station
-  let stationId;
-  if (station && station.length > 0) {
-    stationId = station[0].id;
-  }
+  // This is a shameful hack, hopefully temporarily, to combat the fact that the station-api
+  // only returns a station in _one direction_, instead of both
+  // After meeting*s* about this, we have concluded that the ids follow a pattern, where the last character
+  // in the string is defining which direction, and can be anything from 1-9.
+  // So, here we replace the last character of the id with 1-9, and then the rejseplan-api disregards ids that
+  // are not connected to a station (we hope).
+  const getStationIds = () => {
+    let ids = "";
+    const idWithMissingLastCharacter = station[0].id.substring(
+      0,
+      station[0].id.length - 1
+    );
+
+    [...Array(9).keys()].forEach((i) => {
+      ids += `${idWithMissingLastCharacter}${i + 1}@`;
+    });
+    return ids;
+  };
 
   const imageStyle = {};
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
@@ -78,18 +91,18 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   useEffect(() => {
     if (busOrTram === "tram") {
       setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
+        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
           numberOfJourneys || 1
         }&enableHIM=1&p2=letbane&p2title=${iframeTitle || ""}&p2icons=&`
       );
     } else {
       setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
+        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
           numberOfJourneys || 1
         }&enableHIM=1&p1=bus&p1title=${iframeTitle || ""}&p1icons`
       );
     }
-  }, [busOrTram, stationId]);
+  }, [busOrTram]);
 
   /** Imports language strings. */
   useEffect(() => {
@@ -132,7 +145,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
           (title || sanitizedtext || distance || timeFast || timeModerate) && (
             <div className="map" style={imageStyle} />
           )}
-        {stationId && (
+        {iframeSrc && (
           <div className={iFrameClass}>
             <iframe
               title="iframe title"
