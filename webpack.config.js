@@ -51,6 +51,36 @@ const entry = devMode
 
 const timestamp = new Date().getTime();
 
+const transformConfig = (type) => (content) => {
+    const config = JSON.parse(content.toString())
+    // Base build URL with trailing slash.
+    const baseUrl = ('develop' === type
+                     ? process.env.DEPLOYMENT_BUILD_BASE_URL_DEVELOP ?? process.env.DEPLOYMENT_BUILD_BASE_URL ?? "https://raw.githubusercontent.com/os2display/display-templates/develop/build/"
+                     : process.env.DEPLOYMENT_BUILD_BASE_URL_MAIN  ?? process.env.DEPLOYMENT_BUILD_BASE_URL ?? "https://raw.githubusercontent.com/os2display/display-templates/main/build/")
+          .replace(/\/*$/, '/')
+
+    const processPath = (path) => {
+        try {
+            const url = new URL(path, baseUrl)
+            url.searchParams.set('ts', timestamp)
+            return url.toString()
+        } catch (error) {
+            console.error(error)
+            return path
+        }
+    }
+
+    for (const key of ['component', 'admin', 'schema', 'assets']) {
+        if (config.resources[key]) {
+            config.resources[key] = Array.isArray(config.resources[key])
+                ? config.resources[key].map(processPath)
+                : processPath(config.resources[key])
+        }
+    }
+
+    return JSON.stringify(config, null, 2)
+}
+
 const plugins = devMode
   ? [
       new HtmlWebpackPlugin({
@@ -88,19 +118,7 @@ const plugins = devMode
             to: "[name]-main[ext]",
             context: path.resolve(__dirname, "src"),
             toType: "template",
-            transform(content) {
-              return content
-                .toString()
-                .replace(".json", `.json?ts=${timestamp}`)
-                .replace(".js", `.js?ts=${timestamp}`)
-                .replace(
-                  new RegExp(
-                    "https://display-templates.local.itkdev.dk/build/",
-                    "g"
-                  ),
-                  "https://raw.githubusercontent.com/os2display/display-templates/main/build/"
-                );
-            },
+            transform: transformConfig('main')
           },
         ],
       }),
@@ -111,19 +129,7 @@ const plugins = devMode
             to: "[name]-develop[ext]",
             context: path.resolve(__dirname, "src"),
             toType: "template",
-            transform(content) {
-              return content
-                .toString()
-                .replace(".json", `.json?ts=${timestamp}`)
-                .replace(".js", `.js?ts=${timestamp}`)
-                .replace(
-                  new RegExp(
-                    "https://display-templates.local.itkdev.dk/build/",
-                    "g"
-                  ),
-                  "https://raw.githubusercontent.com/os2display/display-templates/develop/build/"
-                );
-            },
+            transform: transformConfig('develop')
           },
         ],
       }),
