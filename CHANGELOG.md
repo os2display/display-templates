@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#142](https://github.com/os2display/display-templates/pull/142)
+  Update poster template to display url domain.
+
 ## [1.3.0] - 2023-09-14
 
 - [#140](https://github.com/os2display/display-templates/pull/140)
-  create multiple ids from one id in the travel template
+  Create multiple ids from one id in the travel template
 - [#139](https://github.com/os2display/display-templates/pull/139)
   Change aakb.css font source
 - [#138](https://github.com/os2display/display-templates/pull/138)
