@@ -95,8 +95,15 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
   };
 
-  const trimUrl = (urlToTrim) =>
-    urlToTrim.replace(/^(https?:\/\/)?(www.)?/i, "");
+  const getUrlDomain = (urlString) => {
+    return (
+      urlString
+        // Remove scheme
+        .replace(/^[^:]*:\/\//, "")
+        // Remove paths
+        .replace(/\/.*$/, "")
+    );
+  };
 
   // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
@@ -215,7 +222,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
               <>
                 {readMoreText && <p className="moreinfo">{readMoreText}</p>}
                 {!overrideReadMoreUrl && url && (
-                  <span className="look-like-link">{trimUrl(url)}</span>
+                  <span className="look-like-link">{getUrlDomain(url)}</span>
                 )}
                 {overrideReadMoreUrl && (
                   <span className="look-like-link">{overrideReadMoreUrl}</span>
