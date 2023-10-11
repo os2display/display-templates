@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Fixed poster template to account show message when not configured correctly.
+
 ## [1.3.0] - 2023-09-14
 
 - [#140](https://github.com/os2display/display-templates/pull/140)
