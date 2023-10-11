@@ -160,9 +160,10 @@ function Poster({ slide, content, run, slideDone, executionId }) {
       {feed?.configuration?.posterType === "single" &&
         !feed?.configuration?.singleSelectedOccurrence && (
           <div style={{ color: "white", margin: "1em" }}>
-            Der er ikke valgt en event eller forekomst.
+            Der er ikke valgt et event eller en forekomst.
           </div>
         )}
+
       {/* TODO: Adjust styling to variables from Theme */}
       {currentEvent !== null && (
         <IntlProvider messages={translations} locale="da" defaultLocale="da">
