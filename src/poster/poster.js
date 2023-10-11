@@ -51,7 +51,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     excerpt,
     ticketPriceRange,
     url,
-    place,
+    place
   } = currentEvent ?? {};
 
   const { configuration = {} } = feed;
@@ -62,7 +62,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     overrideTicketPrice = "",
     overrideReadMoreUrl = "",
     hideTime = false,
-    readMoreText = "",
+    readMoreText = ""
   } = configuration;
 
   // Dates.
@@ -153,7 +153,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
       {feed?.configuration?.posterType === "single" &&
         !feed?.configuration?.singleSelectedOccurrence && (
           <div style={{ color: "white", margin: "1em" }}>
-            Der er ikke valgt en event/forekomst.
+            Der er ikke valgt en event eller forekomst.
           </div>
         )}
       {/* TODO: Adjust styling to variables from Theme */}
@@ -166,7 +166,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
                 backgroundImage: `url("${image}")`,
                 ...(show
                   ? { animation: `fade-in ${animationDuration}ms` }
-                  : { animation: `fade-out ${animationDuration}ms` }),
+                  : { animation: `fade-out ${animationDuration}ms` })
               }}
             />
             <div className="header-area">
@@ -252,11 +252,11 @@ Poster.propTypes = {
   slide: PropTypes.shape({
     mediaData: PropTypes.shape({
       url: PropTypes.string,
-      assets: PropTypes.shape({ uri: PropTypes.string }),
+      assets: PropTypes.shape({ uri: PropTypes.string })
     }),
     themeData: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.arrayOf(PropTypes.string),
+      logo: PropTypes.arrayOf(PropTypes.string)
     }),
     feed: PropTypes.shape({
       configuration: PropTypes.shape({
@@ -267,8 +267,8 @@ Poster.propTypes = {
         hideTime: PropTypes.bool,
         readMoreText: PropTypes.string,
         posterType: PropTypes.string,
-        singleSelectedOccurrence: PropTypes.string,
-      }),
+        singleSelectedOccurrence: PropTypes.string
+      })
     }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({
@@ -283,20 +283,20 @@ Poster.propTypes = {
           name: PropTypes.string,
           postalCode: PropTypes.string,
           streetAddress: PropTypes.string,
-          telephone: PropTypes.string,
+          telephone: PropTypes.string
         }),
         startDate: PropTypes.string,
         ticketPriceRange: PropTypes.string,
         ticketPurchaseUrl: PropTypes.string,
-        url: PropTypes.string,
+        url: PropTypes.string
       })
-    ),
+    )
   }).isRequired,
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
-    showLogo: PropTypes.bool,
+    showLogo: PropTypes.bool
   }).isRequired,
-  executionId: PropTypes.string.isRequired,
+  executionId: PropTypes.string.isRequired
 };
 
 export default Poster;
