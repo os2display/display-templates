@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#145](https://github.com/os2display/display-templates/pull/145)
+  - Added 0 to stations.
 - [#142](https://github.com/os2display/display-templates/pull/142)
   Update poster template to display url domain.
 
