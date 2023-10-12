@@ -54,7 +54,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     place,
   } = currentEvent ?? {};
 
-  const { configuration = {} } = feed;
+  const { configuration = {} } = feed ?? {};
 
   const {
     overrideTitle = "",
@@ -157,10 +157,10 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      {feed?.configuration?.posterType === "single" &&
-        !feed?.configuration?.singleSelectedOccurrence && (
-          <div style={{ color: "white", margin: "1em" }}>
-            Der er ikke valgt et event eller en forekomst.
+      {configuration?.posterType === "single" &&
+        !configuration?.singleSelectedOccurrence && (
+          <div style={{ color: "white", background: "black", margin: "1em" }}>
+            Der er ikke valgt en begivenhed eller en forekomst.
           </div>
         )}
 
