@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 - [#144](https://github.com/os2display/display-templates/pull/144)
-  - Fixed poster template to account show message when not configured correctly.
+  - Fixed poster template to show message when not configured correctly.
 - [#142](https://github.com/os2display/display-templates/pull/142)
   - Update poster template to display url domain.
 
