@@ -6,8 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - [#145](https://github.com/os2display/display-templates/pull/145)
   - Added 0 to stations.
+- [#144](https://github.com/os2display/display-templates/pull/144)
+  - Fixed poster template issue when no feed is loaded.
 - [#142](https://github.com/os2display/display-templates/pull/142)
-  Update poster template to display url domain.
+  - Update poster template to display url domain.
 
 ## [1.3.0] - 2023-09-14
 
