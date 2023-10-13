@@ -54,7 +54,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     place,
   } = currentEvent ?? {};
 
-  const { configuration = {} } = feed;
+  const { configuration = {} } = feed ?? {};
 
   const {
     overrideTitle = "",
@@ -158,85 +158,89 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   return (
     <>
       {/* TODO: Adjust styling to variables from Theme */}
-      <IntlProvider messages={translations} locale="da" defaultLocale="da">
-        <div className={`template-poster ${showLogo && "with-logo"}`}>
-          <div
-            className="image-area"
-            style={{
-              backgroundImage: `url("${image}")`,
-              ...(show
-                ? { animation: `fade-in ${animationDuration}ms` }
-                : { animation: `fade-out ${animationDuration}ms` }),
-            }}
-          />
-          <div className="header-area">
-            <div className="center">
-              <h1>
-                {!overrideTitle && name}
-                {overrideTitle}
-              </h1>
-              <p className="lead">
-                {!overrideSubTitle && excerpt}
-                {overrideSubTitle}
-              </p>
+      {currentEvent !== null && (
+        <IntlProvider messages={translations} locale="da" defaultLocale="da">
+          <div className={`template-poster ${showLogo && "with-logo"}`}>
+            <div
+              className="image-area"
+              style={{
+                backgroundImage: `url("${image}")`,
+                ...(show
+                  ? { animation: `fade-in ${animationDuration}ms` }
+                  : { animation: `fade-out ${animationDuration}ms` }),
+              }}
+            />
+            <div className="header-area">
+              <div className="center">
+                <h1>
+                  {!overrideTitle && name}
+                  {overrideTitle}
+                </h1>
+                <p className="lead">
+                  {!overrideSubTitle && excerpt}
+                  {overrideSubTitle}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="info-area">
-            <div className="center">
-              {!hideTime && startDate && (
-                <span>
-                  {singleDayEvent && (
-                    <span>
-                      <div className="date">{formatDate(startDate)}</div>
-                      <div className="date">
-                        {formatTime(startDate)} - {formatTime(endDate)}
-                      </div>
+            <div className="info-area">
+              <div className="center">
+                {!hideTime && startDate && (
+                  <span>
+                    {singleDayEvent && (
+                      <span>
+                        <div className="date">{formatDate(startDate)}</div>
+                        <div className="date">
+                          {formatTime(startDate)} - {formatTime(endDate)}
+                        </div>
+                      </span>
+                    )}
+                    {/* todo if startdate is not equal to enddate */}
+                    {!singleDayEvent && (
+                      <span>
+                        <div className="date">
+                          {startDate && formatDateNoYear(startDate)} -{" "}
+                          {endDate && formatDate(endDate)}
+                        </div>
+                        <div className="date">
+                          {formatTime(startDate)} - {formatTime(endDate)}
+                        </div>
+                      </span>
+                    )}
+                  </span>
+                )}
+                {place && <p className="place">{place.name}</p>}
+                <p className="ticket">
+                  {!ticketPriceRange && (
+                    <FormattedMessage id="free" defaultMessage="free" />
+                  )}
+                  {ticketPriceRange && (
+                    <>
+                      {!overrideTicketPrice && ticketPriceRange}
+                      {overrideTicketPrice}
+                    </>
+                  )}
+                </p>
+                <>
+                  {readMoreText && <p className="moreinfo">{readMoreText}</p>}
+                  {!overrideReadMoreUrl && url && (
+                    <span className="look-like-link">{getUrlDomain(url)}</span>
+                  )}
+                  {overrideReadMoreUrl && (
+                    <span className="look-like-link">
+                      {overrideReadMoreUrl}
                     </span>
                   )}
-                  {/* todo if startdate is not equal to enddate */}
-                  {!singleDayEvent && (
-                    <span>
-                      <div className="date">
-                        {startDate && formatDateNoYear(startDate)} -{" "}
-                        {endDate && formatDate(endDate)}
-                      </div>
-                      <div className="date">
-                        {formatTime(startDate)} - {formatTime(endDate)}
-                      </div>
-                    </span>
-                  )}
-                </span>
-              )}
-              {place && <p className="place">{place.name}</p>}
-              <p className="ticket">
-                {!ticketPriceRange && (
-                  <FormattedMessage id="free" defaultMessage="free" />
-                )}
-                {ticketPriceRange && (
-                  <>
-                    {!overrideTicketPrice && ticketPriceRange}
-                    {overrideTicketPrice}
-                  </>
-                )}
-              </p>
-              <>
-                {readMoreText && <p className="moreinfo">{readMoreText}</p>}
-                {!overrideReadMoreUrl && url && (
-                  <span className="look-like-link">{getUrlDomain(url)}</span>
-                )}
-                {overrideReadMoreUrl && (
-                  <span className="look-like-link">{overrideReadMoreUrl}</span>
-                )}
-              </>
+                </>
+              </div>
             </div>
+            {showLogo && (
+              <div className="logo-area">
+                <img src={logoUrl} alt="" />
+              </div>
+            )}
           </div>
-          {showLogo && (
-            <div className="logo-area">
-              <img src={logoUrl} alt="" />
-            </div>
-          )}
-        </div>
-      </IntlProvider>
+        </IntlProvider>
+      )}
 
       <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
