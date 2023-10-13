@@ -157,13 +157,6 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      {configuration?.posterType === "single" &&
-        !configuration?.singleSelectedOccurrence && (
-          <div style={{ color: "white", background: "black", margin: "1em" }}>
-            Der er ikke valgt en begivenhed eller en forekomst.
-          </div>
-        )}
-
       {/* TODO: Adjust styling to variables from Theme */}
       {currentEvent !== null && (
         <IntlProvider messages={translations} locale="da" defaultLocale="da">
@@ -274,8 +267,6 @@ Poster.propTypes = {
         overrideReadMoreUrl: PropTypes.string,
         hideTime: PropTypes.bool,
         readMoreText: PropTypes.string,
-        posterType: PropTypes.string,
-        singleSelectedOccurrence: PropTypes.string
       }),
     }),
     feedData: PropTypes.arrayOf(
