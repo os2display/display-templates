@@ -59,6 +59,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     [...Array(10).keys()].forEach((i) => {
       ids += `${idWithMissingLastCharacter}${i}@`;
     });
+
     return ids;
   };
 
@@ -75,7 +76,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     iFrameClass = "iframe grow";
   }
 
-  /** Setup slide run function. */
+  // Setup slide run function
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -87,24 +88,33 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     };
   }, [run]);
 
-  /** Create url */
+  // Create url
   useEffect(() => {
-    if (busOrTram === "tram") {
-      setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-          numberOfJourneys || 1
-        }&enableHIM=1&p2=letbane&p2title=${iframeTitle || ""}&p2icons=&`
-      );
-    } else {
-      setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-          numberOfJourneys || 1
-        }&enableHIM=1&p1=bus&p1title=${iframeTitle || ""}&p1icons`
-      );
+    const urlSearchParams = new URLSearchParams({
+      L: "vs_tus.vs_new",
+      station: getStationIds(),
+      tpl: "monitor",
+      stopFrequency: "low",
+      preview: 50,
+      offsetTime: 1,
+      maxJourneys: numberOfJourneys || 1,
+      enableHIM: 1,
+      p1: busOrTram === "tram" ? "letbane" : "bus",
+      p1title: iframeTitle || "",
+    });
+
+    // TODO: Add this as an option if requested.
+    const disableIcons = false;
+    if (disableIcons) {
+      urlSearchParams.append("p1icons", "");
     }
+
+    setIframeSrc(
+      `https://webapp.rejseplanen.dk/bin/help.exe/mn?${urlSearchParams}`
+    );
   }, [busOrTram]);
 
-  /** Imports language strings. */
+  // Imports language strings
   useEffect(() => {
     setTranslations(da);
   }, []);
