@@ -32,8 +32,11 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     iframeTitle,
     numberOfJourneys,
     busOrTram,
+    monitorLayout,
+    disableIcons,
     duration = 15000,
   } = content;
+
   let infoBoxClass = "info-box";
   let iFrameClass = "iframe";
 
@@ -50,6 +53,10 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   // So, here we replace the last character of the id with 0-9, and then the rejseplan-api disregards ids that
   // are not connected to a station (we hope).
   const getStationIds = () => {
+    if (!(station instanceof Array) || station.length === 0) {
+      return "";
+    }
+
     let ids = "";
     const idWithMissingLastCharacter = station[0].id.substring(
       0,
@@ -103,10 +110,12 @@ function Travel({ slide, content, run, slideDone, executionId }) {
       p1title: iframeTitle || "",
     });
 
-    // TODO: Add this as an option if requested.
-    const disableIcons = false;
     if (disableIcons) {
-      urlSearchParams.append("p1icons", "");
+      urlSearchParams.append("p1icons", null);
+    }
+
+    if (["auto", "night"].includes(monitorLayout)) {
+      urlSearchParams.append("monitorLayout", monitorLayout);
     }
 
     setIframeSrc(
@@ -187,6 +196,8 @@ Travel.defaultProps = {
     iframeTitle: "",
     numberOfJourneys: 1,
     duration: 15000,
+    monitorLayout: null,
+    disableIcons: false,
   },
 };
 
@@ -215,6 +226,8 @@ Travel.propTypes = {
     iframeTitle: PropTypes.string,
     busOrTram: PropTypes.string,
     numberOfJourneys: PropTypes.number,
+    monitorLayout: PropTypes.string,
+    disableIcons: PropTypes.bool,
   }),
   executionId: PropTypes.string.isRequired,
 };

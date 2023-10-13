@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 - [#145](https://github.com/os2display/display-templates/pull/145)
-  - Added 0 to stations.
+  - Travel: Added 0 to stations.
+  - Travel: Added option to disable icons.
+  - Travel: Added option to set monitorLayout to auto or darkmode.
 - [#144](https://github.com/os2display/display-templates/pull/144)
   - Fixed poster template issue when no feed is loaded.
 - [#142](https://github.com/os2display/display-templates/pull/142)

@@ -1307,6 +1307,8 @@ const slides = [
       timeModerate: "5-7 minutter",
       timeFast: "3-23 minutter",
       image: ["/v1/media/00000000000000000000000001"],
+      monitorLayout: "night",
+      disableIcons: true,
     },
   },
 ];
