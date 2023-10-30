@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.3.1] - 2023-10-26
+
 - [#145](https://github.com/os2display/display-templates/pull/145)
   - Travel: Added 0 to stations.
   - Travel: Added option to disable icons.
