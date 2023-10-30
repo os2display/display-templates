@@ -12,7 +12,7 @@ example content for the different templates.
 `index.html` serves a local setup for working with the templates.
 
 ```bash
-docker-compose run node yarn
+docker-compose run --rm node yarn
 docker-compose up -d
 ```
 
@@ -46,13 +46,13 @@ Add it to `const entry = {}`:
 To build the templates for production
 
 ```bash
-yarn build
+docker-compose run --rm node yarn build
 ```
 
 To continually build components when files change
 
 ```bash
-yarn build-watch
+docker-compose run --rm node yarn build-watch
 ```
 
 The compiled files will be placed in `build/`. These should be committed to
@@ -61,11 +61,11 @@ git repository, to enable Remote Components to load them in the clients.
 ### Linting
 
 ```bash
-docker-compose run node yarn check-coding-standards
+docker-compose run --rm node yarn check-coding-standards
 ```
 
 ```bash
-docker-compose run node yarn apply-coding-standards
+docker-compose run --rm node yarn apply-coding-standards
 ```
 
 ### Tests
@@ -74,9 +74,9 @@ Run tests
 
 ```sh
 # Templates
-docker compose run cypress run --component
+docker compose run --rm cypress run --component
 # Screen layouts
-docker compose run cypress run
+docker compose run --rm cypress run
 ```
 
 Or open mode

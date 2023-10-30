@@ -32,8 +32,11 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     iframeTitle,
     numberOfJourneys,
     busOrTram,
+    monitorLayout,
+    disableIcons,
     duration = 15000,
   } = content;
+
   let infoBoxClass = "info-box";
   let iFrameClass = "iframe";
 
@@ -46,19 +49,24 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   // This is a shameful hack, hopefully temporarily, to combat the fact that the station-api
   // only returns a station in _one direction_, instead of both
   // After meeting*s* about this, we have concluded that the ids follow a pattern, where the last character
-  // in the string is defining which direction, and can be anything from 1-9.
-  // So, here we replace the last character of the id with 1-9, and then the rejseplan-api disregards ids that
+  // in the string is defining which direction, and can be anything from 0-9.
+  // So, here we replace the last character of the id with 0-9, and then the rejseplan-api disregards ids that
   // are not connected to a station (we hope).
   const getStationIds = () => {
+    if (!(station instanceof Array) || station.length === 0) {
+      return "";
+    }
+
     let ids = "";
     const idWithMissingLastCharacter = station[0].id.substring(
       0,
       station[0].id.length - 1
     );
 
-    [...Array(9).keys()].forEach((i) => {
-      ids += `${idWithMissingLastCharacter}${i + 1}@`;
+    [...Array(10).keys()].forEach((i) => {
+      ids += `${idWithMissingLastCharacter}${i}@`;
     });
+
     return ids;
   };
 
@@ -75,7 +83,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     iFrameClass = "iframe grow";
   }
 
-  /** Setup slide run function. */
+  // Setup slide run function
   const slideExecution = new BaseSlideExecution(slide, slideDone);
   useEffect(() => {
     if (run) {
@@ -87,24 +95,35 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     };
   }, [run]);
 
-  /** Create url */
+  // Create url
   useEffect(() => {
-    if (busOrTram === "tram") {
-      setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-          numberOfJourneys || 1
-        }&enableHIM=1&p2=letbane&p2title=${iframeTitle || ""}&p2icons=&`
-      );
-    } else {
-      setIframeSrc(
-        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${getStationIds()}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-          numberOfJourneys || 1
-        }&enableHIM=1&p1=bus&p1title=${iframeTitle || ""}&p1icons`
-      );
+    const urlSearchParams = new URLSearchParams({
+      L: "vs_tus.vs_new",
+      station: getStationIds(),
+      tpl: "monitor",
+      stopFrequency: "low",
+      preview: 50,
+      offsetTime: 1,
+      maxJourneys: numberOfJourneys || 1,
+      enableHIM: 1,
+      p1: busOrTram === "tram" ? "letbane" : "bus",
+      p1title: iframeTitle || "",
+    });
+
+    if (disableIcons) {
+      urlSearchParams.append("p1icons", null);
     }
+
+    if (["auto", "night"].includes(monitorLayout)) {
+      urlSearchParams.append("monitorLayout", monitorLayout);
+    }
+
+    setIframeSrc(
+      `https://webapp.rejseplanen.dk/bin/help.exe/mn?${urlSearchParams}`
+    );
   }, [busOrTram]);
 
-  /** Imports language strings. */
+  // Imports language strings
   useEffect(() => {
     setTranslations(da);
   }, []);
@@ -177,6 +196,8 @@ Travel.defaultProps = {
     iframeTitle: "",
     numberOfJourneys: 1,
     duration: 15000,
+    monitorLayout: null,
+    disableIcons: false,
   },
 };
 
@@ -205,6 +226,8 @@ Travel.propTypes = {
     iframeTitle: PropTypes.string,
     busOrTram: PropTypes.string,
     numberOfJourneys: PropTypes.number,
+    monitorLayout: PropTypes.string,
+    disableIcons: PropTypes.bool,
   }),
   executionId: PropTypes.string.isRequired,
 };
