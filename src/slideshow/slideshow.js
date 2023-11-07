@@ -20,19 +20,19 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5000, transition, animation } = content;
+  const { images, imageDuration = 5, transition, animation } = content;
   const [index, setIndex] = useState(0);
   const fadeEnabled = transition === "fade";
   const fadeDuration = 1000;
   const [fade, setFade] = useState(false);
-  const imageDurationInSeconds = imageDuration * 1000;
+  const imageDurationInMilliseconds = imageDuration * 1000;
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
   const animationName = "animationForImage";
   const [animationIndex, setAnimationIndex] = useState(0);
   const [animationDuration, setAnimationDuration] = useState(
-    imageDurationInSeconds + fadeDuration
+    imageDurationInMilliseconds + fadeDuration
   );
 
   const logo = slide?.themeData?.logo;
@@ -176,7 +176,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
             // Fade to next image.
             setFade(true);
             setAnimationIndex(newIndex);
-            setAnimationDuration(imageDurationInSeconds + fadeDuration * 2);
+            setAnimationDuration(imageDurationInMilliseconds + fadeDuration * 2);
             fadeRef.current = setTimeout(() => {
               setFade(false);
               setIndex(newIndex);
@@ -185,9 +185,9 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
             // Change to next.
             setIndex(newIndex);
             setAnimationIndex(newIndex);
-            setAnimationDuration(imageDurationInSeconds);
+            setAnimationDuration(imageDurationInMilliseconds);
           }
-        }, imageDurationInSeconds);
+        }, imageDurationInMilliseconds);
       } else {
         // If there are no images in slide, wait for 2s before continuing to avoid crashes.
         setTimeout(() => {

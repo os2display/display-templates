@@ -167,7 +167,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
     }
   }, [slide]);
 
-  useEffect(() => {
+  const startTheShow = () => {
     if (images?.length > 0 && !currentImage) {
       setCurrentImage(images[0]);
     }
@@ -177,6 +177,12 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
       // Kickoff the display of multiple images with the zero indexed
       changeImage(0);
     }
+  };
+
+  useEffect(() => {
+    if (!currentImage) {
+      startTheShow();
+    }
   }, [images]);
 
   /** Setup slide run function. */
@@ -184,6 +190,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
 
   useEffect(() => {
     if (run) {
+      startTheShow();
       slideExecution.start(duration);
     }
 
