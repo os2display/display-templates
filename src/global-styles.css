@@ -47,6 +47,34 @@
   --text-light: var(--color-light);
   --text-dark: var(--color-dark);
 
+  --color-red-oklch-ch: 0.25 29;
+  --color-red-50: oklch(95% var(--color-red-oklch-ch));
+  --color-red-100: oklch(90% var(--color-red-oklch-ch));
+  --color-red-200: oklch(85% var(--color-red-oklch-ch));
+  --color-red-300: oklch(80% var(--color-red-oklch-ch));
+  --color-red-400: oklch(70% var(--color-red-oklch-ch));
+  --color-red-500: oklch(60% var(--color-red-oklch-ch));
+  --color-red-600: oklch(50% var(--color-red-oklch-ch));
+  --color-red-700: oklch(40% var(--color-red-oklch-ch));
+  --color-red-800: oklch(30% var(--color-red-oklch-ch));
+  --color-red-900: oklch(20% var(--color-red-oklch-ch));
+  --color-red-950: oklch(15% var(--color-red-oklch-ch));
+
+  --color-green-oklch-ch: 0.17685825418032033 142.49533888780994;
+  --color-green-50: oklch(95% var(--color-green-oklch-ch));
+  --color-green-100: oklch(90% var(--color-green-oklch-ch));
+  --color-green-200: oklch(85% var(--color-green-oklch-ch));
+  --color-green-300: oklch(80% var(--color-green-oklch-ch));
+  --color-green-400: oklch(70% var(--color-green-oklch-ch));
+  --color-green-500: oklch(60% var(--color-green-oklch-ch));
+  --color-green-600: oklch(50% var(--color-green-oklch-ch));
+  --color-green-700: oklch(40% var(--color-green-oklch-ch));
+  --color-green-800: oklch(30% var(--color-green-oklch-ch));
+  --color-green-900: oklch(20% var(--color-green-oklch-ch));
+  --color-green-950: oklch(15% var(--color-green-oklch-ch));
+
+
+
   /*
   * Fonts
   */

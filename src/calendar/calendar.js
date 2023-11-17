@@ -7,6 +7,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
+import CalendarSingleBooking from "./calendar-single-booking";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
 import GlobalStyles from "../GlobalStyles";
@@ -78,6 +79,15 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
+            calendarEvents={feedData ?? []}
+            content={content}
+            templateClasses={classes}
+            templateRootStyle={rootStyle}
+            getTitle={getTitle}
+          />
+        )}
+        {layout === "single-booking" && (
+          <CalendarSingleBooking
             calendarEvents={feedData ?? []}
             content={content}
             templateClasses={classes}

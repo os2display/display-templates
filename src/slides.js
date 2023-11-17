@@ -1311,6 +1311,109 @@ const slides = [
       disableIcons: true,
     },
   },
+  {
+    id: "slide22-calendar-single-booking",
+    type: "calendar",
+    //themeFile: "themes/dokk1.css",
+    feedData: [
+      {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent1",
+        title: "Cake",
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det første rum",
+        resourceId: "M1",
+      },
+      {
+        id: "uniqueEvent51",
+        title: "Tea Tomorrow",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent2",
+        //        title: "Cookies",
+        startTime: dayjs().add(2, "hour").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle: "Det andet rum",
+        resourceId: "M2",
+      },
+      {
+        id: "uniqueEvent3",
+        title: "Coffee",
+        startTime: dayjs().add(3, "hour").add(15, "minutes").unix(),
+        endTime: dayjs().add(4, "hour").unix(),
+        resourceTitle: "Det tredje rum",
+        resourceId: "M3",
+      },
+      {
+        id: "uniqueEvent4",
+        title: "Tea",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent5",
+        title: "Tea",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent6",
+        title: "Tea",
+        startTime: dayjs().add(3, "hour").add(3, "day").unix(),
+        endTime: dayjs().add(4, "hour").add(3, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent7",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(6, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(6, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+    ],
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 5000,
+      layout: "single-booking",
+      backgroundColor: "",
+      title: "Kalender",
+      subTitle: "Underoverskrift",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      resourceUnavailableText: "Det er optaget",
+      //image: ["/v1/media/00000000000000000000000001"],
+      footerText: "Se mere på localhost/events",
+      fontSize: "font-size-xl",
+    },
+  },
 ];
 
 export default slides;
