@@ -4,6 +4,9 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
+import IconCheck from "./icon-check.svg";
+import IconExclamation from "./icon-exclamation.svg";
+import IconCalendarPlus from "./icon-calendar-plus.svg";
 
 /**
  * Single resource calendar.
@@ -71,20 +74,47 @@ function CalendarSingleBooking({
     return elements.concat();
   };
 
+  const roomFree = true;
+
   return (
     <Wrapper
-      className={`calendar-single ${templateClasses.join(" ")}`}
+      className={`calendar-single-booking ${templateClasses.join(" ")}`}
       style={templateRootStyle}
     >
-      <Header></Header>
-      <Title className="title">{title}</Title>
-      {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
+      <Header style={{backgroundColor: roomFree ? 'var(--color-green-900)' : 'var(--color-red-900)'}}>
+        <RoomInfo>
+          {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
+          <Title className="title">{title}</Title>
+        </RoomInfo>
+        <Status>
+          <StatusIcon>{roomFree ? <IconCheck style={{color: 'var(--color-green-600)'}}/> : <IconExclamation style={{color: 'var(--color-red-600)'}}/> }</StatusIcon>
+          <StatusText>{roomFree ? 'Ledigt' : 'Optaget'}</StatusText>
+        </Status>
+        <DateTime style={{backgroundColor: roomFree ? 'var(--color-green-50)' : 'var(--color-red-50)'}}>
+          <Date>Mandag 7. august</Date>
+          <Time>9:54</Time>
+        </DateTime>
+      </Header>
       <Content className="content">
-        {calendarEvents?.length === 0 && (
-          <ContentItem className="content-item">
-            {resourceAvailableText}
-          </ContentItem>
-        )}
+        {roomFree ?
+          (
+            <ContentItem className="content-item">
+              <h1>Lokalet er ledigt</h1>
+              <p>Straksbook lokalet. Vælg varighed.</p>
+              <ButtonWrapper>
+                <Button><IconCalendarPlusWrapper /><span>15 min</span></Button>
+                <Button><IconCalendarPlusWrapper /><span>30 min</span></Button>
+                <Button><IconCalendarPlusWrapper /><span>60 min</span></Button>
+              </ButtonWrapper>
+            </ContentItem>
+          )
+        :
+          calendarEvents?.length === 0 && (
+            <ContentItem className="content-item">
+              {resourceAvailableText}
+            </ContentItem>
+          )
+        }
         {calendarEvents?.length > 0 && renderSingle(calendarEvents)}
       </Content>
     </Wrapper>
@@ -103,33 +133,107 @@ const Wrapper = styled.div`
   */
   background-color: var(--bg-color, var(--background-color));
   background-image: var(--bg-image, none);
+
   color: var(--text-color);
-  padding: var(--padding-size-base);
 `;
 
 const Header = styled.div`
   /* Header styling */
+  display: flex;
+`;
 
+const RoomInfo = styled.div`
+  /* RoomInfo styling */
+  padding: calc(var(--padding-size-base) * 2);
+  flex-grow: 2;
+  color: var(--text-light);
 `;
 
 const Title = styled.div`
-  font-size: var(--h1-font-size);
+  font-size: var(--h2-font-size);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--margin-size-base);
 `;
 
 const SubTitle = styled.div`
-  font-size: var(--h2-font-size);
-  margin-bottom: var(--margin-size-base);
+  font-size: var(--font-size-lg);
+`;
+
+const Status = styled.div`
+  /* Status styling */
+  padding: var(--padding-size-base);
+  padding-right: calc(var(--padding-size-base) * 3);
+  display: flex;
+  column-gap: var(--spacer);
+  align-items: center;
+`;
+
+const StatusIcon = styled.div`
+  /* StatusIcon styling */
+  height: var(--h2-font-size);
+  width: var(--h2-font-size);
+`;
+
+const StatusText = styled.div`
+  /* StatusText styling */
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-light);
+`;
+
+const DateTime = styled.div`
+  /* DateTime styling */
+  flex-basis: 25%;
+  text-align: right;
+  padding: var(--padding-size-base);
+  color: var(--text-dark);
+`;
+
+const Date = styled.div`
+  /* Date styling */
+  font-size: var(--font-size-lg);
+`;
+
+const Time = styled.div`
+  /* Time styling */
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-bold);
+`;
+
+const ButtonWrapper = styled.div`
+/* ButtonWrapper styling */
+  display: flex;
+  column-gap: calc(var(--spacer) * 2);
+`;
+
+const Button = styled.button`
+  /* Button styling */
+  display: flex;
+  column-gap: var(--spacer);
+  font-size: var(--font-size-m);
+  white-space: nowrap;
+  align-items: center;
+  padding: calc(var(--font-size-base) * 0.75) calc(var(--font-size-base) * 1.75);
+  background-color: var(--color-green-600);
+  border-color: var(--color-green-600);
+  border-radius: var(--border-radius-md);
+  border-style: solid;
+  color: var(--text-light);
+`;
+
+const IconCalendarPlusWrapper = styled(IconCalendarPlus)`
+  /* IconCalendarPlus styling */
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  padding: calc(var(--padding-size-base) * 2);
 `;
 
 const ContentItem = styled.div`
-  border-left: var(--border);
+  border-left: calc(var(--border-size) * 2) var(--border-style) var(--text-color) ;
   padding-left: var(--padding-size-base);
   margin-bottom: var(--margin-size-base);
   font-size: var(--font-size-base);
