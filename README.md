@@ -12,8 +12,9 @@ example content for the different templates.
 `index.html` serves a local setup for working with the templates.
 
 ```bash
-docker-compose run --rm node yarn
-docker-compose up -d
+docker compose pull
+docker compose run --rm node yarn
+docker compose up --detach
 ```
 
 The docker setup serves the files in the `build/` (see build for production) folder as `display-templates.local.itkdev.dk/build/`.
@@ -46,26 +47,62 @@ Add it to `const entry = {}`:
 To build the templates for production
 
 ```bash
-docker-compose run --rm node yarn build
+docker compose run --rm node yarn install
+docker compose run --rm node yarn build
 ```
 
 To continually build components when files change
 
 ```bash
-docker-compose run --rm node yarn build-watch
+docker compose run --rm node yarn build-watch
 ```
 
 The compiled files will be placed in `build/`. These should be committed to
 git repository, to enable Remote Components to load them in the clients.
 
+### Build base URL
+
+The default base build URLs,
+`https://raw.githubusercontent.com/os2display/display-templates/develop/build/`
+and
+`https://raw.githubusercontent.com/os2display/display-templates/main/build/`,
+respectively, can be overridden via environment variables:
+
+Override both with same value:
+
+```sh
+docker compose run --rm --env DEPLOYMENT_BUILD_BASE_URL="http://$(docker compose port nginx 80)/build/" node yarn build
+```
+
+Override "develop" base URL only:
+
+```sh
+docker compose run --rm --env DEPLOYMENT_BUILD_BASE_URL_DEVELOP="http://$(docker compose port nginx 80)/build/" node yarn build
+```
+
+Override "main" base URL only:
+
+```sh
+docker compose run --rm --env DEPLOYMENT_BUILD_BASE_URL_MAIN="http://$(docker compose port nginx 80)/build/" node yarn build
+```
+
+The default behavoir is equivalent to
+
+```sh
+docker compose run --rm \
+    --env DEPLOYMENT_BUILD_BASE_URL_DEVELOP="https://raw.githubusercontent.com/os2display/display-templates/develop/build/" \
+    --env DEPLOYMENT_BUILD_BASE_URL_MAIN="https://raw.githubusercontent.com/os2display/display-templates/main/build/" \
+    node yarn build
+```
+
 ### Linting
 
 ```bash
-docker-compose run --rm node yarn check-coding-standards
+docker compose run --rm node yarn check-coding-standards
 ```
 
 ```bash
-docker-compose run --rm node yarn apply-coding-standards
+docker compose run --rm node yarn apply-coding-standards
 ```
 
 ### Tests
