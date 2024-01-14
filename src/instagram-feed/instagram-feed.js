@@ -140,7 +140,7 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
         </div>
       )}
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -149,7 +149,7 @@ InstagramFeed.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
     feedData: PropTypes.arrayOf(

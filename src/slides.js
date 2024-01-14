@@ -321,7 +321,7 @@ const slides = [
         },
       },
     },
-    themeData: {
+    theme: {
       logo: ["/v1/media/00000000000000000000000001"],
     },
     feed: {
@@ -1051,7 +1051,7 @@ const slides = [
     id: "slide15-image-text-logo",
     type: "image-text",
     themeFile: "themes/dokk1.css",
-    themeData: {
+    theme: {
       logo: ["/v1/media/00000000000000000000000001"],
     },
     mediaData: {
@@ -1083,7 +1083,7 @@ const slides = [
     id: "slide16-slideshow-no-stuff",
     type: "slideshow",
     themeFile: "themes/dokk1.css",
-    themeData: {
+    theme: {
       logo: ["/v1/media/00000000000000000000000001"],
     },
     mediaData: {
@@ -1256,7 +1256,7 @@ const slides = [
         },
       },
     },
-    themeData: {
+    theme: {
       logo: ["/v1/media/00000000000000000000000001"],
     },
     feed: {

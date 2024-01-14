@@ -199,9 +199,9 @@ export const Slide = ({ slide: inputSlide }) => {
       .then((resp) => resp.text())
       .then((data) => {
         const newSelectedSlide = { ...s };
-        newSelectedSlide.themeData = {
+        newSelectedSlide.theme = {
           cssStyles: data,
-          logo: newSelectedSlide?.themeData?.logo,
+          logo: newSelectedSlide?.theme?.logo,
         };
         setSlide(newSelectedSlide);
       });

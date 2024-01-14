@@ -26,7 +26,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const [show, setShow] = useState(true);
   const timerRef = useRef(null);
   const animationTimerRef = useRef(null);
-  const logo = slide?.themeData?.logo;
+  const logo = slide?.theme?.logo;
   const { showLogo } = content;
   let logoUrl = "";
 
@@ -242,7 +242,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
         </IntlProvider>
       )}
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -255,7 +255,7 @@ Poster.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
       logo: PropTypes.arrayOf(PropTypes.string),
     }),

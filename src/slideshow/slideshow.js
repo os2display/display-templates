@@ -35,7 +35,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     imageDurationInMilliseconds + fadeDuration
   );
 
-  const logo = slide?.themeData?.logo;
+  const logo = slide?.theme?.logo;
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
 
   let logoUrl = "";
@@ -253,7 +253,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -266,7 +266,7 @@ Slideshow.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
       logo: PropTypes.string,
     }),
