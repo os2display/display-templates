@@ -32,11 +32,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
   const { disableImageFade } = content;
 
-  let logoUrl = "";
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = logo.assets.uri ?? "";
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const logoClasses = ["logo"];
 
@@ -263,7 +259,11 @@ ImageText.propTypes = {
     }),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   content: PropTypes.shape({

@@ -38,11 +38,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
   const logo = slide?.theme?.logo;
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
 
-  let logoUrl = "";
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const logoClasses = ["logo"];
 
@@ -268,7 +264,11 @@ Slideshow.propTypes = {
     }),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   content: PropTypes.shape({

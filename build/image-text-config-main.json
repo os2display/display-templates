@@ -4,9 +4,9 @@
   "id": "01FP2SNGFN0BZQH03KCBXHKYHG",
   "description": "Mulighed for at sætte billede og tekst, med forskellige visninger.",
   "resources": {
-    "component": "https://display-templates.local.itkdev.dk/build/image-text.js?ts=1705238825333",
-    "admin": "https://display-templates.local.itkdev.dk/build/image-text-admin.json?ts=1705238825333",
-    "schema": "https://display-templates.local.itkdev.dk/build/image-text-schema.json?ts=1705238825333",
+    "component": "https://display-templates.local.itkdev.dk/build/image-text.js?ts=1705258712280",
+    "admin": "https://display-templates.local.itkdev.dk/build/image-text-admin.json?ts=1705258712280",
+    "schema": "https://display-templates.local.itkdev.dk/build/image-text-schema.json?ts=1705258712280",
     "assets": [],
     "options": {},
     "content": {}

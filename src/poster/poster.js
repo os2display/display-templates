@@ -28,12 +28,8 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const animationTimerRef = useRef(null);
   const logo = slide?.theme?.logo;
   const { showLogo } = content;
-  let logoUrl = "";
 
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const { feed, feedData } = slide;
 
@@ -257,7 +253,11 @@ Poster.propTypes = {
     }),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.arrayOf(PropTypes.string),
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
     feed: PropTypes.shape({
       configuration: PropTypes.shape({
