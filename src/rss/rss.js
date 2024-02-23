@@ -118,7 +118,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
         </Content>
       </Wrapper>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
       <GlobalStyles />
     </>
   );
@@ -233,7 +233,7 @@ RSS.propTypes = {
         })
       ),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
   }),

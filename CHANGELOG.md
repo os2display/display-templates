@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#148](https://github.com/os2display/display-templates/pull/148)
+  - Changed theme load following API change.
+  - Fixed path issue in #141.
 - [#141](https://github.com/os2display/display-templates/pull/141)
-  improve build for local development
+  - Improve build for local development
 - [#146](https://github.com/os2display/display-templates/pull/146)
   - Fixed issue where image-text image cycle is not restarting when only on slide is displayed.
   - Fixed issue with slideshow default duration being 5000 s.

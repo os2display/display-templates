@@ -35,14 +35,10 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     imageDurationInMilliseconds + fadeDuration
   );
 
-  const logo = slide?.themeData?.logo;
+  const logo = slide?.theme?.logo;
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
 
-  let logoUrl = "";
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const logoClasses = ["logo"];
 
@@ -253,7 +249,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -266,9 +262,13 @@ Slideshow.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   content: PropTypes.shape({

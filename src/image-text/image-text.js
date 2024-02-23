@@ -28,15 +28,11 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
-  const logo = slide?.themeData?.logo;
+  const logo = slide?.theme?.logo;
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
   const { disableImageFade } = content;
 
-  let logoUrl = "";
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const logoClasses = ["logo"];
 
@@ -52,9 +48,9 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
 
   // Set theme styles.
   useEffect(() => {
-    if (slide?.themeData?.cssStyles) {
+    if (slide?.theme?.cssStyles) {
       setThemeCss(
-        <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+        <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
       );
     }
   }, [slide]);
@@ -261,9 +257,13 @@ ImageText.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   content: PropTypes.shape({
