@@ -321,8 +321,12 @@ const slides = [
         },
       },
     },
-    themeData: {
-      logo: ["/v1/media/00000000000000000000000001"],
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
     },
     feed: {
       configuration: {
@@ -429,6 +433,13 @@ const slides = [
     id: "slide5-slideshow",
     type: "slideshow",
     themeFile: "themes/dokk1.css",
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
@@ -459,7 +470,7 @@ const slides = [
         "/v1/media/00000000000000000000000003",
         "/v1/media/00000000000000000000000004",
       ],
-      logoEnabled: false,
+      showLogo: true,
       logoSize: "l",
       logoPosition: "bottom right",
       transition: "fade",
@@ -1051,8 +1062,12 @@ const slides = [
     id: "slide15-image-text-logo",
     type: "image-text",
     themeFile: "themes/dokk1.css",
-    themeData: {
-      logo: ["/v1/media/00000000000000000000000001"],
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
     },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -1083,8 +1098,12 @@ const slides = [
     id: "slide16-slideshow-no-stuff",
     type: "slideshow",
     themeFile: "themes/dokk1.css",
-    themeData: {
-      logo: ["/v1/media/00000000000000000000000001"],
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
     },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
@@ -1256,8 +1275,12 @@ const slides = [
         },
       },
     },
-    themeData: {
-      logo: ["/v1/media/00000000000000000000000001"],
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
     },
     feed: {
       configuration: {
