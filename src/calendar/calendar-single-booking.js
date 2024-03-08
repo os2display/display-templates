@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -17,7 +17,8 @@ import IconCalendarPlus from "./icon-calendar-plus.svg";
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
  * @param {Function} props.getTitle - Function to get title for event.
- * @returns {string} - The component.
+ * @param props.slide
+ * @returns {JSXElement} - The component.
  */
 function CalendarSingleBooking({
   content,
@@ -25,21 +26,66 @@ function CalendarSingleBooking({
   templateClasses,
   templateRootStyle,
   getTitle,
+  slide,
 }) {
-  const { title = "", subTitle = null, resourceAvailableText = null } = content;
+  const { title = "", subTitle = null } = content;
 
-  /** Imports language strings, sets localized formats. */
-  useEffect(() => {
-    dayjs.extend(localizedFormat);
-  }, []);
+  // Get values from client localstorage.
+  const token = localStorage.getItem("apiToken");
+  const tenantKey = localStorage.getItem("tenantKey");
+  const apiUrl = localStorage.getItem("apiUrl");
 
-  const renderTimeOfDay = (unixTimestamp) => {
-    return dayjs(unixTimestamp * 1000)
-      .locale(localeDa)
-      .format("HH:mm");
+  const [bookableIntervals, setBookableIntervals] = useState([]);
+  const [fetchingIntervals, setFetchingIntervals] = useState(true);
+  const [currentTime, setCurrentTime] = useState(dayjs());
+  const [bookingResult, setBookingResult] = useState({});
+  const [processingBooking, setProcessingBooking] = useState(false);
+
+  const fetchBookingIntervals = () => {
+    if (!apiUrl || !slide || !token || !tenantKey) {
+      console.info(
+        "Required values not available. Aborting getting booking intervals."
+      );
+      return;
+    }
+
+    const resources = slide?.feed?.configuration?.resources ?? [];
+
+    if (resources.length === 1) {
+      fetch(`${apiUrl}${slide["@id"]}/action`, {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Authorization-Tenant-Key": tenantKey,
+          "Content-Type": "application/ld+json",
+        },
+        body: JSON.stringify({
+          implementationClass: "App\\Interactive\\MicrosoftGraphQuickBook",
+          action: "ACTION_GET_QUICK_BOOK_OPTIONS",
+          data: {
+            resource: resources[0],
+          },
+        }),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          setBookableIntervals(
+            data.filter((interval) => interval.available === true)
+          );
+        })
+        .catch((e) => console.error(e))
+        .finally(() => {
+          setFetchingIntervals(false);
+        });
+    }
   };
 
-  const renderSingle = (calendarEventsToRender) => {
+  const renderTimeOfDayFromUnixTimestamp = (unixTimestamp) =>
+    dayjs(unixTimestamp * 1000)
+      .locale(localeDa)
+      .format("HH:mm");
+
+  const renderSingleCalendarEvent = (calendarEventsToRender) => {
     const now = dayjs();
     const elements = [];
 
@@ -60,9 +106,9 @@ function CalendarSingleBooking({
                 }
               >
                 <Meta>
-                  {renderTimeOfDay(event.startTime)}
+                  {renderTimeOfDayFromUnixTimestamp(event.startTime)}
                   {" - "}
-                  {renderTimeOfDay(event.endTime)}
+                  {renderTimeOfDayFromUnixTimestamp(event.endTime)}
                 </Meta>
                 {getTitle(event.title)}
               </ContentItem>
@@ -74,48 +120,131 @@ function CalendarSingleBooking({
     return elements.concat();
   };
 
-  const roomFree = true;
+  useEffect(() => {
+    // Imports language strings, sets localized formats.
+    dayjs.extend(localizedFormat);
+
+    fetchBookingIntervals();
+
+    const interval = setInterval(() => {
+      setCurrentTime(dayjs());
+    }, 5000);
+
+    return () => {
+      if (interval !== null) {
+        clearInterval(interval);
+      }
+    };
+  }, []);
+
+  const clickInterval = (interval) => {
+    if (!apiUrl || !slide || !token || !tenantKey) {
+      console.info("Required values not available. Aborting create booking.");
+      return;
+    }
+
+    setProcessingBooking(true);
+
+    fetch(`${apiUrl}${slide["@id"]}/action`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Authorization-Tenant-Key": tenantKey,
+        "Content-Type": "application/ld+json",
+      },
+      body: JSON.stringify({
+        implementationClass: "App\\Interactive\\MicrosoftGraphQuickBook",
+        action: "ACTION_QUICK_BOOK",
+        data: {
+          interval,
+        },
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setBookingResult(data);
+      })
+      .catch((e) => console.error(e))
+      .finally(() => {
+        setProcessingBooking(false);
+      });
+  };
+
+  const roomFree = fetchingIntervals ? null : bookableIntervals?.length > 0;
+
+  const headerColor =
+    // eslint-disable-next-line no-nested-ternary
+    roomFree === null
+      ? "var(--color-grey-800)"
+      : roomFree
+      ? "var(--color-green-900)"
+      : "var(--color-red-900)";
+
+  const dateTimeColor =
+    // eslint-disable-next-line no-nested-ternary
+    roomFree === null
+      ? "var(--color-grey-100)"
+      : roomFree
+      ? "var(--color-green-50)"
+      : "var(--color-red-50)";
 
   return (
     <Wrapper
       className={`calendar-single-booking ${templateClasses.join(" ")}`}
       style={templateRootStyle}
     >
-      <Header style={{backgroundColor: roomFree ? 'var(--color-green-900)' : 'var(--color-red-900)'}}>
+      <Header
+        style={{
+          backgroundColor: headerColor,
+        }}
+      >
         <RoomInfo>
           {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
           <Title className="title">{title}</Title>
         </RoomInfo>
-        <Status>
-          <StatusIcon>{roomFree ? <IconCheck style={{color: 'var(--color-green-600)'}}/> : <IconExclamation style={{color: 'var(--color-red-600)'}}/> }</StatusIcon>
-          <StatusText>{roomFree ? 'Ledigt' : 'Optaget'}</StatusText>
-        </Status>
-        <DateTime style={{backgroundColor: roomFree ? 'var(--color-green-50)' : 'var(--color-red-50)'}}>
-          <Date>Mandag 7. august</Date>
-          <Time>9:54</Time>
+        {!fetchingIntervals && (
+          <Status>
+            <StatusIcon>
+              {roomFree ? (
+                <IconCheck style={{ color: "var(--color-green-600)" }} />
+              ) : (
+                <IconExclamation style={{ color: "var(--color-red-600)" }} />
+              )}
+            </StatusIcon>
+            <StatusText>{roomFree ? "Ledigt" : "Optaget"}</StatusText>
+          </Status>
+        )}
+        <DateTime
+          style={{
+            backgroundColor: dateTimeColor,
+          }}
+        >
+          <Date>{currentTime.locale(localeDa).format("dddd D. MMMM")}</Date>
+          <Time>{currentTime.locale(localeDa).format("HH:mm")}</Time>
         </DateTime>
       </Header>
       <Content className="content">
-        {roomFree ?
-          (
-            <ContentItem className="content-item">
+        {!processingBooking && roomFree && (
+          <ContentItem className="content-item">
+            <>
               <h1>Lokalet er ledigt</h1>
               <p>Straksbook lokalet. Vælg varighed.</p>
               <ButtonWrapper>
-                <Button><IconCalendarPlusWrapper /><span>15 min</span></Button>
-                <Button><IconCalendarPlusWrapper /><span>30 min</span></Button>
-                <Button><IconCalendarPlusWrapper /><span>60 min</span></Button>
+                {bookableIntervals.map((interval) => (
+                  <Button
+                    key={interval.title}
+                    onClick={() => clickInterval(interval)}
+                  >
+                    <IconCalendarPlusWrapper />
+                    <span>{interval.title}</span>
+                  </Button>
+                ))}
               </ButtonWrapper>
-            </ContentItem>
-          )
-        :
-          calendarEvents?.length === 0 && (
-            <ContentItem className="content-item">
-              {resourceAvailableText}
-            </ContentItem>
-          )
-        }
-        {calendarEvents?.length > 0 && renderSingle(calendarEvents)}
+            </>
+          </ContentItem>
+        )}
+        {calendarEvents?.length > 0 &&
+          renderSingleCalendarEvent(calendarEvents)}
       </Content>
     </Wrapper>
   );
@@ -128,8 +257,8 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   /*
-  --bg-color is local to this template file and is populated from configuration.
-  --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
+    --bg-color is local to this template file and is populated from configuration.
+    --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
   */
   background-color: var(--bg-color, var(--background-color));
   background-image: var(--bg-image, none);
@@ -191,6 +320,7 @@ const DateTime = styled.div`
 const Date = styled.div`
   /* Date styling */
   font-size: var(--font-size-lg);
+  text-transform: capitalize;
 `;
 
 const Time = styled.div`
@@ -200,7 +330,7 @@ const Time = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-/* ButtonWrapper styling */
+  /* ButtonWrapper styling */
   display: flex;
   column-gap: calc(var(--spacer) * 2);
 `;
@@ -233,7 +363,8 @@ const Content = styled.div`
 `;
 
 const ContentItem = styled.div`
-  border-left: calc(var(--border-size) * 2) var(--border-style) var(--text-color) ;
+  border-left: calc(var(--border-size) * 2) var(--border-style)
+    var(--text-color);
   padding-left: var(--padding-size-base);
   margin-bottom: var(--margin-size-base);
   font-size: var(--font-size-base);
@@ -255,6 +386,14 @@ CalendarSingleBooking.defaultProps = {
 };
 
 CalendarSingleBooking.propTypes = {
+  slide: PropTypes.shape({
+    "@id": PropTypes.string.isRequired,
+    feed: PropTypes.shape({
+      configuration: PropTypes.shape({
+        resources: PropTypes.arrayOf(PropTypes.string),
+      }),
+    }),
+  }).isRequired,
   templateClasses: PropTypes.arrayOf(PropTypes.string),
   templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(

@@ -86,8 +86,9 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             getTitle={getTitle}
           />
         )}
-        {layout === "single-booking" && (
+        {layout === "singleBooking" && (
           <CalendarSingleBooking
+            slide={slide}
             calendarEvents={feedData ?? []}
             content={content}
             templateClasses={classes}

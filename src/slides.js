@@ -1312,9 +1312,13 @@ const slides = [
     },
   },
   {
+    "@id": "/v1/slides/1",
     id: "slide22-calendar-single-booking",
     type: "calendar",
-    //themeFile: "themes/dokk1.css",
+    themeFile: "themes/dokk1.css",
+    feed: {
+      resources: ["test-lokale@display-templates.local.itkdev.dk"],
+    },
     feedData: [
       {
         id: "uniqueEvent0",
@@ -1402,7 +1406,7 @@ const slides = [
     },
     content: {
       duration: 5000,
-      layout: "single-booking",
+      layout: "singleBooking",
       backgroundColor: "",
       title: "M2.3",
       subTitle: "Mødelokale",
