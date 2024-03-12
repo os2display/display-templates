@@ -1,4 +1,34 @@
 {
+    "coming_events": [
+        {
+            "type": 0,
+            "value": "Kommende begivenheder"
+        }
+    ],
+    "instant_booked_available": [
+        {
+            "type": 0,
+            "value": "Lokalet er ledigt"
+        }
+    ],
+    "instant_booked_available_text": [
+        {
+            "type": 0,
+            "value": "Straksbook lokalet. Vælg varighed."
+        }
+    ],
+    "instant_booked_not_available": [
+        {
+            "type": 0,
+            "value": "Lokalet kan ikke straksbookes."
+        }
+    ],
+    "instant_booked_until": [
+        {
+            "type": 0,
+            "value": "Lokalet er straksbooket indtil"
+        }
+    ],
     "what": [
         {
             "type": 0,

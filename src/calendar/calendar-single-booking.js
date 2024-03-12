@@ -4,12 +4,13 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
 import IconCheck from "./icon-check.svg";
 import IconExclamation from "./icon-exclamation.svg";
 import IconCalendarPlus from "./icon-calendar-plus.svg";
 
 /**
- * Single resource calendar.
+ * Single resource calendar with booking.
  *
  * @param {object} props - The props.
  * @param {object} props.content - The content.
@@ -17,7 +18,7 @@ import IconCalendarPlus from "./icon-calendar-plus.svg";
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
  * @param {Function} props.getTitle - Function to get title for event.
- * @param props.slide
+ * @param {object} props.slide - The slide.
  * @returns {JSXElement} - The component.
  */
 function CalendarSingleBooking({
@@ -38,7 +39,7 @@ function CalendarSingleBooking({
   const [bookableIntervals, setBookableIntervals] = useState([]);
   const [fetchingIntervals, setFetchingIntervals] = useState(true);
   const [currentTime, setCurrentTime] = useState(dayjs());
-  const [bookingResult, setBookingResult] = useState({});
+  const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
 
   const fetchBookingIntervals = () => {
@@ -46,8 +47,11 @@ function CalendarSingleBooking({
       console.info(
         "Required values not available. Aborting getting booking intervals."
       );
+      setFetchingIntervals(false);
       return;
     }
+
+    setFetchingIntervals(true);
 
     const resources = slide?.feed?.configuration?.resources ?? [];
 
@@ -170,23 +174,21 @@ function CalendarSingleBooking({
       });
   };
 
-  const roomFree = fetchingIntervals ? null : bookableIntervals?.length > 0;
+  const roomInUse = calendarEvents.some(
+    (cal) =>
+      cal.startTime <= currentTime.unix() && cal.endTime >= currentTime.unix()
+  );
 
-  const headerColor =
-    // eslint-disable-next-line no-nested-ternary
-    roomFree === null
-      ? "var(--color-grey-800)"
-      : roomFree
-      ? "var(--color-green-900)"
-      : "var(--color-red-900)";
+  const roomAvailableForInstantBooking =
+    !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
 
-  const dateTimeColor =
-    // eslint-disable-next-line no-nested-ternary
-    roomFree === null
-      ? "var(--color-grey-100)"
-      : roomFree
-      ? "var(--color-green-50)"
-      : "var(--color-red-50)";
+  const headerColor = roomInUse
+    ? "var(--color-red-900)"
+    : "var(--color-green-900)";
+
+  const dateTimeColor = roomInUse
+    ? "var(--color-red-50)"
+    : "var(--color-green-50)";
 
   return (
     <Wrapper
@@ -202,18 +204,16 @@ function CalendarSingleBooking({
           {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
           <Title className="title">{title}</Title>
         </RoomInfo>
-        {!fetchingIntervals && (
-          <Status>
-            <StatusIcon>
-              {roomFree ? (
-                <IconCheck style={{ color: "var(--color-green-600)" }} />
-              ) : (
-                <IconExclamation style={{ color: "var(--color-red-600)" }} />
-              )}
-            </StatusIcon>
-            <StatusText>{roomFree ? "Ledigt" : "Optaget"}</StatusText>
-          </Status>
-        )}
+        <Status>
+          <StatusIcon>
+            {roomInUse ? (
+              <IconExclamation style={{ color: "var(--color-red-600)" }} />
+            ) : (
+              <IconCheck style={{ color: "var(--color-green-600)" }} />
+            )}
+          </StatusIcon>
+          <StatusText>{roomInUse ? "Optaget" : "Ledigt"}</StatusText>
+        </Status>
         <DateTime
           style={{
             backgroundColor: dateTimeColor,
@@ -224,27 +224,78 @@ function CalendarSingleBooking({
         </DateTime>
       </Header>
       <Content className="content">
-        {!processingBooking && roomFree && (
-          <ContentItem className="content-item">
-            <>
-              <h1>Lokalet er ledigt</h1>
-              <p>Straksbook lokalet. Vælg varighed.</p>
-              <ButtonWrapper>
-                {bookableIntervals.map((interval) => (
-                  <Button
-                    key={interval.title}
-                    onClick={() => clickInterval(interval)}
-                  >
-                    <IconCalendarPlusWrapper />
-                    <span>{interval.title}</span>
-                  </Button>
-                ))}
-              </ButtonWrapper>
-            </>
-          </ContentItem>
+        {roomInUse && renderSingleCalendarEvent(calendarEvents)}
+        {!roomInUse && (
+          <>
+            <ContentItem className="content-item">
+              {!processingBooking && !bookingResult && (
+                <>
+                  {fetchingIntervals && (
+                    <p>Undersøger om lokalet kan straksbookes... </p>
+                  )}
+                  {!fetchingIntervals && roomAvailableForInstantBooking && (
+                    <>
+                      <h1>
+                        <FormattedMessage
+                          id="instant_booked_not_available"
+                          defaultMessage="instant_booked_available"
+                        />
+                      </h1>
+                      <p>
+                        <FormattedMessage
+                          id="instant_booked_available_text"
+                          defaultMessage="instant_booked_available_text"
+                        />
+                      </p>
+                      <ButtonWrapper>
+                        {bookableIntervals.map((interval) => (
+                          <Button
+                            key={interval.title}
+                            onClick={() => clickInterval(interval)}
+                          >
+                            <IconCalendarPlusWrapper />
+                            <span>{interval.title}</span>
+                          </Button>
+                        ))}
+                      </ButtonWrapper>
+                    </>
+                  )}
+                  {!fetchingIntervals && !roomAvailableForInstantBooking && (
+                    <p>
+                      <FormattedMessage
+                        id="instant_booked_not_available"
+                        defaultMessage="instant_booked_not_available"
+                      />
+                    </p>
+                  )}
+                </>
+              )}
+              {processingBooking && !bookingResult && <p>Booker lokale...</p>}
+              {bookingResult?.status === 201 && (
+                <p>
+                  <FormattedMessage
+                    id="instant_booked_until"
+                    defaultMessage="instant_booked_until"
+                  />{" "}
+                  {dayjs(bookingResult.interval.to)
+                    .locale(localeDa)
+                    .format("HH:mm")}
+                </p>
+              )}
+            </ContentItem>
+            {calendarEvents?.length > 0 && (
+              <>
+                <h3>
+                  <FormattedMessage
+                    id="coming_events"
+                    defaultMessage="comming_events"
+                  />
+                </h3>
+                {renderSingleCalendarEvent(calendarEvents)}
+              </>
+            )}
+          </>
         )}
-        {calendarEvents?.length > 0 &&
-          renderSingleCalendarEvent(calendarEvents)}
       </Content>
     </Wrapper>
   );
@@ -257,9 +308,9 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   /*
-    --bg-color is local to this template file and is populated from configuration.
-    --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
-  */
+      --bg-color is local to this template file and is populated from configuration.
+      --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
+    */
   background-color: var(--bg-color, var(--background-color));
   background-image: var(--bg-image, none);
 
