@@ -212,7 +212,7 @@ export const Slide = ({ slide: inputSlide }) => {
       getTheme(slide);
     }
 
-    if (slide?.darkModeEnabled === true) {
+    if (slide?.darkModeEnabled !== false) {
       // Apply color scheme.
       if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
         document.documentElement.classList.add("color-scheme-dark");

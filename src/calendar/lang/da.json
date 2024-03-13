@@ -20,7 +20,7 @@
     "instant_booked_not_available": [
         {
             "type": 0,
-            "value": "Straksbookes ikke tilgængeligt"
+            "value": "Straksbooking ikke tilgængeligt"
         }
     ],
     "instant_booking_processing": [

@@ -289,7 +289,7 @@ function CalendarSingleBooking({
                     <p>
                       <FormattedMessage
                         id="instant_booked_not_available"
-                        defaultMessage="Straksbookes ikke tilgængeligt"
+                        defaultMessage="Straksbooking ikke tilgængeligt"
                       />
                     </p>
                   )}
@@ -423,7 +423,7 @@ const Button = styled.button`
   /* Button styling */
   display: flex;
   column-gap: var(--spacer);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-base);
   white-space: nowrap;
   align-items: center;
   padding: calc(var(--font-size-base) * 0.75) calc(var(--font-size-base) * 1.75);
