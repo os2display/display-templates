@@ -37,7 +37,7 @@ function CalendarSingleBooking({
   const apiUrl = localStorage.getItem("apiUrl");
 
   const [bookableIntervals, setBookableIntervals] = useState([]);
-  const [fetchingIntervals, setFetchingIntervals] = useState(true);
+  const [fetchingIntervals, setFetchingIntervals] = useState(false);
   const [currentTime, setCurrentTime] = useState(dayjs());
   const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
@@ -48,6 +48,11 @@ function CalendarSingleBooking({
         "Required values not available. Aborting getting booking intervals."
       );
       setFetchingIntervals(false);
+      return;
+    }
+
+    if (fetchingIntervals) {
+      console.info("Already fetching intervals...");
       return;
     }
 
@@ -89,26 +94,19 @@ function CalendarSingleBooking({
       .locale(localeDa)
       .format("HH:mm");
 
-  const renderSingleCalendarEvent = (calendarEventsToRender) => {
+  const renderFutureEvents = (eventsToRender) => {
     const now = dayjs();
     const elements = [];
 
-    if (calendarEventsToRender.length > 0) {
-      calendarEventsToRender
+    if (eventsToRender.length > 0) {
+      eventsToRender
         .filter(
           (e) => e.endTime > now.unix() && e.endTime <= now.endOf("day").unix()
         )
         .forEach((event) => {
           if (elements.length < 3) {
             elements.push(
-              <ContentItem
-                key={event.id}
-                className={
-                  elements.length === 0
-                    ? "content-item single--now"
-                    : "content-item single--next"
-                }
-              >
+              <ContentItem key={event.id} className="content-item">
                 <Meta>
                   {renderTimeOfDayFromUnixTimestamp(event.startTime)}
                   {" - "}
@@ -174,10 +172,16 @@ function CalendarSingleBooking({
       });
   };
 
-  const roomInUse = calendarEvents.some(
+  const currentEvents = calendarEvents.filter(
     (cal) =>
       cal.startTime <= currentTime.unix() && cal.endTime >= currentTime.unix()
   );
+
+  const futureEvents = calendarEvents.filter(
+    (el) => !currentEvents.includes(el)
+  );
+
+  const roomInUse = currentEvents.length > 0;
 
   const roomAvailableForInstantBooking =
     !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
@@ -212,7 +216,13 @@ function CalendarSingleBooking({
               <IconCheck style={{ color: "var(--color-green-600)" }} />
             )}
           </StatusIcon>
-          <StatusText>{roomInUse ? "Optaget" : "Ledigt"}</StatusText>
+          <StatusText>
+            {roomInUse ? (
+              <FormattedMessage id="room_in_use" defaultMessage="Optaget" />
+            ) : (
+              <FormattedMessage id="room_available" defaultMessage="Ledigt" />
+            )}
+          </StatusText>
         </Status>
         <DateTime
           style={{
@@ -224,27 +234,42 @@ function CalendarSingleBooking({
         </DateTime>
       </Header>
       <Content className="content">
-        {roomInUse && renderSingleCalendarEvent(calendarEvents)}
+        {roomInUse &&
+          currentEvents.map((event) => (
+            <ContentItem key={event.id} className="content-item">
+              <Meta>
+                {renderTimeOfDayFromUnixTimestamp(event.startTime)}
+                {" - "}
+                {renderTimeOfDayFromUnixTimestamp(event.endTime)}
+              </Meta>
+              <h1>{getTitle(event.title)}</h1>
+            </ContentItem>
+          ))}
         {!roomInUse && (
           <>
             <ContentItem className="content-item">
               {!processingBooking && !bookingResult && (
                 <>
                   {fetchingIntervals && (
-                    <p>Undersøger om lokalet kan straksbookes... </p>
+                    <p>
+                      <FormattedMessage
+                        id="instant_booking_checking"
+                        defaultMessage="Undersøger om lokalet kan straksbookes..."
+                      />
+                    </p>
                   )}
                   {!fetchingIntervals && roomAvailableForInstantBooking && (
                     <>
                       <h1>
                         <FormattedMessage
-                          id="instant_booked_not_available"
-                          defaultMessage="instant_booked_available"
+                          id="instant_booking_available"
+                          defaultMessage="Lokalet er ledigt"
                         />
                       </h1>
                       <p>
                         <FormattedMessage
                           id="instant_booked_available_text"
-                          defaultMessage="instant_booked_available_text"
+                          defaultMessage="Straksbook lokalet. Vælg varighed."
                         />
                       </p>
                       <ButtonWrapper>
@@ -264,18 +289,25 @@ function CalendarSingleBooking({
                     <p>
                       <FormattedMessage
                         id="instant_booked_not_available"
-                        defaultMessage="instant_booked_not_available"
+                        defaultMessage="Straksbookes ikke tilgængeligt"
                       />
                     </p>
                   )}
                 </>
               )}
-              {processingBooking && !bookingResult && <p>Booker lokale...</p>}
+              {processingBooking && !bookingResult && (
+                <p>
+                  <FormattedMessage
+                    id="instant_booking_processing"
+                    defaultMessage="Booker lokale..."
+                  />
+                </p>
+              )}
               {bookingResult?.status === 201 && (
                 <p>
                   <FormattedMessage
                     id="instant_booked_until"
-                    defaultMessage="instant_booked_until"
+                    defaultMessage="Lokalet er straksbooket indtil"
                   />{" "}
                   {dayjs(bookingResult.interval.to)
                     .locale(localeDa)
@@ -283,17 +315,17 @@ function CalendarSingleBooking({
                 </p>
               )}
             </ContentItem>
-            {calendarEvents?.length > 0 && (
-              <>
-                <h3>
-                  <FormattedMessage
-                    id="coming_events"
-                    defaultMessage="comming_events"
-                  />
-                </h3>
-                {renderSingleCalendarEvent(calendarEvents)}
-              </>
-            )}
+          </>
+        )}
+        {futureEvents.length > 0 && (
+          <>
+            <h3>
+              <FormattedMessage
+                id="coming_events"
+                defaultMessage="Kommende begivenheder"
+              />
+            </h3>
+            {renderFutureEvents(futureEvents)}
           </>
         )}
       </Content>
@@ -308,13 +340,14 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   /*
-      --bg-color is local to this template file and is populated from configuration.
-      --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
-    */
+        --bg-color is local to this template file and is populated from configuration.
+        --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
+      */
   background-color: var(--bg-color, var(--background-color));
   background-image: var(--bg-image, none);
 
   color: var(--text-color);
+  overflow: hidden;
 `;
 
 const Header = styled.div`

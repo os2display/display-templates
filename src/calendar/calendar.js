@@ -79,7 +79,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -89,7 +89,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         {layout === "singleBooking" && (
           <CalendarSingleBooking
             slide={slide}
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -98,7 +98,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
         {layout === "multiple" && (
           <CalendarMultiple
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -107,7 +107,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
         {layout === "multipleDays" && (
           <CalendarMultipleDays
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}

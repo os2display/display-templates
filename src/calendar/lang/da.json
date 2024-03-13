@@ -5,7 +5,7 @@
             "value": "Kommende begivenheder"
         }
     ],
-    "instant_booked_available": [
+    "instant_booking_available": [
         {
             "type": 0,
             "value": "Lokalet er ledigt"
@@ -20,13 +20,37 @@
     "instant_booked_not_available": [
         {
             "type": 0,
-            "value": "Lokalet kan ikke straksbookes."
+            "value": "Straksbookes ikke tilgængeligt"
+        }
+    ],
+    "instant_booking_processing": [
+        {
+            "type": 0,
+            "value": "Booker lokale..."
+        }
+    ],
+    "instant_booking_checking": [
+        {
+            "type": 0,
+            "value": "Undersøger om lokalet kan straksbookes..."
         }
     ],
     "instant_booked_until": [
         {
             "type": 0,
             "value": "Lokalet er straksbooket indtil"
+        }
+    ],
+    "room_in_use": [
+        {
+            "type": 0,
+            "value": "Optaget"
+        }
+    ],
+    "room_available": [
+        {
+            "type": 0,
+            "value": "Ledigt"
         }
     ],
     "what": [

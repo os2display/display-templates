@@ -212,11 +212,13 @@ export const Slide = ({ slide: inputSlide }) => {
       getTheme(slide);
     }
 
-    // Apply color scheme.
-    if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.documentElement.classList.add("color-scheme-dark");
-    } else {
-      document.documentElement.classList.add("color-scheme-light");
+    if (slide?.darkModeEnabled === true) {
+      // Apply color scheme.
+      if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("color-scheme-dark");
+      } else {
+        document.documentElement.classList.add("color-scheme-light");
+      }
     }
   }, []);
 
