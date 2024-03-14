@@ -368,7 +368,7 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+  font-size: calc(var(--font-size-base) * 1.25);
 `;
 
 const Status = styled.div`
@@ -403,7 +403,7 @@ const DateTime = styled.div`
 
 const Date = styled.div`
   /* Date styling */
-  font-size: calc(var(--font-size-base) * var(--font-size-multiplier-125));
+  font-size: calc(var(--font-size-base) * 1.25);
   text-transform: capitalize;
 `;
 
