@@ -19,7 +19,7 @@ import IconCalendarPlus from "./icon-calendar-plus.svg";
  * @param {object} props.templateRootStyle - The template root style.
  * @param {Function} props.getTitle - Function to get title for event.
  * @param {object} props.slide - The slide.
- * @returns {JSXElement} - The component.
+ * @returns {React.JSXElement} - The component.
  */
 function CalendarSingleBooking({
   content,
@@ -41,6 +41,7 @@ function CalendarSingleBooking({
   const [currentTime, setCurrentTime] = useState(dayjs());
   const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
+  const [secondsUntilNextEvent, setSecondsUntilNextEvent] = useState(null);
 
   const fetchBookingIntervals = () => {
     if (!apiUrl || !slide || !token || !tenantKey) {
@@ -122,15 +123,49 @@ function CalendarSingleBooking({
     return elements.concat();
   };
 
+  const intervalChecking = () => {
+    setCurrentTime(dayjs());
+
+    // Find time until next event.
+    const now = dayjs();
+    let closestEvent = null;
+
+    if (calendarEvents.length === 0) {
+      setSecondsUntilNextEvent(null);
+    } else {
+      calendarEvents.forEach((event) => {
+        const eventStartTime = dayjs(event.startTime * 1000);
+        if (eventStartTime >= now) {
+          if (
+            closestEvent === null ||
+            eventStartTime < dayjs(closestEvent.startTime * 1000)
+          ) {
+            closestEvent = event;
+          }
+        }
+      });
+    }
+
+    if (closestEvent !== null) {
+      setSecondsUntilNextEvent(closestEvent.startTime - now.unix());
+    }
+
+    // Refresh data if stale.
+
+    // Retrieve instant booking from localstorage and set as current event
+    // if not already in calendarEvents.
+
+    // Clear instant bookings from localstorage if expired.
+  };
+
   useEffect(() => {
     // Imports language strings, sets localized formats.
     dayjs.extend(localizedFormat);
 
     fetchBookingIntervals();
 
-    const interval = setInterval(() => {
-      setCurrentTime(dayjs());
-    }, 5000);
+    intervalChecking();
+    const interval = setInterval(intervalChecking, 5000);
 
     return () => {
       if (interval !== null) {
@@ -164,9 +199,13 @@ function CalendarSingleBooking({
     })
       .then((r) => r.json())
       .then((data) => {
+        // TODO: Save current instant booking to localstorage for retrieval in client.
         setBookingResult(data);
       })
-      .catch((e) => console.error(e))
+      .catch((e) => {
+        // TODO: Report error.
+        console.error(e);
+      })
       .finally(() => {
         setProcessingBooking(false);
       });
@@ -193,6 +232,34 @@ function CalendarSingleBooking({
   const dateTimeColor = roomInUse
     ? "var(--color-red-50)"
     : "var(--color-green-50)";
+
+  const timeCountdownString = (seconds) => {
+    if (seconds <= 0) return "";
+
+    const daysUntil = Math.floor(seconds / (60 * 60 * 24));
+    const hoursUntil = Math.floor(
+      (seconds - daysUntil * 60 * 60 * 24) / (60 * 60)
+    );
+    const minutesUntil = Math.floor((seconds - hoursUntil * 60 * 60) / 60);
+    const secondsUntil = seconds % 60;
+
+    const textPieces = [];
+
+    if (daysUntil > 0) {
+      textPieces.push(`${daysUntil} dag${daysUntil > 1 ? "e" : ""}`);
+    }
+    if (hoursUntil > 0) {
+      textPieces.push(`${hoursUntil} time${hoursUntil > 1 ? "r" : ""}`);
+    }
+    if (minutesUntil > 0) {
+      textPieces.push(`${minutesUntil} minut${minutesUntil > 1 ? "ter" : ""}`);
+    }
+    if (secondsUntil > 0) {
+      textPieces.push(`${secondsUntil} sekund${secondsUntil > 1 ? "er" : ""}`);
+    }
+
+    return `${textPieces.join(", ")} til næste begivenhed`;
+  };
 
   return (
     <Wrapper
@@ -286,12 +353,17 @@ function CalendarSingleBooking({
                     </>
                   )}
                   {!fetchingIntervals && !roomAvailableForInstantBooking && (
-                    <p>
-                      <FormattedMessage
-                        id="instant_booked_not_available"
-                        defaultMessage="Straksbooking ikke tilgængeligt"
-                      />
-                    </p>
+                    <>
+                      <p>
+                        <FormattedMessage
+                          id="instant_booked_not_available"
+                          defaultMessage="Straksbooking ikke tilgængeligt"
+                        />
+                        <div style={{ fontSize: ".5em" }}>
+                          {timeCountdownString(secondsUntilNextEvent)}
+                        </div>
+                      </p>
+                    </>
                   )}
                 </>
               )}
