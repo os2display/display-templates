@@ -243,22 +243,21 @@ function CalendarSingleBooking({
     const minutesUntil = Math.floor((seconds - hoursUntil * 60 * 60) / 60);
     const secondsUntil = seconds % 60;
 
-    const textPieces = [];
+    const textEnd = " til næste begivenhed";
 
     if (daysUntil > 0) {
-      textPieces.push(`${daysUntil} dag${daysUntil > 1 ? "e" : ""}`);
+      return `${daysUntil} dag${daysUntil > 1 ? "e" : ""}${textEnd}`;
     }
     if (hoursUntil > 0) {
-      textPieces.push(`${hoursUntil} time${hoursUntil > 1 ? "r" : ""}`);
+      return `${hoursUntil} time${hoursUntil > 1 ? "r" : ""} ${textEnd}`;
     }
     if (minutesUntil > 0) {
-      textPieces.push(`${minutesUntil} minut${minutesUntil > 1 ? "ter" : ""}`);
+      return `${minutesUntil} minut${minutesUntil > 1 ? "ter" : ""} ${textEnd}`;
     }
     if (secondsUntil > 0) {
-      textPieces.push(`${secondsUntil} sekund${secondsUntil > 1 ? "er" : ""}`);
+      return `Mindre end et minut ${textEnd}`;
     }
-
-    return `${textPieces.join(", ")} til næste begivenhed`;
+    return "";
   };
 
   return (
