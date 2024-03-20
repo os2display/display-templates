@@ -358,10 +358,10 @@ function CalendarSingleBooking({
                           id="instant_booked_not_available"
                           defaultMessage="Straksbooking ikke tilgængeligt"
                         />
-                        <div style={{ fontSize: ".5em" }}>
-                          {timeCountdownString(secondsUntilNextEvent)}
-                        </div>
                       </p>
+                      <div style={{ fontSize: ".5em" }}>
+                        {timeCountdownString(secondsUntilNextEvent)}
+                      </div>
                     </>
                   )}
                 </>
