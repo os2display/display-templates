@@ -62,7 +62,7 @@ describe("Slideshow", () => {
       .should(
         "have.css",
         "animation",
-        "2s ease 0s 1 normal none running animationForImage"
+        "3s ease 0s 1 normal none running animationForImage"
       );
     cy.get('[data-index="0"]')
       .find(".image")
@@ -189,7 +189,7 @@ describe("Slideshow", () => {
       .should(
         "have.css",
         "animation",
-        "2s ease 0s 1 normal none running animationForImage"
+        "1s ease 0s 1 normal none running animationForImage"
       );
     cy.get('[data-index="0"]')
       .find(".image")
