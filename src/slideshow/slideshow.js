@@ -21,27 +21,28 @@ import "./slideshow.scss";
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
   const { images, imageDuration = 5, transition, animation } = content;
-  const [index, setIndex] = useState(0);
-  const fadeEnabled = transition === "fade";
-  const fadeDuration = 1000;
-  const [fade, setFade] = useState(false);
-  const imageDurationInMilliseconds = imageDuration * 1000;
+
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
-  const animationName = "animationForImage";
+  const imageDurationInMilliseconds = imageDuration * 1000;
+
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(false);
   const [animationIndex, setAnimationIndex] = useState(0);
-  const [animationDuration, setAnimationDuration] = useState(
-    imageDurationInMilliseconds + (fadeEnabled ? fadeDuration : 0)
-  );
 
-  const logo = slide?.theme?.logo;
+  const fadeEnabled = transition === "fade";
+  const fadeDuration = 1000;
+  const fadeSafeMargin = 50;
+
+  const animationName = "animationForImage";
+  const animationDuration =
+    imageDurationInMilliseconds + (fadeEnabled ? fadeDuration * 2 : 0);
+
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
-
+  const logo = slide?.theme?.logo;
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
-
   const logoClasses = ["logo"];
-
   if (logoMargin) {
     logoClasses.push("logo-margin");
   }
@@ -131,12 +132,12 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
   }
 
   // Get image style for the given image url.
-  const getImageStyle = (imageUrl, localAnimation, localAnimationDuration) => {
+  const getImageStyle = (imageUrl, enableAnimation, localAnimationDuration) => {
     const imageStyle = {
       backgroundImage: `url(${imageUrl})`,
     };
 
-    if (localAnimation) {
+    if (enableAnimation) {
       imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
     }
 
@@ -219,7 +220,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
           if (newIndex === 0) {
             slideDone(slide);
           }
-        }, fadeDuration - 50);
+        }, fadeDuration - fadeSafeMargin);
       } else {
         setIndex(newIndex);
         if (newIndex === 0) {
@@ -273,7 +274,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
                 <div
                   style={getImageStyle(
                     imageUrl,
-                    animationIndex === imageUrlIndex,
+                    animationIndex === imageUrlIndex || index === imageUrlIndex,
                     animationDuration
                   )}
                   className="image"
