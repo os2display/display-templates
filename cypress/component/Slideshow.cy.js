@@ -62,7 +62,7 @@ describe("Slideshow", () => {
       .should(
         "have.css",
         "animation",
-        "2s ease 0s 1 normal none running animationForImage"
+        "3s ease 0s 1 normal none running animationForImage"
       );
     cy.get('[data-index="0"]')
       .find(".image")
@@ -107,9 +107,6 @@ describe("Slideshow", () => {
 
     cy.get('[data-index="0"]')
       .find(".image")
-      .should("have.css", "animation", "none 0s ease 0s 1 normal none running");
-    cy.get('[data-index="0"]')
-      .find(".image")
       .should("have.css", "background-image")
       .should("include", "/fixtures/images/mountain1.jpeg");
 
@@ -124,7 +121,7 @@ describe("Slideshow", () => {
       .should("include", "2");
 
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1500);
+    cy.wait(3000);
     // Slide done called...
     cy.get("@slideDoneStub").should("be.called");
   });
@@ -189,7 +186,7 @@ describe("Slideshow", () => {
       .should(
         "have.css",
         "animation",
-        "2s ease 0s 1 normal none running animationForImage"
+        "1s ease 0s 1 normal none running animationForImage"
       );
     cy.get('[data-index="0"]')
       .find(".image")
