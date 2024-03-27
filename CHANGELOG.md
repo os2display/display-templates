@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#150](https://github.com/os2display/display-templates/pull/150)
+  - Fixed slideshow fades and timings.
 - [#148](https://github.com/os2display/display-templates/pull/148)
   - Changed theme load following API change.
   - Fixed path issue in #141.

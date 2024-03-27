@@ -1383,14 +1383,8 @@ const slides = [
         resourceId: "M0",
       },
     ],
-    mediaData: {
-      "/v1/media/00000000000000000000000001": {
-        assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
-        },
-      },
-    },
-    // Disable darkmode for slide.
+    mediaData: {},
+    // Disable dark mode for slide.
     darkModeEnabled: false,
     content: {
       duration: 60000,
@@ -1401,9 +1395,53 @@ const slides = [
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
-//      image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
       fontSize: "font-size-lg",
+    },
+  },
+  {
+    id: "slide23-slideshow",
+    type: "slideshow",
+    themeFile: "themes/dokk1.css",
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000002": {
+        assets: {
+          uri: "/fixtures/images/mountain2.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000003": {
+        assets: {
+          uri: "/fixtures/images/mountain3.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000004": {
+        assets: {
+          uri: "/fixtures/images/mountain4.jpeg",
+        },
+      },
+    },
+    // Disable dark mode for slide.
+    darkModeEnabled: false,
+    content: {
+      imageDuration: 5,
+      images: [
+        "/v1/media/00000000000000000000000001",
+        "/v1/media/00000000000000000000000002",
+        "/v1/media/00000000000000000000000003",
+        "/v1/media/00000000000000000000000004",
+      ],
+      showLogo: false,
+      logoSize: "l",
+      logoPosition: "bottom right",
+      transition: "fade",
+      animation: "none",
     },
   },
 ];
