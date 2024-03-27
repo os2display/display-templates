@@ -7,6 +7,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
+import CalendarSingleBooking from "./calendar-single-booking";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
 import GlobalStyles from "../GlobalStyles";
@@ -78,7 +79,17 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
+            content={content}
+            templateClasses={classes}
+            templateRootStyle={rootStyle}
+            getTitle={getTitle}
+          />
+        )}
+        {layout === "singleBooking" && (
+          <CalendarSingleBooking
+            slide={slide}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -87,7 +98,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
         {layout === "multiple" && (
           <CalendarMultiple
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -96,7 +107,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
         {layout === "multipleDays" && (
           <CalendarMultipleDays
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
