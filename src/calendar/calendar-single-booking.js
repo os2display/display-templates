@@ -57,11 +57,11 @@ function CalendarSingleBooking({
       return;
     }
 
-    setFetchingIntervals(true);
-
     const resources = slide?.feed?.configuration?.resources ?? [];
 
     if (resources.length === 1) {
+      setFetchingIntervals(true);
+
       fetch(`${apiUrl}${slide["@id"]}/action`, {
         method: "POST",
         headers: {
@@ -70,7 +70,7 @@ function CalendarSingleBooking({
           "Content-Type": "application/ld+json",
         },
         body: JSON.stringify({
-          implementationClass: "App\\Interactive\\MicrosoftGraphQuickBook",
+          implementationClass: "App\\InteractiveSlide\\MicrosoftGraphQuickBook",
           action: "ACTION_GET_QUICK_BOOK_OPTIONS",
           data: {
             resource: resources[0],
@@ -79,9 +79,7 @@ function CalendarSingleBooking({
       })
         .then((r) => r.json())
         .then((data) => {
-          setBookableIntervals(
-            data.filter((interval) => interval.available === true)
-          );
+          setBookableIntervals(data);
         })
         .catch((e) => console.error(e))
         .finally(() => {
@@ -190,7 +188,7 @@ function CalendarSingleBooking({
         "Content-Type": "application/ld+json",
       },
       body: JSON.stringify({
-        implementationClass: "App\\Interactive\\MicrosoftGraphQuickBook",
+        implementationClass: "App\\InteractiveSlide\\MicrosoftGraphQuickBook",
         action: "ACTION_QUICK_BOOK",
         data: {
           interval,
@@ -233,6 +231,7 @@ function CalendarSingleBooking({
     ? "var(--color-red-50)"
     : "var(--color-green-50)";
 
+  // TODO: Fix translations.
   const timeCountdownString = (seconds) => {
     if (seconds <= 0) return "";
 
@@ -246,7 +245,7 @@ function CalendarSingleBooking({
     const textEnd = " til næste begivenhed";
 
     if (daysUntil > 0) {
-      return `${daysUntil} dag${daysUntil > 1 ? "e" : ""}${textEnd}`;
+      return `${daysUntil} dag${daysUntil > 1 ? "e" : ""} ${textEnd}`;
     }
     if (hoursUntil > 0) {
       return `${hoursUntil} time${hoursUntil > 1 ? "r" : ""} ${textEnd}`;
@@ -341,11 +340,11 @@ function CalendarSingleBooking({
                       <ButtonWrapper>
                         {bookableIntervals.map((interval) => (
                           <Button
-                            key={interval.title}
+                            key={interval.from}
                             onClick={() => clickInterval(interval)}
                           >
                             <IconCalendarPlusWrapper />
-                            <span>{interval.title}</span>
+                            <span>{interval.durationMinutes} min</span>
                           </Button>
                         ))}
                       </ButtonWrapper>
