@@ -340,7 +340,7 @@ function CalendarSingleBooking({
                       <ButtonWrapper>
                         {bookableIntervals.map((interval) => (
                           <Button
-                            key={interval.from}
+                            key={interval.durationMinutes}
                             onClick={() => clickInterval(interval)}
                           >
                             <IconCalendarPlusWrapper />
