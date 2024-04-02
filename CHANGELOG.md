@@ -6,16 +6,16 @@ All notable changes to this project will be documented in this file.
 
 - [#150](https://github.com/os2display/display-templates/pull/150)
   - Fixed slideshow fades and timings.
+- [#149](https://github.com/os2display/display-templates/pull/149)
+  - Added single-booking layout to calendar template.
 - [#148](https://github.com/os2display/display-templates/pull/148)
   - Changed theme load following API change.
   - Fixed path issue in #141.
-- [#141](https://github.com/os2display/display-templates/pull/141)
-  - Improve build for local development
 - [#146](https://github.com/os2display/display-templates/pull/146)
   - Fixed issue where image-text image cycle is not restarting when only on slide is displayed.
   - Fixed issue with slideshow default duration being 5000 s.
 - [#141](https://github.com/os2display/display-templates/pull/141)
-  - improve build for local development
+  - Improved build for local development
 
 ## [1.3.1] - 2023-10-26
 
