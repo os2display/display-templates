@@ -1411,6 +1411,11 @@ const slides = [
       },
     },
     mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
       "/v1/media/00000000000000000000000002": {
         assets: {
           uri: "/fixtures/images/mountain2.jpeg",
