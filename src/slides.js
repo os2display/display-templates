@@ -36,7 +36,7 @@ const slides = [
           uri: "/fixtures/images/author.jpg",
         },
       },
-      "/v1/media/00000000000000000000000002": {
+      "/v2/media/00000000000000000000000002": {
         assets: {
           uri: "/fixtures/images/vertical.jpg",
         },
@@ -1346,22 +1346,22 @@ const slides = [
       },
     },
     mediaData: {
-      "/v1/media/00000000000000000000000001": {
+      "/v2/media/00000000000000000000000001": {
         assets: {
           uri: "/fixtures/images/mountain1.jpeg",
         },
       },
-      "/v1/media/00000000000000000000000002": {
+      "/v2/media/00000000000000000000000002": {
         assets: {
           uri: "/fixtures/images/mountain2.jpeg",
         },
       },
-      "/v1/media/00000000000000000000000003": {
+      "/v2/media/00000000000000000000000003": {
         assets: {
           uri: "/fixtures/images/mountain3.jpeg",
         },
       },
-      "/v1/media/00000000000000000000000004": {
+      "/v2/media/00000000000000000000000004": {
         assets: {
           uri: "/fixtures/images/mountain4.jpeg",
         },

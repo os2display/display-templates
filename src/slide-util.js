@@ -3,6 +3,21 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
+ * Get the ULID from url string.
+ *
+ * @param {object} string - The url to cut id from.
+ * @param {number} index - The index of the id to return
+ * @returns {string | null} The id
+ */
+function idFromUrl(string, index = 0) {
+  if (typeof string === "string") {
+    return string.match(/[A-Za-z0-9]{26}/g)[index];
+  }
+
+  return null;
+}
+
+/**
  * Get the first media url of a media field.
  *
  * @param {object} mediaData The object of media objects.
@@ -11,7 +26,13 @@ import PropTypes from "prop-types";
  */
 function getFirstMediaUrlFromField(mediaData, field) {
   if (Array.isArray(field) && field.length > 0) {
-    const media = mediaData[field[0]];
+    const currentId = idFromUrl(field[0]);
+
+    const mediaMatchingKey = Object.keys(mediaData).find(
+      (id) => idFromUrl(id) === currentId
+    );
+
+    const media = mediaData[mediaMatchingKey];
 
     if (media?.assets?.uri) {
       return media.assets.uri;
@@ -34,16 +55,22 @@ function getFirstMediaUrlFromField(mediaData, field) {
  */
 function getAllMediaUrlsFromField(mediaData, field) {
   if (Array.isArray(field)) {
-    return field.reduce((previous, current) => {
-      const media = mediaData[current];
+    return field.reduce((carry, current) => {
+      const currentId = idFromUrl(current);
+
+      const mediaMatchingKey = Object.keys(mediaData).find(
+        (id) => idFromUrl(id) === currentId
+      );
+
+      const media = mediaData[mediaMatchingKey];
 
       if (media?.assets?.uri) {
-        previous.push(media.assets.uri);
+        carry.push(media.assets.uri);
       } else if (media?.url) {
-        previous.push(media.url);
+        carry.push(media.url);
       }
 
-      return previous;
+      return carry;
     }, []);
   }
 
@@ -76,4 +103,9 @@ ThemeStyles.propTypes = {
   css: PropTypes.string,
 };
 
-export { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles };
+export {
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  ThemeStyles,
+  idFromUrl,
+};

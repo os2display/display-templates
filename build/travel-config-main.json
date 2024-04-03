@@ -4,8 +4,8 @@
   "id": "01FZD7K807VAKZ99BGSSCHRJM6",
   "description": "Skabelon til rejseplanen.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/travel.js?ts=1705317070424",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/travel-admin.json?ts=1705317070424",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/travel.js?ts=1712150454587",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/travel-admin.json?ts=1712150454587",
     "schema": "",
     "assets": [],
     "options": {},

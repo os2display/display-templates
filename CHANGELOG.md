@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#152](https://github.com/os2display/display-templates/pull/152)
+  - Changed how media urls are extracted to ignore route version tag.
 - [#151](https://github.com/os2display/display-templates/pull/151)
   - Built slideshow.
 - [#150](https://github.com/os2display/display-templates/pull/150)
