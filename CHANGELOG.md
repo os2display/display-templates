@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#151](https://github.com/os2display/display-templates/pull/151)
+  - Built slideshow.
 - [#150](https://github.com/os2display/display-templates/pull/150)
   - Fixed slideshow fades and timings.
 - [#148](https://github.com/os2display/display-templates/pull/148)
