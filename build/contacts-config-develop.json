@@ -4,8 +4,8 @@
   "id": "01FPZ19YEHX7MQ5Q6ZS0WK0VEA",
   "description": "Skabelon til kontakter.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/contacts.js?ts=1705317070424",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/contacts-admin.json?ts=1705317070424",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/contacts.js?ts=1712322599255",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/contacts-admin.json?ts=1712322599255",
     "schema": "",
     "assets": [],
     "options": {},

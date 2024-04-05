@@ -70,6 +70,7 @@ function CalendarSingleBooking({
   const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
   const [secondsUntilNextEvent, setSecondsUntilNextEvent] = useState(null);
+  const [bookingError, setBookingError] = useState(false);
 
   const fetchBookingIntervals = () => {
     if (!apiUrl || !slide || !token || !tenantKey) {
@@ -242,9 +243,9 @@ function CalendarSingleBooking({
         setBookingResult(data);
         setInstantBookingFromLocalStorage(slide["@id"], data);
       })
-      .catch((e) => {
-        // TODO: Report error.
-        console.error(e);
+      .catch(() => {
+        setBookingError(true);
+        setTimeout(() => setBookingError(false), 10000);
       })
       .finally(() => {
         setProcessingBooking(false);
@@ -355,7 +356,7 @@ function CalendarSingleBooking({
         {!roomInUse && (
           <>
             <ContentItem className="content-item">
-              {!processingBooking && !bookingResult && (
+              {!processingBooking && !bookingResult && !bookingError && (
                 <>
                   {fetchingIntervals && (
                     <p>
@@ -407,11 +408,19 @@ function CalendarSingleBooking({
                   )}
                 </>
               )}
-              {processingBooking && !bookingResult && (
+              {processingBooking && !bookingResult && !bookingError && (
                 <p>
                   <FormattedMessage
                     id="instant_booking_processing"
                     defaultMessage="Booker lokale..."
+                  />
+                </p>
+              )}
+              {bookingError && (
+                <p>
+                  <FormattedMessage
+                    id="instant_booking_error"
+                    defaultMessage="Straksbooking fejlede. Prøv igen lidt senere."
                   />
                 </p>
               )}

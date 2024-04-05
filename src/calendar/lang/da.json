@@ -29,6 +29,12 @@
             "value": "Booker lokale..."
         }
     ],
+    "instant_booking_error": [
+        {
+            "type": 0,
+            "value": "Straksbooking fejlede. Prøv igen lidt senere."
+        }
+    ],
     "instant_booking_checking": [
         {
             "type": 0,
