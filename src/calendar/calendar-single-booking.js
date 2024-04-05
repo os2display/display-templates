@@ -36,6 +36,37 @@ function CalendarSingleBooking({
   const tenantKey = localStorage.getItem("tenantKey");
   const apiUrl = localStorage.getItem("apiUrl");
 
+  const instantBookingLocalStorageKey = "instantBookings";
+  const getInstantBookingFromLocalStorage = (slideId) => {
+    const localstorageEntry = localStorage.getItem(
+      instantBookingLocalStorageKey
+    );
+
+    if (localstorageEntry === null) {
+      return null;
+    }
+
+    const instantBookings = JSON.parse(localstorageEntry);
+
+    return instantBookings[slideId];
+  };
+
+  const setInstantBookingFromLocalStorage = (slideId, value) => {
+    const localstorageEntry = localStorage.getItem(
+      instantBookingLocalStorageKey
+    );
+
+    const instantBookings =
+      localstorageEntry !== null ? JSON.parse(localstorageEntry) : {};
+
+    instantBookings[slideId] = value;
+
+    localStorage.setItem(
+      instantBookingLocalStorageKey,
+      JSON.stringify(instantBookings)
+    );
+  };
+
   const [bookableIntervals, setBookableIntervals] = useState([]);
   const [fetchingIntervals, setFetchingIntervals] = useState(false);
   const [currentTime, setCurrentTime] = useState(dayjs());
@@ -79,7 +110,16 @@ function CalendarSingleBooking({
       })
         .then((r) => r.json())
         .then((data) => {
-          setBookableIntervals(data);
+          setBookableIntervals(
+            data.options.map((option) => {
+              return {
+                resource: data.resource,
+                from: data.from,
+                to: option.to,
+                durationMinutes: option.durationMinutes,
+              };
+            })
+          );
         })
         .catch((e) => console.error(e))
         .finally(() => {
@@ -148,12 +188,15 @@ function CalendarSingleBooking({
       setSecondsUntilNextEvent(closestEvent.startTime - now.unix());
     }
 
-    // Refresh data if stale.
+    const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
-    // Retrieve instant booking from localstorage and set as current event
-    // if not already in calendarEvents.
-
-    // Clear instant bookings from localstorage if expired.
+    if (instantBooking !== null) {
+      if (dayjs(instantBooking.interval.to) > dayjs) {
+        setInstantBookingFromLocalStorage(slide["@id"], null);
+      } else {
+        setBookingResult(instantBooking);
+      }
+    }
   };
 
   useEffect(() => {
@@ -197,8 +240,8 @@ function CalendarSingleBooking({
     })
       .then((r) => r.json())
       .then((data) => {
-        // TODO: Save current instant booking to localstorage for retrieval in client.
         setBookingResult(data);
+        setInstantBookingFromLocalStorage(slide["@id"], data);
       })
       .catch((e) => {
         // TODO: Report error.
