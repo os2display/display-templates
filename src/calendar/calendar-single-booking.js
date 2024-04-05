@@ -36,11 +36,9 @@ function CalendarSingleBooking({
   const tenantKey = localStorage.getItem("tenantKey");
   const apiUrl = localStorage.getItem("apiUrl");
 
-  const instantBookingLocalStorageKey = "instantBookings";
+  const instantBookingKey = "instantBookings";
   const getInstantBookingFromLocalStorage = (slideId) => {
-    const localstorageEntry = localStorage.getItem(
-      instantBookingLocalStorageKey
-    );
+    const localstorageEntry = localStorage.getItem(instantBookingKey);
 
     if (localstorageEntry === null) {
       return null;
@@ -52,19 +50,18 @@ function CalendarSingleBooking({
   };
 
   const setInstantBookingFromLocalStorage = (slideId, value) => {
-    const localstorageEntry = localStorage.getItem(
-      instantBookingLocalStorageKey
-    );
+    const localstorageEntry = localStorage.getItem(instantBookingKey);
 
     const instantBookings =
       localstorageEntry !== null ? JSON.parse(localstorageEntry) : {};
 
-    instantBookings[slideId] = value;
+    if (value !== null) {
+      instantBookings[slideId] = value;
+    } else {
+      delete instantBookings[slideId];
+    }
 
-    localStorage.setItem(
-      instantBookingLocalStorageKey,
-      JSON.stringify(instantBookings)
-    );
+    localStorage.setItem(instantBookingKey, JSON.stringify(instantBookings));
   };
 
   const [bookableIntervals, setBookableIntervals] = useState([]);
@@ -190,9 +187,11 @@ function CalendarSingleBooking({
 
     const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
-    if (instantBooking !== null) {
-      if (dayjs(instantBooking.interval.to) > dayjs) {
+    // Clean out old instantBookings.
+    if (instantBooking) {
+      if (dayjs(instantBooking.interval.to) < dayjs()) {
         setInstantBookingFromLocalStorage(slide["@id"], null);
+        setBookingResult(null);
       } else {
         setBookingResult(instantBooking);
       }
