@@ -28,6 +28,7 @@ function CalendarSingleBooking({
   templateRootStyle,
   getTitle,
   slide,
+  run,
 }) {
   const { title = "", subTitle = null } = content;
 
@@ -203,8 +204,6 @@ function CalendarSingleBooking({
     // Imports language strings, sets localized formats.
     dayjs.extend(localizedFormat);
 
-    fetchBookingIntervals();
-
     intervalChecking();
     const interval = setInterval(intervalChecking, 5000);
 
@@ -214,6 +213,10 @@ function CalendarSingleBooking({
       }
     };
   }, []);
+
+  useEffect(() => {
+    fetchBookingIntervals();
+  }, [run]);
 
   const clickInterval = (interval) => {
     if (!apiUrl || !slide || !token || !tenantKey) {

@@ -18,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {string} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
  * @returns {JSX.Element} The component.
@@ -94,6 +94,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             templateClasses={classes}
             templateRootStyle={rootStyle}
             getTitle={getTitle}
+            run={run}
           />
         )}
         {layout === "multiple" && (
