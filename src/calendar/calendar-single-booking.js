@@ -100,7 +100,7 @@ function CalendarSingleBooking({
           "Content-Type": "application/ld+json",
         },
         body: JSON.stringify({
-          implementationClass: "App\\InteractiveSlide\\MicrosoftGraphQuickBook",
+          implementationClass: "App\\InteractiveSlide\\InstantBook",
           action: "ACTION_GET_QUICK_BOOK_OPTIONS",
           data: {
             resource: resources[0],
@@ -234,7 +234,7 @@ function CalendarSingleBooking({
         "Content-Type": "application/ld+json",
       },
       body: JSON.stringify({
-        implementationClass: "App\\InteractiveSlide\\MicrosoftGraphQuickBook",
+        implementationClass: "App\\InteractiveSlide\\InstantBook",
         action: "ACTION_QUICK_BOOK",
         data: {
           interval,
