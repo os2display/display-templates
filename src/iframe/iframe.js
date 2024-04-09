@@ -41,7 +41,7 @@ function IFrame({ slide, content, run, slideDone, executionId }) {
         width="100%"
         height="100%"
       />
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -51,7 +51,7 @@ IFrame.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
   }).isRequired,

@@ -60,6 +60,11 @@ export const renderScreen = (screen) => {
   );
 };
 
+const slideDone = () => {
+  // eslint-disable-next-line no-console
+  console.log("slide done");
+};
+
 export const renderSlide = (slide) => {
   switch (slide.type) {
     case "book-review":
@@ -67,8 +72,8 @@ export const renderSlide = (slide) => {
         <BookReview
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -77,8 +82,8 @@ export const renderSlide = (slide) => {
         <Calendar
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -87,8 +92,8 @@ export const renderSlide = (slide) => {
         <Contacts
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -97,8 +102,8 @@ export const renderSlide = (slide) => {
         <ImageText
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -107,8 +112,8 @@ export const renderSlide = (slide) => {
         <IFrame
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -117,8 +122,8 @@ export const renderSlide = (slide) => {
         <Poster
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -127,8 +132,8 @@ export const renderSlide = (slide) => {
         <RSS
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -137,8 +142,8 @@ export const renderSlide = (slide) => {
         <Slideshow
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -147,8 +152,8 @@ export const renderSlide = (slide) => {
         <InstagramFeed
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -157,8 +162,8 @@ export const renderSlide = (slide) => {
         <Table
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -167,8 +172,8 @@ export const renderSlide = (slide) => {
         <Video
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -177,8 +182,8 @@ export const renderSlide = (slide) => {
         <Travel
           content={slide.content}
           slide={slide}
-          run={new Date().toISOString()}
-          slideDone={() => {}}
+          run="1234"
+          slideDone={slideDone}
           executionId="SLIDE_ID"
         />
       );
@@ -194,9 +199,9 @@ export const Slide = ({ slide: inputSlide }) => {
       .then((resp) => resp.text())
       .then((data) => {
         const newSelectedSlide = { ...s };
-        newSelectedSlide.themeData = {
+        newSelectedSlide.theme = {
           cssStyles: data,
-          logo: newSelectedSlide?.themeData?.logo,
+          logo: newSelectedSlide?.theme?.logo,
         };
         setSlide(newSelectedSlide);
       });

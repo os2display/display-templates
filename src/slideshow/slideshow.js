@@ -20,32 +20,29 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5000, transition, animation } = content;
-  const [index, setIndex] = useState(0);
-  const fadeEnabled = transition === "fade";
-  const fadeDuration = 1000;
-  const [fade, setFade] = useState(false);
-  const imageDurationInSeconds = imageDuration * 1000;
+  const { images, imageDuration = 5, transition, animation } = content;
+
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
 
-  const animationName = "animationForImage";
+  const imageDurationInMilliseconds = imageDuration * 1000;
+
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(false);
   const [animationIndex, setAnimationIndex] = useState(0);
-  const [animationDuration, setAnimationDuration] = useState(
-    imageDurationInSeconds + fadeDuration
-  );
 
-  const logo = slide?.themeData?.logo;
+  const fadeEnabled = transition === "fade";
+  const fadeDuration = 1000;
+  const fadeSafeMargin = 50;
+
+  const animationName = "animationForImage";
+  const animationDuration =
+    imageDurationInMilliseconds + (fadeEnabled ? fadeDuration * 2 : 0);
+
   const { showLogo, logoSize, logoPosition, logoMargin } = content;
-
-  let logoUrl = "";
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
-
+  const logo = slide?.theme?.logo;
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
   const logoClasses = ["logo"];
-
   if (logoMargin) {
     logoClasses.push("logo-margin");
   }
@@ -105,7 +102,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
    * Determines which animation should be used
    *
    * @param {string} animationType The animation type.
-   * @returns {string} The current animation.
+   * @returns {string | null} The current animation.
    */
   function getCurrentAnimation(animationType) {
     const animationTypes = [
@@ -134,9 +131,22 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     }
   }
 
-  // Setup animation
+  // Get image style for the given image url.
+  const getImageStyle = (imageUrl, enableAnimation, localAnimationDuration) => {
+    const imageStyle = {
+      backgroundImage: `url(${imageUrl})`,
+    };
+
+    if (enableAnimation) {
+      imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
+    }
+
+    return imageStyle;
+  };
+
   useEffect(() => {
-    if (animation !== null) {
+    // Setup animation
+    if (animation) {
       // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
       const styleSheet = document.styleSheets[0];
       const currentAnimation = getCurrentAnimation(animation);
@@ -147,60 +157,78 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         );
       }
     }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (fadeRef.current) {
+        clearTimeout(fadeRef.current);
+      }
+    };
   }, []);
 
-  // Get image style for the given image url.
-  const getImageStyle = (imageUrl, localAnimation, localAnimationDuration) => {
-    const imageStyle = {
-      backgroundImage: `url(${imageUrl})`,
-    };
-
-    if (localAnimation) {
-      imageStyle.animation = `${animationName} ${localAnimationDuration}ms`;
-    }
-
-    return imageStyle;
-  };
   // Setup image progress.
   useEffect(() => {
     if (run) {
-      if (imageUrls.length > 0) {
-        timeoutRef.current = setTimeout(() => {
-          let newIndex = index + 1;
-          if (newIndex === imageUrls.length) {
-            newIndex = 0;
-            // No more images to show.
-            slideDone(slide);
-          }
-          if (fadeEnabled) {
-            // Fade to next image.
-            setFade(true);
-            setAnimationIndex(newIndex);
-            setAnimationDuration(imageDurationInSeconds + fadeDuration * 2);
-            fadeRef.current = setTimeout(() => {
-              setFade(false);
-              setIndex(newIndex);
-            }, fadeDuration);
-          } else {
-            // Change to next.
-            setIndex(newIndex);
-            setAnimationIndex(newIndex);
-            setAnimationDuration(imageDurationInSeconds);
-          }
-        }, imageDurationInSeconds);
-      } else {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (fadeRef.current) {
+        clearTimeout(fadeRef.current);
+      }
+
+      if (imageUrls.length === 0) {
         // If there are no images in slide, wait for 2s before continuing to avoid crashes.
         setTimeout(() => {
           slideDone(slide);
         }, 2000);
+      } else {
+        setFade(false);
+        setIndex(0);
+        setAnimationIndex(0);
       }
     }
+  }, [run]);
 
-    return () => {
+  useEffect(() => {
+    if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
-      clearTimeout(fadeRef.current);
-    };
-  }, [run, index]);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      let newIndex = index + 1;
+
+      if (newIndex === imageUrls.length) {
+        newIndex = 0;
+      }
+
+      setAnimationIndex(newIndex);
+
+      if (fadeEnabled) {
+        // Fade to next image.
+        setFade(true);
+
+        if (fadeRef.current) {
+          clearTimeout(fadeRef.current);
+        }
+
+        fadeRef.current = setTimeout(() => {
+          setFade(false);
+          setIndex(newIndex);
+
+          if (newIndex === 0) {
+            slideDone(slide);
+          }
+        }, fadeDuration - fadeSafeMargin);
+      } else {
+        setIndex(newIndex);
+        if (newIndex === 0) {
+          slideDone(slide);
+        }
+      }
+    }, imageDurationInMilliseconds);
+  }, [index]);
 
   return (
     <>
@@ -215,9 +243,16 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
             };
 
             if (current) {
-              if (fade) {
-                // Fade out current slide.
-                containerStyle.animation = `fadeOut ${fadeDuration}ms`;
+              if (fadeEnabled) {
+                if (index === 0) {
+                  containerStyle.animation = `fadeIn ${fadeDuration}ms`;
+                }
+                if (fade) {
+                  // Fade out current slide.
+                  containerStyle.animation = `fadeOut ${fadeDuration}ms`;
+                } else {
+                  containerStyle.opacity = 1;
+                }
               } else {
                 containerStyle.opacity = 1;
               }
@@ -239,7 +274,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
                 <div
                   style={getImageStyle(
                     imageUrl,
-                    animationIndex === imageUrlIndex,
+                    animationIndex === imageUrlIndex || index === imageUrlIndex,
                     animationDuration
                   )}
                   className="image"
@@ -253,7 +288,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -266,9 +301,13 @@ Slideshow.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   content: PropTypes.shape({

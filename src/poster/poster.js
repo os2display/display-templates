@@ -26,14 +26,10 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const [show, setShow] = useState(true);
   const timerRef = useRef(null);
   const animationTimerRef = useRef(null);
-  const logo = slide?.themeData?.logo;
+  const logo = slide?.theme?.logo;
   const { showLogo } = content;
-  let logoUrl = "";
 
-  // If showlogo is set, get the logo url
-  if (logo && showLogo) {
-    logoUrl = getFirstMediaUrlFromField(slide.mediaData, [logo]);
-  }
+  const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
   const { feed, feedData } = slide;
 
@@ -242,7 +238,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
         </IntlProvider>
       )}
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -255,9 +251,13 @@ Poster.propTypes = {
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
-    themeData: PropTypes.shape({
+    theme: PropTypes.shape({
       cssStyles: PropTypes.string,
-      logo: PropTypes.arrayOf(PropTypes.string),
+      logo: PropTypes.shape({
+        assets: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      }),
     }),
     feed: PropTypes.shape({
       configuration: PropTypes.shape({
