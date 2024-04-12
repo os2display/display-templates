@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
+import { renderTimeOfDayFromUnixTimestamp } from "./helper";
 
 /**
  * Single resource calendar.
@@ -30,12 +31,6 @@ function CalendarSingle({
     dayjs.extend(localizedFormat);
   }, []);
 
-  const renderTimeOfDay = (unixTimestamp) => {
-    return dayjs(unixTimestamp * 1000)
-      .locale(localeDa)
-      .format("HH:mm");
-  };
-
   const renderSingle = (calendarEventsToRender) => {
     const now = dayjs();
     const elements = [];
@@ -57,9 +52,9 @@ function CalendarSingle({
                 }
               >
                 <Meta>
-                  {renderTimeOfDay(event.startTime)}
+                  {renderTimeOfDayFromUnixTimestamp(event.startTime)}
                   {" - "}
-                  {renderTimeOfDay(event.endTime)}
+                  {renderTimeOfDayFromUnixTimestamp(event.endTime)}
                 </Meta>
                 {getTitle(event.title)}
               </ContentItem>
