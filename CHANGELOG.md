@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#153](https://github.com/os2display/display-templates/pull/153)
+  - Replace the temporary rejseplans "hack" with an actual solution.
+
 ## [2.0.0] - 2024-04-09
 
 - [#151](https://github.com/os2display/display-templates/pull/151)
