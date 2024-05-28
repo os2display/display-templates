@@ -51,14 +51,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
       return "";
     }
 
-    let ids = "";
-    if (station && station.length > 0) {
-      // To create this string: "id@id@id@"
-      station.forEach(({ id }) => {
-        ids += `${id}@`;
-      });
-    }
-    return ids;
+    return station.reduce((carry, { id }) => `${carry}${id}@`, "");
   };
 
   const imageStyle = {};
