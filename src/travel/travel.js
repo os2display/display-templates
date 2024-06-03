@@ -46,28 +46,12 @@ function Travel({ slide, content, run, slideDone, executionId }) {
   // Rich text input sanitized
   const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
 
-  // This is a shameful hack, hopefully temporarily, to combat the fact that the station-api
-  // only returns a station in _one direction_, instead of both
-  // After meeting*s* about this, we have concluded that the ids follow a pattern, where the last character
-  // in the string is defining which direction, and can be anything from 0-9.
-  // So, here we replace the last character of the id with 0-9, and then the rejseplan-api disregards ids that
-  // are not connected to a station (we hope).
   const getStationIds = () => {
     if (!(station instanceof Array) || station.length === 0) {
       return "";
     }
 
-    let ids = "";
-    const idWithMissingLastCharacter = station[0].id.substring(
-      0,
-      station[0].id.length - 1
-    );
-
-    [...Array(10).keys()].forEach((i) => {
-      ids += `${idWithMissingLastCharacter}${i}@`;
-    });
-
-    return ids;
+    return station.reduce((carry, { id }) => `${carry}${id}@`, "");
   };
 
   const imageStyle = {};
