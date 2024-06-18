@@ -50,10 +50,7 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     if (!(station instanceof Array) || station.length === 0) {
       return "";
     }
-    if (station.length === 1) {
-      return station[0].id;
-    }
-    return station.reduce((carry, { id }) => `${carry}${id}@`, "");
+    return station.map(({ id }) => id).join("@");
   };
 
   const imageStyle = {};
