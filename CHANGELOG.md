@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.0.1] - 2024-08-14
+
 - [#154](https://github.com/os2display/display-templates/pull/154)
   - Fix error in rejseplan, where selecting one station would not show.
 - [#153](https://github.com/os2display/display-templates/pull/153)
