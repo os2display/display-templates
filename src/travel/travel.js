@@ -20,7 +20,26 @@ import "./travel.scss";
  * @param {string} props.executionId Unique id for the instance.
  * @returns {JSX.Element} The component.
  */
-function Travel({ slide, content, run, slideDone, executionId }) {
+function Travel({
+  slide,
+  run,
+  slideDone,
+  executionId,
+  content = {
+    station: [],
+    timeFast: 0,
+    timeModerate: 0,
+    title: "",
+    text: "",
+    image: 0,
+    distance: 0,
+    iframeTitle: "",
+    numberOfJourneys: 1,
+    duration: 15000,
+    monitorLayout: null,
+    disableIcons: false,
+  },
+}) {
   const {
     station,
     timeFast,
@@ -166,23 +185,6 @@ function Travel({ slide, content, run, slideDone, executionId }) {
     </IntlProvider>
   );
 }
-
-Travel.defaultProps = {
-  content: {
-    station: [],
-    timeFast: 0,
-    timeModerate: 0,
-    title: "",
-    text: "",
-    image: 0,
-    distance: 0,
-    iframeTitle: "",
-    numberOfJourneys: 1,
-    duration: 15000,
-    monitorLayout: null,
-    disableIcons: false,
-  },
-};
 
 Travel.propTypes = {
   run: PropTypes.string.isRequired,
