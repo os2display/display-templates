@@ -4,7 +4,7 @@ jobs:
   templates-build:
     name: Templates build
     runs-on: ubuntu-latest
-    container: node:14
+    container: node:20
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
@@ -27,7 +27,7 @@ jobs:
   templates-coding-standards:
     name: Templates coding standards
     runs-on: ubuntu-latest
-    container: node:14
+    container: node:20
     steps:
       - uses: actions/checkout@v2
 
