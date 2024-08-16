@@ -1000,14 +1000,16 @@ const slides = [
       },
     },
     content: {
-      numberOfJourneys: 3,
+      numberOfJourneys: 13,
       station: [
-        {
-          name: "Skelbækvej v rådhuset",
-          x: "9420345",
-          y: "55023889",
-          id: "751434104",
-        },
+        { id: "751434104", name: "Kollund Kro" },
+        { id: "503000201", name: "Kollund Kro" },
+        { id: "53014", name: "Rolighedsvej" },
+        { id: "44061", name: "Roløkke (Oddevej)" },
+        { id: "3342", name: "Rolfsvej (Esrumvej)" },
+        { id: "3269", name: "Rolfsvej (Esrumvej)" },
+        { id: "41565", name: "Rolfsvej (Maribovej)" },
+        { id: "813041802", name: "Rolykkevej (Sæbygårdvej / Sæby)" },
       ],
       iframeTitle: "Titel til iframe",
       title: "Overskrift",
