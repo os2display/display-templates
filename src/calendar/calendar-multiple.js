@@ -20,8 +20,8 @@ import styled from "styled-components";
 function CalendarMultiple({
   content,
   calendarEvents,
-  templateClasses,
-  templateRootStyle,
+  templateClasses = [],
+  templateRootStyle = {},
   getTitle,
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -285,11 +285,6 @@ const ContentHeaderItem = styled.div`
     border-left: 0;
   }
 `;
-
-CalendarMultiple.defaultProps = {
-  templateClasses: [],
-  templateRootStyle: {},
-};
 
 CalendarMultiple.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),

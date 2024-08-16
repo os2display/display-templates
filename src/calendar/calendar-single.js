@@ -20,8 +20,8 @@ import { renderTimeOfDayFromUnixTimestamp } from "./helper";
 function CalendarSingle({
   content,
   calendarEvents,
-  templateClasses,
-  templateRootStyle,
+  templateClasses = [],
+  templateRootStyle = {},
   getTitle,
 }) {
   const { title = "", subTitle = null, resourceAvailableText = null } = content;
@@ -133,11 +133,6 @@ const Meta = styled.div`
   opacity: 0.75;
   font-size: smaller;
 `;
-
-CalendarSingle.defaultProps = {
-  templateClasses: [],
-  templateRootStyle: {},
-};
 
 CalendarSingle.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),

@@ -20,8 +20,8 @@ import { renderTimeOfDayFromUnixTimestamp } from "./helper";
 function CalendarMultipleDays({
   content,
   calendarEvents,
-  templateClasses,
-  templateRootStyle,
+  templateClasses = [],
+  templateRootStyle = {},
   getTitle,
 }) {
   const { title = "", footerText = null } = content;
@@ -262,11 +262,6 @@ const Footer = styled.div`
     font-size: calc(var(--font-size-base) * 2);
   }
 `;
-
-CalendarMultipleDays.defaultProps = {
-  templateClasses: [],
-  templateRootStyle: {},
-};
 
 CalendarMultipleDays.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
