@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- [#155](https://github.com/os2display/display-templates/pull/155)
+  - Added single-booking layout to calendar template.
+  - Removed defaultProps.
+
 ## [2.0.1] - 2024-08-14
 
 - [#154](https://github.com/os2display/display-templates/pull/154)
@@ -17,8 +21,6 @@ All notable changes to this project will be documented in this file.
   - Built slideshow.
 - [#150](https://github.com/os2display/display-templates/pull/150)
   - Fixed slideshow fades and timings.
-- [#149](https://github.com/os2display/display-templates/pull/149)
-  - Added single-booking layout to calendar template.
 - [#148](https://github.com/os2display/display-templates/pull/148)
   - Changed theme load following API change.
   - Fixed path issue in #141.

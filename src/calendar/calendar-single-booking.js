@@ -49,8 +49,8 @@ import {
 function CalendarSingleBooking({
   content,
   calendarEvents,
-  templateClasses,
-  templateRootStyle,
+  templateClasses = [],
+  templateRootStyle = {},
   getTitle,
   slide,
   run,
@@ -378,11 +378,6 @@ function CalendarSingleBooking({
     </Wrapper>
   );
 }
-
-CalendarSingleBooking.defaultProps = {
-  templateClasses: [],
-  templateRootStyle: {},
-};
 
 CalendarSingleBooking.propTypes = {
   slide: PropTypes.shape({
