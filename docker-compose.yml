@@ -26,7 +26,7 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN}`)"
 
   node:
-    image: node:14
+    image: node:20
     command: yarn start
     # @TODO: Fix setup so the ws connection between browser and webpack-dev-server can be achieved without exposing port.
     # ports:

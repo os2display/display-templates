@@ -199,15 +199,6 @@ const Description = styled.p`
   }
 `;
 
-RSS.defaultProps = {
-  slide: {
-    feed: {
-      configuration: {},
-    },
-    mediaData: {},
-  },
-};
-
 RSS.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
@@ -236,7 +227,7 @@ RSS.propTypes = {
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
-  }),
+  }).isRequired,
   content: PropTypes.shape({
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,

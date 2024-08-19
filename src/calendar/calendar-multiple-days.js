@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
+import { renderTimeOfDayFromUnixTimestamp } from "./helper";
 
 /**
  * Multiple days resource calendar.
@@ -19,8 +20,8 @@ import styled from "styled-components";
 function CalendarMultipleDays({
   content,
   calendarEvents,
-  templateClasses,
-  templateRootStyle,
+  templateClasses = [],
+  templateRootStyle = {},
   getTitle,
 }) {
   const { title = "", footerText = null } = content;
@@ -60,12 +61,6 @@ function CalendarMultipleDays({
     return days;
   };
 
-  const renderTimeOfDay = (unixTimestamp) => {
-    return dayjs(unixTimestamp * 1000)
-      .locale(localeDa)
-      .format("HH:mm");
-  };
-
   const renderDays = (days) => {
     const sortedKeys = Object.keys(days).sort();
 
@@ -77,8 +72,10 @@ function CalendarMultipleDays({
             {days[dateString].events.map((event) => (
               <ColItem key={event.id} className="col-item">
                 <Time className="col-item-time">
-                  <div>{renderTimeOfDay(event.startTime)} -</div>
-                  <div>{renderTimeOfDay(event.endTime)}</div>
+                  <div>
+                    {renderTimeOfDayFromUnixTimestamp(event.startTime)} -
+                  </div>
+                  <div>{renderTimeOfDayFromUnixTimestamp(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
                   <EventTitle>{getTitle(event.title)}</EventTitle>
@@ -265,11 +262,6 @@ const Footer = styled.div`
     font-size: calc(var(--font-size-base) * 2);
   }
 `;
-
-CalendarMultipleDays.defaultProps = {
-  templateClasses: [],
-  templateRootStyle: {},
-};
 
 CalendarMultipleDays.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
