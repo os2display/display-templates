@@ -4,9 +4,9 @@
   "id": "01FQBJFKM0YFX1VW5K94VBSNCP",
   "description": "Skabelon til tabel.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/table.js?ts=1726650117904",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/table-admin.json?ts=1726650117904",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/table-schema.json?ts=1726650117904",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/table.js?ts=1726831583851",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/table-admin.json?ts=1726831583851",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/table-schema.json?ts=1726831583851",
     "assets": [],
     "options": {},
     "content": {}

@@ -4,9 +4,9 @@
   "id": "01FRJPF4XATRN8PBZ35XN84PS6",
   "description": "Mulighed for at vise et kalenderfeed.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/calendar.js?ts=1726650117904",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/calendar-admin.json?ts=1726650117904",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/calendar-schema.json?ts=1726650117904",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/calendar.js?ts=1726831583851",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/calendar-admin.json?ts=1726831583851",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/vimeo-player/build/calendar-schema.json?ts=1726831583851",
     "assets": [],
     "options": {},
     "content": {}
