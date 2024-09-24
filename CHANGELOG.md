@@ -3,7 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-
+- [#157](https://github.com/os2display/display-templates/pull/157)
+  - Add Vimeo player template.
 - [#155](https://github.com/os2display/display-templates/pull/155)
   - Added single-booking layout to calendar template.
   - Removed defaultProps.
