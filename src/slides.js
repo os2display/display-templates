@@ -1451,6 +1451,14 @@ const slides = [
       animation: "none",
     },
   },
+  {
+    id: "slide24-vimeo-player",
+    type: "vimeo-player",
+    content: {
+      duration: 5000,
+      vimeoid: "882393277",
+    },
+  },
 ];
 
 export default slides;
