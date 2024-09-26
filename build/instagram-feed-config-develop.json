@@ -4,9 +4,9 @@
   "id": "01FTZC0RKJYHG4JVZG5K709G46",
   "description": "Mulighed for at vise instagram indhold.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed.js?ts=1727091804576",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed-admin.json?ts=1727091804576",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed-schema.json?ts=1727091804576",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed.js?ts=1723805672543",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed-admin.json?ts=1723805672543",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/instagram-feed-schema.json?ts=1723805672543",
     "assets": [],
     "options": {},
     "content": {}
