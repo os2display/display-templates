@@ -38,7 +38,7 @@ function VimeoPlayer({ slide, content, run, slideDone, executionId }) {
           video={vimeoid}
           responsive
           autoplay
-          volume={0}
+          muted={true}
           paused={false}
           loop
         />
