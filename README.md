@@ -30,9 +30,11 @@ To add a template:
   * `my-template-content-example.json` - An example content.
   * `my-template-schema.json` - Json Schema description of the content for the slide.
 
-Also add one or more entries to `src/slides.js` with examples of the data required for the template.
+Add one or more entries to `src/slides.js` with examples of the data required for the template. 
 
-To compile the template it is necessary to add it to the webpack setup.
+Also import the template in `src/index.js` and add the template to `const renderSlide = {}` in `src/index.js`.
+
+To compile the template it is necessary to add it to the webpack setup. This is done in `webpack.config.js`.
 
 Add it to `const entry = {}`:
 
