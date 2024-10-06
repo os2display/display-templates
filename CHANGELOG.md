@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+- [#158](https://github.com/os2display/display-templates/pull/158)
+  - Expanded documentation for new templates.
 - [#157](https://github.com/os2display/display-templates/pull/157)
   - Add Vimeo player template.
 - [#156](https://github.com/os2display/display-templates/pull/156)
