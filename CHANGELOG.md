@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.1.0] - 2024-10-23
 
 - [#158](https://github.com/os2display/display-templates/pull/158)
   - Expanded documentation for new templates.
