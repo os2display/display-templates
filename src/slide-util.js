@@ -67,10 +67,6 @@ function ThemeStyles({ id, css = null }) {
   return <ThemeComponent />;
 }
 
-ThemeStyles.defaultProps = {
-  css: null,
-};
-
 ThemeStyles.propTypes = {
   id: PropTypes.string.isRequired,
   css: PropTypes.string,

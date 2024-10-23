@@ -4,11 +4,11 @@
   grid-gap: 1px;
   height: 100vh;
 }
+
 .grid-element {
   background-color: #add8e6;
   font-size: 30px;
 }
-
 
 .inputs-container {
   position: fixed;
@@ -20,12 +20,11 @@
   right: 0;
   height: 30px;
   background-color: beige;
-
 }
 
 pre {
   position: absolute;
-    top: 0;
-    overflow: scroll;
-    background: white;
+  top: 0;
+  overflow: scroll;
+  background: white;
 }

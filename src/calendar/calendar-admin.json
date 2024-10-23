@@ -44,6 +44,7 @@
     "name": "layout",
     "label": "Vælg layout",
     "required": true,
+    "helpText": "Hvis du vælge \"Enkelt lokale med booking\" virker bookingdelen IKKE i preview.",
     "formGroupClasses": "col-md-6 mb-3",
     "options": [
       {
@@ -60,6 +61,11 @@
         "key": "layout3",
         "title": "Flere resurser, flere dage",
         "value": "multipleDays"
+      },
+      {
+        "key": "layout4",
+        "title": "Enkelt lokale med booking",
+        "value": "singleBooking"
       }
     ]
   },

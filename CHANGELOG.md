@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.1.0] - 2024-10-23
+
+- [#158](https://github.com/os2display/display-templates/pull/158)
+  - Expanded documentation for new templates.
+- [#157](https://github.com/os2display/display-templates/pull/157)
+  - Add Vimeo player template.
+- [#156](https://github.com/os2display/display-templates/pull/156)
+  - Clarified template creation.
+- [#155](https://github.com/os2display/display-templates/pull/155)
+  - Added single-booking layout to calendar template.
+  - Removed defaultProps.
 
 ## [2.0.1] - 2024-08-14
 
@@ -20,11 +30,11 @@ All notable changes to this project will be documented in this file.
 - [#148](https://github.com/os2display/display-templates/pull/148)
   - Changed theme load following API change.
   - Fixed path issue in #141.
-- [#141](https://github.com/os2display/display-templates/pull/141)
-  - Improve build for local development
 - [#146](https://github.com/os2display/display-templates/pull/146)
   - Fixed issue where image-text image cycle is not restarting when only on slide is displayed.
   - Fixed issue with slideshow default duration being 5000 s.
+- [#141](https://github.com/os2display/display-templates/pull/141)
+  - Improved build for local development
 
 ## [1.3.1] - 2023-10-26
 

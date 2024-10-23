@@ -47,6 +47,10 @@ const entry = devMode
       table: path.resolve(__dirname, "./src/table/table.js"),
       video: path.resolve(__dirname, "./src/video/video.js"),
       travel: path.resolve(__dirname, "./src/travel/travel.js"),
+      "vimeo-player": path.resolve(
+        __dirname,
+        "./src/vimeo-player/vimeo-player.js"
+      ),
     };
 
 const timestamp = new Date().getTime().toString();

@@ -1337,7 +1337,72 @@ const slides = [
     },
   },
   {
-    id: "slide22-slideshow",
+    "@id": "/v1/slides/1",
+    id: "slide22-calendar-single-booking",
+    type: "calendar",
+    themeFile: "themes/dokk1.css",
+    feed: {
+      resources: ["test-lokale@display-templates.local.itkdev.dk"],
+    },
+    feedData: [
+      {
+        id: "uniqueEvent0",
+        title: "There will be cake",
+        startTime: dayjs().add(15, "seconds").unix(),
+        endTime: dayjs().add(1, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent1",
+        title: "The cake is a lie",
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent51",
+        title: "Tea Tomorrow - will be ignored.",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent2",
+        startTime: dayjs().add(2, "hour").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent3",
+        title: "Coffee",
+        startTime: dayjs().add(3, "hour").add(15, "minutes").unix(),
+        endTime: dayjs().add(4, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+    ],
+    mediaData: {},
+    // Disable dark mode for slide.
+    darkModeEnabled: false,
+    content: {
+      duration: 60000,
+      layout: "singleBooking",
+      backgroundColor: "",
+      title: "M2.3",
+      subTitle: "Mødelokale",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      resourceUnavailableText: "Det er optaget",
+      footerText: "Se mere på localhost/events",
+      fontSize: "font-size-lg",
+    },
+  },
+  {
+    id: "slide23-slideshow",
     type: "slideshow",
     themeFile: "themes/dokk1.css",
     theme: {
@@ -1369,6 +1434,8 @@ const slides = [
         },
       },
     },
+    // Disable dark mode for slide.
+    darkModeEnabled: false,
     content: {
       imageDuration: 5,
       images: [
@@ -1382,6 +1449,14 @@ const slides = [
       logoPosition: "bottom right",
       transition: "fade",
       animation: "none",
+    },
+  },
+  {
+    id: "slide24-vimeo-player",
+    type: "vimeo-player",
+    content: {
+      duration: 5000,
+      vimeoid: "882393277",
     },
   },
 ];

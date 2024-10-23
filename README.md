@@ -22,17 +22,17 @@ The docker setup serves the files in the `build/` (see build for production) fol
 ## Add a new template
 
 To add a template:
+
 * Create a folder in src with the name of the template, e.g. `my-template` that contains the following files:
   * `my-template.js` - The React component to render.
-  * `my-template.json` - The file describing the where to find the files required for the template.
-  * `my-template-dev.json` - The file describing the where to find the files required for the template in a dev context.
+  * `my-template.config.json` - The file describing the where to find the files required for the template.
   * `my-template-admin.json` - The file describing the content interface for populating the template.
-  * `my-template-content-example.json` - An example content.
-  * `my-template-schema.json` - Json Schema description of the content for the slide.
 
-Also add one or more entries to `src/slides.js` with examples of the data required for the template.
+Add one or more entries to `src/slides.js` with examples of the data required for the template. 
 
-To compile the template it is necessary to add it to the webpack setup.
+Also import the template in `src/index.js` and add the template to `const renderSlide = {}` in `src/index.js`.
+
+To compile the template it is necessary to add it to the webpack setup. This is done in `webpack.config.js`.
 
 Add it to `const entry = {}`:
 
@@ -41,6 +41,9 @@ Add it to `const entry = {}`:
   "my-template": path.resolve(__dirname, "./src/my-template/my-template.js")
 }
 ```
+
+Running the build script will build all templates and set new timestamps in the config json files.
+Only add the files relating to the new template to git.
 
 ## Build for production.
 

@@ -27,6 +27,7 @@ import IFrame from "./iframe/iframe";
 import Table from "./table/table";
 import Video from "./video/video";
 import Travel from "./travel/travel";
+import VimeoPlayer from "./vimeo-player/vimeo-player";
 import "./index.css";
 
 export const renderScreen = (screen) => {
@@ -187,6 +188,16 @@ export const renderSlide = (slide) => {
           executionId="SLIDE_ID"
         />
       );
+    case "vimeo-player":
+      return (
+        <VimeoPlayer
+          content={slide.content}
+          slide={slide}
+          run="1234"
+          slideDone={slideDone}
+          executionId="SLIDE_ID"
+        />
+      );
     default:
       return <div>Slide type not found!</div>;
   }
@@ -212,11 +223,13 @@ export const Slide = ({ slide: inputSlide }) => {
       getTheme(slide);
     }
 
-    // Apply color scheme.
-    if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.documentElement.classList.add("color-scheme-dark");
-    } else {
-      document.documentElement.classList.add("color-scheme-light");
+    if (slide?.darkModeEnabled !== false) {
+      // Apply color scheme.
+      if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("color-scheme-dark");
+      } else {
+        document.documentElement.classList.add("color-scheme-light");
+      }
     }
   }, []);
 

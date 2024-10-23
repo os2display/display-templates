@@ -7,6 +7,7 @@ import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import CalendarSingle from "./calendar-single";
+import CalendarSingleBooking from "./calendar-single-booking";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
 import GlobalStyles from "../GlobalStyles";
@@ -17,7 +18,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
+ * @param {string} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
  * @returns {JSX.Element} The component.
@@ -78,16 +79,27 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "single" && (
           <CalendarSingle
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
             getTitle={getTitle}
           />
         )}
+        {layout === "singleBooking" && (
+          <CalendarSingleBooking
+            slide={slide}
+            calendarEvents={feedData}
+            content={content}
+            templateClasses={classes}
+            templateRootStyle={rootStyle}
+            getTitle={getTitle}
+            run={run}
+          />
+        )}
         {layout === "multiple" && (
           <CalendarMultiple
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
@@ -96,7 +108,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
         )}
         {layout === "multipleDays" && (
           <CalendarMultipleDays
-            calendarEvents={feedData ?? []}
+            calendarEvents={feedData}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
