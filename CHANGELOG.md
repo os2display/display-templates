@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+- [#159](https://github.com/os2display/display-templates/pull/159)
+  - Fixed issue where slideshow flickered first image before transitioning to next slide.
+
 ## [2.1.0] - 2024-10-23
 
 - [#158](https://github.com/os2display/display-templates/pull/158)
