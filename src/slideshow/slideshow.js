@@ -203,9 +203,11 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
         newIndex = 0;
       }
 
-      setAnimationIndex(newIndex);
+      if (newIndex !== 0) {
+        setAnimationIndex(newIndex);
+      }
 
-      if (fadeEnabled) {
+      if (fadeEnabled && newIndex !== 0) {
         // Fade to next image.
         setFade(true);
 
@@ -215,17 +217,17 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
 
         fadeRef.current = setTimeout(() => {
           setFade(false);
-          setIndex(newIndex);
 
           if (newIndex === 0) {
             slideDone(slide);
+          } else {
+            setIndex(newIndex);
           }
         }, fadeDuration - fadeSafeMargin);
+      } else if (newIndex === 0) {
+        slideDone(slide);
       } else {
         setIndex(newIndex);
-        if (newIndex === 0) {
-          slideDone(slide);
-        }
       }
     }, imageDurationInMilliseconds);
   }, [index]);
