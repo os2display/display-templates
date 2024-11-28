@@ -28,7 +28,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
   const logo = slide?.theme?.logo;
-  const { showLogo, logoSize, logoPosition, logoMargin, imageContain } = content;
+  const { showLogo, logoSize, logoPosition, logoMargin, mediaContain } = content;
   const { disableImageFade } = content;
 
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
@@ -219,7 +219,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
                 }}
                 ref={currentImage.nodeRef}
                 className={`background-image${
-                  imageContain ? " image-contain" : ""
+                  mediaContain ? " image-contain" : ""
                 }`}
               />
             </CSSTransition>
@@ -270,7 +270,7 @@ ImageText.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     image: PropTypes.arrayOf(PropTypes.string),
-    imageContain: PropTypes.bool,
+    mediaContain: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
     backgroundColor: PropTypes.string,

@@ -20,7 +20,7 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5, transition, animation, imageContain, backgroundColor } = content;
+  const { images, imageDuration = 5, transition, animation, mediaContain, backgroundColor } = content;
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
@@ -285,7 +285,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
                     animationIndex === imageUrlIndex || index === imageUrlIndex,
                     animationDuration
                   )}
-                  className={`image${imageContain ? " image-contain" : ""}`}
+                  className={`image${mediaContain ? " image-contain" : ""}`}
                 />
               </div>
             );
@@ -320,7 +320,7 @@ Slideshow.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
-    imageContain: PropTypes.bool,
+    mediaContain: PropTypes.bool,
     imageDuration: PropTypes.number,
     backgroundColor: PropTypes.string,
     animation: PropTypes.string,

@@ -29,5 +29,19 @@
     "name": "sound",
     "formGroupClasses": "col-md-9 mt-3",
     "helpText": "Hvis videoen har lyd, skal enheden konfigureres til at automatisk afspilning er muligt."
+  },
+  {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  },
+  {
+    "key": "form-background-color",
+    "input": "text",
+    "name": "backgroundColor",
+    "label": "Baggrundsfarve",
+    "helpText": "Farven på baggrunden i et gyldigt CSS farve format."
   }
 ]

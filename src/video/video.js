@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
+import "./video.scss";
 
 /**
  * Video component.
@@ -17,7 +18,7 @@ import "../global-styles.css";
 function Video({ slide, content, run, slideDone, executionId }) {
   const videoUrls = getAllMediaUrlsFromField(slide.mediaData, content.video);
   const videoRef = useRef();
-  const { sound } = content;
+  const { sound, mediaContain, backgroundColor } = content;
 
   const onEnded = () => {
     slideDone(slide);
@@ -33,6 +34,7 @@ function Video({ slide, content, run, slideDone, executionId }) {
       videoRef?.current?.addEventListener("ended", onEnded);
       videoRef?.current?.addEventListener("error", onError);
       videoRef.current.muted = true;
+
       if (sound) {
         videoRef.current.muted = false;
       }
@@ -56,16 +58,30 @@ function Video({ slide, content, run, slideDone, executionId }) {
     };
   }, [run]);
 
+  const rootStyle = {};
+
+  if (backgroundColor) {
+    rootStyle.backgroundColor = backgroundColor;
+  }
+
   return (
     <>
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video width="100%" height="100%" ref={videoRef} muted={!sound}>
-        {videoUrls.map((url) => (
-          <source key={url} src={url} />
-        ))}
-      </video>
+      <div className="template-video video-container" style={rootStyle}>
+        <video
+          width="100%"
+          height="100%"
+          ref={videoRef}
+          muted={!sound}
+          className={mediaContain ? "video-contain" : ""}
+        >
+          {videoUrls.map((url) => (
+            <source key={url} src={url} />
+          ))}
+          <track kind="captions" />
+        </video>
+      </div>
 
-      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles}/>
     </>
   );
 }
@@ -77,7 +93,7 @@ Video.propTypes = {
     instanceId: PropTypes.string,
     mediaData: PropTypes.shape({
       url: PropTypes.string,
-      assets: PropTypes.shape({ uri: PropTypes.string }),
+      assets: PropTypes.shape({uri: PropTypes.string }),
     }),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
@@ -86,6 +102,8 @@ Video.propTypes = {
   content: PropTypes.shape({
     sound: PropTypes.bool,
     video: PropTypes.arrayOf(PropTypes.string),
+    mediaContain: PropTypes.bool,
+    backgroundColor: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
