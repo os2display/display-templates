@@ -20,7 +20,7 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5, transition, animation, imageContain } = content;
+  const { images, imageDuration = 5, transition, animation, imageContain, backgroundColor } = content;
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
@@ -232,9 +232,15 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     }, imageDurationInMilliseconds);
   }, [index]);
 
+  const baseStyling = {};
+
+  if (backgroundColor) {
+    baseStyling.backgroundColor = backgroundColor;
+  }
+
   return (
     <>
-      <div className="template-slideshow">
+      <div className="template-slideshow" style={baseStyling}>
         {imageUrls &&
           imageUrls.map((imageUrl, imageUrlIndex) => {
             const className = "fade-container";
@@ -314,7 +320,9 @@ Slideshow.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
+    imageContain: PropTypes.bool,
     imageDuration: PropTypes.number,
+    backgroundColor: PropTypes.string,
     animation: PropTypes.string,
     transition: PropTypes.string,
     showLogo: PropTypes.bool,

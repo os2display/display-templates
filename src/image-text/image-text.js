@@ -270,6 +270,7 @@ ImageText.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     image: PropTypes.arrayOf(PropTypes.string),
+    imageContain: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
     backgroundColor: PropTypes.string,

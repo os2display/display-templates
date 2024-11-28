@@ -475,6 +475,7 @@ const slides = [
       logoSize: "l",
       imageContain: true,
       logoPosition: "bottom right",
+      backgroundColor: "#333",
       transition: "fade",
       animation: "random",
     },
