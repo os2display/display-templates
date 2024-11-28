@@ -19,6 +19,11 @@
       background-position: center center;
     }
 
+    .image.image-contain {
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
     .video-container {
       width: auto;
       height: 100%;
@@ -30,6 +35,10 @@
       object-position: center center;
       width: 100%;
       height: 100%;
+    }
+
+    video.video-contain {
+      object-fit: contain;
     }
   }
 

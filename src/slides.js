@@ -553,7 +553,7 @@ const slides = [
   {
     id: "slide7-instagram",
     type: "instagram-feed",
-    themeFile: "themes/dokk1.css",
+    darkModeEnabled: false,
     content: {
       duration: 5000,
       hashtagText: "#myhashtag",
@@ -561,6 +561,8 @@ const slides = [
       imageWidth: 40.0,
       entryDuration: 10,
       maxEntries: 5,
+      backgroundColor: "#fff",
+      mediaContain: true,
     },
     feedData: [
       {

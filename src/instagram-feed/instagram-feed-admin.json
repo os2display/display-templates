@@ -81,5 +81,12 @@
     "label": "Maksimalt antal billeder/videoer fra feedet",
     "helpText": "Her kan du skrive maksimalt antal billeder/videoer fra feedet.",
     "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "form-image-contain",
+    "input": "checkbox",
+    "name": "imageContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
   }
 ]

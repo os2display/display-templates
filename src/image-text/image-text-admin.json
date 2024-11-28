@@ -78,7 +78,7 @@
     "input": "checkbox",
     "name": "imageContain",
     "label": "Deaktivér billedbeskæring",
-    "helpText": "Billedet vil blive vist i fuld størrelse med tomme områder omkring"
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
   },
   {
     "key": "form-background-color",
