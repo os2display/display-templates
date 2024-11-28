@@ -6,7 +6,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BaseSlideExecution from "../base-slide-execution";
 import {
   getAllMediaUrlsFromField,
-  getFirstMediaUrlFromField,
   ThemeStyles,
 } from "../slide-util";
 import "../global-styles.css";
@@ -29,7 +28,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
   const logo = slide?.theme?.logo;
-  const { showLogo, logoSize, logoPosition, logoMargin } = content;
+  const { showLogo, logoSize, logoPosition, logoMargin, imageContain } = content;
   const { disableImageFade } = content;
 
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
@@ -219,7 +218,9 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
                     : "",
                 }}
                 ref={currentImage.nodeRef}
-                className="background-image"
+                className={`background-image${
+                  imageContain ? " image-contain" : ""
+                }`}
               />
             </CSSTransition>
           )}

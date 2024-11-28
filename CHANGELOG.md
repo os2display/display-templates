@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+- [#TODO](https://github.com/os2display/display-templates/pull/TODO)
+  - Added option to set image size contain instead of cover.
 - [#159](https://github.com/os2display/display-templates/pull/159)
   - Fixed issue where slideshow flickered first image before transitioning to next slide.
 

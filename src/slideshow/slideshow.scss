@@ -57,6 +57,12 @@
       height: 100%;
     }
 
+    .image.image-contain {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: #222;
+    }
+
     .logo {
       position: absolute;
       width: 10%;
