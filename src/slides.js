@@ -904,7 +904,8 @@ const slides = [
     content: {
       duration: 5000,
       layout: "single",
-      backgroundColor: "",
+      mediaContain: true,
+      backgroundColor: "#333",
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
@@ -1138,7 +1139,7 @@ const slides = [
       },
     },
     content: {
-      imageDuration: 5000,
+      imageDuration: 5,
       images: [
         "/v1/media/00000000000000000000000001",
         "/v1/media/00000000000000000000000002",

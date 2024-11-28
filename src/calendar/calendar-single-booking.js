@@ -55,7 +55,7 @@ function CalendarSingleBooking({
   slide,
   run,
 }) {
-  const { title = "", subTitle = null } = content;
+  const { title = "", subTitle = null, mediaContain } = content;
 
   // Get values from client localstorage.
   const token = localStorage.getItem("apiToken");
@@ -237,7 +237,8 @@ function CalendarSingleBooking({
 
   return (
     <Wrapper
-      className={`calendar-single-booking ${templateClasses.join(" ")}`}
+      className={`template-calendar calendar-single-booking ${templateClasses.join(" ")}
+        ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >
       <Header
@@ -406,6 +407,7 @@ CalendarSingleBooking.propTypes = {
     subTitle: PropTypes.string,
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

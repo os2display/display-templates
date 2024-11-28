@@ -24,7 +24,7 @@ function CalendarSingle({
   templateRootStyle = {},
   getTitle,
 }) {
-  const { title = "", subTitle = null, resourceAvailableText = null } = content;
+  const { title = "", subTitle = null, resourceAvailableText = null, mediaContain } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -68,7 +68,9 @@ function CalendarSingle({
 
   return (
     <Wrapper
-      className={`calendar-single ${templateClasses.join(" ")}`}
+      className={`template-calendar calendar-single ${templateClasses.join(" ")} ${
+        mediaContain ? "media-contain" : ""
+      }`}
       style={templateRootStyle}
     >
       <Title className="title">{title}</Title>
@@ -96,7 +98,6 @@ const Wrapper = styled.div`
   --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
   */
   background-color: var(--bg-color, var(--background-color));
-  background-image: var(--bg-image, none);
   color: var(--text-color);
   padding: var(--padding-size-base);
 `;
@@ -152,6 +153,7 @@ CalendarSingle.propTypes = {
     subTitle: PropTypes.string,
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

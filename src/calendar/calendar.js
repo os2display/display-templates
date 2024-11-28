@@ -31,6 +31,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
     duration = 15000,
     fontSize,
     resourceUnavailableText,
+    backgroundColor,
   } = content;
   const { feedData = [] } = slide;
 
@@ -40,7 +41,11 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, content.image);
 
   if (imageUrl) {
-    rootStyle["--bg-image"] = `url("${imageUrl}")`;
+    rootStyle.backgroundImage = `url("${imageUrl}")`;
+  }
+
+  if (backgroundColor) {
+    rootStyle.backgroundColor = backgroundColor;
   }
 
   /** Setup slide run function. */
