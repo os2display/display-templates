@@ -175,7 +175,6 @@ InstagramFeed.propTypes = {
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
     imageWidth: PropTypes.number,
-
     mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,

@@ -259,7 +259,6 @@ ImageText.propTypes = {
     mediaContain: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
-
     textColor: PropTypes.string,
     boxColor: PropTypes.string,
     styling: PropTypes.shape({
