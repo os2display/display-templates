@@ -237,6 +237,7 @@ RSS.propTypes = {
   content: PropTypes.shape({
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

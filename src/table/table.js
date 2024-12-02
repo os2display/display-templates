@@ -65,7 +65,12 @@ function Table({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <Wrapper className={`template-table ${fontSize} ${mediaContain ? "media-contain" : ""}`} style={rootStyle}>
+      <Wrapper
+        className={`template-table ${fontSize} ${
+          mediaContain ? "media-contain" : ""
+        }`}
+        style={rootStyle}
+      >
         <Header className="template-table-header">
           <Title className="title">
             {title}

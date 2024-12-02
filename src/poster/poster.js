@@ -5,7 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import da from "./lang/da.json";
-import { ThemeStyles, getFirstMediaUrlFromField } from "../slide-util";
+import { ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./poster.scss";
 

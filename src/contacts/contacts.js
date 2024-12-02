@@ -207,6 +207,7 @@ Contacts.propTypes = {
         image: PropTypes.arrayOf(PropTypes.string.isRequired),
       })
     ),
+    mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

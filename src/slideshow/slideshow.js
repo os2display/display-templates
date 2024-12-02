@@ -1,10 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import {
-  getAllMediaUrlsFromField,
-  getFirstMediaUrlFromField,
-  ThemeStyles,
-} from "../slide-util";
+import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./slideshow.scss";
 
