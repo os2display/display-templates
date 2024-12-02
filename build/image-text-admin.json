@@ -81,13 +81,6 @@
     "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
   },
   {
-    "key": "form-background-color",
-    "input": "input",
-    "name": "backgroundColor",
-    "label": "Baggrundsfarve",
-    "helpText": "Farven på baggrunden i et gyldigt CSS farve format."
-  },
-  {
     "key": "image-text-form-6",
     "input": "header-h3",
     "text": "Opsætning",

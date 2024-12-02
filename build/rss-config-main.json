@@ -4,9 +4,9 @@
   "id": "01FQC300GGWCA7A8H0SXY6P9FG",
   "description": "Mulighed for at vise et rss feed.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss.js?ts=1732880980081",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss-admin.json?ts=1732880980081",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss-schema.json?ts=1732880980081",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss.js?ts=1733136815096",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss-admin.json?ts=1733136815096",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/rss-schema.json?ts=1733136815096",
     "assets": [],
     "options": {},
     "content": {}
