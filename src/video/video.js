@@ -66,7 +66,7 @@ function Video({ slide, content, run, slideDone, executionId }) {
           height="100%"
           ref={videoRef}
           muted={!sound}
-          className={mediaContain ? " media-contain" : ""}
+          className={mediaContain ? "media-contain" : ""}
         >
           {videoUrls.map((url) => (
             <source key={url} src={url} />

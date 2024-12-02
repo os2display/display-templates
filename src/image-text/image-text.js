@@ -205,7 +205,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
                 }}
                 ref={currentImage.nodeRef}
                 className={`background-image${
-                  mediaContain ? " image-contain" : ""
+                  mediaContain ? " media-contain" : ""
                 }`}
               />
             </CSSTransition>

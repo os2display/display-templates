@@ -41,7 +41,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, content.image);
 
   if (imageUrl) {
-    rootStyle.backgroundImage = `url("${imageUrl}")`;
+    rootStyle["--bg-image"] = `url("${imageUrl}")`;
   }
 
   /** Setup slide run function. */
@@ -149,7 +149,6 @@ Calendar.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     layout: PropTypes.string,
-
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
