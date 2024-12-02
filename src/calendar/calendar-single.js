@@ -5,6 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import "./calendar.scss";
 
 /**
  * Single resource calendar.
@@ -24,7 +25,12 @@ function CalendarSingle({
   templateRootStyle = {},
   getTitle,
 }) {
-  const { title = "", subTitle = null, resourceAvailableText = null, mediaContain } = content;
+  const {
+    title = "",
+    subTitle = null,
+    resourceAvailableText = null,
+    mediaContain,
+  } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -68,9 +74,9 @@ function CalendarSingle({
 
   return (
     <Wrapper
-      className={`template-calendar calendar-single ${templateClasses.join(" ")} ${
-        mediaContain ? "media-contain" : ""
-      }`}
+      className={`template-calendar calendar-single ${templateClasses.join(
+        " "
+      )} ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >
       <Title className="title">{title}</Title>
@@ -91,8 +97,6 @@ const Wrapper = styled.div`
   /* Wrapper styling */
   font-family: var(--font-family-base);
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
   /*
   --bg-color is local to this template file and is populated from configuration.
   --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.

@@ -18,7 +18,7 @@ import "./video.scss";
 function Video({ slide, content, run, slideDone, executionId }) {
   const videoUrls = getAllMediaUrlsFromField(slide.mediaData, content.video);
   const videoRef = useRef();
-  const { sound, mediaContain, backgroundColor } = content;
+  const { sound, mediaContain } = content;
 
   const onEnded = () => {
     slideDone(slide);
@@ -58,21 +58,15 @@ function Video({ slide, content, run, slideDone, executionId }) {
     };
   }, [run]);
 
-  const rootStyle = {};
-
-  if (backgroundColor) {
-    rootStyle.backgroundColor = backgroundColor;
-  }
-
   return (
     <>
-      <div className="template-video video-container" style={rootStyle}>
+      <div className="template-video video-container">
         <video
           width="100%"
           height="100%"
           ref={videoRef}
           muted={!sound}
-          className={mediaContain ? "video-contain" : ""}
+          className={mediaContain ? " media-contain" : ""}
         >
           {videoUrls.map((url) => (
             <source key={url} src={url} />
@@ -81,7 +75,7 @@ function Video({ slide, content, run, slideDone, executionId }) {
         </video>
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles}/>
+      <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
   );
 }
@@ -93,7 +87,7 @@ Video.propTypes = {
     instanceId: PropTypes.string,
     mediaData: PropTypes.shape({
       url: PropTypes.string,
-      assets: PropTypes.shape({uri: PropTypes.string }),
+      assets: PropTypes.shape({ uri: PropTypes.string }),
     }),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
@@ -103,7 +97,6 @@ Video.propTypes = {
     sound: PropTypes.bool,
     video: PropTypes.arrayOf(PropTypes.string),
     mediaContain: PropTypes.bool,
-    backgroundColor: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

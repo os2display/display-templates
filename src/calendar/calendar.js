@@ -32,7 +32,6 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
     duration = 15000,
     fontSize,
     resourceUnavailableText,
-    backgroundColor,
   } = content;
   const { feedData = [] } = slide;
 
@@ -43,10 +42,6 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
 
   if (imageUrl) {
     rootStyle.backgroundImage = `url("${imageUrl}")`;
-  }
-
-  if (backgroundColor) {
-    rootStyle.backgroundColor = backgroundColor;
   }
 
   /** Setup slide run function. */
@@ -154,7 +149,7 @@ Calendar.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     layout: PropTypes.string,
-    backgroundColor: PropTypes.string,
+
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
     resourceUnavailableText: PropTypes.string,

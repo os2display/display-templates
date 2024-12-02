@@ -4,9 +4,9 @@
   "id": "01FP2SME0ENTXWF362XHM6Z1B4",
   "description": "Skabelon til anmeldelser.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review.js?ts=1723805672543",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review-admin.json?ts=1723805672543",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review-schema.json?ts=1723805672543",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review.js?ts=1732880980081",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review-admin.json?ts=1732880980081",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/book-review-schema.json?ts=1732880980081",
     "assets": [],
     "options": {},
     "content": {}

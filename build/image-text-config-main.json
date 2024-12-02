@@ -4,9 +4,9 @@
   "id": "01FP2SNGFN0BZQH03KCBXHKYHG",
   "description": "Mulighed for at sætte billede og tekst, med forskellige visninger.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text.js?ts=1723805672543",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text-admin.json?ts=1723805672543",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text-schema.json?ts=1723805672543",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text.js?ts=1732880980081",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text-admin.json?ts=1732880980081",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/image-text-schema.json?ts=1732880980081",
     "assets": [],
     "options": {},
     "content": {}

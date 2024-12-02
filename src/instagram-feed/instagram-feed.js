@@ -34,7 +34,7 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
   const animationDuration = 1500;
 
   const { feedData = [] } = slide;
-  const { hashtagText, orientation, imageWidth = null, backgroundColor, mediaContain } = content;
+  const { hashtagText, orientation, imageWidth = null, mediaContain } = content;
 
   // @TODO: should duration depend on number of instagram posts to show?
   let { entryDuration: duration } = content;
@@ -92,10 +92,6 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
     rootStyle["--percentage-narrow"] = `${100 - imageWidth}%`;
   }
 
-  if (backgroundColor) {
-    rootStyle.backgroundColor = backgroundColor;
-  }
-
   return (
     <>
       {currentPost && (
@@ -108,7 +104,7 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
           <div className="media-section">
             {!currentPost.videoUrl && (
               <div
-                className={`image${mediaContain ? " image-contain" : ""}`}
+                className={`image${mediaContain ? " media-contain" : ""}`}
                 style={{
                   backgroundImage: `url("${currentPost.mediaUrl}")`,
                   ...(show
@@ -119,7 +115,13 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
             )}
             {currentPost.videoUrl && (
               <div className="video-container">
-                <video muted="muted" autoPlay loop src={currentPost.videoUrl} className={mediaContain ? 'video-contain' : ''}>
+                <video
+                  muted="muted"
+                  autoPlay
+                  loop
+                  src={currentPost.videoUrl}
+                  className={mediaContain ? "media-contain" : ""}
+                >
                   <track kind="captions" />
                 </video>
               </div>
@@ -173,7 +175,7 @@ InstagramFeed.propTypes = {
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
     imageWidth: PropTypes.number,
-    backgroundColor: PropTypes.string,
+
     mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,

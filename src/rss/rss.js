@@ -6,6 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
+import "./rss.scss";
 
 /**
  * RSS component.
@@ -27,7 +28,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
     return "";
   }
 
-  const { fontSize = "m", image } = content;
+  const { fontSize = "m", image, mediaContain } = content;
   const { feedData = [], feed = {} } = slide;
   const { configuration = {} } = feed;
   const { entryDuration = 10, numberOfEntries = 5 } = configuration;
@@ -78,7 +79,12 @@ function RSS({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <Wrapper className={`template-rss ${fontSize}`} style={rootStyle}>
+      <Wrapper
+        className={`template-rss ${fontSize} ${
+          mediaContain ? "media-contain" : ""
+        }`}
+        style={rootStyle}
+      >
         <FeedInfo className="feed-info">
           {currentEntry && (
             <>

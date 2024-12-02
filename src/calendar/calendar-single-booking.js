@@ -237,7 +237,9 @@ function CalendarSingleBooking({
 
   return (
     <Wrapper
-      className={`template-calendar calendar-single-booking ${templateClasses.join(" ")}
+      className={`template-calendar calendar-single-booking ${templateClasses.join(
+        " "
+      )}
         ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >

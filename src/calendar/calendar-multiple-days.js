@@ -93,9 +93,9 @@ function CalendarMultipleDays({
 
   return (
     <Wrapper
-      className={`template-calendar calendar-multiple-days ${templateClasses.join(" ")} ${
-        mediaContain ? "media-contain" : ""
-      }`}
+      className={`template-calendar calendar-multiple-days ${templateClasses.join(
+        " "
+      )} ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >
       <>
@@ -115,8 +115,6 @@ const Wrapper = styled.div`
   font-size: var(--font-size-base);
   height: 100%;
   overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
   /*
   --bg-color is local to this template file and is populated from configuration.
   --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.

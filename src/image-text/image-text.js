@@ -4,10 +4,7 @@ import DOMPurify from "dompurify";
 import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BaseSlideExecution from "../base-slide-execution";
-import {
-  getAllMediaUrlsFromField,
-  ThemeStyles,
-} from "../slide-util";
+import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./image-text.scss";
 
@@ -28,7 +25,8 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
   const logo = slide?.theme?.logo;
-  const { showLogo, logoSize, logoPosition, logoMargin, mediaContain } = content;
+  const { showLogo, logoSize, logoPosition, logoMargin, mediaContain } =
+    content;
   const { disableImageFade } = content;
 
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
@@ -72,14 +70,7 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   const imageTextStyle = {};
 
   // Content from content
-  const {
-    title,
-    text,
-    textColor,
-    boxColor,
-    backgroundColor,
-    duration = 15000,
-  } = content;
+  const { title, text, textColor, boxColor, duration = 15000 } = content;
 
   const sanitizedText = DOMPurify.sanitize(text);
 
@@ -89,11 +80,6 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   // Set background image.
   if (!(images?.length > 0)) {
     boxClasses = `${boxClasses} full-screen`;
-  }
-
-  // Set background color.
-  if (backgroundColor) {
-    rootStyle.backgroundColor = backgroundColor;
   }
 
   // Set box colors.
@@ -273,7 +259,7 @@ ImageText.propTypes = {
     mediaContain: PropTypes.bool,
     title: PropTypes.string,
     text: PropTypes.string,
-    backgroundColor: PropTypes.string,
+
     textColor: PropTypes.string,
     boxColor: PropTypes.string,
     styling: PropTypes.shape({

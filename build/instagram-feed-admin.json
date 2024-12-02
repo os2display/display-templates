@@ -81,5 +81,19 @@
     "label": "Maksimalt antal billeder/videoer fra feedet",
     "helpText": "Her kan du skrive maksimalt antal billeder/videoer fra feedet.",
     "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  },
+  {
+    "key": "form-background-color",
+    "input": "input",
+    "name": "backgroundColor",
+    "label": "Baggrundsfarve",
+    "helpText": "Farven på baggrunden i et gyldigt CSS farve format."
   }
 ]

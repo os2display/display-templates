@@ -178,6 +178,20 @@
     "label": "Baggrundsbillede"
   },
   {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  },
+  {
+    "key": "form-background-color",
+    "input": "input",
+    "name": "backgroundColor",
+    "label": "Baggrundsfarve",
+    "helpText": "Farven på baggrunden i et gyldigt CSS farve format."
+  },
+  {
     "key": "calendar-form-display-headers",
     "input": "checkbox",
     "label": "Vis tabeloverskrifter",

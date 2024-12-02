@@ -368,6 +368,7 @@ const slides = [
       occurrenceId: "",
       entryDuration: 10,
       showLogo: true,
+      mediaContain: true,
     },
   },
   {
@@ -428,6 +429,7 @@ const slides = [
     content: {
       image: ["/v1/media/00000000000000000000000001"],
       fontSize: "font-size-m",
+      mediaContain: true,
     },
   },
   {
@@ -475,7 +477,6 @@ const slides = [
       logoSize: "l",
       mediaContain: true,
       logoPosition: "bottom right",
-      backgroundColor: "#333",
       transition: "fade",
       animation: "random",
     },
@@ -502,6 +503,7 @@ const slides = [
       },
     },
     content: {
+      mediaContain: true,
       duration: 5000,
       contacts: [
         {
@@ -561,7 +563,6 @@ const slides = [
       imageWidth: 40.0,
       entryDuration: 10,
       maxEntries: 5,
-      backgroundColor: "#fff",
       mediaContain: true,
     },
     feedData: [
@@ -621,6 +622,7 @@ const slides = [
       text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
       fontPlacement: "bottom",
       fontSize: "font-size-s",
+      mediaContain: true,
       table: [
         {
           type: "header",
@@ -905,7 +907,6 @@ const slides = [
       duration: 5000,
       layout: "single",
       mediaContain: true,
-      backgroundColor: "#333",
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
@@ -993,7 +994,6 @@ const slides = [
     },
     content: {
       mediaContain: true,
-      backgroundColor: "#333",
       video: ["/v1/media/00000000000000000000000001"],
     },
   },
@@ -1026,6 +1026,7 @@ const slides = [
       timeModerate: "5-7 minutter",
       timeFast: "3-23 minutter",
       image: ["/v1/media/00000000000000000000000001"],
+      mediaContain: true,
     },
   },
   {
@@ -1273,6 +1274,7 @@ const slides = [
     content: {
       image: ["/v1/media/00000000000000000000000001"],
       fontSize: "font-size-m",
+      mediaContain: true,
     },
   },
   {
@@ -1400,7 +1402,6 @@ const slides = [
     content: {
       duration: 60000,
       layout: "singleBooking",
-      backgroundColor: "",
       title: "M2.3",
       subTitle: "Mødelokale",
       resourceAvailableText: "Lokalet er frit.",
@@ -1467,6 +1468,7 @@ const slides = [
     content: {
       duration: 5000,
       vimeoid: "882393277",
+      mediaContain: true,
     },
   },
 ];

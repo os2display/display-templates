@@ -20,7 +20,13 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5, transition, animation, mediaContain, backgroundColor } = content;
+  const {
+    images,
+    imageDuration = 5,
+    transition,
+    animation,
+    mediaContain,
+  } = content;
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
@@ -232,15 +238,9 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
     }, imageDurationInMilliseconds);
   }, [index]);
 
-  const baseStyling = {};
-
-  if (backgroundColor) {
-    baseStyling.backgroundColor = backgroundColor;
-  }
-
   return (
     <>
-      <div className="template-slideshow" style={baseStyling}>
+      <div className="template-slideshow">
         {imageUrls &&
           imageUrls.map((imageUrl, imageUrlIndex) => {
             const className = "fade-container";
@@ -285,7 +285,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
                     animationIndex === imageUrlIndex || index === imageUrlIndex,
                     animationDuration
                   )}
-                  className={`image${mediaContain ? " image-contain" : ""}`}
+                  className={`image${mediaContain ? " media-contain" : ""}`}
                 />
               </div>
             );
@@ -322,7 +322,6 @@ Slideshow.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string),
     mediaContain: PropTypes.bool,
     imageDuration: PropTypes.number,
-    backgroundColor: PropTypes.string,
     animation: PropTypes.string,
     transition: PropTypes.string,
     showLogo: PropTypes.bool,

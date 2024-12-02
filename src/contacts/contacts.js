@@ -7,6 +7,7 @@ import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import PersonSvg from "./person.svg";
 import GlobalStyles from "../GlobalStyles";
+import "./contacts.scss";
 
 /**
  * Contacts component.
@@ -20,7 +21,7 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {JSX.Element} The component.
  */
 function Contacts({ slide, content, run, slideDone, executionId }) {
-  const { separator, duration = 15000 } = content;
+  const { separator, duration = 15000, mediaContain } = content;
   const [mappedContacts, setMappedContacts] = useState([]);
   const [translations, setTranslations] = useState();
 
@@ -74,7 +75,9 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
             <Contact className="contact" key={contact.id}>
               {contact.url && (
                 <ContactImage
-                  className="contact-image"
+                  className={`contact-image ${
+                    mediaContain ? "media-contain" : ""
+                  }`}
                   style={{
                     backgroundImage: `url("${contact.url}")`,
                   }}

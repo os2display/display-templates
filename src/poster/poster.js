@@ -27,7 +27,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const timerRef = useRef(null);
   const animationTimerRef = useRef(null);
   const logo = slide?.theme?.logo;
-  const { showLogo } = content;
+  const { showLogo, mediaContain } = content;
 
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
@@ -158,7 +158,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
         <IntlProvider messages={translations} locale="da" defaultLocale="da">
           <div className={`template-poster ${showLogo && "with-logo"}`}>
             <div
-              className="image-area"
+              className={`image-area ${mediaContain ? "media-contain" : ""}`}
               style={{
                 backgroundImage: `url("${image}")`,
                 ...(show
@@ -294,6 +294,7 @@ Poster.propTypes = {
   content: PropTypes.shape({
     entryDuration: PropTypes.number,
     showLogo: PropTypes.bool,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
