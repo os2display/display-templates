@@ -32,6 +32,7 @@ function CalendarMultiple({
     hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
     headerOrder = "whenwhatwhere",
+    mediaContain,
   } = content;
 
   /** Imports language strings, sets localized formats. */
@@ -89,7 +90,9 @@ function CalendarMultiple({
 
   return (
     <Wrapper
-      className={`calendar-multiple ${templateClasses.join(" ")}`}
+      className={`template-calendar calendar-multiple ${templateClasses.join(
+        " "
+      )} ${mediaContain ? "media-contain" : ""}`}
       style={Object.assign(borderStyle, templateRootStyle)}
     >
       <Header className="header">
@@ -307,6 +310,7 @@ CalendarMultiple.propTypes = {
     dateAsBox: PropTypes.bool,
     resourceUnavailableText: PropTypes.string,
     hideGrid: PropTypes.bool,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

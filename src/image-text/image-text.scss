@@ -142,6 +142,11 @@
     bottom: 0;
   }
 
+  .background-image.media-contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   .background-image-exit {
     opacity: 1;
   }

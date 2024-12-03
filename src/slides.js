@@ -23,6 +23,7 @@ const slides = [
       separator: false,
       halfSize: false,
       reversed: false,
+      mediaContain: true,
       fontSize: "font-size-xl",
     },
   },
@@ -367,6 +368,7 @@ const slides = [
       occurrenceId: "",
       entryDuration: 10,
       showLogo: true,
+      mediaContain: true,
     },
   },
   {
@@ -427,6 +429,7 @@ const slides = [
     content: {
       image: ["/v1/media/00000000000000000000000001"],
       fontSize: "font-size-m",
+      mediaContain: true,
     },
   },
   {
@@ -472,6 +475,7 @@ const slides = [
       ],
       showLogo: true,
       logoSize: "l",
+      mediaContain: true,
       logoPosition: "bottom right",
       transition: "fade",
       animation: "random",
@@ -499,6 +503,7 @@ const slides = [
       },
     },
     content: {
+      mediaContain: true,
       duration: 5000,
       contacts: [
         {
@@ -550,7 +555,7 @@ const slides = [
   {
     id: "slide7-instagram",
     type: "instagram-feed",
-    themeFile: "themes/dokk1.css",
+    darkModeEnabled: false,
     content: {
       duration: 5000,
       hashtagText: "#myhashtag",
@@ -558,6 +563,7 @@ const slides = [
       imageWidth: 40.0,
       entryDuration: 10,
       maxEntries: 5,
+      mediaContain: true,
     },
     feedData: [
       {
@@ -616,6 +622,7 @@ const slides = [
       text: "Da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aadadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa da dadadad dad aa",
       fontPlacement: "bottom",
       fontSize: "font-size-s",
+      mediaContain: true,
       table: [
         {
           type: "header",
@@ -899,7 +906,7 @@ const slides = [
     content: {
       duration: 5000,
       layout: "single",
-      backgroundColor: "",
+      mediaContain: true,
       title: "Kalender",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
@@ -986,6 +993,7 @@ const slides = [
       },
     },
     content: {
+      mediaContain: true,
       video: ["/v1/media/00000000000000000000000001"],
     },
   },
@@ -1018,6 +1026,7 @@ const slides = [
       timeModerate: "5-7 minutter",
       timeFast: "3-23 minutter",
       image: ["/v1/media/00000000000000000000000001"],
+      mediaContain: true,
     },
   },
   {
@@ -1055,6 +1064,7 @@ const slides = [
       shadow: true,
       separator: true,
       halfSize: true,
+      mediaContain: true,
       reversed: false,
       fontSize: "font-size-m",
       disableImageFade: false,
@@ -1130,7 +1140,7 @@ const slides = [
       },
     },
     content: {
-      imageDuration: 5000,
+      imageDuration: 5,
       images: [
         "/v1/media/00000000000000000000000001",
         "/v1/media/00000000000000000000000002",
@@ -1264,6 +1274,7 @@ const slides = [
     content: {
       image: ["/v1/media/00000000000000000000000001"],
       fontSize: "font-size-m",
+      mediaContain: true,
     },
   },
   {
@@ -1391,7 +1402,6 @@ const slides = [
     content: {
       duration: 60000,
       layout: "singleBooking",
-      backgroundColor: "",
       title: "M2.3",
       subTitle: "Mødelokale",
       resourceAvailableText: "Lokalet er frit.",
@@ -1446,6 +1456,7 @@ const slides = [
       ],
       showLogo: false,
       logoSize: "l",
+      mediaContain: true,
       logoPosition: "bottom right",
       transition: "fade",
       animation: "none",
@@ -1457,6 +1468,7 @@ const slides = [
     content: {
       duration: 5000,
       vimeoid: "882393277",
+      mediaContain: true,
     },
   },
 ];

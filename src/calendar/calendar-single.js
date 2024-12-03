@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
-import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import "./calendar.scss";
 
 /**
  * Single resource calendar.
@@ -24,7 +24,12 @@ function CalendarSingle({
   templateRootStyle = {},
   getTitle,
 }) {
-  const { title = "", subTitle = null, resourceAvailableText = null } = content;
+  const {
+    title = "",
+    subTitle = null,
+    resourceAvailableText = null,
+    mediaContain,
+  } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -68,7 +73,9 @@ function CalendarSingle({
 
   return (
     <Wrapper
-      className={`calendar-single ${templateClasses.join(" ")}`}
+      className={`template-calendar calendar-single ${templateClasses.join(
+        " "
+      )} ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >
       <Title className="title">{title}</Title>
@@ -152,6 +159,7 @@ CalendarSingle.propTypes = {
     subTitle: PropTypes.string,
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

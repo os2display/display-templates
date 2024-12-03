@@ -54,6 +54,7 @@ function Travel({
     monitorLayout,
     disableIcons,
     duration = 15000,
+    mediaContain,
   } = content;
 
   let infoBoxClass = "info-box";
@@ -164,7 +165,10 @@ function Travel({
         )}
         {imageStyle &&
           (title || sanitizedtext || distance || timeFast || timeModerate) && (
-            <div className="map" style={imageStyle} />
+            <div
+              className={`map${mediaContain ? " media-contain" : ""}`}
+              style={imageStyle}
+            />
           )}
         {iframeSrc && (
           <div className={iFrameClass}>
@@ -213,6 +217,7 @@ Travel.propTypes = {
     numberOfJourneys: PropTypes.number,
     monitorLayout: PropTypes.string,
     disableIcons: PropTypes.bool,
+    mediaContain: PropTypes.bool,
   }),
   executionId: PropTypes.string.isRequired,
 };

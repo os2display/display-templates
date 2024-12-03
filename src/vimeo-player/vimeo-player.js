@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
 import { ThemeStyles } from "../slide-util";
 import "../global-styles.css";
+import "./vimeo.scss";
 
 /**
  * Vimeo Player component.
@@ -17,7 +18,7 @@ import "../global-styles.css";
  * @returns {JSX.Element} The component.
  */
 function VimeoPlayer({ slide, content, run, slideDone, executionId }) {
-  const { vimeoid, duration = 15000 } = content;
+  const { vimeoid, duration = 15000, mediaContain } = content;
 
   /** Setup slide run function. */
   const slideExecution = new BaseSlideExecution(slide, slideDone);
@@ -33,8 +34,17 @@ function VimeoPlayer({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <div width="100%" height="100%">
-        <Vimeo video={vimeoid} responsive autoplay muted paused={false} loop />
+      <div className="template-vimeo-player">
+        <Vimeo
+          video={vimeoid}
+          responsive
+          autoplay
+          muted
+          controls={false}
+          paused={false}
+          loop
+          className={`vimeo-player${mediaContain ? " media-contain" : ""}`}
+        />
       </div>
       <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </>
@@ -53,6 +63,7 @@ VimeoPlayer.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     vimeoid: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

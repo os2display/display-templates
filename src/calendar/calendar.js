@@ -11,6 +11,7 @@ import CalendarSingleBooking from "./calendar-single-booking";
 import CalendarMultipleDays from "./calendar-multiple-days";
 import CalendarMultiple from "./calendar-multiple";
 import GlobalStyles from "../GlobalStyles";
+import "./calendar.scss";
 
 /**
  * Calendar component.
@@ -148,7 +149,6 @@ Calendar.propTypes = {
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,
     layout: PropTypes.string,
-    backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
     resourceUnavailableText: PropTypes.string,

@@ -46,7 +46,7 @@ jobs:
         run: yarn
 
       - name: React coding standards
-        run: yarn check-coding-standards
+        run: yarn check-coding-standards-actions
 
   cypress:
     name: Cypress

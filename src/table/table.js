@@ -4,6 +4,7 @@ import styled from "styled-components";
 import BaseSlideExecution from "../base-slide-execution";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
+import "./table.scss";
 
 /**
  * Table component.
@@ -26,6 +27,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
     fontPlacement,
     separator = true,
     duration = 15000,
+    mediaContain,
   } = content;
   let header;
 
@@ -63,7 +65,12 @@ function Table({ slide, content, run, slideDone, executionId }) {
 
   return (
     <>
-      <Wrapper className={`template-table ${fontSize}`} style={rootStyle}>
+      <Wrapper
+        className={`template-table ${fontSize} ${
+          mediaContain ? "media-contain" : ""
+        }`}
+        style={rootStyle}
+      >
         <Header className="template-table-header">
           <Title className="title">
             {title}
@@ -219,6 +226,7 @@ Table.propTypes = {
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
     image: PropTypes.arrayOf(PropTypes.string),
     separator: PropTypes.bool,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

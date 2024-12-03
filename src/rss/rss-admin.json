@@ -30,6 +30,13 @@
     "formGroupClasses": "mb-3"
   },
   {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  },
+  {
     "key": "rss-form-5",
     "input": "select",
     "required": false,
