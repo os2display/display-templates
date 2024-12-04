@@ -1,0 +1,92 @@
+[
+  {
+    "key": "instagram-feed-form-1",
+    "input": "header",
+    "text": "Skabelon: Instagram feed",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "instagram-feed-form-2",
+    "input": "header-h3",
+    "text": "Opsæt feed",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "instagram-feed-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feeds",
+    "supportedFeedOutputType": "instagram",
+    "formGroupClasses": "mb-3",
+    "singleSelect": true
+  },
+  {
+    "key": "instagram-feed-form-entry-duration",
+    "input": "input",
+    "name": "entryDuration",
+    "type": "number",
+    "label": "Varighed pr. billede/video (i sekunder)",
+    "helpText": "Her skal du skrive varigheden pr. billede/video.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "instagram-feed-hashtag-text",
+    "input": "input",
+    "name": "hashtagText",
+    "type": "text",
+    "label": "Hashtag-tekst",
+    "helpText": "Her kan du skrive hashtag-teksten.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "instagram-feed-orientation",
+    "input": "select",
+    "name": "orientation",
+    "label": "Vælg skærmorientering",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "orientation1",
+        "title": "Horisontalt",
+        "value": "landscape"
+      },
+      {
+        "key": "orientation2",
+        "title": "Vertikal",
+        "value": "vertical"
+      }
+    ]
+  },
+  {
+    "key": "instagram-feed-image-width",
+    "input": "input",
+    "name": "imageWidth",
+    "type": "number",
+    "min": 0,
+    "max": 100.0,
+    "label": "Billedebredde %",
+    "helpText": "Her kan du skrive billedebredden i procent.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "instagram-feed-max-entries",
+    "input": "input",
+    "name": "maxEntries",
+    "type": "number",
+    "min": 1,
+    "label": "Maksimalt antal billeder/videoer fra feedet",
+    "helpText": "Her kan du skrive maksimalt antal billeder/videoer fra feedet.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  }
+]

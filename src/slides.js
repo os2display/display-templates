@@ -1471,6 +1471,35 @@ const slides = [
       mediaContain: true,
     },
   },
+  {
+    id: "slide25-social-news",
+    type: "social-news",
+    themeFile: "themes/mso.css",
+    // Disable dark mode for slide.
+    darkModeEnabled: false,
+    feed: {
+      configuration: {
+        numberOfEntries: 5,
+        entryDuration: 10,
+        showFeedProgress: true,
+      },
+    },
+    feedData: [
+      {
+        title: "Aenean scelerisque ligula ante, sed tristique tellus?",
+        content:
+          "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+        image: "./fixtures/images/mountain1.jpeg",
+        author: "Test Testesen",
+        link: "https://example.com/news/1",
+        date: "2022-02-03T08:50:07",
+      },
+    ],
+    content: {
+      fontSize: "font-size-m",
+      mediaContain: true,
+    },
+  },
 ];
 
 export default slides;
