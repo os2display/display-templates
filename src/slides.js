@@ -1514,7 +1514,7 @@ const slides = [
     ],
     content: {
       fontSize: "font-size-m",
-      mediaContain: true,
+      mediaContain: false,
     },
   },
 ];
