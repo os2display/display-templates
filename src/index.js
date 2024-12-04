@@ -28,7 +28,7 @@ import Table from "./table/table";
 import Video from "./video/video";
 import Travel from "./travel/travel";
 import VimeoPlayer from "./vimeo-player/vimeo-player";
-import "./index.css";;
+import "./index.css";
 import SocialNews from "./social-news/social-news";
 
 export const renderScreen = (screen) => {
