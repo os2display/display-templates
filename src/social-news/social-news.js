@@ -27,20 +27,12 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
   const [currentPost, setCurrentPost] = useState(null);
   const [qr, setQr] = useState(null);
 
-  // Animation
-  const [show, setShow] = useState(true);
-  const animationDuration = 1500;
-
   const { feedData = [] } = slide;
-  const { mediaContain, readMore } = content;
+  const { entryDuration, mediaContain, readMore, maxEntries = 5 } = content;
 
-  // @TODO: should duration depend on number of instagram posts to show?
-  let { entryDuration: duration } = content;
-  duration = (duration || 15) * 1000; // Add a default
+  const duration = (entryDuration || 15) * 1000;
 
-  const { maxEntries = 5 } = content;
-
-  /** Setup feed entry switch and animation, if there is more than one post. */
+  // Setup feed entry switch, if there is more than one post.
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = feedData.indexOf(currentPost);
@@ -51,20 +43,12 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
         slideDone(slide);
       } else {
         setCurrentPost(feedData[nextIndex]);
-        setShow(true);
       }
     }, duration);
-
-    const animationTimer = setTimeout(() => {
-      setShow(false);
-    }, duration - animationDuration);
 
     return function cleanup() {
       if (timer !== null) {
         clearInterval(timer);
-      }
-      if (animationTimer !== null) {
-        clearInterval(animationTimer);
       }
     };
   }, [currentPost]);
@@ -81,45 +65,53 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
 
   useEffect(() => {
     if (currentPost) {
-      QRCode.toDataURL(currentPost.link, {
-        color: {
-          dark: "#000000",
-          light: "#ff000000",
-          errorCorrectionLevel: "H",
-        },
-      }).then((data) => {
-        setQr(data);
-      });
+      if (!currentPost?.link) {
+        setQr(null);
+      } else {
+        QRCode.toDataURL(currentPost.link, {
+          color: {
+            dark: "#000000",
+            light: "#ffffff00",
+          },
+        }).then((data) => {
+          setQr(data);
+        });
+      }
     }
   }, [currentPost]);
 
   return (
     <>
       {currentPost && (
-        <div className={`template-social-news ${show ? "show" : "hide"}`}>
+        <div className="template-social-news">
           <div className="media-section">
             <div
               className={`image ${mediaContain ? "media-contain" : ""}`}
               style={{
                 backgroundImage: `url("${currentPost.image}")`,
-                ...(show
-                  ? { animation: `fade-in ${animationDuration}ms` }
-                  : { animation: `fade-out ${animationDuration}ms` }),
               }}
             />
           </div>
           <div className="text-section">
             <h1 className="title">{currentPost.title}</h1>
             <div className="author">
-              {dayjs(currentPost.date).locale(localeDa).format("ll")} ▪{" "}
+              {currentPost.date
+                ? `${dayjs(currentPost.date).locale(localeDa).format("ll")} ▪ `
+                : ""}
               {currentPost.author}
             </div>
             <div className="description">{currentPost.content}</div>
           </div>
           <div className="extra-section">
             {qr && <img src={qr} alt="QR code link" className="qr" />}
-            <div className="read-more">{readMore ?? "Læs hele nyheden"}</div>
-            <div className="link">{currentPost.link}</div>
+            {currentPost.link && (
+              <>
+                <div className="read-more">
+                  {readMore ?? "Læs hele nyheden"}
+                </div>
+                <div className="link">{currentPost.link}</div>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -138,21 +130,19 @@ SocialNews.propTypes = {
     }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({
-        text: PropTypes.string,
-        textMarkup: PropTypes.string,
-        mediaUrl: PropTypes.string,
-        videoUrl: PropTypes.string,
-        username: PropTypes.string,
-        createdTime: PropTypes.string,
+        title: PropTypes.string,
+        content: PropTypes.string,
+        author: PropTypes.string,
+        image: PropTypes.string,
+        date: PropTypes.string,
+        link: PropTypes.string,
       })
     ).isRequired,
   }).isRequired,
   content: PropTypes.shape({
-    hashtagText: PropTypes.string,
-    orientation: PropTypes.string,
+    readMore: PropTypes.string,
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
-    imageWidth: PropTypes.number,
     mediaContain: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,

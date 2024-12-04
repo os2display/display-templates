@@ -75,9 +75,8 @@
     justify-content: end;
 
     .qr {
-      width: 15%;
+      width: 20%;
       margin-bottom: 2%;
-      margin-left: -1.5%;
     }
 
     .read-more {
@@ -93,8 +92,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
 
     .media-section {
       background-color: var(--background-color);

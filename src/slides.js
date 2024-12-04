@@ -1474,14 +1474,13 @@ const slides = [
   {
     id: "slide25-social-news",
     type: "social-news",
-    themeFile: "themes/mso.css",
+    themeFile: "themes/aarhus.css",
     // Disable dark mode for slide.
     darkModeEnabled: false,
     feed: {
       configuration: {
         numberOfEntries: 5,
-        entryDuration: 10,
-        showFeedProgress: true,
+        entryDuration: 5,
       },
     },
     feedData: [
@@ -1489,10 +1488,28 @@ const slides = [
         title: "Aenean scelerisque ligula ante, sed tristique tellus?",
         content:
           "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
-        image: "./fixtures/images/mountain1.jpeg",
+        image: "./fixtures/images/sunset-full-hd.jpg",
         author: "Test Testesen",
         link: "https://example.com/news/1",
         date: "2022-02-03T08:50:07",
+      },
+      {
+        title:
+          "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante.",
+        content:
+          "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+        image: "./fixtures/images/mountain1.jpeg",
+        author: "Test Testesen",
+        link: "https://example.com/very-much-longer-link-than-the-other/1",
+        date: "2022-02-03T08:50:07",
+      },
+      {
+        title: null,
+        content: null,
+        image: null,
+        author: null,
+        link: null,
+        date: null,
       },
     ],
     content: {
