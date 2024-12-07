@@ -3,6 +3,27 @@
 Contains base templates for OS2Display.
 See [https://github.com/os2display/display-docs/blob/main/templates.md](https://github.com/os2display/display-docs/blob/main/templates.md) for a description of how to create templates.
 
+## Release
+
+When creating a release the config files should be built with a tag in the config routes.
+
+```shell
+git checkout develop
+git pull
+git checkout -b release/<<TAG>>
+docker compose run --rm --env DEPLOYMENT_BUILD_TAG=${<<TAG>>} node yarn build
+git checkout build/*-develop.json
+
+# Update CHANGELOG with new tag.
+nano CHANGELOG.md
+
+git add .
+git commit -m "Built release <<TAG>>"
+git push
+```
+
+
+
 ## Develop
 
 To enable easy development of templates, the supplied docker-compose setup serves a page where the

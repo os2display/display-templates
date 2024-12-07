@@ -59,21 +59,34 @@ const transformConfig = (type) => (content) => {
   const config = JSON.parse(content.toString());
 
   // Base build URL with trailing slash.
-  const baseUrl = (
-    type === "develop"
-      ? process.env.DEPLOYMENT_BUILD_BASE_URL_DEVELOP ??
-        process.env.DEPLOYMENT_BUILD_BASE_URL ??
-        "https://raw.githubusercontent.com/os2display/display-templates/develop/build/"
-      : process.env.DEPLOYMENT_BUILD_BASE_URL_MAIN ??
-        process.env.DEPLOYMENT_BUILD_BASE_URL ??
-        "https://raw.githubusercontent.com/os2display/display-templates/main/build/"
-  ).replace(/\/*$/, "/");
+  let baseUrl;
+
+  if (type === "develop") {
+    baseUrl =
+      process.env.DEPLOYMENT_BUILD_BASE_URL_DEVELOP ??
+      process.env.DEPLOYMENT_BUILD_BASE_URL ??
+      "https://raw.githubusercontent.com/os2display/display-templates/develop/build/";
+  } else if (process.env.DEPLOYMENT_BUILD_TAG) {
+    baseUrl = `https://raw.githubusercontent.com/os2display/display-templates/refs/tags/${process.env.DEPLOYMENT_BUILD_TAG}/build/`;
+  } else {
+    baseUrl =
+      process.env.DEPLOYMENT_BUILD_BASE_URL_MAIN ??
+      process.env.DEPLOYMENT_BUILD_BASE_URL ??
+      "https://raw.githubusercontent.com/os2display/display-templates/main/build/";
+  }
+
+  baseUrl.replace(/\/*$/, "/");
 
   const processPath = (processablePath) => {
     const buildPath = processablePath.replace(
       "https://display-templates.local.itkdev.dk/build/",
       ""
     );
+
+    if (process.env.DEPLOYMENT_BUILD_TAG) {
+      const url = new URL(buildPath, baseUrl);
+      return url.toString();
+    }
 
     try {
       const url = new URL(buildPath, baseUrl);
