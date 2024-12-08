@@ -83,7 +83,7 @@ const transformConfig = (type) => (content) => {
       ""
     );
 
-    if (process.env.DEPLOYMENT_BUILD_TAG) {
+    if (process.env.DEPLOYMENT_BUILD_TAG && type === "main") {
       const url = new URL(buildPath, baseUrl);
       return url.toString();
     }
