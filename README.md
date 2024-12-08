@@ -7,22 +7,21 @@ See [https://github.com/os2display/display-docs/blob/main/templates.md](https://
 
 When creating a release the config files should be built with a tag in the config routes.
 
+Follow the instructions below.
+
+Replace `<TAG>` with the given tag.
+
 ```shell
-git checkout develop
-git pull
-git checkout -b release/<<TAG>>
-docker compose run --rm --env DEPLOYMENT_BUILD_TAG=${<<TAG>>} node yarn build
-git checkout build/*-develop.json
+# Create the release branch: release/<TAG>
 
-# Update CHANGELOG with new tag.
-nano CHANGELOG.md
+# Build the js and config files with tags in main config files.
+docker compose run --rm --env DEPLOYMENT_BUILD_TAG=<TAG> node yarn build
 
-git add .
-git commit -m "Built release <<TAG>>"
-git push
+# Update CHANGELOG with the new tag.
+# When ready merge release branch in main.
+# Tag the release in main
+# Merge main in develop
 ```
-
-
 
 ## Develop
 
