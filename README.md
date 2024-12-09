@@ -7,21 +7,17 @@ See [https://github.com/os2display/display-docs/blob/main/templates.md](https://
 
 When creating a release the config files should be built with a tag in the config routes.
 
-Follow the instructions below.
+Follow the instructions below. Replace `<TAG>` with the given tag.
 
-Replace `<TAG>` with the given tag.
-
-```shell
-# Create the release branch: release/<TAG>
-
-# Build the js and config files with tags in main config files.
-docker compose run --rm --env DEPLOYMENT_BUILD_TAG=<TAG> node yarn build
-
-# Update CHANGELOG with the new tag.
-# When ready merge release branch in main.
-# Tag the release in main
-# Merge main in develop
-```
+1. Create the release branch: release/<TAG>
+2. Build the js and config files with tags in main config files.
+    ```shell
+    docker compose run --rm --env DEPLOYMENT_BUILD_TAG=<TAG> node yarn build
+    ```
+3. Update CHANGELOG with the new tag.
+4. When ready merge release branch in main.
+5. Tag the release in main
+6. Merge main in develop
 
 ## Develop
 
@@ -109,7 +105,7 @@ Override "main" base URL only:
 docker compose run --rm --env DEPLOYMENT_BUILD_BASE_URL_MAIN="http://$(docker compose port nginx 80)/build/" node yarn build
 ```
 
-The default behavoir is equivalent to
+The default behavior is equivalent to
 
 ```sh
 docker compose run --rm \
