@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-- [#TODO](https://github.com/os2display/display-templates/pull/TODO)
+- [#162](https://github.com/os2display/display-templates/pull/162)
   - Added option to build main config files with a tag from DEPLOYMENT_BUILD_TAG.
 
 ## [2.1.0] - 2024-10-23
