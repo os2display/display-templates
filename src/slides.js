@@ -1472,8 +1472,8 @@ const slides = [
     },
   },
   {
-    id: "slide25-social-news",
-    type: "social-news",
+    id: "slide25-news-feed",
+    type: "news-feed",
     themeFile: "themes/aarhus.css",
     // Disable dark mode for slide.
     darkModeEnabled: false,

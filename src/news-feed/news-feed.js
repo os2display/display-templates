@@ -7,10 +7,10 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import QRCode from "qrcode";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
-import "./social-news.scss";
+import "./news-feed.scss";
 
 /**
- * Social news slide.
+ * News feed slide.
  *
  * @param {object} props Props.
  * @param {object} props.slide The slide.
@@ -20,7 +20,7 @@ import "./social-news.scss";
  * @param {string} props.executionId Unique id for the instance.
  * @returns {JSX.Element} The component.
  */
-function SocialNews({ slide, content, run, slideDone, executionId }) {
+function NewsFeed({ slide, content, run, slideDone, executionId }) {
   dayjs.extend(localizedFormat);
   dayjs.extend(relativeTime);
 
@@ -122,7 +122,7 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
   return (
     <>
       {currentPost && (
-        <div className="template-social-news">
+        <div className="template-news-feed">
           <div className="media-section">
             <div
               className={`image ${mediaContain ? "media-contain" : ""}`}
@@ -162,7 +162,7 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
   );
 }
 
-SocialNews.propTypes = {
+NewsFeed.propTypes = {
   run: PropTypes.string.isRequired,
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
@@ -203,4 +203,4 @@ SocialNews.propTypes = {
   executionId: PropTypes.string.isRequired,
 };
 
-export default SocialNews;
+export default NewsFeed;

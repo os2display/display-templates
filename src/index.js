@@ -29,7 +29,7 @@ import Video from "./video/video";
 import Travel from "./travel/travel";
 import VimeoPlayer from "./vimeo-player/vimeo-player";
 import "./index.css";
-import SocialNews from "./social-news/social-news";
+import NewsFeed from "./news-feed/news-feed";
 
 export const renderScreen = (screen) => {
   const gridTemplateAreas = {
@@ -159,9 +159,9 @@ export const renderSlide = (slide) => {
           executionId="SLIDE_ID"
         />
       );
-    case "social-news":
+    case "news-feed":
       return (
-        <SocialNews
+        <NewsFeed
           content={slide.content}
           slide={slide}
           run="1234"
