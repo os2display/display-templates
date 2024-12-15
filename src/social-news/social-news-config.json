@@ -1,12 +1,12 @@
 {
-  "title": "Instagram feed",
+  "title": "Nyheder",
   "icon": "",
-  "id": "01FTZC0RKJYHG4JVZG5K709G46",
-  "description": "Mulighed for at vise instagram indhold.",
+  "id": "01JEWPAFF93YSF418TH72W1SBA",
+  "description": "Mulighed for at vise nyhedsindhold.",
   "resources": {
-    "component": "https://display-templates.local.itkdev.dk/build/instagram-feed.js",
-    "admin": "https://display-templates.local.itkdev.dk/build/instagram-feed-admin.json",
-    "schema": "https://display-templates.local.itkdev.dk/build/instagram-feed-schema.json",
+    "component": "https://display-templates.local.itkdev.dk/build/social-news.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/social-news-admin.json",
+    "schema": "",
     "assets": [],
     "options": {},
     "content": {}

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import relativeTime from "dayjs/plugin/relativeTime";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import QRCode from "qrcode";
-import { ThemeStyles } from "../slide-util";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./social-news.scss";
 
@@ -25,46 +25,39 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
   dayjs.extend(relativeTime);
 
   const [currentPost, setCurrentPost] = useState(null);
+  const [posts, setPosts] = useState([]);
   const [qr, setQr] = useState(null);
 
-  const { feedData = [] } = slide;
-  const { entryDuration, mediaContain, readMore, maxEntries = 5 } = content;
+  const timerRef = useRef();
 
-  const duration = (entryDuration || 15) * 1000;
+  const { feedData = [], mediaData = {} } = slide;
+  const {
+    entryDuration = 10,
+    mediaContain = false,
+    maxEntries = 5,
+    readMore,
+    fallbackImage,
+  } = content;
+
+  const fallbackImageUrl = getFirstMediaUrlFromField(mediaData, fallbackImage);
+
+  const duration = entryDuration * 1000;
 
   // Setup feed entry switch, if there is more than one post.
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const currentIndex = feedData.indexOf(currentPost);
-      const nextIndex =
-        (currentIndex + 1) % Math.min(feedData.length, maxEntries);
-
-      if (nextIndex === 0) {
-        slideDone(slide);
-      } else {
-        setCurrentPost(feedData[nextIndex]);
-      }
-    }, duration);
-
-    return function cleanup() {
-      if (timer !== null) {
-        clearInterval(timer);
-      }
-    };
-  }, [currentPost]);
-
-  useEffect(() => {
-    if (run) {
-      if (feedData?.length > 0) {
-        setCurrentPost(feedData[0]);
-      } else {
-        setTimeout(() => slideDone(slide), 1000);
-      }
-    }
-  }, [run]);
-
-  useEffect(() => {
     if (currentPost) {
+      timerRef.current = setTimeout(() => {
+        const currentIndex = posts.indexOf(currentPost);
+        const nextIndex =
+          (currentIndex + 1) % Math.min(posts.length, maxEntries);
+
+        if (nextIndex === 0) {
+          slideDone(slide);
+        } else {
+          setCurrentPost(posts[nextIndex]);
+        }
+      }, duration);
+
       if (!currentPost?.link) {
         setQr(null);
       } else {
@@ -78,7 +71,53 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
         });
       }
     }
+
+    return function cleanup() {
+      if (timerRef?.current) {
+        clearInterval(timerRef.current);
+      }
+    };
   }, [currentPost]);
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      setCurrentPost(posts[0]);
+    }
+  }, [posts]);
+
+  useEffect(() => {
+    if (feedData && Object.hasOwnProperty.call(feedData, "entries")) {
+      setPosts(feedData.entries);
+    }
+  }, [feedData]);
+
+  useEffect(() => {
+    if (run) {
+      if (posts?.length > 0) {
+        setCurrentPost(posts[0]);
+      }
+    }
+  }, [run]);
+
+  const getImageUrl = (post) => {
+    let imageUrl = fallbackImageUrl ?? null;
+
+    if (post?.medias instanceof Array) {
+      const medias = [...post?.medias];
+
+      if (medias?.length > 0) {
+        const first = medias.pop();
+
+        if (first?.url) {
+          imageUrl = first.url;
+        }
+      }
+    }
+
+    return imageUrl;
+  };
+
+  const image = currentPost ? getImageUrl(currentPost) : null;
 
   return (
     <>
@@ -88,26 +127,28 @@ function SocialNews({ slide, content, run, slideDone, executionId }) {
             <div
               className={`image ${mediaContain ? "media-contain" : ""}`}
               style={{
-                backgroundImage: `url("${currentPost.image}")`,
+                backgroundImage: image ? `url("${image}")` : "",
               }}
             />
           </div>
           <div className="text-section">
             <h1 className="title">{currentPost.title}</h1>
             <div className="author">
-              {currentPost.date
-                ? `${dayjs(currentPost.date).locale(localeDa).format("ll")} ▪ `
+              {currentPost.lastModified
+                ? dayjs(currentPost.lastModified).locale(localeDa).format("ll")
                 : ""}
-              {currentPost.author}
+              {currentPost.lastModified && currentPost?.author?.name && " ▪ "}
+              {currentPost?.author?.name}
             </div>
             <div className="description">{currentPost.content}</div>
+            <div className="description-fade" />
           </div>
           <div className="extra-section">
             {qr && <img src={qr} alt="QR code link" className="qr" />}
             {currentPost.link && (
               <>
                 <div className="read-more">
-                  {readMore ?? "Læs hele nyheden"}
+                  {readMore || "Læs hele nyheden"}
                 </div>
                 <div className="link">{currentPost.link}</div>
               </>
@@ -128,22 +169,36 @@ SocialNews.propTypes = {
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
-    feedData: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        content: PropTypes.string,
-        author: PropTypes.string,
-        image: PropTypes.string,
-        date: PropTypes.string,
-        link: PropTypes.string,
-      })
-    ).isRequired,
+    feedData: PropTypes.shape({
+      title: PropTypes.string,
+      entries: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          content: PropTypes.string,
+          author: PropTypes.shape({
+            name: PropTypes.string,
+          }),
+          medias: PropTypes.arrayOf(
+            PropTypes.shape({
+              url: PropTypes.string,
+            })
+          ),
+          lastModified: PropTypes.string,
+          link: PropTypes.string,
+        })
+      ),
+    }).isRequired,
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
   }).isRequired,
   content: PropTypes.shape({
     readMore: PropTypes.string,
     entryDuration: PropTypes.number,
     maxEntries: PropTypes.number,
     mediaContain: PropTypes.bool,
+    fallbackImage: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
