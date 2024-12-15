@@ -117,20 +117,18 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
     return imageUrl;
   };
 
-  const image = currentPost ? getImageUrl(currentPost) : null;
+  const imageUrl = currentPost ? getImageUrl(currentPost) : null;
 
   return (
     <>
       {currentPost && (
         <div className="template-news-feed">
-          <div className="media-section">
-            <div
-              className={`image ${mediaContain ? "media-contain" : ""}`}
-              style={{
-                backgroundImage: image ? `url("${image}")` : "",
-              }}
-            />
-          </div>
+          <div
+            className={`media-section ${mediaContain ? "media-contain" : ""}`}
+            style={{
+              backgroundImage: imageUrl ? `url("${imageUrl}")` : "",
+            }}
+          />
           <div className="text-section">
             <h1 className="title">{currentPost.title}</h1>
             <div className="author">
