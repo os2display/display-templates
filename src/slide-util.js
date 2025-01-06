@@ -3,6 +3,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
+ * Capitalize the datestring, as it starts with the weekday.
+ *
+ * @param {string} s The string to capitalize.
+ * @returns {string} The capitalized string.
+ */
+const capitalize = (s) => {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+/**
  * Get the first media url of a media field.
  *
  * @param {object} mediaData The object of media objects.
@@ -72,4 +82,9 @@ ThemeStyles.propTypes = {
   css: PropTypes.string,
 };
 
-export { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles };
+export {
+  capitalize,
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  ThemeStyles,
+};
