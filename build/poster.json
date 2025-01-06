@@ -1,0 +1,53 @@
+{
+  "title": "Plakat",
+  "id": "01FWJZQ25A1868V63CWYYHQFKQ",
+  "admin": [
+    {
+      "key": "poster-form-1",
+      "input": "header",
+      "text": "Skabelon: Plakat fra feed",
+      "name": "header1",
+      "formGroupClasses": "h4 mb-3"
+    },
+    {
+      "key": "poster-form-2",
+      "input": "header-h3",
+      "text": "Opsæt feed",
+      "name": "header2",
+      "formGroupClasses": "h5 mb-3"
+    },
+    {
+      "key": "poster-form-3",
+      "input": "feed",
+      "text": "Opsæt feed",
+      "name": "feeds",
+      "supportedFeedOutputType": "poster",
+      "formGroupClasses": "mb-3",
+      "singleSelect": true
+    },
+    {
+      "key": "poster-form-entry-duration",
+      "input": "duration",
+      "name": "duration",
+      "type": "number",
+      "label": "Varighed pr. begivenhed (i sekunder)",
+      "helpText": "Her skal du skrive varigheden pr. begivenhed.",
+      "required": true,
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "poster-form-4",
+      "input": "checkbox",
+      "label": "Vis logo fra tema",
+      "name": "showLogo",
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "form-media-contain",
+      "input": "checkbox",
+      "name": "mediaContain",
+      "label": "Deaktivér billedbeskæring",
+      "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+    }
+  ]
+}

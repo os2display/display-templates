@@ -1,0 +1,218 @@
+{
+  "title": "Kalender",
+  "id": "01FRJPF4XATRN8PBZ35XN84PS6",
+  "admin": [
+    {
+      "key": "calendar-form-1",
+      "input": "header",
+      "text": "Skabelon: Kalender",
+      "name": "header1",
+      "formGroupClasses": "h4 mb-3"
+    },
+    {
+      "key": "calendar-form-2",
+      "input": "header-h3",
+      "text": "Opsæt feed",
+      "name": "header2",
+      "formGroupClasses": "h5 mb-3"
+    },
+    {
+      "key": "calendar-form-3",
+      "input": "feed",
+      "text": "Opsæt feed",
+      "name": "feed",
+      "supportedFeedOutputType": "calendar",
+      "formGroupClasses": "mb-3"
+    },
+    {
+      "key": "calendar-form-4",
+      "input": "header-h3",
+      "text": "Konfigurér slide",
+      "name": "header2",
+      "formGroupClasses": "h5 mb-3"
+    },
+    {
+      "key": "calendar-form-duration",
+      "input": "duration",
+      "name": "duration",
+      "type": "number",
+      "label": "Varighed (i sekunder)",
+      "helpText": "Her skal du skrive varigheden på slidet.",
+      "required": true,
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "calendar-form-layout",
+      "input": "select",
+      "name": "layout",
+      "label": "Vælg layout",
+      "required": true,
+      "helpText": "Hvis du vælge \"Enkelt lokale med booking\" virker bookingdelen IKKE i preview.",
+      "formGroupClasses": "col-md-6 mb-3",
+      "options": [
+        {
+          "key": "layout1",
+          "title": "Enkelt lokale",
+          "value": "single"
+        },
+        {
+          "key": "layout2",
+          "title": "Flere resurser",
+          "value": "multiple"
+        },
+        {
+          "key": "layout3",
+          "title": "Flere resurser, flere dage",
+          "value": "multipleDays"
+        },
+        {
+          "key": "layout4",
+          "title": "Enkelt lokale med booking",
+          "value": "singleBooking"
+        }
+      ]
+    },
+    {
+      "key": "calendar-form-form-14",
+      "input": "select",
+      "required": true,
+      "label": "Tekststørrelse",
+      "formGroupClasses": "col-md-6 mb-3",
+      "options": [
+        {
+          "key": "fontsize1",
+          "title": "xs",
+          "value": "font-size-xs"
+        },
+        {
+          "key": "fontsize2",
+          "title": "s",
+          "value": "font-size-s"
+        },
+        {
+          "key": "fontsize3",
+          "title": "m",
+          "value": "font-size-m"
+        },
+        {
+          "key": "fontsize4",
+          "title": "l",
+          "value": "font-size-lg"
+        },
+        {
+          "key": "fontsize5",
+          "title": "xl",
+          "value": "font-size-xl"
+        }
+      ],
+      "name": "fontSize"
+    },
+    {
+      "key": "calendar-form-title",
+      "input": "input",
+      "name": "title",
+      "type": "text",
+      "label": "Overskrift",
+      "helpText": "Her kan du skrive overskrift.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "calendar-form-subtitle",
+      "input": "input",
+      "name": "subTitle",
+      "type": "text",
+      "label": "Underoverskrift",
+      "helpText": "Her kan du skrive underoverskrift.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "calendar-form-resource-available-text",
+      "input": "input",
+      "name": "resourceAvailableText",
+      "type": "text",
+      "label": "Tekst når resursen er ledig",
+      "helpText": "Her kan du skrive tekst, som vises når resursen er ledig.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "calendar-form-resource-unavailable-text",
+      "input": "input",
+      "name": "resourceUnavailableText",
+      "type": "text",
+      "label": "Begivenhedstitel fallback",
+      "helpText": "Her kan du skrive tekst på begivenheder, hvor der ikke er sat en titel.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "calendar-form-footer-text",
+      "input": "input",
+      "name": "footerText",
+      "type": "text",
+      "label": "Footer tekst",
+      "helpText": "Her kan du skrive tekst til footeren.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "calendar-form-hide-grid",
+      "input": "checkbox",
+      "label": "Skjul grid",
+      "name": "hideGrid",
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "calendar-form-has-date-and-time",
+      "input": "checkbox",
+      "label": "Vis dato og tidspunkt",
+      "name": "hasDateAndTime",
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "calendar-form-date-as-box",
+      "input": "checkbox",
+      "label": "Dato og tidspunkt som boks",
+      "name": "dateAsBox",
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "calendar-form-image",
+      "multipleImages": false,
+      "input": "image",
+      "name": "image",
+      "label": "Baggrundsbillede"
+    },
+    {
+      "key": "form-media-contain",
+      "input": "checkbox",
+      "name": "mediaContain",
+      "label": "Deaktivér billedbeskæring",
+      "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+    },
+    {
+      "key": "calendar-form-display-headers",
+      "input": "checkbox",
+      "label": "Vis tabeloverskrifter",
+      "name": "displayHeaders",
+      "formGroupClasses": "col-md-6 mb-3"
+    },
+    {
+      "key": "calendar-form-header-orders",
+      "input": "select",
+      "label": "Hvilken rækkefølge skal overskrifterne i tabellen være i",
+      "options": [
+        {
+          "key": "whenwhatwhere",
+          "value": "whenwhatwhere",
+          "title": "Hvornår, hvad, hvor"
+        },
+        {
+          "key": "whatwherewhen",
+          "value": "whatwherewhen",
+          "title": "Hvad, hvor, hvornår"
+        }
+      ],
+      "name": "headerOrder",
+      "formGroupClasses": "col-md-6 mb-3",
+      "helpText": "Dette er kun relevant hvis \"Flere resurser\" er valgt under \"layout\". Standard er \"Hvornår, hvad, hvor.\""
+    }
+  ]
+}
