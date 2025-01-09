@@ -44,6 +44,10 @@ const entry = devMode
         "./src/instagram-feed/instagram-feed.js"
       ),
       iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
+      "news-feed": path.resolve(
+        __dirname,
+        "./src/news-feed/news-feed.js"
+      ),
       table: path.resolve(__dirname, "./src/table/table.js"),
       video: path.resolve(__dirname, "./src/video/video.js"),
       travel: path.resolve(__dirname, "./src/travel/travel.js"),
