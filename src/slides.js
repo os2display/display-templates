@@ -939,8 +939,8 @@ const slides = [
         name: "Lorem ipsum",
         url: "www.example.dk",
         image: "/fixtures/images/mountain1.jpeg",
-        startDate: "2021-06-21T14:00:00+00:00",
-        endDate: "2021-06-21T15:00:00+00:00",
+        startDate: "2021-08-21T14:00:00+00:00",
+        endDate: "2021-09-21T15:00:00+00:00",
         ticketPriceRange: "75-150 kr.",
         eventStatusText: null,
         place: {
