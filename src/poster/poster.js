@@ -23,6 +23,7 @@ import "./poster.scss";
 function Poster({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState({});
   const [currentEvent, setCurrentEvent] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
   const [show, setShow] = useState(true);
   const timerRef = useRef(null);
   const animationTimerRef = useRef(null);
@@ -101,37 +102,55 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     );
   };
 
+  useEffect(() => {
+    if (currentEvent) {
+      setShow(true);
+    }
+  }, [currentEvent]);
+
   // Setup feed entry switch and animation, if there is more than one post.
   useEffect(() => {
-    if (!currentEvent) return;
+    if (currentIndex === null) {
+      return;
+    }
+
+    setCurrentEvent(feedData[currentIndex]);
+
+    const nextIndex = (currentIndex + 1) % feedData.length;
+
+    if (nextIndex > 0) {
+      if (animationTimerRef?.current) {
+        clearInterval(animationTimerRef.current);
+      }
+
+      animationTimerRef.current = setTimeout(() => {
+        setShow(false);
+      }, entryDurationMilliseconds - animationDuration + 50);
+    }
+
+    if (timerRef?.current) {
+      clearInterval(timerRef.current);
+    }
 
     timerRef.current = setTimeout(() => {
-      const currentIndex = feedData.indexOf(currentEvent);
-      const nextIndex = (currentIndex + 1) % feedData.length;
-
       if (nextIndex === 0) {
         slideDone(slide);
       } else {
-        setCurrentEvent(feedData[nextIndex]);
-        setShow(true);
+        setCurrentIndex(nextIndex);
       }
     }, entryDurationMilliseconds);
-
-    animationTimerRef.current = setTimeout(() => {
-      setShow(false);
-    }, entryDurationMilliseconds - animationDuration);
-  }, [currentEvent]);
+  }, [currentIndex]);
 
   useEffect(() => {
     if (run) {
       if (feedData && currentEvent === null && feedData?.length > 0) {
-        const [first] = feedData;
-        setCurrentEvent(first);
+        setCurrentIndex(0);
       } else {
         setTimeout(() => slideDone(slide), 1000);
       }
     } else {
       setCurrentEvent(null);
+      setCurrentIndex(null);
     }
   }, [run]);
 
@@ -142,10 +161,10 @@ function Poster({ slide, content, run, slideDone, executionId }) {
     setTranslations(da);
 
     return function cleanup() {
-      if (timerRef?.current !== null) {
+      if (timerRef?.current) {
         clearInterval(timerRef.current);
       }
-      if (animationTimerRef?.current !== null) {
+      if (animationTimerRef?.current) {
         clearInterval(animationTimerRef.current);
       }
     };
@@ -159,12 +178,16 @@ function Poster({ slide, content, run, slideDone, executionId }) {
           <div className={`template-poster ${showLogo && "with-logo"}`}>
             <div
               className={`image-area ${mediaContain ? "media-contain" : ""}`}
-              style={{
-                backgroundImage: `url("${image}")`,
-                ...(show
-                  ? { animation: `fade-in ${animationDuration}ms` }
-                  : { animation: `fade-out ${animationDuration}ms` }),
-              }}
+              style={
+                image
+                  ? {
+                      backgroundImage: `url("${image}")`,
+                      ...(show
+                        ? { animation: `fade-in ${animationDuration}ms` }
+                        : { animation: `fade-out ${animationDuration}ms` }),
+                    }
+                  : {}
+              }
             />
             <div className="header-area">
               <div className="center">
