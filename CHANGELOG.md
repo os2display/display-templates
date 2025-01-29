@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 - [#165](https://github.com/os2display/display-templates/pull/165)
   - Fixed transitions for poster.
+  - Fixed dates for poster spanning multiple days.
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
 

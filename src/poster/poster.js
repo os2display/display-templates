@@ -89,7 +89,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   const formatDateNoYear = (date) => {
     if (!date) return "";
-    return capitalize(dayjs(date).locale(localeDa).format("DD MMMM"));
+    return capitalize(dayjs(date).locale(localeDa).format("DD MMM"));
   };
 
   const getUrlDomain = (urlString) => {
