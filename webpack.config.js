@@ -31,70 +31,33 @@ const entry = devMode
   : {
       "book-review": path.resolve(
         __dirname,
-        "./src/book-review/book-review.js"
+        "./src/templates/book-review/book-review.js"
       ),
-      calendar: path.resolve(__dirname, "./src/calendar/calendar.js"),
-      contacts: path.resolve(__dirname, "./src/contacts/contacts.js"),
-      "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
-      poster: path.resolve(__dirname, "./src/poster/poster.js"),
-      rss: path.resolve(__dirname, "./src/rss/rss.js"),
-      slideshow: path.resolve(__dirname, "./src/slideshow/slideshow.js"),
+      calendar: path.resolve(__dirname, "./src/templates/calendar/calendar.js"),
+      contacts: path.resolve(__dirname, "./src/templates/contacts/contacts.js"),
+      "image-text": path.resolve(
+        __dirname,
+        "./src/templates/image-text/image-text.js"
+      ),
+      poster: path.resolve(__dirname, "./src/templates/poster/poster.js"),
+      rss: path.resolve(__dirname, "./src/templates/rss/rss.js"),
+      slideshow: path.resolve(
+        __dirname,
+        "./src/templates/slideshow/slideshow.js"
+      ),
       "instagram-feed": path.resolve(
         __dirname,
-        "./src/instagram-feed/instagram-feed.js"
+        "./src/templates/instagram-feed/instagram-feed.js"
       ),
-      iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
-      table: path.resolve(__dirname, "./src/table/table.js"),
-      video: path.resolve(__dirname, "./src/video/video.js"),
-      travel: path.resolve(__dirname, "./src/travel/travel.js"),
+      iframe: path.resolve(__dirname, "./src/templates/iframe/iframe.js"),
+      table: path.resolve(__dirname, "./src/templates/table/table.js"),
+      video: path.resolve(__dirname, "./src/templates/video/video.js"),
+      travel: path.resolve(__dirname, "./src/templates/travel/travel.js"),
       "vimeo-player": path.resolve(
         __dirname,
-        "./src/vimeo-player/vimeo-player.js"
+        "./src/templates/vimeo-player/vimeo-player.js"
       ),
     };
-
-const timestamp = new Date().getTime().toString();
-
-const transformConfig = (type) => (content) => {
-  const config = JSON.parse(content.toString());
-
-  // Base build URL with trailing slash.
-  const baseUrl = (
-    type === "develop"
-      ? process.env.DEPLOYMENT_BUILD_BASE_URL_DEVELOP ??
-        process.env.DEPLOYMENT_BUILD_BASE_URL ??
-        "https://raw.githubusercontent.com/os2display/display-templates/develop/build/"
-      : process.env.DEPLOYMENT_BUILD_BASE_URL_MAIN ??
-        process.env.DEPLOYMENT_BUILD_BASE_URL ??
-        "https://raw.githubusercontent.com/os2display/display-templates/main/build/"
-  ).replace(/\/*$/, "/");
-
-  const processPath = (processablePath) => {
-    const buildPath = processablePath.replace(
-      "https://display-templates.local.itkdev.dk/build/",
-      ""
-    );
-
-    try {
-      const url = new URL(buildPath, baseUrl);
-      url.searchParams.set("ts", timestamp);
-      return url.toString();
-    } catch (error) {
-      console.error(error);
-      return processablePath;
-    }
-  };
-
-  for (const key of ["component", "admin", "schema", "assets"]) {
-    if (config.resources[key]) {
-      config.resources[key] = Array.isArray(config.resources[key])
-        ? config.resources[key].map(processPath)
-        : processPath(config.resources[key]);
-    }
-  }
-
-  return JSON.stringify(config, null, 2);
-};
 
 const plugins = devMode
   ? [
@@ -120,31 +83,9 @@ const plugins = devMode
       new CopyPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, "./src/*/*-admin.json"),
+            from: path.resolve(__dirname, "./src/templates/*/*.json"),
             to: "[name][ext]",
             context: path.resolve(__dirname, "src"),
-          },
-        ],
-      }),
-      new CopyPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, "./src/*/*-config.json"),
-            to: "[name]-main[ext]",
-            context: path.resolve(__dirname, "src"),
-            toType: "template",
-            transform: transformConfig("main"),
-          },
-        ],
-      }),
-      new CopyPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, "./src/*/*-config.json"),
-            to: "[name]-develop[ext]",
-            context: path.resolve(__dirname, "src"),
-            toType: "template",
-            transform: transformConfig("develop"),
           },
         ],
       }),

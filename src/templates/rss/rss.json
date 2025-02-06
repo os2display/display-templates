@@ -1,0 +1,78 @@
+{
+  "title": "RSS",
+  "id": "01FQC300GGWCA7A8H0SXY6P9FG",
+  "admin": [
+    {
+      "key": "rss-form-1",
+      "input": "header",
+      "text": "Skabelon: RSS",
+      "name": "header1",
+      "formGroupClasses": "h4 mb-3"
+    },
+    {
+      "key": "rss-form-2",
+      "input": "header-h3",
+      "text": "Indhold",
+      "name": "header2",
+      "formGroupClasses": "h5 mb-3"
+    },
+    {
+      "key": "rss-form-3",
+      "input": "feed",
+      "text": "Opsæt feed",
+      "name": "feed",
+      "supportedFeedOutputType": "rss",
+      "formGroupClasses": "mb-3"
+    },
+    {
+      "key": "rss-form-4",
+      "multipleImages": false,
+      "input": "image",
+      "name": "image",
+      "label": "Baggrundsbillede",
+      "formGroupClasses": "mb-3"
+    },
+    {
+      "key": "form-media-contain",
+      "input": "checkbox",
+      "name": "mediaContain",
+      "label": "Deaktivér billedbeskæring",
+      "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+    },
+    {
+      "key": "rss-form-5",
+      "input": "select",
+      "required": false,
+      "label": "Tekststørrelse",
+      "formGroupClasses": "col-md-6 mb-3",
+      "options": [
+        {
+          "key": "fontsize1",
+          "title": "xs",
+          "value": "font-size-xs"
+        },
+        {
+          "key": "fontsize2",
+          "title": "s",
+          "value": "font-size-s"
+        },
+        {
+          "key": "fontsize3",
+          "title": "m",
+          "value": "font-size-m"
+        },
+        {
+          "key": "fontsize4",
+          "title": "l",
+          "value": "font-size-lg"
+        },
+        {
+          "key": "fontsize5",
+          "title": "xl",
+          "value": "font-size-xl"
+        }
+      ],
+      "name": "fontSize"
+    }
+  ]
+}
