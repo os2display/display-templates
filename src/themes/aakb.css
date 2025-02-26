@@ -176,3 +176,32 @@
   background-color: transparent;
   box-shadow: none;
 }
+
+/*
+*
+* Customize Instagram template styling
+*
+*/
+#SLIDE_ID .template-instagram-feed {
+  --h1-font-size: calc(var(--font-size-base) * 3.5);
+  --h4-font-size: calc(var(--font-size-base) * 1.75);
+  --font-size-xl: calc(var(--font-size-base) * 2);
+
+  background-color: var(--color-white);
+}
+
+#SLIDE_ID .template-instagram-feed .author-section {
+  background-color: var(--color-white);
+}
+
+#SLIDE_ID .template-instagram-feed .author-section .date {
+  color: var(--color-primary);
+}
+
+#SLIDE_ID .template-instagram-feed .shape {
+  display: none;
+}
+
+#SLIDE_ID .template-instagram-feed .brand {
+  color: var(--color-primary);
+}
