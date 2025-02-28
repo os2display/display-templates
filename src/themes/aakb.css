@@ -194,6 +194,14 @@
   background-color: var(--color-white);
 }
 
+#SLIDE_ID .template-instagram-feed .author-section .description .text {
+  display: -webkit-box;
+  max-height: 74%;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 #SLIDE_ID .template-instagram-feed .author-section .date {
   color: var(--color-primary);
 }
@@ -204,4 +212,8 @@
 
 #SLIDE_ID .template-instagram-feed .brand {
   color: var(--color-primary);
+}
+
+#SLIDE_ID .template-instagram-feed.landscape .brand {
+  width: var(--percentage-narrow);
 }
