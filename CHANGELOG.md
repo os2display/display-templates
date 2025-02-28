@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unrelased
+
+- [#166](https://github.com/os2display/display-templates/pull/166)
+  - Css for instagram template in aakb.css theme file
+
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
 

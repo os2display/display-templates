@@ -211,7 +211,11 @@
 }
 
 #SLIDE_ID .template-instagram-feed .brand {
+  bottom: 0;
+  padding-top: calc(var(--spacer) * 2);
+  padding-bottom: calc(var(--spacer) * 2);
   color: var(--color-primary);
+  background-color: var(--color-white);
 }
 
 #SLIDE_ID .template-instagram-feed.landscape .brand {
