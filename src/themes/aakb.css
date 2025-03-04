@@ -204,6 +204,7 @@
 
 #SLIDE_ID .template-instagram-feed .author-section .date {
   color: var(--color-primary);
+  display: block;
 }
 
 #SLIDE_ID .template-instagram-feed .shape {
