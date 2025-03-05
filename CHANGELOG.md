@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- [#167](https://github.com/os2display/display-templates/pull/167)
+  - Fixed issue where instagram template crashes if maxEntries is not a number.
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
 
