@@ -47,7 +47,7 @@
   --bg-dark: #333333;
   --text-light: #ffffff;
 
-  font-family: "Arial", sans-serif;
+  font-family: var(--font-family-base);
 }
 
 /*
@@ -197,6 +197,7 @@
 #SLIDE_ID .template-instagram-feed .author-section .description .text {
   display: -webkit-box;
   max-height: 74%;
+  line-clamp: 8;
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
