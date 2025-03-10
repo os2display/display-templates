@@ -1,0 +1,18 @@
+.template-video {
+  .video-container {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  video {
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+  }
+
+  video.media-contain {
+    object-fit: contain;
+  }
+}

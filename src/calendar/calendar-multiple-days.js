@@ -24,7 +24,7 @@ function CalendarMultipleDays({
   templateRootStyle = {},
   getTitle,
 }) {
-  const { title = "", footerText = null } = content;
+  const { title = "", footerText = null, mediaContain } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -93,7 +93,9 @@ function CalendarMultipleDays({
 
   return (
     <Wrapper
-      className={`calendar-multiple-days ${templateClasses.join(" ")}`}
+      className={`template-calendar calendar-multiple-days ${templateClasses.join(
+        " "
+      )} ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
     >
       <>
@@ -280,6 +282,7 @@ CalendarMultipleDays.propTypes = {
     title: PropTypes.string,
     displayHeaders: PropTypes.bool,
     footerText: PropTypes.string,
+    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

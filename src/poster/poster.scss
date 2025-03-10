@@ -27,6 +27,12 @@
     background-size: cover;
     background-position: center center;
   }
+
+  .image-area.media-contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   .header-area {
     grid-area: b;
     display: grid;

@@ -1,10 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import {
-  getAllMediaUrlsFromField,
-  getFirstMediaUrlFromField,
-  ThemeStyles,
-} from "../slide-util";
+import { getAllMediaUrlsFromField, ThemeStyles } from "../slide-util";
 import "../global-styles.css";
 import "./slideshow.scss";
 
@@ -20,7 +16,13 @@ import "./slideshow.scss";
  * @returns {JSX.Element} The component.
  */
 function Slideshow({ slide, content, run, slideDone, executionId }) {
-  const { images, imageDuration = 5, transition, animation } = content;
+  const {
+    images,
+    imageDuration = 5,
+    transition,
+    animation,
+    mediaContain,
+  } = content;
 
   // Map images to mediaData.
   const imageUrls = getAllMediaUrlsFromField(slide.mediaData, images);
@@ -279,7 +281,7 @@ function Slideshow({ slide, content, run, slideDone, executionId }) {
                     animationIndex === imageUrlIndex || index === imageUrlIndex,
                     animationDuration
                   )}
-                  className="image"
+                  className={`image${mediaContain ? " media-contain" : ""}`}
                 />
               </div>
             );
@@ -314,6 +316,7 @@ Slideshow.propTypes = {
   }).isRequired,
   content: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string),
+    mediaContain: PropTypes.bool,
     imageDuration: PropTypes.number,
     animation: PropTypes.string,
     transition: PropTypes.string,
