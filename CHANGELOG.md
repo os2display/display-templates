@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+## [2.2.0] - 2025-3-10
+
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
 
