@@ -13,21 +13,21 @@ import {
   useParams,
 } from "react-router-dom";
 import PropTypes from "prop-types";
-import ImageText from "./image-text/image-text";
+import ImageText from "./templates/image-text/image-text";
 import slides from "./slides";
 import screens from "./screens";
-import BookReview from "./book-review/book-review";
-import Calendar from "./calendar/calendar";
-import Contacts from "./contacts/contacts";
-import Poster from "./poster/poster";
-import RSS from "./rss/rss";
-import Slideshow from "./slideshow/slideshow";
-import InstagramFeed from "./instagram-feed/instagram-feed";
-import IFrame from "./iframe/iframe";
-import Table from "./table/table";
-import Video from "./video/video";
-import Travel from "./travel/travel";
-import VimeoPlayer from "./vimeo-player/vimeo-player";
+import BookReview from "./templates/book-review/book-review";
+import Calendar from "./templates/calendar/calendar";
+import Contacts from "./templates/contacts/contacts";
+import Poster from "./templates/poster/poster";
+import RSS from "./templates/rss/rss";
+import Slideshow from "./templates/slideshow/slideshow";
+import InstagramFeed from "./templates/instagram-feed/instagram-feed";
+import IFrame from "./templates/iframe/iframe";
+import Table from "./templates/table/table";
+import Video from "./templates/video/video";
+import Travel from "./templates/travel/travel";
+import VimeoPlayer from "./templates/vimeo-player/vimeo-player";
 import "./index.css";
 
 export const renderScreen = (screen) => {
