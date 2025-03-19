@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#167](https://github.com/os2display/display-templates/pull/167)
+  - Fixed issue where instagram template crashes if maxEntries is not a number.
 - [#165](https://github.com/os2display/display-templates/pull/165)
   - Fixed transitions for poster.
   - Fixed dates for poster spanning multiple days.
