@@ -36,8 +36,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
   // Animation.
   const animationDuration = 500;
-  const { entryDuration = 15 } = content; // default 15s.
-  const entryDurationMilliseconds = entryDuration * 1000;
+  const { duration = 15000 } = content; // default 15s.
 
   // Props from currentEvent.
   const {
@@ -125,7 +124,7 @@ function Poster({ slide, content, run, slideDone, executionId }) {
 
       animationTimerRef.current = setTimeout(() => {
         setShow(false);
-      }, entryDurationMilliseconds - animationDuration + 50);
+      }, duration - animationDuration + 50);
     }
 
     if (timerRef?.current) {
@@ -138,12 +137,12 @@ function Poster({ slide, content, run, slideDone, executionId }) {
       } else {
         setCurrentIndex(nextIndex);
       }
-    }, entryDurationMilliseconds);
+    }, duration);
   }, [currentIndex]);
 
   useEffect(() => {
     if (run) {
-      if (feedData && currentEvent === null && feedData?.length > 0) {
+      if (feedData?.length > 0) {
         setCurrentIndex(0);
       } else {
         setTimeout(() => slideDone(slide), 1000);
@@ -315,7 +314,7 @@ Poster.propTypes = {
     ),
   }).isRequired,
   content: PropTypes.shape({
-    entryDuration: PropTypes.number,
+    duration: PropTypes.number,
     showLogo: PropTypes.bool,
     mediaContain: PropTypes.bool,
   }).isRequired,
