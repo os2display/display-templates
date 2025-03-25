@@ -2,15 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## Unrelased
 
 - [#167](https://github.com/os2display/display-templates/pull/167)
   - Fixed issue where instagram template crashes if maxEntries is not a number.
+- [#166](https://github.com/os2display/display-templates/pull/166)
+  - Css for instagram template in aakb.css theme file
+- [#172](https://github.com/os2display/display-templates/pull/172)
+  - Added PR github template.
+
+## [2.3.0] - 2025-03-24
+
+- [#169](https://github.com/os2display/display-templates/pull/169)
+  - Fixed duration and slide done.
 - [#165](https://github.com/os2display/display-templates/pull/165)
   - Fixed transitions for poster.
   - Fixed dates for poster spanning multiple days.
 
-## [2.2.0] - 2025-3-10
+## [2.2.0] - 2025-03-10
 
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
