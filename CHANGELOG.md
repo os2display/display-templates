@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unrelased
 
+- [#167](https://github.com/os2display/display-templates/pull/167)
+  - Fixed issue where instagram template crashes if maxEntries is not a number.
 - [#166](https://github.com/os2display/display-templates/pull/166)
   - Css for instagram template in aakb.css theme file
-
 - [#172](https://github.com/os2display/display-templates/pull/172)
   - Added PR github template.
 
