@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#172](https://github.com/os2display/display-templates/pull/172)
+  - Added PR github template.
+
 ## [2.3.0] - 2025-03-24
 
 - [#169](https://github.com/os2display/display-templates/pull/169)
