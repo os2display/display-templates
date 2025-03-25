@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#171](https://github.com/os2display/display-templates/pull/171)
+  - Remove enableHIM from Travel template
+
 ## [2.3.0] - 2025-03-24
 
 - [#169](https://github.com/os2display/display-templates/pull/169)
