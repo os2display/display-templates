@@ -2,7 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## Unrelased
+
+- [#166](https://github.com/os2display/display-templates/pull/166)
+  - Css for instagram template in aakb.css theme file
 
 - [#172](https://github.com/os2display/display-templates/pull/172)
   - Added PR github template.
