@@ -42,12 +42,14 @@ function InstagramFeed({ slide, content, run, slideDone, executionId }) {
 
   const { maxEntries = 5 } = content;
 
+  const maxEntriesToShow = Number.isInteger(maxEntries) ? maxEntries : 5;
+
   /** Setup feed entry switch and animation, if there is more than one post. */
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = feedData.indexOf(currentPost);
       const nextIndex =
-        (currentIndex + 1) % Math.min(feedData.length, maxEntries);
+        (currentIndex + 1) % Math.min(feedData.length, maxEntriesToShow);
 
       if (nextIndex === 0) {
         slideDone(slide);
