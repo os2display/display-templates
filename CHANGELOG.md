@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#171](https://github.com/os2display/display-templates/pull/171)
+  - Remove enableHIM from Travel template
 - [#167](https://github.com/os2display/display-templates/pull/167)
   - Fixed issue where instagram template crashes if maxEntries is not a number.
 - [#166](https://github.com/os2display/display-templates/pull/166)
