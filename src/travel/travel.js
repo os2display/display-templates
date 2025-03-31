@@ -108,7 +108,6 @@ function Travel({
       preview: 50,
       offsetTime: 1,
       maxJourneys: numberOfJourneys || 1,
-      enableHIM: 1,
       p1: busOrTram === "tram" ? "letbane" : "bus",
       p1title: iframeTitle || "",
     });

@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [2.4.0] - 2025-03-31
+
+- [#172](https://github.com/os2display/display-templates/pull/172)
+  - Added PR github template.
+- [#171](https://github.com/os2display/display-templates/pull/171)
+  - Remove enableHIM from Travel template
+- [#167](https://github.com/os2display/display-templates/pull/167)
+  - Fixed issue where instagram template crashes if maxEntries is not a number.
+- [#166](https://github.com/os2display/display-templates/pull/166)
+  - Css for instagram template in aakb.css theme file
+
 ## [2.3.0] - 2025-03-24
 
 - [#169](https://github.com/os2display/display-templates/pull/169)
