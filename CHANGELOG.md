@@ -2,10 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
 - [#161](https://github.com/os2display/display-templates/pull/161) 
   - Added social news template. 
+
+## [2.4.0] - 2025-03-31
+
+- [#172](https://github.com/os2display/display-templates/pull/172)
+  - Added PR github template.
+- [#171](https://github.com/os2display/display-templates/pull/171)
+  - Remove enableHIM from Travel template
+- [#167](https://github.com/os2display/display-templates/pull/167)
+  - Fixed issue where instagram template crashes if maxEntries is not a number.
+- [#166](https://github.com/os2display/display-templates/pull/166)
+  - Css for instagram template in aakb.css theme file
+
+## [2.3.0] - 2025-03-24
+
+- [#169](https://github.com/os2display/display-templates/pull/169)
+  - Fixed duration and slide done.
+- [#165](https://github.com/os2display/display-templates/pull/165)
+  - Fixed transitions for poster.
+  - Fixed dates for poster spanning multiple days.
+
+## [2.2.0] - 2025-03-10
+
 - [#160](https://github.com/os2display/display-templates/pull/160)
   - Added option to set image size contain instead of cover.
+
+## [2.1.1] - 2024-11-20
+
 - [#159](https://github.com/os2display/display-templates/pull/159)
   - Fixed issue where slideshow flickered first image before transitioning to next slide.
 

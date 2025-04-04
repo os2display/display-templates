@@ -939,8 +939,8 @@ const slides = [
         name: "Lorem ipsum",
         url: "www.example.dk",
         image: "/fixtures/images/mountain1.jpeg",
-        startDate: "2021-06-21T14:00:00+00:00",
-        endDate: "2021-06-21T15:00:00+00:00",
+        startDate: "2021-08-21T14:00:00+00:00",
+        endDate: "2021-09-21T15:00:00+00:00",
         ticketPriceRange: "75-150 kr.",
         eventStatusText: null,
         place: {
@@ -1564,6 +1564,40 @@ const slides = [
       mediaContain: false,
       fallbackImage: ["/v1/media/00000000000000000000000001"],
     },
+  },
+  {
+    id: "slide26-instagram-no-max-entries",
+    type: "instagram-feed",
+    darkModeEnabled: false,
+    content: {
+      duration: 5000,
+      hashtagText: "#myhashtag",
+      orientation: "landscape",
+      imageWidth: 40.0,
+      entryDuration: 10,
+      maxEntries: "",
+      mediaContain: true,
+    },
+    feedData: [
+      {
+        text: "#mountains #horizon",
+        textMarkup:
+          '<div class="text">Sed nulla lorem, varius sodales justo ac, ultrices placerat nunc.</div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> Lorem ipsum ...</div>',
+        mediaUrl: "./fixtures/images/mountain1.jpeg",
+        videoUrl: null,
+        username: "username",
+        createdTime: "2022-02-03T08:50:07",
+      },
+      {
+        text: "#mountains #horizon #sky",
+        textMarkup:
+          '<div class="text">Aenean consequat sem ut tortor auctor, eget volutpat libero consequat. Donec lacinia varius quam, ut efficitur diam ultrices et. Aliquam eget augue at felis rhoncus egestas. Sed porttitor elit a tellus tempus, sed tempus sapien finibus. Nam at dapibus sem. Aliquam sit amet feugiat ex. Ut dapibus, mi eu fermentum dignissim, sem ipsum vulputate est, sit amet euismod orci odio pharetra massa.</div>\n<div class="tags"><span class="tag">#mountains</span> <span class="tag">#horizon</span> <span class="tag">#sky</span> Lorem ipsum and mountains ...</div>',
+        mediaUrl: "./fixtures/images/mountain2.jpeg",
+        videoUrl: null,
+        username: "username2",
+        createdTime: "2022-01-03T08:50:07",
+      },
+    ],
   },
 ];
 
