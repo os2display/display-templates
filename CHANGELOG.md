@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#174](https://github.com/os2display/display-templates/pull/174)
+  - Fixed test issue with calendar dates.
+
 ## [2.4.0] - 2025-03-31
 
 - [#172](https://github.com/os2display/display-templates/pull/172)
