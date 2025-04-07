@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#174](https://github.com/os2display/display-templates/pull/174)
+  - Fixed test issue with calendar dates.
 - [#161](https://github.com/os2display/display-templates/pull/161) 
   - Added social news template. 
 
