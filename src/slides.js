@@ -1472,7 +1472,101 @@ const slides = [
     },
   },
   {
-    id: "slide25-instagram-no-max-entries",
+    id: "slide25-news-feed",
+    type: "news-feed",
+    themeFile: "themes/aarhus.css",
+    // Disable dark mode for slide.
+    darkModeEnabled: false,
+    feed: {
+      configuration: {
+        numberOfEntries: 5,
+        entryDuration: 5,
+      },
+    },
+    feedData: {
+      title: "Lorem Ipsum",
+      entries: [
+        {
+          categories: ["Nyheder"],
+          author: {
+            name: "Test Testesen",
+            uri: null,
+            email: null,
+          },
+          lastModified: "2024-11-18T08:31:47+00:00",
+          title: "Aenean scelerisque ligula ante, sed tristique tellus?",
+          publicId: "136880",
+          link: "https://example.com/news/1",
+          host: "https://example.com",
+          elements: [],
+          medias: [
+            {
+              nodeName: null,
+              type: null,
+              url: "./fixtures/images/sunset-full-hd.jpg",
+              length: null,
+              title: null,
+              description: null,
+              thumbnail: "./fixtures/images/sunset-full-hd.jpg",
+            },
+          ],
+          summary:
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+          content:
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+        },
+        {
+          categories: ["Nyheder"],
+          author: {
+            name: "Aenean Scelerisque",
+            uri: null,
+            email: null,
+          },
+          lastModified: "2024-11-18T08:31:47+00:00",
+          title: "Duis volutpat orci lectus.",
+          publicId: "136880",
+          link: "https://example.com/news/1",
+          host: "https://example.com",
+          elements: [],
+          medias: [
+            {
+              nodeName: null,
+              type: null,
+              url: "./fixtures/images/mountain4.jpeg",
+              length: null,
+              title: null,
+              description: null,
+              thumbnail: "./fixtures/images/mountain4.jpeg",
+            },
+          ],
+          summary:
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+          content:
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl.",
+        },
+        {
+          title: "Lorem ipsum dolor sit amet.",
+          lastModified: "2023-02-13T07:00:00.360Z",
+          content:
+            "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
+        },
+      ],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/dokk1-rss-template-bg.jpg",
+        },
+      },
+    },
+    content: {
+      fontSize: "font-size-m",
+      mediaContain: false,
+      fallbackImage: ["/v1/media/00000000000000000000000001"],
+    },
+  },
+  {
+    id: "slide26-instagram-no-max-entries",
     type: "instagram-feed",
     darkModeEnabled: false,
     content: {
