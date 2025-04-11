@@ -2,7 +2,7 @@
   {
     "key": "news-feed-form-1",
     "input": "header",
-    "text": "Skabelon: Instagram feed",
+    "text": "Skabelon: Nyheder",
     "name": "header1",
     "formGroupClasses": "h4 mb-3"
   },
@@ -19,8 +19,7 @@
     "text": "Opsæt feed",
     "name": "feeds",
     "supportedFeedOutputType": "rss",
-    "formGroupClasses": "mb-3",
-    "singleSelect": true
+    "formGroupClasses": "mb-3"
   },
   {
     "key": "news-feed-form-entry-duration",
