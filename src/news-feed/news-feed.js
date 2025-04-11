@@ -34,7 +34,6 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
   const {
     entryDuration = 10,
     mediaContain = false,
-    maxEntries = 5,
     readMore,
     fallbackImage,
   } = content;
@@ -48,8 +47,7 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
     if (currentPost) {
       timerRef.current = setTimeout(() => {
         const currentIndex = posts.indexOf(currentPost);
-        const nextIndex =
-          (currentIndex + 1) % Math.min(posts.length, maxEntries);
+        const nextIndex = (currentIndex + 1) % posts.length;
 
         if (nextIndex === 0) {
           slideDone(slide);
@@ -138,7 +136,7 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
               {currentPost.lastModified && currentPost?.author?.name && " ▪ "}
               {currentPost?.author?.name}
             </div>
-            <div className="description">{currentPost.content}</div>
+            <div className="description">{currentPost.summary}</div>
             <div className="description-fade" />
           </div>
           <div className="extra-section">
@@ -194,7 +192,6 @@ NewsFeed.propTypes = {
   content: PropTypes.shape({
     readMore: PropTypes.string,
     entryDuration: PropTypes.number,
-    maxEntries: PropTypes.number,
     mediaContain: PropTypes.bool,
     fallbackImage: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
