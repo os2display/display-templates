@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
-import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
+import {capitalize, getFirstMediaUrlFromField, ThemeStyles} from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 import "./rss.scss";
 
@@ -23,10 +23,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
   const [entryIndex, setEntryIndex] = useState(0);
   const [currentEntry, setCurrentEntry] = useState(null);
   const timeoutRef = useRef(null);
-
-  if (!slide?.feed) {
-    return "";
-  }
+  const [running, setRunning] = useState(false);
 
   const { fontSize = "m", image, mediaContain } = content;
   const { feedData = [], feed = {} } = slide;
@@ -34,7 +31,6 @@ function RSS({ slide, content, run, slideDone, executionId }) {
   const { entryDuration = 10, numberOfEntries = 5 } = configuration;
 
   const rootStyle = {};
-  const feedLength = Math.min(numberOfEntries, feedData?.entries?.length ?? 0);
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
 
   // Set background image.
@@ -42,24 +38,17 @@ function RSS({ slide, content, run, slideDone, executionId }) {
     rootStyle.backgroundImage = `url("${imageUrl}")`;
   }
 
-  /**
-   * Capitalize the datestring, as it starts with the weekday.
-   *
-   * @param {string} s The string to capitalize.
-   * @returns {string} The capitalized string.
-   */
-  const capitalize = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
-
   const entryDone = (index) => {
     const nextIndex = index + 1;
+    const feedLength = Math.min(numberOfEntries, feedData?.length ?? 0);
 
     if (nextIndex >= feedLength) {
+      setRunning(false);
       slideDone(slide);
     } else {
       setEntryIndex(nextIndex);
-      setCurrentEntry(feedData?.entries[nextIndex]);
+      setRunning(true);
+      setCurrentEntry(feedData[nextIndex]);
       timeoutRef.current = setTimeout(() => {
         entryDone(nextIndex);
       }, entryDuration * 1000);
@@ -76,6 +65,12 @@ function RSS({ slide, content, run, slideDone, executionId }) {
       entryDone(-1);
     }
   }, [run]);
+
+  useEffect(() => {
+    if (!running) {
+      entryDone(-1);
+    }
+  }, [slide]);
 
   return (
     <>
@@ -100,7 +95,7 @@ function RSS({ slide, content, run, slideDone, executionId }) {
             </>
           )}
           <FeedTitle className="feed-info--title">
-            {slide?.feedData?.title}
+            {currentEntry && currentEntry.publisher}
           </FeedTitle>
           {slide?.feed.configuration.showFeedProgress && (
             <FeedProgress className="feed-info--progress">
@@ -220,16 +215,13 @@ RSS.propTypes = {
         showFeedProgress: PropTypes.bool,
       }),
     }),
-    feedData: PropTypes.shape({
-      title: PropTypes.string,
-      entries: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          lastModified: PropTypes.string,
-          content: PropTypes.string,
-        })
-      ),
-    }),
+    feedData: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        lastModified: PropTypes.string,
+        content: PropTypes.string,
+      })
+    ),
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),

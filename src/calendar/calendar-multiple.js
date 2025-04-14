@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
+import {capitalize} from "../slide-util";
 
 /**
  * Multiple resource calendar.
@@ -50,16 +51,6 @@ function CalendarMultiple({
   }
 
   let counterForOrder = 0;
-
-  /**
-   * Capitalize the datestring, as it starts with the weekday.
-   *
-   * @param {string} s The string to capitalize.
-   * @returns {string} The capitalized string.
-   */
-  const capitalize = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
 
   // Sort events by datetime and filter away events that are done.
   const getSortedEvents = (data) => {
