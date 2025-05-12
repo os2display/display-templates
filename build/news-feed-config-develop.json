@@ -1,0 +1,14 @@
+{
+  "title": "Nyheder",
+  "icon": "",
+  "id": "01JEWPAFF93YSF418TH72W1SBA",
+  "description": "Mulighed for at vise nyhedsindhold.",
+  "resources": {
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/news-feed.js?ts=1744372285281",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/news-feed-admin.json?ts=1744372285281",
+    "schema": "",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

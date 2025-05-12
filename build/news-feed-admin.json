@@ -1,0 +1,59 @@
+[
+  {
+    "key": "news-feed-form-1",
+    "input": "header",
+    "text": "Skabelon: Nyheder",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "news-feed-form-2",
+    "input": "header-h3",
+    "text": "Opsæt feed",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "news-feed-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feeds",
+    "supportedFeedOutputType": "rss",
+    "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "news-feed-form-entry-duration",
+    "input": "input",
+    "name": "entryDuration",
+    "type": "number",
+    "label": "Varighed pr. nyhed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden pr. nyhed.",
+    "formGroupClasses": "mb-3",
+    "required": true
+  },
+  {
+    "key": "news-feed-form-readmore",
+    "input": "input",
+    "label": "Læs mere tekst",
+    "helpText": "Hvis den ikke overskrives, står der \"Læs hele nyheden\"",
+    "name": "readMore",
+    "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "rss-form-4",
+    "multipleImages": false,
+    "input": "image",
+    "name": "fallbackImage",
+    "label": "Fallback-billede",
+    "helpText": "Dette billede kan vises, hvis nyheden mangler et billede.",
+    "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring",
+    "formGroupClasses": "mb-3"
+  }
+]

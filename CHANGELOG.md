@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [2.5.0] - 2025-05-09
+
+- [#175](https://github.com/os2display/display-templates/pull/175)
+  - Rebuilt assets.
+  - Fixed news feed issues.
+- [#174](https://github.com/os2display/display-templates/pull/174)
+  - Fixed test issue with calendar dates.
+- [#161](https://github.com/os2display/display-templates/pull/161) 
+  - Added social news template. 
+
 ## [2.4.0] - 2025-03-31
 
 - [#172](https://github.com/os2display/display-templates/pull/172)
