@@ -4,11 +4,13 @@
   "id": "01FZD7K807VAKZ99BGSSCHRJM6",
   "description": "Skabelon til rejseplanen.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/travel.js?ts=1744372285281",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/travel-admin.json?ts=1744372285281",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/travel.js?ts=1747385351695",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/develop/build/travel-admin.json?ts=1747385351695",
     "schema": "",
     "assets": [],
-    "options": {},
+    "options": {
+      "disableLivePreview": true
+    },
     "content": {}
   }
 }
