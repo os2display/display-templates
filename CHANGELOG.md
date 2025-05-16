@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#177](https://github.com/os2display/display-templates/pull/177)
+  - Set options.disableLivePreview for iframe templates
+
 ## [2.5.0] - 2025-05-09
 
 - [#175](https://github.com/os2display/display-templates/pull/175)
