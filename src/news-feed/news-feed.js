@@ -30,7 +30,7 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
 
   const timerRef = useRef();
 
-  const { feedData = [], mediaData = {} } = slide;
+  const { mediaData = {} } = slide;
   const {
     entryDuration = 10,
     mediaContain = false,
@@ -78,41 +78,25 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
   }, [currentPost]);
 
   useEffect(() => {
-    if (posts.length > 0) {
+    if (posts?.length > 0) {
       setCurrentPost(posts[0]);
     }
   }, [posts]);
 
   useEffect(() => {
-    if (feedData && Object.hasOwnProperty.call(feedData, "entries")) {
-      setPosts(feedData.entries);
+    if (slide?.feedData) {
+      setPosts(slide.feedData);
     }
-  }, [feedData]);
+  }, [slide]);
 
   useEffect(() => {
-    if (run) {
-      if (posts?.length > 0) {
-        setCurrentPost(posts[0]);
-      }
+    if (posts?.length > 0) {
+      setPosts(posts[0]);
     }
   }, [run]);
 
   const getImageUrl = (post) => {
-    let imageUrl = fallbackImageUrl ?? null;
-
-    if (post?.medias instanceof Array) {
-      const medias = [...post?.medias];
-
-      if (medias?.length > 0) {
-        const first = medias.pop();
-
-        if (first?.url) {
-          imageUrl = first.url;
-        }
-      }
-    }
-
-    return imageUrl;
+    return post.imageUrl ?? fallbackImageUrl ?? null;
   };
 
   const imageUrl = currentPost ? getImageUrl(currentPost) : null;
@@ -133,8 +117,8 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
               {currentPost.lastModified
                 ? dayjs(currentPost.lastModified).locale(localeDa).format("ll")
                 : ""}
-              {currentPost.lastModified && currentPost?.author?.name && " ▪ "}
-              {currentPost?.author?.name}
+              {currentPost.lastModified && currentPost?.publisher && " ▪ "}
+              {currentPost?.publisher}
             </div>
             <div className="description">{currentPost.summary}</div>
             <div className="description-fade" />
@@ -165,25 +149,22 @@ NewsFeed.propTypes = {
     theme: PropTypes.shape({
       cssStyles: PropTypes.string,
     }),
-    feedData: PropTypes.shape({
-      title: PropTypes.string,
-      entries: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          content: PropTypes.string,
-          author: PropTypes.shape({
-            name: PropTypes.string,
-          }),
-          medias: PropTypes.arrayOf(
-            PropTypes.shape({
-              url: PropTypes.string,
-            })
-          ),
-          lastModified: PropTypes.string,
-          link: PropTypes.string,
-        })
-      ),
-    }).isRequired,
+    feedData: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        content: PropTypes.string,
+        author: PropTypes.shape({
+          name: PropTypes.string,
+        }),
+        medias: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          })
+        ),
+        lastModified: PropTypes.string,
+        link: PropTypes.string,
+      })
+    ).isRequired,
     mediaData: PropTypes.shape({
       url: PropTypes.string,
       assets: PropTypes.shape({ uri: PropTypes.string }),

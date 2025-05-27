@@ -5,7 +5,7 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import da from "./lang/da.json";
-import { ThemeStyles } from "../slide-util";
+import {capitalize, ThemeStyles} from "../slide-util";
 import "../global-styles.css";
 import "./poster.scss";
 
@@ -65,16 +65,6 @@ function Poster({ slide, content, run, slideDone, executionId }) {
   const singleDayEvent =
     endDate &&
     new Date(endDate).toDateString() === new Date(startDate).toDateString();
-
-  /**
-   * Capitalize the datestring, as it starts with the weekday.
-   *
-   * @param {string} s The string to capitalize.
-   * @returns {string} The capitalized string.
-   */
-  const capitalize = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
 
   const formatDate = (date) => {
     if (!date) return "";
