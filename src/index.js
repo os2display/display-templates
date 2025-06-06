@@ -30,6 +30,7 @@ import Travel from "./travel/travel";
 import VimeoPlayer from "./vimeo-player/vimeo-player";
 import "./index.css";
 import NewsFeed from "./news-feed/news-feed";
+import Brnd from "./brnd/brnd";
 
 export const renderScreen = (screen) => {
   const gridTemplateAreas = {
@@ -202,6 +203,16 @@ export const renderSlide = (slide) => {
     case "vimeo-player":
       return (
         <VimeoPlayer
+          content={slide.content}
+          slide={slide}
+          run="1234"
+          slideDone={slideDone}
+          executionId="SLIDE_ID"
+        />
+      );
+    case "brnd":
+      return (
+        <Brnd
           content={slide.content}
           slide={slide}
           run="1234"
