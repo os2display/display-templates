@@ -1,0 +1,86 @@
+{
+    "coming_events": [
+        {
+            "type": 0,
+            "value": "Kommende begivenheder"
+        }
+    ],
+    "instant_booking_available": [
+        {
+            "type": 0,
+            "value": "Lokalet er ledigt"
+        }
+    ],
+    "instant_booked_available_text": [
+        {
+            "type": 0,
+            "value": "Straksbook lokalet. Vælg varighed."
+        }
+    ],
+    "instant_booked_not_available": [
+        {
+            "type": 0,
+            "value": "Straksbooking ikke tilgængeligt"
+        }
+    ],
+    "instant_booking_processing": [
+        {
+            "type": 0,
+            "value": "Booker lokale..."
+        }
+    ],
+    "instant_booking_error": [
+        {
+            "type": 0,
+            "value": "Straksbooking fejlede. Prøv igen lidt senere."
+        }
+    ],
+    "instant_booking_checking": [
+        {
+            "type": 0,
+            "value": "Undersøger om lokalet kan straksbookes..."
+        }
+    ],
+    "instant_booked_until": [
+        {
+            "type": 0,
+            "value": "Lokalet er straksbooket indtil"
+        }
+    ],
+    "room_in_use": [
+        {
+            "type": 0,
+            "value": "Optaget"
+        }
+    ],
+    "room_available": [
+        {
+            "type": 0,
+            "value": "Ledigt"
+        }
+    ],
+    "what": [
+        {
+            "type": 0,
+            "value": "Hvad"
+        }
+    ],
+    "where": [
+        {
+            "type": 0,
+            "value": "Hvor"
+        }
+    ],
+    "when": [
+        {
+            "type": 0,
+            "value": "Hvornår"
+        }
+    ],
+    "unavailable": [
+        {
+            "type": 0,
+            "value": "Optaget"
+        }
+    ]
+}

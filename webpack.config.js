@@ -55,6 +55,7 @@ const entry = devMode
         __dirname,
         "./src/vimeo-player/vimeo-player.js"
       ),
+      brnd: path.resolve(__dirname, "./src/brnd/brnd.js"),
     };
 
 const timestamp = new Date().getTime().toString();
