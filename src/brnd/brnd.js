@@ -65,12 +65,13 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
       if (resourceUnavailableText) {
         return resourceUnavailableText;
       }
-
       return <FormattedMessage id="unavailable" defaultMessage="Unavailable" />;
     }
-
     return eventTitle;
   };
+
+  // Add this line to debug the layout value
+  console.log("Brnd layout:", layout);
 
   return (
     <>
@@ -85,7 +86,6 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
           />
         )}
       </IntlProvider>
-
       <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
       <GlobalStyles />
     </>
