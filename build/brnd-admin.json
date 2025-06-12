@@ -2,7 +2,7 @@
   {
     "key": "brnd-form-1",
     "input": "header",
-    "text": "Skabelon: BRND sportcenter dagsprogram",
+    "text": "Skabelon: BRND",
     "name": "header1",
     "formGroupClasses": "h4 mb-3"
   },
@@ -33,7 +33,8 @@
     "input": "input",
     "name": "sportcenterid",
     "type": "text",
-    "label": "Sport center ID",
+    "label": "Sportcenter ID",
+    "required": true,
     "helpText": "Hvert anlæg har en ID streng. Kontakt BRND support for at få en oversigt.",
     "formGroupClasses": "col-md-6"
   },
@@ -47,7 +48,7 @@
     "options": [
       {
         "key": "layout1",
-        "title": "Dagsprogram",
+        "title": "Sportcenter Dagsprogram",
         "value": "sportcenter-today"
       }
     ]
@@ -97,63 +98,6 @@
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "brnd-form-subtitle",
-    "input": "input",
-    "name": "subTitle",
-    "type": "text",
-    "label": "Underoverskrift",
-    "helpText": "Her kan du skrive underoverskrift.",
-    "formGroupClasses": "col-md-6"
-  },
-  {
-    "key": "brnd-form-resource-available-text",
-    "input": "input",
-    "name": "resourceAvailableText",
-    "type": "text",
-    "label": "Tekst når resursen er ledig",
-    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig.",
-    "formGroupClasses": "col-md-6"
-  },
-  {
-    "key": "brnd-form-resource-unavailable-text",
-    "input": "input",
-    "name": "resourceUnavailableText",
-    "type": "text",
-    "label": "Begivenhedstitel fallback",
-    "helpText": "Her kan du skrive tekst på begivenheder, hvor der ikke er sat en titel.",
-    "formGroupClasses": "col-md-6"
-  },
-  {
-    "key": "brnd-form-footer-text",
-    "input": "input",
-    "name": "footerText",
-    "type": "text",
-    "label": "Footer tekst",
-    "helpText": "Her kan du skrive tekst til footeren.",
-    "formGroupClasses": "col-md-6"
-  },
-  {
-    "key": "brnd-form-hide-grid",
-    "input": "checkbox",
-    "label": "Skjul grid",
-    "name": "hideGrid",
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "brnd-form-has-date-and-time",
-    "input": "checkbox",
-    "label": "Vis dato og tidspunkt",
-    "name": "hasDateAndTime",
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "brnd-form-date-as-box",
-    "input": "checkbox",
-    "label": "Dato og tidspunkt som boks",
-    "name": "dateAsBox",
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
     "key": "brnd-form-image",
     "multipleImages": false,
     "input": "image",
@@ -166,12 +110,5 @@
     "name": "mediaContain",
     "label": "Deaktivér billedbeskæring",
     "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
-  },
-  {
-    "key": "brnd-form-display-headers",
-    "input": "checkbox",
-    "label": "Vis tabeloverskrifter",
-    "name": "displayHeaders",
-    "formGroupClasses": "col-md-6 mb-3"
   }
 ]
