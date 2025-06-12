@@ -84,8 +84,18 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
   }, [posts]);
 
   useEffect(() => {
-    if (feedData && Object.hasOwnProperty.call(feedData, "entries")) {
-      setPosts(feedData.entries);
+    if (feedData) {
+      if (
+        Object.hasOwnProperty.call(feedData, "entries") &&
+        feedData.entries.length > 0
+      ) {
+        setPosts(feedData.entries);
+      } else {
+        // If no content, wait 5 seconds and continue to next slide.
+        setTimeout(() => {
+          slideDone(slide);
+        }, 5000);
+      }
     }
   }, [feedData]);
 
