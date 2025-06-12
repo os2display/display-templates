@@ -86,8 +86,7 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
   useEffect(() => {
     if (feedData) {
       if (
-        Object.hasOwnProperty.call(feedData, "entries") &&
-        feedData.entries.length > 0
+        feedData.entries?.length > 0
       ) {
         setPosts(feedData.entries);
       } else {
