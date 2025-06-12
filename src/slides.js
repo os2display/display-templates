@@ -1601,8 +1601,8 @@ const slides = [
   },
   {
     id: "slide27-brnd-sportcenter-today",
-    type: "brnd-booking",
-    themeFile: "themes/brnd.css",
+    type: "brnd",
+    themeFile: "themes/brnd-sportcenter-today.css",
     feedData: [
       {
         bookingcode: "BKN-389928",
@@ -1710,6 +1710,26 @@ const slides = [
         changingRooms: "",
       },
     ],
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 5000,
+      layout: "sportcenter-today",
+      hasDateAndTime: true,
+      title: "Aktiviteter i dag",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      resourceUnavailableText: "Det er optaget",
+      // image: ["/v1/media/00000000000000000000000001"],
+      footerText: "Se mere på localhost/events",
+      dateAsBox: false,
+      fontSize: "font-size-m",
+    },
   },
 ];
 
