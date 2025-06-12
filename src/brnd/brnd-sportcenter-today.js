@@ -29,7 +29,6 @@ function BrndSportcenterToday({
     title = "",
     hasDateAndTime,
     displayHeaders = true,
-    hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
     mediaContain,
   } = content;
@@ -39,10 +38,10 @@ function BrndSportcenterToday({
     dayjs.extend(localizedFormat);
   }, []);
 
-  const borderStyle = {};
-  if (hideGrid) {
-    borderStyle["--border"] = 0;
-  }
+  const borderStyle = {
+    "--border-bottom": "1px solid #ccc",
+    "--border-left": 0,
+  };
 
   let counterForOrder = 0;
 
@@ -85,7 +84,7 @@ function BrndSportcenterToday({
 
   return (
     <Wrapper
-      className={`template-brnd sportcenter-today ${templateClasses.join(
+      className={`template-brnd brnd-sportcenter-today ${templateClasses.join(
         " "
       )} ${mediaContain ? "media-contain" : ""}`}
       style={Object.assign(borderStyle, templateRootStyle)}
@@ -125,14 +124,23 @@ function BrndSportcenterToday({
       <Content className="content">
         {displayHeaders !== false && (
           <ContentItemsWrapper>
-            <ContentHeaderItem className="content-item" key={2}>
-              <FormattedMessage id="when" defaultMessage="when" />
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="when" defaultMessage="Tid" />
             </ContentHeaderItem>
-            <ContentHeaderItem className="content-item" key={1}>
-              <FormattedMessage id="what" defaultMessage="what" />
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="booking-by" defaultMessage="Booket af" />
             </ContentHeaderItem>
-            <ContentHeaderItem className="content-item" key={3}>
-              <FormattedMessage id="where" defaultMessage="where" />
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="facility" defaultMessage="Facilitet" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="activity" defaultMessage="Aktivitet" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="team" defaultMessage="Hold" />
+            </ContentHeaderItem>
+            <ContentHeaderItem className="content-item">
+              <FormattedMessage id="remarks" defaultMessage="Bemærkning" />
             </ContentHeaderItem>
           </ContentItemsWrapper>
         )}
@@ -154,11 +162,20 @@ function BrndSportcenterToday({
                       </>
                     )}
                   </ContentItem>
-                  <ContentItem className="content-item-title">
-                    {getTitle(entry.title)}
+                  <ContentItem className="content-item-booking-by">
+                    {getTitle(entry.bookingBy)}
                   </ContentItem>
-                  <ContentItem className="content-item-resource">
-                    {entry.resourceTitle ?? entry.resourceId ?? ""}
+                  <ContentItem className="content-item-facility">
+                    {getTitle(entry.facility)}
+                  </ContentItem>
+                  <ContentItem className="content-item-activity">
+                    {getTitle(entry.activity)}
+                  </ContentItem>
+                  <ContentItem className="content-item-team">
+                    {entry.team ?? entry.team ?? ""}
+                  </ContentItem>
+                  <ContentItem className="content-item-remarks">
+                    {entry.remarks ?? entry.remarks ?? ""}
                   </ContentItem>
                 </Fragment>
               );
@@ -231,21 +248,21 @@ const Content = styled.div`
 
 const ContentItemsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 `;
 
 const ContentItem = styled.div`
   padding: var(--padding-size-base);
-  border-bottom: var(--border);
-  border-left: var(--border);
+  border-bottom: var(--border-bottom, 1px solid #ccc);
+  border-left: var(--border-left, 0);
 
   // Remove border left.
-  &:nth-of-type(3n + 1) {
+  &:nth-of-type(6n + 1) {
     border-left: 0;
   }
 
   // Remove border from bottom.
-  &:nth-last-child(-n + 3) {
+  &:nth-last-child(-n + 6) {
     border-bottom: 0;
   }
 `;
@@ -254,11 +271,11 @@ const ContentHeaderItem = styled.div`
   padding: var(--padding-size-base);
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
-  border-bottom: var(--border);
-  border-left: var(--border);
+  border-bottom: var(--border-bottom, 1px solid #ccc);
+  border-left: var(--border-left, 0);
 
   // Remove border left.
-  &:nth-of-type(3n + 1) {
+  &:nth-of-type(6n + 1) {
     border-left: 0;
   }
 `;
