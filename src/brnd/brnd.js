@@ -126,7 +126,6 @@ Brnd.propTypes = {
     layout: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
-    resourceUnavailableText: PropTypes.string,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };
