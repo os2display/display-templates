@@ -27,9 +27,6 @@ function BrndSportcenterToday({
   const [currentDate, setCurrentDate] = useState(new Date());
   const {
     title = "",
-    hasDateAndTime,
-    displayHeaders = true,
-    dateAsBox = false /* TODO: Add this to the configuration of the slide */,
     mediaContain,
   } = content;
 
@@ -42,8 +39,6 @@ function BrndSportcenterToday({
     "--border-bottom": "1px solid #ccc",
     "--border-left": 0,
   };
-
-  let counterForOrder = 0;
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -69,18 +64,9 @@ function BrndSportcenterToday({
   };
 
   useEffect(() => {
-    let dateAndTimeInterval = null;
-
-    if (hasDateAndTime) {
-      dateAndTimeInterval = setInterval(() => setCurrentDate(new Date()), 1000);
-    }
-
-    return function cleanup() {
-      if (dateAndTimeInterval !== null) {
-        clearInterval(dateAndTimeInterval);
-      }
-    };
-  }, [hasDateAndTime]);
+    const dateAndTimeInterval = setInterval(() => setCurrentDate(new Date()), 1000);
+    return () => clearInterval(dateAndTimeInterval);
+  }, []);
 
   return (
     <Wrapper
@@ -91,64 +77,40 @@ function BrndSportcenterToday({
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
-        {hasDateAndTime && (
-          <>
-            {!dateAsBox && (
-              <HeaderDate className="header-date">
-                {currentDate &&
-                  capitalize(
-                    dayjs().locale(localeDa).format("dddd D. MMMM HH:mm")
-                  )}
-              </HeaderDate>
+        <HeaderDate className="header-date">
+          {currentDate &&
+            capitalize(
+              dayjs().locale(localeDa).format("dddd D. MMMM HH:mm")
             )}
-            {dateAsBox && (
-              <HeaderDateBox className="header-date-box">
-                <Weekday>
-                  {currentDate &&
-                    capitalize(dayjs().locale(localeDa).format("ddd"))}
-                </Weekday>
-                <DateNumber>
-                  {currentDate &&
-                    capitalize(dayjs().locale(localeDa).format("D"))}
-                </DateNumber>
-                <Month>
-                  {currentDate &&
-                    capitalize(dayjs().locale(localeDa).format("MMM"))}
-                </Month>
-              </HeaderDateBox>
-            )}
-          </>
-        )}
+        </HeaderDate>
       </Header>
 
       <Content className="content">
-        {displayHeaders !== false && (
-          <ContentItemsWrapper>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="when" defaultMessage="Tid" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="booking-by" defaultMessage="Booket af" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="facility" defaultMessage="Facilitet" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="activity" defaultMessage="Aktivitet" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="team" defaultMessage="Hold" />
-            </ContentHeaderItem>
-            <ContentHeaderItem className="content-item">
-              <FormattedMessage id="remarks" defaultMessage="Bemærkning" />
-            </ContentHeaderItem>
-          </ContentItemsWrapper>
-        )}
+        <ContentItemsWrapper>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="when" defaultMessage="Tid" />
+          </ContentHeaderItem>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="booking-by" defaultMessage="Booket af" />
+          </ContentHeaderItem>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="facility" defaultMessage="Facilitet" />
+          </ContentHeaderItem>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="activity" defaultMessage="Aktivitet" />
+          </ContentHeaderItem>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="team" defaultMessage="Hold" />
+          </ContentHeaderItem>
+          <ContentHeaderItem className="content-item">
+            <FormattedMessage id="remarks" defaultMessage="Bemærkning" />
+          </ContentHeaderItem>
+        </ContentItemsWrapper>
         <ContentItemsWrapper>
           {bookings?.length > 0 &&
             getSortedBookings(bookings).map((entry) => {
               const returnFragment = (
-                <Fragment key={entry.id}>
+                <Fragment key={entry.bookingcode}>
                   <ContentItem className="content-item-time">
                     {dayjs(entry.startTime * 1000)
                       .locale(localeDa)
@@ -179,7 +141,6 @@ function BrndSportcenterToday({
                   </ContentItem>
                 </Fragment>
               );
-              counterForOrder += 3;
               return returnFragment;
             })}
         </ContentItemsWrapper>
@@ -226,21 +187,6 @@ const HeaderDate = styled.div`
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-light);
 `;
-
-const HeaderDateBox = styled.div`
-  padding: var(--padding-size-base) calc(var(--padding-size-base) * 2);
-  background-color: var(--color-primary);
-  line-height: 1;
-`;
-
-const Weekday = styled.div``;
-
-const DateNumber = styled.div`
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-weight-bold);
-`;
-
-const Month = styled.div``;
 
 const Content = styled.div`
   grid-area: content;
@@ -302,11 +248,6 @@ BrndSportcenterToday.propTypes = {
   ).isRequired,
   content: PropTypes.shape({
     title: PropTypes.string,
-    hasDateAndTime: PropTypes.bool,
-    displayHeaders: PropTypes.bool,
-    dateAsBox: PropTypes.bool,
-    resourceUnavailableText: PropTypes.string,
-    hideGrid: PropTypes.bool,
     mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
