@@ -8,7 +8,9 @@
     "admin": "https://display-templates.local.itkdev.dk/build/iframe-admin.json",
     "schema": "",
     "assets": [],
-    "options": {},
+    "options": {
+      "disableLivePreview": true
+    },
     "content": {}
   }
 }
