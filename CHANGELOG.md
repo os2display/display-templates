@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [2.5.1] - 2025-06-23
+
 - [#178](https://github.com/os2display/display-templates/pull/178)
   - Fixed news-feed template blocks slide transitions.
 - [#177](https://github.com/os2display/display-templates/pull/177)
