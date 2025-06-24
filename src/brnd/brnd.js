@@ -72,6 +72,7 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
 
   // Add this line to debug the layout value
   console.log("Brnd layout:", layout);
+  console.log("FeedData:", feedData);
 
   return (
     <>
