@@ -28,16 +28,6 @@
     "name": "header2",
     "formGroupClasses": "h5 mb-3"
   },
-    {
-    "key": "brnd-form-sportcenterid",
-    "input": "input",
-    "name": "sportcenterid",
-    "type": "text",
-    "label": "Sportcenter ID",
-    "required": true,
-    "helpText": "Hvert anlæg har en ID streng. Kontakt BRND support for at få en oversigt.",
-    "formGroupClasses": "col-md-6"
-  },
   {
     "key": "calendar-form-layout",
     "input": "select",
