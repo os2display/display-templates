@@ -72,14 +72,14 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
 
   // Add this line to debug the layout value
   console.log("Brnd layout:", layout);
-  console.log("FeedData:", feedData);
+  console.log("FeedData:", feedData.bookings);
 
   return (
     <>
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
         {layout === "sportcenter-today" && (
           <BrndSportcenterToday
-            bookings={feedData}
+            bookings={feedData.bookings}
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
