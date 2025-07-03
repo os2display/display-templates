@@ -261,13 +261,18 @@
 
 /*
 *
-* Customize Image text template
+* Customize News feed template
 *
 */
 
 #SLIDE_ID .template-news-feed {
   --background-color: var(--color-primary);
   --color-secondary: var(--color-primary-700);
+
+  .title {
+    font-size: calc(var(--h1-font-size) * 1.25);
+    line-height: 1.3;
+  }
 
   .extra-section,
   .text-section {
