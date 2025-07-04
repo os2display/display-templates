@@ -282,4 +282,8 @@
   .description {
     color: inherit;
   }
+
+  .qr {   
+    filter: invert(1);
+  }
 }
