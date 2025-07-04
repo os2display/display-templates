@@ -2,8 +2,8 @@
 ** TEMP FIX FOR MEETING ROOM MONITOR!!!!!
 */
 
-/* Test HEX color values instead of oklch */
 #SLIDE_ID .template-calendar.calendar-single-booking {
+  /* Test HEX color values instead of oklch */
   --color-red-50: #fef2f2;
   --color-red-100: #fee2e2;
   --color-red-200: #fecaca;
@@ -26,10 +26,12 @@
   --color-green-800: #166534;
   --color-green-900: #14532d;
   --color-green-950: #052e16;
+
+  --padding-size-base: calc(var(--spacer) * 2);
 }
 
 /* Vertical */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   #SLIDE_ID
     .template-calendar.calendar-single-booking:nth-child(1)
     > div:first-child {
