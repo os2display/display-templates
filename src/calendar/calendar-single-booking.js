@@ -110,7 +110,7 @@ function CalendarSingleBooking({
                 to: option.to,
                 durationMinutes: option.durationMinutes,
               };
-            }),
+            })
           );
         })
         .finally(() => {
@@ -215,11 +215,11 @@ function CalendarSingleBooking({
 
   const currentEvents = calendarEvents.filter(
     (cal) =>
-      cal.startTime <= currentTime.unix() && cal.endTime >= currentTime.unix(),
+      cal.startTime <= currentTime.unix() && cal.endTime >= currentTime.unix()
   );
 
   const futureEvents = calendarEvents.filter(
-    (el) => !currentEvents.includes(el),
+    (el) => !currentEvents.includes(el)
   );
 
   const roomInUse = currentEvents.length > 0;
@@ -238,7 +238,7 @@ function CalendarSingleBooking({
   return (
     <Wrapper
       className={`template-calendar calendar-single-booking ${templateClasses.join(
-        " ",
+        " "
       )}
         ${mediaContain ? "media-contain" : ""}`}
       style={templateRootStyle}
@@ -404,7 +404,7 @@ CalendarSingleBooking.propTypes = {
       endTime: PropTypes.number,
       resourceTitle: PropTypes.string,
       resourceId: PropTypes.string,
-    }),
+    })
   ).isRequired,
   content: PropTypes.shape({
     title: PropTypes.string,
