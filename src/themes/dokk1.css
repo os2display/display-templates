@@ -287,6 +287,11 @@
   --margin-size-base: calc(var(--spacer) * 3);
   --padding-size-base: calc(var(--spacer) * 2);
 
+  div:nth-child(1) > div:nth-child(3) {
+    background-color: #111 !important;
+    color: var(--text-light);
+  }
+
   .content {
     background-color: var(--background-color);
     color: var(--text-light);
