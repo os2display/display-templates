@@ -266,24 +266,32 @@
 */
 
 #SLIDE_ID .template-news-feed {
-  --background-color: var(--color-primary);
-  --color-secondary: var(--color-primary-700);
+  --background-color: white;
+  --color-secondary: var(--bg-light);
 
   .title {
     font-size: calc(var(--h1-font-size) * 1.25);
     line-height: 1.3;
   }
+}
 
-  .extra-section,
-  .text-section {
+/*
+*
+* Customize calendar template
+* Single calendar booking
+*
+*/
+
+#SLIDE_ID .calendar-single-booking {
+  --background-color: black;
+  --margin-size-base: calc(var(--spacer) * 3);
+  --padding-size-base: calc(var(--spacer) * 2);
+
+  .content {
+    background-color: var(--background-color);
     color: var(--text-light);
   }
-
-  .description {
-    color: inherit;
-  }
-
-  .qr {   
-    filter: invert(1);
+  .content-item {
+    border-color: var(--text-light);
   }
 }
