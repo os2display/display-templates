@@ -290,6 +290,7 @@
   div:nth-child(1) > div:nth-child(3) {
     background-color: #111 !important;
     color: var(--text-light);
+    align-content: center;
   }
 
   .content {
