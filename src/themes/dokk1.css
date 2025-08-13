@@ -322,6 +322,7 @@
   .content {
     background-color: var(--background-color);
     color: var(--text-light);
+    min-height: 100%;
   }
   .content-item {
     border-color: var(--text-light);
