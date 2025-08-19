@@ -224,7 +224,10 @@ function CalendarSingleBooking({
   );
 
   const futureEvents = calendarEvents.filter(
-    (el) => !currentEvents.includes(el)
+    (el) =>
+      !currentEvents.includes(el) &&
+      el.endTime > dayjs().unix() &&
+      el.endTime <= dayjs().endOf("day").unix()
   );
 
   const roomInUse = bookingResult !== null || currentEvents.length > 0;
@@ -298,16 +301,17 @@ function CalendarSingleBooking({
                 </p>
               </ContentItem>
             )}
-            {currentEvents.map((event) => (
-              <ContentItem key={event.id} className="content-item">
-                <Meta>
-                  {renderTimeOfDayFromUnixTimestamp(event.startTime)}
-                  {" - "}
-                  {renderTimeOfDayFromUnixTimestamp(event.endTime)}
-                </Meta>
-                <h1>{getTitle(event.title)}</h1>
-              </ContentItem>
-            ))}
+            {!bookingResult &&
+              currentEvents.map((event) => (
+                <ContentItem key={event.id} className="content-item">
+                  <Meta>
+                    {renderTimeOfDayFromUnixTimestamp(event.startTime)}
+                    {" - "}
+                    {renderTimeOfDayFromUnixTimestamp(event.endTime)}
+                  </Meta>
+                  <h1>{getTitle(event.title)}</h1>
+                </ContentItem>
+              ))}
           </>
         )}
         {!roomInUse && (
@@ -340,19 +344,6 @@ function CalendarSingleBooking({
                           </Button>
                         ))}
                       </ButtonWrapper>
-                    </>
-                  )}
-                  {!roomAvailableForInstantBooking && (
-                    <>
-                      <p>
-                        <FormattedMessage
-                          id="instant_booked_not_available"
-                          defaultMessage="Straksbooking ikke tilgængeligt"
-                        />
-                      </p>
-                      <div style={{ fontSize: ".5em" }}>
-                        {timeCountdownString(secondsUntilNextEvent)}
-                      </div>
                     </>
                   )}
                 </>
