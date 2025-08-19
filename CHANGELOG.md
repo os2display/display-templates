@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - [#188](https://github.com/os2display/display-templates/pull/188)
   - Fixed issues with calendar single booking layout.
-  - Added extra description for resourceAvailableText field.
+  - Added extra description for resourceAvailableText and hasDateAndTime fields.
 
 ## [2.5.1] - 2025-06-23
 

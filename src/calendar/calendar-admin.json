@@ -159,7 +159,7 @@
   {
     "key": "calendar-form-has-date-and-time",
     "input": "checkbox",
-    "label": "Vis dato og tidspunkt",
+    "label": "Vis dato og tidspunkt. Gælder kun for \"Flere resurser\" layouttet",
     "name": "hasDateAndTime",
     "formGroupClasses": "col-md-6 mb-3"
   },
