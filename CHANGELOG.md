@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#188](https://github.com/os2display/display-templates/pull/188)
+  - Fixed issues with calendar single booking layout.
+
 ## [2.5.1] - 2025-06-23
 
 - [#178](https://github.com/os2display/display-templates/pull/178)

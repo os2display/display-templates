@@ -148,15 +148,20 @@ function CalendarSingleBooking({
 
     const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
+    let newBookingResult = null;
+
     // Clean out old instantBookings.
-    if (instantBooking) {
-      if (dayjs(instantBooking.interval.to) < dayjs()) {
-        setInstantBookingFromLocalStorage(slide["@id"], null);
-        setBookingResult(null);
+    if (instantBooking !== null) {
+      const intervalFrom = instantBooking?.interval?.to;
+
+      if (intervalFrom !== null && dayjs(intervalFrom) > dayjs()) {
+        newBookingResult = instantBooking;
       } else {
-        setBookingResult(instantBooking);
+        setInstantBookingFromLocalStorage(slide["@id"], null);
       }
     }
+
+    setBookingResult(newBookingResult);
   };
 
   const clickInterval = (interval) => {
@@ -222,7 +227,7 @@ function CalendarSingleBooking({
     (el) => !currentEvents.includes(el)
   );
 
-  const roomInUse = currentEvents.length > 0;
+  const roomInUse = bookingResult !== null || currentEvents.length > 0;
 
   const roomAvailableForInstantBooking =
     !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
@@ -278,17 +283,33 @@ function CalendarSingleBooking({
         </DateTime>
       </Header>
       <Content className="content">
-        {roomInUse &&
-          currentEvents.map((event) => (
-            <ContentItem key={event.id} className="content-item">
-              <Meta>
-                {renderTimeOfDayFromUnixTimestamp(event.startTime)}
-                {" - "}
-                {renderTimeOfDayFromUnixTimestamp(event.endTime)}
-              </Meta>
-              <h1>{getTitle(event.title)}</h1>
-            </ContentItem>
-          ))}
+        {roomInUse && (
+          <>
+            {bookingResult && (
+              <ContentItem className="content-item">
+                <p>
+                  <FormattedMessage
+                    id="instant_booked_until"
+                    defaultMessage="Lokalet er straksbooket indtil"
+                  />{" "}
+                  {dayjs(bookingResult.interval.to)
+                    .locale(localeDa)
+                    .format("HH:mm")}
+                </p>
+              </ContentItem>
+            )}
+            {currentEvents.map((event) => (
+              <ContentItem key={event.id} className="content-item">
+                <Meta>
+                  {renderTimeOfDayFromUnixTimestamp(event.startTime)}
+                  {" - "}
+                  {renderTimeOfDayFromUnixTimestamp(event.endTime)}
+                </Meta>
+                <h1>{getTitle(event.title)}</h1>
+              </ContentItem>
+            ))}
+          </>
+        )}
         {!roomInUse && (
           <>
             <ContentItem className="content-item">
