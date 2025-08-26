@@ -192,11 +192,11 @@ NewsFeed.propTypes = {
           medias: PropTypes.arrayOf(
             PropTypes.shape({
               url: PropTypes.string,
-            }),
+            })
           ),
           lastModified: PropTypes.string,
           link: PropTypes.string,
-        }),
+        })
       ),
     }).isRequired,
     mediaData: PropTypes.shape({
