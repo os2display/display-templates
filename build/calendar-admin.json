@@ -210,5 +210,13 @@
     "name": "headerOrder",
     "formGroupClasses": "col-md-6 mb-3",
     "helpText": "Dette er kun relevant hvis \"Flere resurser\" er valgt under \"layout\". Standard er \"Hvornår, hvad, hvor.\""
+  },
+  {
+    "key": "calendar-form-enable-instant-booking",
+    "input": "checkbox",
+    "label": "Aktivér straksbooking",
+    "helpText": "Aktivér mulighed for straksbooking. Dette kræver at resursen er godkendt til straksbooking.",
+    "name": "instantBookingEnabled",
+    "formGroupClasses": "mb-3"
   }
 ]

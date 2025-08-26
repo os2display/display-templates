@@ -55,7 +55,12 @@ function CalendarSingleBooking({
   slide,
   run,
 }) {
-  const { title = "", subTitle = null, mediaContain } = content;
+  const {
+    title = "",
+    subTitle = null,
+    mediaContain,
+    instantBookingEnabled = false,
+  } = content;
 
   // Get values from client localstorage.
   const token = localStorage.getItem("apiToken");
@@ -71,6 +76,10 @@ function CalendarSingleBooking({
   const [bookingError, setBookingError] = useState(false);
 
   const fetchBookingIntervals = () => {
+    if (!instantBookingEnabled) {
+      return;
+    }
+
     if (!apiUrl || !slide || !token || !tenantKey) {
       setFetchingIntervals(false);
       return;
@@ -169,6 +178,10 @@ function CalendarSingleBooking({
       return;
     }
 
+    if (!instantBookingEnabled) {
+      return;
+    }
+
     setProcessingBooking(true);
 
     fetch(`${apiUrl}${slide["@id"]}/action`, {
@@ -215,7 +228,9 @@ function CalendarSingleBooking({
   }, []);
 
   useEffect(() => {
-    fetchBookingIntervals();
+    if (instantBookingEnabled) {
+      fetchBookingIntervals();
+    }
   }, [run]);
 
   const currentEvents = calendarEvents.filter(
@@ -314,7 +329,7 @@ function CalendarSingleBooking({
               ))}
           </>
         )}
-        {!roomInUse && (
+        {!roomInUse && instantBookingEnabled && (
           <>
             <ContentItem className="content-item">
               {!processingBooking && !bookingResult && !bookingError && (
@@ -344,6 +359,19 @@ function CalendarSingleBooking({
                           </Button>
                         ))}
                       </ButtonWrapper>
+                    </>
+                  )}
+                  {!roomAvailableForInstantBooking && (
+                    <>
+                      <p>
+                        <FormattedMessage
+                          id="instant_booked_not_available"
+                          defaultMessage="Straksbooking ikke tilgængeligt"
+                        />
+                      </p>
+                      <div style={{ fontSize: ".5em" }}>
+                        {timeCountdownString(secondsUntilNextEvent)}
+                      </div>
                     </>
                   )}
                 </>
@@ -422,6 +450,7 @@ CalendarSingleBooking.propTypes = {
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
     mediaContain: PropTypes.bool,
+    instantBookingEnabled: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };
