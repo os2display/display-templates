@@ -128,7 +128,7 @@
     "name": "resourceAvailableText",
     "type": "text",
     "label": "Tekst når resursen er ledig",
-    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig. Dette gælder kun for \"Enkelt lokale\" layouttet",
+    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig. Dette gælder kun for \"Enkelt lokale\" layoutet",
     "formGroupClasses": "col-md-6"
   },
   {
