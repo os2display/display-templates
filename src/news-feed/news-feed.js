@@ -61,6 +61,7 @@ function NewsFeed({ slide, content, run, slideDone, executionId }) {
         setQr(null);
       } else {
         QRCode.toDataURL(currentPost.link, {
+          margin: 0,
           color: {
             dark: "#000000",
             light: "#ffffff00",
