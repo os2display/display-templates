@@ -267,15 +267,16 @@ function CalendarSingleBooking({
       style={templateRootStyle}
     >
       <Header
+        className="header"
         style={{
           backgroundColor: headerColor,
         }}
       >
-        <RoomInfo>
+        <RoomInfo className="room-info">
           {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
           <Title className="title">{title}</Title>
         </RoomInfo>
-        <Status>
+        <Status className="status">
           <StatusIcon>
             {roomInUse ? (
               <IconExclamation style={{ color: "var(--color-red-600)" }} />
@@ -292,6 +293,7 @@ function CalendarSingleBooking({
           </StatusText>
         </Status>
         <DateTime
+          className="date-time"
           style={{
             backgroundColor: dateTimeColor,
           }}

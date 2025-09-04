@@ -24,6 +24,9 @@ const Wrapper = styled.div`
 const Header = styled.div`
   /* Header styling */
   display: flex;
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const RoomInfo = styled.div`
@@ -31,6 +34,10 @@ const RoomInfo = styled.div`
   padding: calc(var(--padding-size-base) * 2);
   flex-grow: 2;
   color: var(--text-light);
+  @media (max-width: 800px) {
+    padding-top: var(--padding-size-base);
+    padding-bottom: var(--padding-size-base);
+  }
 `;
 
 const Title = styled.div`
@@ -45,6 +52,7 @@ const SubTitle = styled.div`
 const Status = styled.div`
   /* Status styling */
   padding: var(--padding-size-base);
+  padding-left: calc(var(--padding-size-base) * 2);
   padding-right: calc(var(--padding-size-base) * 3);
   display: flex;
   column-gap: var(--spacer);
@@ -70,6 +78,12 @@ const DateTime = styled.div`
   text-align: right;
   padding: var(--padding-size-base);
   color: var(--text-dark);
+  align-content: center;
+  @media (max-width: 800px) {
+    flex-basis: 100%;
+    padding-left: calc(var(--padding-size-base) * 2);
+    text-align: left;
+  }
 `;
 
 const Date = styled.div`

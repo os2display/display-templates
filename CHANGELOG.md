@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 - [#188](https://github.com/os2display/display-templates/pull/188)
   - Fixed issues with calendar single booking layout.
   - Added extra description for resourceAvailableText and hasDateAndTime fields.
+- [#185](https://github.com/os2display/display-templates/pull/185)
+  - Single Clanedar Booking: Fix color issues on older browsers. Add simple vertical view for portrait oriented devices.
+- [#184](https://github.com/os2display/display-templates/pull/184)
+  - Update Dokk1 and Aakb themes. Add news feed. Adapt new identity for Aakb.
 
 ## [2.5.1] - 2025-06-23
 
@@ -22,8 +26,8 @@ All notable changes to this project will be documented in this file.
   - Fixed news feed issues.
 - [#174](https://github.com/os2display/display-templates/pull/174)
   - Fixed test issue with calendar dates.
-- [#161](https://github.com/os2display/display-templates/pull/161) 
-  - Added social news template. 
+- [#161](https://github.com/os2display/display-templates/pull/161)
+  - Added social news template.
 
 ## [2.4.0] - 2025-03-31
 

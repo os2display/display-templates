@@ -2,8 +2,36 @@
 * Aarhus Kommunes Biblioteker theme css
 */
 
-/* Import FaktPro font */
+/* Import Lora font */
 @font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lora/v36/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkqt8ndeYxZ0.woff)
+    format("woff");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+/* Import Lora font */
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A-9a6VTYyWtZ3rI.woff)
+    format("woff");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fonts from old design */
+/* Import FaktPro font */
+/* @font-face {
   font-family: "FaktPro-Normal";
   src: url("https://db.onlinewebfonts.com/t/fdd40b399610a1e015242521427561b1.woff")
     format("woff");
@@ -18,8 +46,7 @@
     format("woff");
   font-weight: 400;
   font-style: normal;
-}
-
+} */
 
 #SLIDE_ID {
   /* Default variables */
@@ -32,22 +59,35 @@
   --color-info: #008488;
   --color-warning: #fee13d;
   --color-danger: #d32f2e;
+  --color-bg-primary: #f6f5f0;
+  --color-bg-secondary: #eee9e5;
+  --color-text-primary: #000;
+  --color-text-secondary: #484848;
 
   --color-blue: var(--color-primary);
   --color-red: var(--color-danger);
   --color-yellow: var(--color-warning);
   --color-green: var(--color-success);
 
-  --font-family-base: "FaktPro-Normal", sans-serif;
-  --font-family-bold: "FaktPro-SemiBold", sans-serif;
+  --font-family-sans: "Noto Sans", sans-serif;
+  --font-family-serif: "Lora", serif;
   --font-weight-base: 400;
-  --font-weight-bold: 400;
+  --font-weight-bold: 700;
 
   /* Darkmode overrides */
   --bg-dark: #333333;
   --text-light: #ffffff;
 
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-serif);
+  }
 }
 
 /*
@@ -58,17 +98,20 @@
 
 #SLIDE_ID .template-poster .header-area {
   padding: 10%;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 #SLIDE_ID .template-poster .info-area {
   padding: 10%;
   font-size: calc(var(--font-size-base) * 1.25);
   font-weight: 300;
+  background-color: var(--color-bg-secondary);
 }
 
 #SLIDE_ID .template-poster .logo-area {
   padding: 3% 10% 0 10%;
-  background-color: var(--bg-light);
+  background-color: var(--color-bg-secondary);
 }
 
 #SLIDE_ID .template-poster img {
@@ -76,14 +119,12 @@
 }
 
 #SLIDE_ID .template-poster h1 {
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-base);
+  font-family: var(--font-family-serif);
+  font-size: calc(var(--h1-font-size) * 1.25);
 }
 
 #SLIDE_ID .template-poster .lead {
-  font-family: var(--font-family-bold);
-  font-weight: var(--font-weight-bold);
-  font-size: calc(var(--font-size-base) * 1.25);
+  line-height: 1.5;
 }
 
 #SLIDE_ID .template-poster .info-area .date {
@@ -100,12 +141,14 @@
 *
 */
 
-#SLIDE_ID .template-book-review {
-  --text-color: var(--color-grey-700);
+#SLIDE_ID .template-book-review .text-area h1 + p strong {
+  color: var(--color-text-secondary);
+  font-weight: normal;
 }
 
 #SLIDE_ID .template-book-review .author {
-  --text-color: var(--color-grey-500);
+  color: var(--color-text-secondary);
+  font-weight: normal;
 }
 
 /*
@@ -115,15 +158,18 @@
 */
 
 #SLIDE_ID .template-rss {
-  --text-color: var(--text-light, hsl(0deg, 0%, 100%));
+  --text-color: var(--color-text-primary);
+  --bg-color: var(--color-bg-primary);
   padding: calc(var(--spacer) * 4);
   gap: calc(var(--spacer) * 6);
-  background-color: var(--color-primary);
-  color: var(--text-color);
+  /* background-color: var(--color-bg-primary); */
+  /* color: var(--text-primary); */
 }
 
 .color-scheme-dark #SLIDE_ID .template-rss {
-  --text-color: var(--text-dark, hsl(0deg, 0%, 0%));
+  --text-color: var(--color-bg-primary);
+  --bg-color: var(--color-text-primary);
+  /* background-color: var(--text-dark, hsl(0deg, 0%, 0%)); */
 }
 
 #SLIDE_ID .template-rss .feed-info {
@@ -131,7 +177,7 @@
 }
 
 #SLIDE_ID .template-rss .feed-info--date {
-  border-right: 3px solid var(--color-white);
+  border-right: 3px solid var(--color-primary);
   padding-right: calc(var(--spacer) * 2);
   font-size: calc(var(--font-size-base) * 2);
 }
@@ -152,7 +198,7 @@
   line-height: 1.2;
 }
 
-#SLIDE_ID .template-rss .description {
+#SLIDE_ID .template-rss {
   font-size: calc(var(--font-size-base) * 3);
   line-height: 1.3;
 }
@@ -163,15 +209,20 @@
 *
 */
 
+#SLIDE_ID .template-image-text .background-image {
+  background-color: var(--color-bg-secondary);
+}
+
 #SLIDE_ID .template-image-text .box {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--color-bg-primary);
+  color: var(--text-dark);
 }
 
 #SLIDE_ID .template-image-text.reversed {
   color: var(--text-light);
   text-shadow: var(--shadow-text-m);
 }
+
 #SLIDE_ID .template-image-text.reversed .box {
   background-color: transparent;
   box-shadow: none;
@@ -186,12 +237,15 @@
   --h1-font-size: calc(var(--font-size-base) * 3.5);
   --h4-font-size: calc(var(--font-size-base) * 1.75);
   --font-size-xl: calc(var(--font-size-base) * 2);
-
-  background-color: var(--color-white);
+  background-color: var(--color-bg-secondary);
 }
 
 #SLIDE_ID .template-instagram-feed .author-section {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-primary);
+}
+
+#SLIDE_ID .template-instagram-feed .author-section h1.author {
+  font-family: var(--font-family-serif);
 }
 
 #SLIDE_ID .template-instagram-feed .author-section .description .text {
@@ -216,10 +270,63 @@
   bottom: 0;
   padding-top: calc(var(--spacer) * 2);
   padding-bottom: calc(var(--spacer) * 2);
+
+  /* background-color: var(--color-white); */
+}
+
+#SLIDE_ID .template-instagram-feed .brand-icon {
   color: var(--color-primary);
-  background-color: var(--color-white);
+  /* background-color: var(--color-white); */
 }
 
 #SLIDE_ID .template-instagram-feed.landscape .brand {
   width: var(--percentage-narrow);
+}
+
+/*
+*
+* Customize news feed template
+*
+*/
+
+#SLIDE_ID .template-news-feed {
+  --background-color: var(--color-bg-primary);
+  --color-secondary: var(--color-bg-secondary);
+
+  .extra-section,
+  .text-section {
+    color: var(--text-dark);
+
+    h1 {
+      font-size: calc(var(--h1-font-size) * 1.25);
+    }
+  }
+
+  .description {
+    color: inherit;
+  }
+
+  .link {
+    color: var(--color-primary);
+  }
+}
+
+/*
+*
+* Customize table template
+*
+*/
+
+#SLIDE_ID .template-table {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+
+  .template-table-header {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .column-header {
+    color: inherit;
+  }
 }
