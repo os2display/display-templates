@@ -190,11 +190,40 @@
 */
 
 #SLIDE_ID .template-book-review {
-  --text-color: var(--color-grey-700);
-}
+  --bg-color: var(--color-black);
+  --bg-color-light: var(--color-black);
+  --text-color: var(--color-white);
 
-#SLIDE_ID .template-book-review .author {
-  --text-color: var(--color-grey-500);
+  .text-area {
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 15%;
+      /*background: var(--bg-color);*/
+      background: linear-gradient(to bottom, transparent, var(--bg-color));
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .author-area {
+    border-top: 1px solid var(--color-grey-700);
+  }
+  .author-image {
+    border: 1px solid var(--color-grey-700);
+  }
+
+  @media (orientation: portrait) {
+    .book-image {
+      width: initial;
+      height: auto;
+    }
+  }
 }
 
 /*

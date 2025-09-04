@@ -39,15 +39,15 @@ const slides = [
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "/fixtures/images/vertical.jpg",
+          uri: "/fixtures/images/dino-book.jpg",
         },
       },
     },
     content: {
       duration: 5000,
       bookText:
-        "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
-      authorText: "Hval Ocean",
+        "<h1>Den ultimative dinosaur-encyklopædi</h1><p><strong>Af Chris Barker</strong><p/><p><br>Den komplette visuelle guide til dinosaurernes verden. Denne fantastiske encyklopædi fører dig gennem 250 millioner års forhistorisk liv. Den er propfuld af nye illustrationer af de imponerende skabninger i deres naturlige miljø og indeholder al den viden, man skal have for at kunne kalde sig dinosaurekspert.</p>",
+      authorText: "Chris Barker",
       authorImage: ["/v1/media/00000000000000000000000001"],
       bookImage: ["/v1/media/00000000000000000000000002"],
     },
