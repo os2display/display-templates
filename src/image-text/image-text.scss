@@ -40,6 +40,10 @@
 
     .text {
       margin-top: var(--spacer);
+
+      p {
+        margin-bottom: 1em;
+      }
     }
 
     &.full-screen {

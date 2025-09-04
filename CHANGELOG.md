@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#189](https://github.com/os2display/display-templates/pull/189)
+  - Set margin-bottom of p element of rich text in image-text.
 - [#188](https://github.com/os2display/display-templates/pull/188)
   - Fixed issues with calendar single booking layout.
   - Added extra description for resourceAvailableText and hasDateAndTime fields.
