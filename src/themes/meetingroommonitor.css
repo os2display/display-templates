@@ -1,0 +1,66 @@
+/*
+** TEMP FIX FOR MEETING ROOM MONITOR!!!!!
+*/
+
+#SLIDE_ID .template-calendar.calendar-single-booking {
+  /* Test HEX color values instead of oklch */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+  --color-red-950: #450a0a;
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+  --color-green-950: #052e16;
+
+  --padding-size-base: calc(var(--spacer) * 2);
+}
+
+/* Vertical */
+@media (max-width: 800px) {
+  #SLIDE_ID
+    .template-calendar.calendar-single-booking:nth-child(1)
+    > div:first-child {
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+  }
+
+  #SLIDE_ID
+    .template-calendar.calendar-single-booking:nth-child(1)
+    > div:first-child
+    > div:nth-child(1) {
+    padding-top: var(--padding-size-base);
+    padding-bottom: var(--padding-size-base);
+  }
+
+  #SLIDE_ID
+    .template-calendar.calendar-single-booking:nth-child(1)
+    > div:first-child
+    > div:nth-child(2) {
+    /* padding-top: 0; */
+    padding-left: calc(var(--padding-size-base) * 2);
+  }
+
+  #SLIDE_ID
+    .template-calendar.calendar-single-booking:nth-child(1)
+    > div:first-child
+    > div:nth-child(3) {
+    flex-basis: 100%;
+    padding-left: calc(var(--padding-size-base) * 2);
+    text-align: left;
+  }
+}
