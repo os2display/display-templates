@@ -1401,6 +1401,7 @@ const slides = [
     darkModeEnabled: false,
     content: {
       duration: 60000,
+      instantBookingEnabled: true,
       layout: "singleBooking",
       title: "M2.3",
       subTitle: "Mødelokale",

@@ -55,7 +55,12 @@ function CalendarSingleBooking({
   slide,
   run,
 }) {
-  const { title = "", subTitle = null, mediaContain } = content;
+  const {
+    title = "",
+    subTitle = null,
+    mediaContain,
+    instantBookingEnabled = false,
+  } = content;
 
   // Get values from client localstorage.
   const token = localStorage.getItem("apiToken");
@@ -71,6 +76,10 @@ function CalendarSingleBooking({
   const [bookingError, setBookingError] = useState(false);
 
   const fetchBookingIntervals = () => {
+    if (!instantBookingEnabled) {
+      return;
+    }
+
     if (!apiUrl || !slide || !token || !tenantKey) {
       setFetchingIntervals(false);
       return;
@@ -148,19 +157,28 @@ function CalendarSingleBooking({
 
     const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
+    let newBookingResult = null;
+
     // Clean out old instantBookings.
-    if (instantBooking) {
-      if (dayjs(instantBooking.interval.to) < dayjs()) {
-        setInstantBookingFromLocalStorage(slide["@id"], null);
-        setBookingResult(null);
+    if (instantBooking !== null) {
+      const intervalFrom = instantBooking?.interval?.to;
+
+      if (intervalFrom !== null && dayjs(intervalFrom) > dayjs()) {
+        newBookingResult = instantBooking;
       } else {
-        setBookingResult(instantBooking);
+        setInstantBookingFromLocalStorage(slide["@id"], null);
       }
     }
+
+    setBookingResult(newBookingResult);
   };
 
   const clickInterval = (interval) => {
     if (!apiUrl || !slide || !token || !tenantKey) {
+      return;
+    }
+
+    if (!instantBookingEnabled) {
       return;
     }
 
@@ -210,7 +228,9 @@ function CalendarSingleBooking({
   }, []);
 
   useEffect(() => {
-    fetchBookingIntervals();
+    if (instantBookingEnabled) {
+      fetchBookingIntervals();
+    }
   }, [run]);
 
   const currentEvents = calendarEvents.filter(
@@ -219,10 +239,13 @@ function CalendarSingleBooking({
   );
 
   const futureEvents = calendarEvents.filter(
-    (el) => !currentEvents.includes(el)
+    (el) =>
+      !currentEvents.includes(el) &&
+      el.endTime > dayjs().unix() &&
+      el.endTime <= dayjs().endOf("day").unix()
   );
 
-  const roomInUse = currentEvents.length > 0;
+  const roomInUse = bookingResult !== null || currentEvents.length > 0;
 
   const roomAvailableForInstantBooking =
     !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
@@ -280,18 +303,35 @@ function CalendarSingleBooking({
         </DateTime>
       </Header>
       <Content className="content">
-        {roomInUse &&
-          currentEvents.map((event) => (
-            <ContentItem key={event.id} className="content-item">
-              <Meta>
-                {renderTimeOfDayFromUnixTimestamp(event.startTime)}
-                {" - "}
-                {renderTimeOfDayFromUnixTimestamp(event.endTime)}
-              </Meta>
-              <h1>{getTitle(event.title)}</h1>
-            </ContentItem>
-          ))}
-        {!roomInUse && (
+        {roomInUse && (
+          <>
+            {bookingResult && (
+              <ContentItem className="content-item">
+                <p>
+                  <FormattedMessage
+                    id="instant_booked_until"
+                    defaultMessage="Lokalet er straksbooket indtil"
+                  />{" "}
+                  {dayjs(bookingResult.interval.to)
+                    .locale(localeDa)
+                    .format("HH:mm")}
+                </p>
+              </ContentItem>
+            )}
+            {!bookingResult &&
+              currentEvents.map((event) => (
+                <ContentItem key={event.id} className="content-item">
+                  <Meta>
+                    {renderTimeOfDayFromUnixTimestamp(event.startTime)}
+                    {" - "}
+                    {renderTimeOfDayFromUnixTimestamp(event.endTime)}
+                  </Meta>
+                  <h1>{getTitle(event.title)}</h1>
+                </ContentItem>
+              ))}
+          </>
+        )}
+        {!roomInUse && instantBookingEnabled && (
           <>
             <ContentItem className="content-item">
               {!processingBooking && !bookingResult && !bookingError && (
@@ -412,6 +452,7 @@ CalendarSingleBooking.propTypes = {
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
     mediaContain: PropTypes.bool,
+    instantBookingEnabled: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };
