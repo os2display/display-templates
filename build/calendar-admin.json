@@ -215,7 +215,7 @@
     "key": "calendar-form-enable-instant-booking",
     "input": "checkbox",
     "label": "Aktivér straksbooking",
-    "helpText": "Aktivér mulighed for straksbooking. Dette kræver at resursen er godkendt til straksbooking.",
+    "helpText": "Aktivér mulighed for straksbooking. Dette kræver at resursen er opsat og godkendt af systemadministrator.",
     "name": "instantBookingEnabled",
     "formGroupClasses": "mb-3"
   }
