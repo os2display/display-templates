@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 - [#185](https://github.com/os2display/display-templates/pull/185)
   - Single Clanedar Booking: Fix color issues on older browsers. Add simple vertical view for portrait oriented devices.
+- [#184](https://github.com/os2display/display-templates/pull/184)
+  - Update Dokk1 and Aakb themes. Add news feed. Adapt new identity for Aakb.
 
 ## [2.5.1] - 2025-06-23
 
