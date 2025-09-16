@@ -74,7 +74,7 @@
     "when": [
         {
             "type": 0,
-            "value": "Hvornår"
+            "value": "Aktiviteter i dag"
         }
     ],
     "unavailable": [

@@ -70,10 +70,6 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
     return eventTitle;
   };
 
-  // Add this line to debug the layout value
-  console.log("Brnd layout:", layout);
-  console.log("FeedData:", feedData.bookings);
-
   return (
     <>
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
@@ -114,7 +110,6 @@ Brnd.propTypes = {
         area: PropTypes.string.isRequired,
         facility: PropTypes.string.isRequired,
         activity: PropTypes.string.isRequired,
-        team: PropTypes.string,
         status: PropTypes.string.isRequired,
         checkIn: PropTypes.bool,
         bookingBy: PropTypes.string.isRequired,

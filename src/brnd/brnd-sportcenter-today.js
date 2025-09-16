@@ -27,18 +27,12 @@ function BrndSportcenterToday({
   const [currentDate, setCurrentDate] = useState(new Date());
   const {
     title = "",
-    mediaContain,
   } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
     dayjs.extend(localizedFormat);
   }, []);
-
-  const borderStyle = {
-    "--border-bottom": "1px solid #ccc",
-    "--border-left": 0,
-  };
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -72,11 +66,9 @@ function BrndSportcenterToday({
     <Wrapper
       className={`template-brnd brnd-sportcenter-today ${templateClasses.join(
         " "
-      )} ${mediaContain ? "media-contain" : ""}`}
-      style={Object.assign(borderStyle, templateRootStyle)}
+      )}`}
     >
-      <Header className="header">
-        <HeaderTitle className="header-title">{title}</HeaderTitle>
+      <Header className="header" style={templateRootStyle}>
         <HeaderDate className="header-date">
           {currentDate &&
             capitalize(
@@ -85,33 +77,32 @@ function BrndSportcenterToday({
         </HeaderDate>
       </Header>
 
-      <Content className="content">
-        <ContentItemsWrapper>
-          <ContentHeaderItem className="content-item">
+      <Title className="title">{title}</Title>
+
+      <Content className="schedule">
+        <ContentItemsWrapper className="schedule-header">
+          <ContentHeaderItem className="schedule-header-item">
             <FormattedMessage id="when" defaultMessage="Tid" />
           </ContentHeaderItem>
-          <ContentHeaderItem className="content-item">
+          <ContentHeaderItem className="schedule-header-item">
             <FormattedMessage id="booking-by" defaultMessage="Booket af" />
           </ContentHeaderItem>
-          <ContentHeaderItem className="content-item">
+          <ContentHeaderItem className="schedule-header-item">
             <FormattedMessage id="facility" defaultMessage="Facilitet" />
           </ContentHeaderItem>
-          <ContentHeaderItem className="content-item">
+          <ContentHeaderItem className="schedule-header-item">
             <FormattedMessage id="activity" defaultMessage="Aktivitet" />
           </ContentHeaderItem>
-          <ContentHeaderItem className="content-item">
-            <FormattedMessage id="team" defaultMessage="Hold" />
-          </ContentHeaderItem>
-          <ContentHeaderItem className="content-item">
+          <ContentHeaderItem className="schedule-header-item">
             <FormattedMessage id="remarks" defaultMessage="Bemærkning" />
           </ContentHeaderItem>
         </ContentItemsWrapper>
-        <ContentItemsWrapper>
+        <ContentItemsWrapper className="schedule-rows">
           {bookings?.length > 0 &&
             getSortedBookings(bookings).map((entry) => {
               const returnFragment = (
                 <Fragment key={entry.bookingcode}>
-                  <ContentItem className="content-item-time">
+                  <ContentItem className="content-item content-item-time">
                     {dayjs(entry.startTime * 1000)
                       .locale(localeDa)
                       .format("LT")}
@@ -124,19 +115,16 @@ function BrndSportcenterToday({
                       </>
                     )}
                   </ContentItem>
-                  <ContentItem className="content-item-booking-by">
+                  <ContentItem className=" content-item content-item-booking-by">
                     {getTitle(entry.bookingBy)}
                   </ContentItem>
-                  <ContentItem className="content-item-facility">
+                  <ContentItem className="content-item content-item-facility">
                     {getTitle(entry.facility)}
                   </ContentItem>
-                  <ContentItem className="content-item-activity">
+                  <ContentItem className="content-item content-item-activity">
                     {getTitle(entry.activity)}
                   </ContentItem>
-                  <ContentItem className="content-item-team">
-                    {entry.team ?? entry.team ?? ""}
-                  </ContentItem>
-                  <ContentItem className="content-item-remarks">
+                  <ContentItem className="content-item content-item-remarks">
                     {entry.remarks ?? entry.remarks ?? ""}
                   </ContentItem>
                 </Fragment>
@@ -156,36 +144,37 @@ const Wrapper = styled.div`
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  /*
-  --bg-color is local to this template file and is populated from configuration.
-  --background-color serves as fallback to the global variable, that will serve a light og dark background color depending on the user preferences.
-  */
-  background-color: var(--bg-color, var(--background-color));
-  background-image: var(--bg-image, none);
   color: var(--text-color);
   display: grid;
   grid-template-areas:
     "header"
+    "title"
     "content";
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: auto auto 1fr;
   padding: var(--padding-size-base);
 `;
 
 const Header = styled.div`
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: var(--bg-image, none);
   padding: var(--padding-size-base);
   grid-area: header;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; // Aligns HeaderDate to the right
   align-content: center;
-`;
-
-const HeaderTitle = styled.div`
-  font-size: var(--h1-font-size);
 `;
 
 const HeaderDate = styled.div`
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-light);
+`;
+
+const Title = styled.div`
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-light);
+  padding: var(--padding-size-base);
+  text-align: center;
 `;
 
 const Content = styled.div`
@@ -194,36 +183,19 @@ const Content = styled.div`
 
 const ContentItemsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `;
 
 const ContentItem = styled.div`
   padding: var(--padding-size-base);
-  border-bottom: var(--border-bottom, 1px solid #ccc);
-  border-left: var(--border-left, 0);
-
-  // Remove border left.
-  &:nth-of-type(6n + 1) {
-    border-left: 0;
-  }
-
-  // Remove border from bottom.
-  &:nth-last-child(-n + 6) {
-    border-bottom: 0;
-  }
+  border-bottom: 1px solid var(--color-grey-600);
 `;
 
 const ContentHeaderItem = styled.div`
   padding: var(--padding-size-base);
-  font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
-  border-bottom: var(--border-bottom, 1px solid #ccc);
-  border-left: var(--border-left, 0);
-
-  // Remove border left.
-  &:nth-of-type(6n + 1) {
-    border-left: 0;
-  }
+  border-bottom: 1px solid var(--color-grey-600);
+  border-top: 1px solid var(--color-grey-600);
 `;
 
 BrndSportcenterToday.propTypes = {
@@ -239,7 +211,6 @@ BrndSportcenterToday.propTypes = {
       area: PropTypes.string.isRequired,
       facility: PropTypes.string.isRequired,
       activity: PropTypes.string.isRequired,
-      team: PropTypes.string,
       status: PropTypes.string.isRequired,
       checkIn: PropTypes.bool,
       bookingBy: PropTypes.string.isRequired,
@@ -248,7 +219,6 @@ BrndSportcenterToday.propTypes = {
   ).isRequired,
   content: PropTypes.shape({
     title: PropTypes.string,
-    mediaContain: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };
