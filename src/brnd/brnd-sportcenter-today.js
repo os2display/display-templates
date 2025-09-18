@@ -156,8 +156,9 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-image: var(--bg-image, none);
+  background-color: var(--color-white);
   padding: var(--padding-size-base);
   grid-area: header;
   display: flex;
