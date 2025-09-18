@@ -144,6 +144,7 @@ const Wrapper = styled.div`
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-size: var(--color-white);
   color: var(--color-white);
   display: grid;
   grid-template-areas:
@@ -158,7 +159,6 @@ const Header = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-image: var(--bg-image, none);
-  background-color: var(--color-white);
   padding: var(--padding-size-base);
   grid-area: header;
   display: flex;
