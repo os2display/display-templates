@@ -174,10 +174,11 @@ const HeaderDate = styled.div`
 
 const Title = styled.div`
   background-color: var(--bg-dark);
-  font-size: var(--h3-font-size);
+  font-size: var(--h4-font-size);
   font-weight: var(--font-weight-light);
-  padding: var(--padding-size-base);
   text-align: center;
+  text-transform: uppercase;
+  padding: calc(var(--padding-size-base) * 0.7);
 `;
 
 const Content = styled.div`
@@ -191,15 +192,16 @@ const ContentItemsWrapper = styled.div`
 `;
 
 const ContentItem = styled.div`
-  padding: var(--padding-size-base);
   border-bottom: 1px solid var(--color-grey-600);
+  padding: calc(var(--padding-size-base) * 0.7);
 `;
 
 const ContentHeaderItem = styled.div`
-  padding: var(--padding-size-base);
-  font-weight: var(--font-weight-bold);
   border-bottom: 1px solid var(--color-grey-600);
   border-top: 1px solid var(--color-grey-600);
+  color: var(--color-red);
+  font-size: var(--font-size-base);
+  padding: calc(var(--padding-size-base) * 0.7);
 `;
 
 BrndSportcenterToday.propTypes = {
