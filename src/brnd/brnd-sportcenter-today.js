@@ -200,7 +200,6 @@ const ContentHeaderItem = styled.div`
   border-bottom: 1px solid var(--color-grey-600);
   border-top: 1px solid var(--color-grey-600);
   color: var(--color-red);
-  font-size: var(--font-size-base);
   padding: calc(var(--padding-size-base) * 0.7);
 `;
 
