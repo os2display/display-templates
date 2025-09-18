@@ -152,7 +152,7 @@ const Wrapper = styled.div`
     "title"
     "content";
   grid-template-rows: auto auto 1fr;
-  padding: var(--padding-size-base);
+  padding: 0;
 `;
 
 const Header = styled.div`
@@ -160,6 +160,7 @@ const Header = styled.div`
   background-size: contain;
   background-image: var(--bg-image, none);
   padding: var(--padding-size-base);
+  color: var(--color-black);
   grid-area: header;
   display: flex;
   justify-content: flex-end; // Aligns HeaderDate to the right
