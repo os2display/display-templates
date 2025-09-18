@@ -19,13 +19,11 @@
   font-weight: var(--font-weight-light);
   text-transform: uppercase;
   padding: calc(var(--padding-size-base) * 0.7);
-  color: white;
   background-color: var(--bg-dark);
   display: grid;
 }
 
 #SLIDE_ID .brnd-sportcenter-today .schedule {
-  color: white;
   background-color: var(--bg-dark);
 }
 
