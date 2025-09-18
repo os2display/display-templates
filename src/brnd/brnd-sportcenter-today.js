@@ -172,6 +172,7 @@ const HeaderDate = styled.div`
 `;
 
 const Title = styled.div`
+  background-color: var(--bg-dark);
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-light);
   padding: var(--padding-size-base);
@@ -179,6 +180,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
+  background-color: var(--bg-dark);
   grid-area: content;
 `;
 
