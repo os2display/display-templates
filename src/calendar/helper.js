@@ -6,4 +6,4 @@ const renderTimeOfDayFromUnixTimestamp = (unixTimestamp) =>
     .locale(localeDa)
     .format("HH:mm");
 
-export { renderTimeOfDayFromUnixTimestamp };
+export default renderTimeOfDayFromUnixTimestamp;

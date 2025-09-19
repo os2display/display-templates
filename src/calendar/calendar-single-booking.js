@@ -6,7 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import { FormattedMessage } from "react-intl";
 import IconCheck from "./icon-check.svg";
 import IconExclamation from "./icon-exclamation.svg";
-import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import renderTimeOfDayFromUnixTimestamp from "./helper";
 import {
   Button,
   Content,
