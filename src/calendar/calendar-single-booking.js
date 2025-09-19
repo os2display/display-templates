@@ -6,10 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import { FormattedMessage } from "react-intl";
 import IconCheck from "./icon-check.svg";
 import IconExclamation from "./icon-exclamation.svg";
-import {
-  renderTimeOfDayFromUnixTimestamp,
-  timeCountdownString,
-} from "./helper";
+import { renderTimeOfDayFromUnixTimestamp } from "./helper";
 import {
   Button,
   Content,
@@ -72,8 +69,7 @@ function CalendarSingleBooking({
   const [currentTime, setCurrentTime] = useState(dayjs());
   const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
-  const [secondsUntilNextEvent, setSecondsUntilNextEvent] = useState(null);
-  const [bookingError, setBookingError] = useState(false);
+  const [bookingError, setBookingError] = useState(null);
 
   const fetchBookingIntervals = () => {
     if (!instantBookingEnabled) {
@@ -131,30 +127,6 @@ function CalendarSingleBooking({
   const intervalChecking = () => {
     setCurrentTime(dayjs());
 
-    // Find time until next event.
-    const now = dayjs();
-    let closestEvent = null;
-
-    if (calendarEvents.length === 0) {
-      setSecondsUntilNextEvent(null);
-    } else {
-      calendarEvents.forEach((event) => {
-        const eventStartTime = dayjs(event.startTime * 1000);
-        if (eventStartTime >= now) {
-          if (
-            closestEvent === null ||
-            eventStartTime < dayjs(closestEvent.startTime * 1000)
-          ) {
-            closestEvent = event;
-          }
-        }
-      });
-    }
-
-    if (closestEvent !== null) {
-      setSecondsUntilNextEvent(closestEvent.startTime - now.unix());
-    }
-
     const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
     let newBookingResult = null;
@@ -199,14 +171,30 @@ function CalendarSingleBooking({
         },
       }),
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if (r?.ok === false) {
+          return {
+            error: true,
+            status: r.status,
+            response: r,
+          };
+        }
+
+        return r.json();
+      })
       .then((data) => {
-        setBookingResult(data);
-        setInstantBookingFromLocalStorage(slide["@id"], data);
+        if (data?.error) {
+          const message = `Straksbooking lykkedes ikke. ${
+            data?.status === 409 ? "Intervallet er optaget." : ""
+          }`;
+          setBookingError(message);
+        } else {
+          setBookingResult(data);
+          setInstantBookingFromLocalStorage(slide["@id"], data);
+        }
       })
       .catch(() => {
-        setBookingError(true);
-        setTimeout(() => setBookingError(false), 10000);
+        setBookingError("Straksbooking lykkedes ikke.");
       })
       .finally(() => {
         setProcessingBooking(false);
@@ -248,7 +236,7 @@ function CalendarSingleBooking({
   const roomInUse = bookingResult !== null || currentEvents.length > 0;
 
   const roomAvailableForInstantBooking =
-    !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
+    !roomInUse && bookableIntervals?.length > 0;
 
   const headerColor = roomInUse
     ? "var(--color-red-900)"
@@ -363,19 +351,6 @@ function CalendarSingleBooking({
                       </ButtonWrapper>
                     </>
                   )}
-                  {!roomAvailableForInstantBooking && (
-                    <>
-                      <p>
-                        <FormattedMessage
-                          id="instant_booked_not_available"
-                          defaultMessage="Straksbooking ikke tilgængeligt"
-                        />
-                      </p>
-                      <div style={{ fontSize: ".5em" }}>
-                        {timeCountdownString(secondsUntilNextEvent)}
-                      </div>
-                    </>
-                  )}
                 </>
               )}
               {processingBooking && !bookingResult && !bookingError && (
@@ -386,14 +361,7 @@ function CalendarSingleBooking({
                   />
                 </p>
               )}
-              {bookingError && (
-                <p>
-                  <FormattedMessage
-                    id="instant_booking_error"
-                    defaultMessage="Straksbooking fejlede. Prøv igen lidt senere."
-                  />
-                </p>
-              )}
+              {bookingError && <p>{bookingError}</p>}
               {bookingResult?.status === 201 && (
                 <p>
                   <FormattedMessage
