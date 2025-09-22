@@ -2,7 +2,7 @@ import styled from "styled-components";
 import dayjs from "dayjs";
 import React from "react";
 import IconCalendarPlus from "./icon-calendar-plus.svg";
-import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import renderTimeOfDayFromUnixTimestamp from "./helper";
 
 const Wrapper = styled.div`
   /* Wrapper styling */

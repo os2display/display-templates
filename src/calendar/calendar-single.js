@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
-import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import renderTimeOfDayFromUnixTimestamp from "./helper";
 import "./calendar.scss";
 
 /**
