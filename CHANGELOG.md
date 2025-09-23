@@ -3,7 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## Unreleased
-
+- [#191](https://github.com/os2display/display-templates/pull/191)
+  - Add BRND booking template
 - [#189](https://github.com/os2display/display-templates/pull/189)
   - Set margin-bottom of p element of rich text in image-text.
 - [#188](https://github.com/os2display/display-templates/pull/188)
