@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
-import { renderTimeOfDayFromUnixTimestamp } from "./helper";
+import renderTimeOfDayFromUnixTimestamp from "./helper";
 
 /**
  * Multiple days resource calendar.
