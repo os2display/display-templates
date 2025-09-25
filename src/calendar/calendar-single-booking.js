@@ -6,10 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import { FormattedMessage } from "react-intl";
 import IconCheck from "./icon-check.svg";
 import IconExclamation from "./icon-exclamation.svg";
-import {
-  renderTimeOfDayFromUnixTimestamp,
-  timeCountdownString,
-} from "./helper";
+import renderTimeOfDayFromUnixTimestamp from "./helper";
 import {
   Button,
   Content,
@@ -55,7 +52,12 @@ function CalendarSingleBooking({
   slide,
   run,
 }) {
-  const { title = "", subTitle = null, mediaContain } = content;
+  const {
+    title = "",
+    subTitle = null,
+    mediaContain,
+    instantBookingEnabled = false,
+  } = content;
 
   // Get values from client localstorage.
   const token = localStorage.getItem("apiToken");
@@ -67,10 +69,13 @@ function CalendarSingleBooking({
   const [currentTime, setCurrentTime] = useState(dayjs());
   const [bookingResult, setBookingResult] = useState(null);
   const [processingBooking, setProcessingBooking] = useState(false);
-  const [secondsUntilNextEvent, setSecondsUntilNextEvent] = useState(null);
-  const [bookingError, setBookingError] = useState(false);
+  const [bookingError, setBookingError] = useState(null);
 
   const fetchBookingIntervals = () => {
+    if (!instantBookingEnabled) {
+      return;
+    }
+
     if (!apiUrl || !slide || !token || !tenantKey) {
       setFetchingIntervals(false);
       return;
@@ -122,45 +127,30 @@ function CalendarSingleBooking({
   const intervalChecking = () => {
     setCurrentTime(dayjs());
 
-    // Find time until next event.
-    const now = dayjs();
-    let closestEvent = null;
-
-    if (calendarEvents.length === 0) {
-      setSecondsUntilNextEvent(null);
-    } else {
-      calendarEvents.forEach((event) => {
-        const eventStartTime = dayjs(event.startTime * 1000);
-        if (eventStartTime >= now) {
-          if (
-            closestEvent === null ||
-            eventStartTime < dayjs(closestEvent.startTime * 1000)
-          ) {
-            closestEvent = event;
-          }
-        }
-      });
-    }
-
-    if (closestEvent !== null) {
-      setSecondsUntilNextEvent(closestEvent.startTime - now.unix());
-    }
-
     const instantBooking = getInstantBookingFromLocalStorage(slide["@id"]);
 
+    let newBookingResult = null;
+
     // Clean out old instantBookings.
-    if (instantBooking) {
-      if (dayjs(instantBooking.interval.to) < dayjs()) {
-        setInstantBookingFromLocalStorage(slide["@id"], null);
-        setBookingResult(null);
+    if (instantBooking !== null) {
+      const intervalFrom = instantBooking?.interval?.to;
+
+      if (intervalFrom !== null && dayjs(intervalFrom) > dayjs()) {
+        newBookingResult = instantBooking;
       } else {
-        setBookingResult(instantBooking);
+        setInstantBookingFromLocalStorage(slide["@id"], null);
       }
     }
+
+    setBookingResult(newBookingResult);
   };
 
   const clickInterval = (interval) => {
     if (!apiUrl || !slide || !token || !tenantKey) {
+      return;
+    }
+
+    if (!instantBookingEnabled) {
       return;
     }
 
@@ -181,14 +171,30 @@ function CalendarSingleBooking({
         },
       }),
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if (r?.ok === false) {
+          return {
+            error: true,
+            status: r.status,
+            response: r,
+          };
+        }
+
+        return r.json();
+      })
       .then((data) => {
-        setBookingResult(data);
-        setInstantBookingFromLocalStorage(slide["@id"], data);
+        if (data?.error) {
+          const message = `Straksbooking lykkedes ikke. ${
+            data?.status === 409 ? "Intervallet er optaget." : ""
+          }`;
+          setBookingError(message);
+        } else {
+          setBookingResult(data);
+          setInstantBookingFromLocalStorage(slide["@id"], data);
+        }
       })
       .catch(() => {
-        setBookingError(true);
-        setTimeout(() => setBookingError(false), 10000);
+        setBookingError("Straksbooking lykkedes ikke.");
       })
       .finally(() => {
         setProcessingBooking(false);
@@ -210,7 +216,9 @@ function CalendarSingleBooking({
   }, []);
 
   useEffect(() => {
-    fetchBookingIntervals();
+    if (instantBookingEnabled) {
+      fetchBookingIntervals();
+    }
   }, [run]);
 
   const currentEvents = calendarEvents.filter(
@@ -219,13 +227,16 @@ function CalendarSingleBooking({
   );
 
   const futureEvents = calendarEvents.filter(
-    (el) => !currentEvents.includes(el)
+    (el) =>
+      !currentEvents.includes(el) &&
+      el.endTime > dayjs().unix() &&
+      el.endTime <= dayjs().endOf("day").unix()
   );
 
-  const roomInUse = currentEvents.length > 0;
+  const roomInUse = bookingResult !== null || currentEvents.length > 0;
 
   const roomAvailableForInstantBooking =
-    !roomInUse && fetchingIntervals ? null : bookableIntervals?.length > 0;
+    !roomInUse && bookableIntervals?.length > 0;
 
   const headerColor = roomInUse
     ? "var(--color-red-900)"
@@ -244,15 +255,16 @@ function CalendarSingleBooking({
       style={templateRootStyle}
     >
       <Header
+        className="header"
         style={{
           backgroundColor: headerColor,
         }}
       >
-        <RoomInfo>
+        <RoomInfo className="room-info">
           {subTitle && <SubTitle className="subtitle">{subTitle}</SubTitle>}
           <Title className="title">{title}</Title>
         </RoomInfo>
-        <Status>
+        <Status className="status">
           <StatusIcon>
             {roomInUse ? (
               <IconExclamation style={{ color: "var(--color-red-600)" }} />
@@ -269,6 +281,7 @@ function CalendarSingleBooking({
           </StatusText>
         </Status>
         <DateTime
+          className="date-time"
           style={{
             backgroundColor: dateTimeColor,
           }}
@@ -278,18 +291,35 @@ function CalendarSingleBooking({
         </DateTime>
       </Header>
       <Content className="content">
-        {roomInUse &&
-          currentEvents.map((event) => (
-            <ContentItem key={event.id} className="content-item">
-              <Meta>
-                {renderTimeOfDayFromUnixTimestamp(event.startTime)}
-                {" - "}
-                {renderTimeOfDayFromUnixTimestamp(event.endTime)}
-              </Meta>
-              <h1>{getTitle(event.title)}</h1>
-            </ContentItem>
-          ))}
-        {!roomInUse && (
+        {roomInUse && (
+          <>
+            {bookingResult && (
+              <ContentItem className="content-item">
+                <p>
+                  <FormattedMessage
+                    id="instant_booked_until"
+                    defaultMessage="Lokalet er straksbooket indtil"
+                  />{" "}
+                  {dayjs(bookingResult.interval.to)
+                    .locale(localeDa)
+                    .format("HH:mm")}
+                </p>
+              </ContentItem>
+            )}
+            {!bookingResult &&
+              currentEvents.map((event) => (
+                <ContentItem key={event.id} className="content-item">
+                  <Meta>
+                    {renderTimeOfDayFromUnixTimestamp(event.startTime)}
+                    {" - "}
+                    {renderTimeOfDayFromUnixTimestamp(event.endTime)}
+                  </Meta>
+                  <h1>{getTitle(event.title)}</h1>
+                </ContentItem>
+              ))}
+          </>
+        )}
+        {!roomInUse && instantBookingEnabled && (
           <>
             <ContentItem className="content-item">
               {!processingBooking && !bookingResult && !bookingError && (
@@ -321,19 +351,6 @@ function CalendarSingleBooking({
                       </ButtonWrapper>
                     </>
                   )}
-                  {!roomAvailableForInstantBooking && (
-                    <>
-                      <p>
-                        <FormattedMessage
-                          id="instant_booked_not_available"
-                          defaultMessage="Straksbooking ikke tilgængeligt"
-                        />
-                      </p>
-                      <div style={{ fontSize: ".5em" }}>
-                        {timeCountdownString(secondsUntilNextEvent)}
-                      </div>
-                    </>
-                  )}
                 </>
               )}
               {processingBooking && !bookingResult && !bookingError && (
@@ -344,14 +361,7 @@ function CalendarSingleBooking({
                   />
                 </p>
               )}
-              {bookingError && (
-                <p>
-                  <FormattedMessage
-                    id="instant_booking_error"
-                    defaultMessage="Straksbooking fejlede. Prøv igen lidt senere."
-                  />
-                </p>
-              )}
+              {bookingError && <p>{bookingError}</p>}
               {bookingResult?.status === 201 && (
                 <p>
                   <FormattedMessage
@@ -410,6 +420,7 @@ CalendarSingleBooking.propTypes = {
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
     mediaContain: PropTypes.bool,
+    instantBookingEnabled: PropTypes.bool,
   }).isRequired,
   getTitle: PropTypes.func.isRequired,
 };

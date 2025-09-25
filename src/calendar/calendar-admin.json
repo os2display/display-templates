@@ -70,6 +70,14 @@
     ]
   },
   {
+    "key": "calendar-form-enable-instant-booking",
+    "input": "checkbox",
+    "label": "Aktivér straksbooking",
+    "helpText": "Aktivér mulighed for straksbooking. Dette gælder kun for \"Enkelt lokale med booking\" layoutet og kræver, at resursen er opsat og godkendt af systemadministrator.",
+    "name": "instantBookingEnabled",
+    "formGroupClasses": "mb-3"
+  },
+  {
     "key": "calendar-form-form-14",
     "input": "select",
     "required": true,
@@ -128,7 +136,7 @@
     "name": "resourceAvailableText",
     "type": "text",
     "label": "Tekst når resursen er ledig",
-    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig.",
+    "helpText": "Her kan du skrive tekst, som vises når resursen er ledig. Dette gælder kun for \"Enkelt lokale\" layoutet",
     "formGroupClasses": "col-md-6"
   },
   {
@@ -159,7 +167,7 @@
   {
     "key": "calendar-form-has-date-and-time",
     "input": "checkbox",
-    "label": "Vis dato og tidspunkt",
+    "label": "Vis dato og tidspunkt. Gælder kun for \"Flere resurser\" layoutet",
     "name": "hasDateAndTime",
     "formGroupClasses": "col-md-6 mb-3"
   },
