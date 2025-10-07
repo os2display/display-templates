@@ -25,9 +25,7 @@ function BrndSportcenterToday({
   getTitle,
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const {
-    title = "",
-  } = content;
+  const { title = "" } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -58,7 +56,10 @@ function BrndSportcenterToday({
   };
 
   useEffect(() => {
-    const dateAndTimeInterval = setInterval(() => setCurrentDate(new Date()), 1000);
+    const dateAndTimeInterval = setInterval(
+      () => setCurrentDate(new Date()),
+      1000
+    );
     return () => clearInterval(dateAndTimeInterval);
   }, []);
 
@@ -71,9 +72,7 @@ function BrndSportcenterToday({
       <Header className="header" style={templateRootStyle}>
         <HeaderDate className="header-date">
           {currentDate &&
-            capitalize(
-              dayjs().locale(localeDa).format("dddd D. MMMM HH:mm")
-            )}
+            capitalize(dayjs().locale(localeDa).format("dddd D. MMMM HH:mm"))}
         </HeaderDate>
       </Header>
 
