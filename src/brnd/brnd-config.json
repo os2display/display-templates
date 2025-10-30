@@ -1,7 +1,7 @@
 {
   "title": "BRND sportcenter dagsprogram",
   "icon": "",
-  "id": "01FRJPF4XATRN8PBZ35XN84PS6",
+  "id": "01K8TNT13XVCYYPXBJBBJVFENS",
   "description": "Viser alle dagens bookinger i et ænlæg.",
   "resources": {
     "component": "https://display-templates.local.itkdev.dk/build/brnd.js",
