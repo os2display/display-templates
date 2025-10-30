@@ -98,42 +98,35 @@ function BrndSportcenterToday({
         </ContentItemsWrapper>
         <ContentItemsWrapper className="schedule-rows">
           {bookings?.length > 0 &&
-     getSortedBookings(bookings).map((entry) => (
-       <Fragment>
-       
-       </Fragment>
-     )
-              const returnFragment = (
-                <Fragment key={entry.bookingcode}>
-                  <ContentItem className="content-item content-item-time">
-                    {dayjs(entry.startTime * 1000)
-                      .locale(localeDa)
-                      .format("LT")}
-                    {entry.endTime && (
-                      <>
-                        <span> - </span>
-                        {dayjs(entry.endTime * 1000)
-                          .locale(localeDa)
-                          .format("LT")}
-                      </>
-                    )}
-                  </ContentItem>
-                  <ContentItem className=" content-item content-item-booking-by">
-                    {getTitle(entry.bookingBy)}
-                  </ContentItem>
-                  <ContentItem className="content-item content-item-facility">
-                    {getTitle(entry.facility)}
-                  </ContentItem>
-                  <ContentItem className="content-item content-item-activity">
-                    {getTitle(entry.activity)}
-                  </ContentItem>
-                  <ContentItem className="content-item content-item-remarks">
-                    {entry.remarks ?? entry.remarks ?? ""}
-                  </ContentItem>
-                </Fragment>
-              );
-              return returnFragment;
-            })}
+            getSortedBookings(bookings).map((entry) => (
+              <Fragment key={entry.bookingcode}>
+                <ContentItem className="content-item content-item-time">
+                  {dayjs(entry.startTime * 1000)
+                    .locale(localeDa)
+                    .format("LT")}
+                  {entry.endTime && (
+                    <>
+                      <span> - </span>
+                      {dayjs(entry.endTime * 1000)
+                        .locale(localeDa)
+                        .format("LT")}
+                    </>
+                  )}
+                </ContentItem>
+                <ContentItem className=" content-item content-item-booking-by">
+                  {getTitle(entry.bookingBy)}
+                </ContentItem>
+                <ContentItem className="content-item content-item-facility">
+                  {getTitle(entry.facility)}
+                </ContentItem>
+                <ContentItem className="content-item content-item-activity">
+                  {getTitle(entry.activity)}
+                </ContentItem>
+                <ContentItem className="content-item content-item-remarks">
+                  {entry.remarks ?? entry.remarks ?? ""}
+                </ContentItem>
+              </Fragment>
+            ))}
         </ContentItemsWrapper>
       </Content>
     </Wrapper>
