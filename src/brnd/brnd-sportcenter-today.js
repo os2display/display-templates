@@ -98,7 +98,11 @@ function BrndSportcenterToday({
         </ContentItemsWrapper>
         <ContentItemsWrapper className="schedule-rows">
           {bookings?.length > 0 &&
-            getSortedBookings(bookings).map((entry) => {
+     getSortedBookings(bookings).map((entry) => (
+       <Fragment>
+       
+       </Fragment>
+     )
               const returnFragment = (
                 <Fragment key={entry.bookingcode}>
                   <ContentItem className="content-item content-item-time">
