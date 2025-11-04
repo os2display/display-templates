@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- [#309](https://github.com/os2display/display-templates/pull/193)
+  - Template to display BRND bookings.
+
 ## [2.5.2] - 2025-09-25
 
 - [#189](https://github.com/os2display/display-templates/pull/189)
