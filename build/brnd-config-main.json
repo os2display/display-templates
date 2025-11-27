@@ -4,9 +4,9 @@
   "id": "01K8TNT13XVCYYPXBJBBJVFENS",
   "description": "Viser alle dagens bookinger i et ænlæg.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/brnd/build/brnd.js?ts=1761833755348",
-    "admin": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/brnd/build/brnd-admin.json?ts=1761833755348",
-    "schema": "https://raw.githubusercontent.com/os2display/display-templates/refs/heads/feature/brnd/build/brnd-schema.json?ts=1761833755348",
+    "component": "https://raw.githubusercontent.com/os2display/display-templates/main/build/brnd.js?ts=1764233968886",
+    "admin": "https://raw.githubusercontent.com/os2display/display-templates/main/build/brnd-admin.json?ts=1764233968886",
+    "schema": "https://raw.githubusercontent.com/os2display/display-templates/main/build/brnd-schema.json?ts=1764233968886",
     "assets": [],
     "options": {},
     "content": {}
