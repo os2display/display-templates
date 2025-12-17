@@ -1,0 +1,104 @@
+[
+  {
+    "key": "brnd-form-1",
+    "input": "header",
+    "text": "Skabelon: BRND",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "brnd-form-2",
+    "input": "header-h3",
+    "text": "Opsæt feed",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "brnd-form-3",
+    "input": "feed",
+    "text": "Opsæt feed",
+    "name": "feed",
+    "supportedFeedOutputType": "brnd-booking",
+    "formGroupClasses": "mb-3"
+  },
+  {
+    "key": "brnd-form-4",
+    "input": "header-h3",
+    "text": "Konfigurér slide",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "calendar-form-layout",
+    "input": "select",
+    "name": "layout",
+    "label": "Vælg layout",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "layout1",
+        "title": "Sportcenter Dagsprogram",
+        "value": "sportcenter-today"
+      }
+    ]
+  },
+  {
+    "key": "brnd-form-form-14",
+    "input": "select",
+    "required": true,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "font-size-xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "font-size-s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "font-size-m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "font-size-lg"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "font-size-xl"
+      }
+    ],
+    "name": "fontSize"
+  },
+  {
+    "key": "brnd-form-title",
+    "input": "input",
+    "name": "title",
+    "type": "text",
+    "label": "Overskrift",
+    "helpText": "Her kan du skrive overskrift.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "brnd-form-image",
+    "multipleImages": false,
+    "input": "image",
+    "name": "image",
+    "label": "Baggrundsbillede"
+  },
+  {
+    "key": "form-media-contain",
+    "input": "checkbox",
+    "name": "mediaContain",
+    "label": "Deaktivér billedbeskæring",
+    "helpText": "Billedet vil blive vist ubeskåret med tomme områder omkring"
+  }
+]

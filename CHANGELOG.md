@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [2.6.0] - 2025-12-05
+
+- [#194](https://github.com/os2display/display-templates/pull/194)
+  - NPM Upgrades.
+- [#193](https://github.com/os2display/display-templates/pull/193)
+  - Template to display BRND bookings.
+
 ## [2.5.2] - 2025-09-25
 
 - [#189](https://github.com/os2display/display-templates/pull/189)
