@@ -21,6 +21,7 @@ import "./image-text.scss";
  */
 function ImageText({ slide, content, run, slideDone, executionId }) {
   const imageTimeoutRef = useRef();
+  const imagesRef = useRef([]);
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState();
   const [themeCss, setThemeCss] = useState(null);
@@ -116,13 +117,14 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
   }
 
   const changeImage = (newIndex) => {
-    if (newIndex < images.length) {
-      setCurrentImage(images[newIndex]);
+    const currentImages = imagesRef.current;
+    if (newIndex < currentImages.length) {
+      setCurrentImage(currentImages[newIndex]);
 
-      if (newIndex < images.length - 1) {
+      if (newIndex < currentImages.length - 1) {
         imageTimeoutRef.current = setTimeout(
           () => changeImage(newIndex + 1),
-          duration / images.length
+          duration / currentImages.length
         );
       }
     }
@@ -136,33 +138,40 @@ function ImageText({ slide, content, run, slideDone, executionId }) {
       );
 
       if (imageUrls?.length > 0) {
-        const newImages = imageUrls.map((url) => {
-          return {
-            url,
-            nodeRef: createRef(),
-          };
-        });
+        const newImages = imageUrls.map((url) => ({
+          url,
+          nodeRef: createRef(),
+        }));
 
+        imagesRef.current = newImages;
         setImages(newImages);
+      } else {
+        imagesRef.current = [];
+        setImages([]);
       }
     }
   }, [slide]);
 
   const startTheShow = () => {
-    if (images?.length > 0 && !currentImage) {
-      setCurrentImage(images[0]);
+    if (imageTimeoutRef.current) {
+      clearTimeout(imageTimeoutRef.current);
     }
 
-    // If there are multiple images, we are going to loop through these WITHIN the set duration.
-    if (images?.length > 1) {
+    const currentImages = imagesRef.current;
+
+    if (currentImages.length > 1) {
       // Kickoff the display of multiple images with the zero indexed
       changeImage(0);
+    } else if (currentImages.length === 1) {
+      setCurrentImage(currentImages[0]);
     }
   };
 
   useEffect(() => {
-    if (!currentImage) {
+    if (images.length > 0) {
       startTheShow();
+    } else {
+      setCurrentImage(undefined);
     }
   }, [images]);
 
