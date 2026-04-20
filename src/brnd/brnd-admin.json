@@ -40,6 +40,11 @@
         "key": "layout1",
         "title": "Sportcenter Dagsprogram",
         "value": "sportcenter-today"
+      },
+      {
+        "key": "layout2",
+        "title": "København Kommune - Dagsprogram",
+        "value": "sportcenter-kk"
       }
     ]
   },
