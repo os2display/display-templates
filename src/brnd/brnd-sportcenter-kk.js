@@ -5,12 +5,13 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 
-/** BRND København Kommune dagsprogram.
+/**
+ * BRND København Kommune dagsprogram.
  *
  * @param {object} props Component props.
  * @param {object} props.content Slide content.
  * @param {Array} props.bookings Booking entries.
- * @param {Array<string>} [props.templateClasses=[]] Template class names.
+ * @param {string[]} [props.templateClasses] Template class names. Default is `[]`.
  * @param {Function} props.getTitle Function to normalize displayed text.
  * @returns {JSX.Element} KK BRND layout.
  */
