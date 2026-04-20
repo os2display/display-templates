@@ -5,8 +5,14 @@ import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 
-/**
- * BRND København Kommune dagsprogram.
+/** BRND København Kommune dagsprogram.
+ *
+ * @param {object} props Component props.
+ * @param {object} props.content Slide content.
+ * @param {Array} props.bookings Booking entries.
+ * @param {Array<string>} [props.templateClasses=[]] Template class names.
+ * @param {Function} props.getTitle Function to normalize displayed text.
+ * @returns {JSX.Element} KK BRND layout.
  */
 function BrndSportcenterKk({
   content,
@@ -91,11 +97,15 @@ function BrndSportcenterKk({
                     rowIndex % 2 === 0 ? "row-even" : "row-odd"
                   }`}
                 >
-                  {dayjs(entry.startTime * 1000).locale(localeDa).format("LT")}
+                  {dayjs(entry.startTime * 1000)
+                    .locale(localeDa)
+                    .format("LT")}
                   {entry.endTime && (
                     <>
                       <span> - </span>
-                      {dayjs(entry.endTime * 1000).locale(localeDa).format("LT")}
+                      {dayjs(entry.endTime * 1000)
+                        .locale(localeDa)
+                        .format("LT")}
                     </>
                   )}
                 </ContentItem>
