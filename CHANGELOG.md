@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-- Added field for slide duration in BRND template.
+- [#198](https://github.com/os2display/display-templates/pull/198)
+  - Added field for slide duration in BRND template.
 ## [2.6.1] - 2026-03-06
 
 - [#196](https://github.com/os2display/display-templates/pull/196)
