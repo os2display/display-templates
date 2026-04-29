@@ -6,7 +6,7 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import BrndSportcenterKk from "./brnd-sportcenter-kk";
+import BrndIdraetsanlaeg from "./brnd-idraetsanlaeg";
 import BrndSportcenterToday from "./brnd-sportcenter-today";
 import GlobalStyles from "../GlobalStyles";
 import "./brnd.scss";
@@ -83,8 +83,8 @@ function Brnd({ slide, content, run, slideDone, executionId }) {
             getTitle={getTitle}
           />
         )}
-        {layout === "sportcenter-kk" && (
-          <BrndSportcenterKk
+        {layout === "idraetsanlaeg" && (
+          <BrndIdraetsanlaeg
             bookings={feedData.bookings}
             content={content}
             templateClasses={classes}

@@ -6,26 +6,32 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import styled from "styled-components";
 
 /**
- * BRND København Kommune dagsprogram.
+ * BRND Idrætsanlæg dagsprogram.
  *
  * @param {object} props Component props.
  * @param {object} props.content Slide content.
  * @param {Array} props.bookings Booking entries.
  * @param {string[]} [props.templateClasses] Template class names. Default is `[]`.
  * @param {Function} props.getTitle Function to normalize displayed text.
- * @returns {JSX.Element} KK BRND layout.
+ * @returns {JSX.Element} BRND Idrætsanlæg Dagsprogram layout.
  */
-function BrndSportcenterKk({
+function BrndIdraetsanlaeg({
   content,
   bookings,
   templateClasses = [],
-  getTitle,
+  getTitle
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const { title = "" } = content;
 
   useEffect(() => {
     dayjs.extend(localizedFormat);
+    const dateAndTimeInterval = setInterval(
+      () => setCurrentDate(new Date()),
+      1000
+    );
+
+    return () => clearInterval(dateAndTimeInterval);
   }, []);
 
   // Sort and keep only current/future bookings from today.
@@ -41,15 +47,6 @@ function BrndSportcenterKk({
       .sort((a, b) => a.startTime - b.startTime);
   };
 
-  useEffect(() => {
-    const dateAndTimeInterval = setInterval(
-      () => setCurrentDate(new Date()),
-      1000
-    );
-
-    return () => clearInterval(dateAndTimeInterval);
-  }, []);
-
   const capitalize = (text) => {
     if (!text) {
       return "";
@@ -60,7 +57,7 @@ function BrndSportcenterKk({
 
   return (
     <Wrapper
-      className={`template-brnd brnd-sportcenter-kk ${templateClasses.join(
+      className={`template-brnd brnd-idraetsanlaeg ${templateClasses.join(
         " "
       )}`}
     >
@@ -221,7 +218,7 @@ const ContentHeaderItem = styled.div`
   padding: calc(var(--padding-size-base) * 0.55);
 `;
 
-BrndSportcenterKk.propTypes = {
+BrndIdraetsanlaeg.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
   bookings: PropTypes.arrayOf(
     PropTypes.shape({
@@ -245,4 +242,4 @@ BrndSportcenterKk.propTypes = {
   getTitle: PropTypes.func.isRequired,
 };
 
-export default BrndSportcenterKk;
+export default BrndIdraetsanlaeg;

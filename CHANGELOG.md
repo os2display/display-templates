@@ -4,10 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-- Added "København Kommune - Dagsprogram" as a new BRND layout option.
-  - Added `sportcenter-kk` BRND layout with column order: Hvornår, Hvor, Hvad, Hvem, Bemærkninger.
+- Added "Idrætsanlæg - Dagsprogram" as a new BRND layout option.
+  - Added `idraetsanlaeg` BRND layout with column order: Hvornår, Hvor, Hvad, Hvem, Bemærkninger.
   - Added KK-specific styling updates (dark header area, zebra-striped rows, centered date row, adjusted spacing/alignment).
-  - Added local slide example for BRND `sportcenter-kk` layout.
+  - Added local slide example for BRND `idraetsanlaeg` layout.
 
 ## [2.6.1] - 2026-03-06
 
