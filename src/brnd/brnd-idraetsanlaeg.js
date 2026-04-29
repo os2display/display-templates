@@ -19,7 +19,7 @@ function BrndIdraetsanlaeg({
   content,
   bookings,
   templateClasses = [],
-  getTitle
+  getTitle,
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const { title = "" } = content;
