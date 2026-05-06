@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Fixed BRND `idraetsanlaeg` layout so the `Hvor` column now uses `facility` instead of `area`.
+
 - [#199](https://github.com/os2display/display-templates/pull/199)
   - Added `idraetsanlaeg` BRND layout with column order: Hvornår, Hvor, Hvad, Hvem, Bemærkninger.
   - Added KK-specific styling updates (dark header area, zebra-striped rows, centered date row, adjusted spacing/alignment).
