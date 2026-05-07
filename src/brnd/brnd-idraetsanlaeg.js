@@ -112,7 +112,7 @@ function BrndIdraetsanlaeg({
                     rowIndex % 2 === 0 ? "row-even" : "row-odd"
                   }`}
                 >
-                  {getTitle(entry.area)}
+                  {getTitle(entry.facility)}
                 </ContentItem>
                 <ContentItem
                   className={`content-item content-item-activity ${
