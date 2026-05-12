@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [2.7.0] - 2026-05-01
+
+- [#199](https://github.com/os2display/display-templates/pull/199)
+  - Added `idraetsanlaeg` BRND layout with column order: Hvornår, Hvor, Hvad, Hvem, Bemærkninger.
+  - Added KK-specific styling updates (dark header area, zebra-striped rows, centered date row, adjusted spacing/alignment).
+  - Added local slide example for BRND `idraetsanlaeg` layout.
+- [#198](https://github.com/os2display/display-templates/pull/198)
+  - Added field for slide duration in BRND template.
+- [#202](https://github.com/os2display/display-templates/pull/202)
+  - Fixed BRND `idraetsanlaeg` layout so the `Hvor` column now uses `facility` instead of `area`.
+
 ## [2.6.1] - 2026-03-06
 
 - [#196](https://github.com/os2display/display-templates/pull/196)

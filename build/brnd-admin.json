@@ -40,8 +40,23 @@
         "key": "layout1",
         "title": "Sportcenter Dagsprogram",
         "value": "sportcenter-today"
+      },
+      {
+        "key": "layout2",
+        "title": "Idrætsanlæg - Dagsprogram",
+        "value": "idraetsanlaeg"
       }
     ]
+  },
+  {
+    "key": "brnd-form-duration",
+    "input": "duration",
+    "name": "duration",
+    "type": "number",
+    "min": "1",
+    "label": "Varighed pr. slide (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "brnd-form-form-14",
