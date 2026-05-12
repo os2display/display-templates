@@ -4,9 +4,6 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-- [#202](https://github.com/os2display/display-templates/pull/202)
-  - Fixed BRND `idraetsanlaeg` layout so the `Hvor` column now uses `facility` instead of `area`.
-
 ## [2.7.0] - 2026-05-01
 
 - [#199](https://github.com/os2display/display-templates/pull/199)
@@ -15,6 +12,8 @@ All notable changes to this project will be documented in this file.
   - Added local slide example for BRND `idraetsanlaeg` layout.
 - [#198](https://github.com/os2display/display-templates/pull/198)
   - Added field for slide duration in BRND template.
+- [#202](https://github.com/os2display/display-templates/pull/202)
+  - Fixed BRND `idraetsanlaeg` layout so the `Hvor` column now uses `facility` instead of `area`.
 
 ## [2.6.1] - 2026-03-06
 
