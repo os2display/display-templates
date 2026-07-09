@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
  * Track the size of a referenced DOM element.
  *
  * @param {import("react").RefObject<HTMLElement>} ref Element ref.
- * @returns {{ width: number, height: number }} Current element dimensions.
+ * @returns {{ width: number; height: number }} Current element dimensions.
  */
 function useElementSize(ref) {
   const [size, setSize] = useState({ width: 0, height: 0 });

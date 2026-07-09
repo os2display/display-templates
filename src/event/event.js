@@ -115,7 +115,9 @@ function Event({ slide, content, run, slideDone, executionId }) {
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
           <div className="event-top">
             <div className="event-top__text">
-              {host && <div className="event__host event-top__host">{host}</div>}
+              {host && (
+                <div className="event__host event-top__host">{host}</div>
+              )}
               {dateBlock}
             </div>
             {logoBlock}
@@ -143,7 +145,9 @@ function Event({ slide, content, run, slideDone, executionId }) {
         <div className="event-info">
           <div className="event-info__top">
             <div className="event-top__text">
-              {host && <div className="event__host event-info__host">{host}</div>}
+              {host && (
+                <div className="event__host event-info__host">{host}</div>
+              )}
               {dateBlock}
             </div>
             {logoBlock}

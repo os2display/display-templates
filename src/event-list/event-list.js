@@ -7,6 +7,22 @@ import "../shared/fonts/kbh/font.scss";
 import "./event-list.scss";
 
 /**
+ * Build a stable React key for an event object.
+ *
+ * @param {object} event Event data.
+ * @returns {string} Unique key.
+ */
+function getEventKey(event) {
+  if (event.externalId) {
+    return String(event.externalId);
+  }
+
+  return [event.title, event.startDate, event.host, event.image]
+    .filter(Boolean)
+    .join("|");
+}
+
+/**
  * Parse event list JSON data from slide content.
  *
  * @param {string} jsonData JSON string with event objects.
@@ -62,6 +78,7 @@ EventListItem.propTypes = {
     host: PropTypes.string,
     startDate: PropTypes.string,
     image: PropTypes.string,
+    externalId: PropTypes.string,
   }).isRequired,
   layout: PropTypes.string.isRequired,
 };
@@ -87,11 +104,7 @@ function EventList({ slide, content, run, slideDone, executionId }) {
     layout = "horizontal";
   }
 
-  const {
-    pageIntervalTime = 15000,
-    jsonData,
-    showLogo = true,
-  } = content;
+  const { pageIntervalTime = 15000, jsonData, showLogo = true } = content;
 
   const bgColor = content.bgColor || "#000c2e";
   const logo = slide?.theme?.logo;
@@ -158,9 +171,9 @@ function EventList({ slide, content, run, slideDone, executionId }) {
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
           {logoBlock}
           <div className="event-list__items">
-            {currentEvents.map((event, index) => (
+            {currentEvents.map((event) => (
               <EventListItem
-                key={`${event.title}-${index}`}
+                key={getEventKey(event)}
                 event={event}
                 layout={layout}
               />
@@ -176,9 +189,9 @@ function EventList({ slide, content, run, slideDone, executionId }) {
     <>
       <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
         <div className="event-list__items">
-          {currentEvents.map((event, index) => (
+          {currentEvents.map((event) => (
             <EventListItem
-              key={`${event.title}-${index}`}
+              key={getEventKey(event)}
               event={event}
               layout={layout}
             />
