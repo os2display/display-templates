@@ -1,0 +1,99 @@
+[
+  {
+    "key": "event-form-ui-title",
+    "input": "header",
+    "text": "Skabelon: Event",
+    "name": "ui-title",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "event-form-external-id",
+    "input": "textarea",
+    "name": "externalId",
+    "type": "text",
+    "label": "External ID",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-title",
+    "input": "textarea",
+    "name": "title",
+    "type": "text",
+    "label": "Titel",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-sub-title",
+    "input": "textarea",
+    "name": "subTitle",
+    "type": "text",
+    "label": "Undertitel",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-start-date",
+    "input": "input",
+    "name": "startDate",
+    "type": "text",
+    "label": "Startdato",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-end-date",
+    "input": "input",
+    "name": "endDate",
+    "type": "text",
+    "label": "Slutdato",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-host",
+    "input": "input",
+    "name": "host",
+    "type": "text",
+    "label": "Afsender",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-image",
+    "input": "input",
+    "name": "image",
+    "label": "Billede",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-bgColor",
+    "input": "input",
+    "name": "bgColor",
+    "type": "text",
+    "label": "Baggrundsfarve",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-textColor",
+    "input": "input",
+    "name": "textColor",
+    "type": "text",
+    "label": "Tekstfarve",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-show-logo",
+    "input": "checkbox",
+    "name": "showLogo",
+    "type": "checkbox",
+    "label": "Vis logo",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-form-duration",
+    "input": "duration",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

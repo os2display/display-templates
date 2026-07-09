@@ -1,0 +1,14 @@
+{
+  "title": "Event List",
+  "icon": "",
+  "id": "01K0EVLT8XQV9R2M4KJH7WNPDT",
+  "description": "Viser en liste af events med paginering.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/event-list.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/event-list-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/event-list-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

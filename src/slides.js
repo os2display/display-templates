@@ -1966,6 +1966,84 @@ const slides = [
       fontSize: "font-size-xl",
     },
   },
+  {
+    id: "slide-event-kk",
+    type: "event",
+    themeFile: "themes/dokk1.css",
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 10000,
+      title: "Sommerkoncert i Kongens Have",
+      subTitle: "Gratis udendørs koncert med lokale kunstnere",
+      host: "Kultur- og Fritidsforvaltningen",
+      startDate: "fredag d. 12. juli kl. 18.00",
+      endDate: "",
+      image: "/fixtures/images/mountain1.jpeg",
+      bgColor: "#000c2e",
+      textColor: "#fff",
+      showLogo: true,
+    },
+  },
+  {
+    id: "slide-event-list-kk",
+    type: "event-list",
+    themeFile: "themes/dokk1.css",
+    theme: {
+      logo: {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      bgColor: "#000c2e",
+      pageIntervalTime: 8000,
+      showLogo: true,
+      jsonData: JSON.stringify([
+        {
+          title: "Sommerkoncert i Kongens Have",
+          subTitle: "Gratis udendørs koncert",
+          host: "Kultur- og Fritidsforvaltningen",
+          startDate: "fredag d. 12. juli kl. 18.00",
+          image: "/fixtures/images/mountain1.jpeg",
+        },
+        {
+          title: "Børneteater i biblioteket",
+          subTitle: "For børn i alderen 4-8 år",
+          host: "Københavns Biblioteker",
+          startDate: "lørdag d. 13. juli kl. 11.00",
+          image: "/fixtures/images/vertical.jpg",
+        },
+        {
+          title: "Guidet byvandring",
+          subTitle: "Oplev byens historie",
+          host: "Københavns Museum",
+          startDate: "søndag d. 14. juli kl. 14.00",
+          image: "/fixtures/images/author.jpg",
+        },
+        {
+          title: "Food market på Israels Plads",
+          subTitle: "Smag på lokale specialiteter",
+          host: "Torvets Venner",
+          startDate: "mandag d. 15. juli kl. 12.00",
+          image: "/fixtures/images/mountain1.jpeg",
+        },
+        {
+          title: "Yoga i parken",
+          subTitle: "Gratis session for alle niveauer",
+          host: "Idræt & Sundhed",
+          startDate: "tirsdag d. 16. juli kl. 07.30",
+          image: "/fixtures/images/vertical.jpg",
+        },
+      ]),
+    },
+  },
 ];
 
 export default slides;

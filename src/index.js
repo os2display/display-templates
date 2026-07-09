@@ -31,6 +31,8 @@ import VimeoPlayer from "./vimeo-player/vimeo-player";
 import "./index.css";
 import NewsFeed from "./news-feed/news-feed";
 import Brnd from "./brnd/brnd";
+import Event from "./event/event";
+import EventList from "./event-list/event-list";
 
 export const renderScreen = (screen) => {
   const gridTemplateAreas = {
@@ -213,6 +215,26 @@ export const renderSlide = (slide) => {
     case "brnd":
       return (
         <Brnd
+          content={slide.content}
+          slide={slide}
+          run="1234"
+          slideDone={slideDone}
+          executionId="SLIDE_ID"
+        />
+      );
+    case "event":
+      return (
+        <Event
+          content={slide.content}
+          slide={slide}
+          run="1234"
+          slideDone={slideDone}
+          executionId="SLIDE_ID"
+        />
+      );
+    case "event-list":
+      return (
+        <EventList
           content={slide.content}
           slide={slide}
           run="1234"

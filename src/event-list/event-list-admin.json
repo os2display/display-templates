@@ -1,0 +1,33 @@
+[
+  {
+    "key": "event-list-form-ui-title",
+    "input": "header",
+    "text": "Skabelon: Event List",
+    "name": "ui-title",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "event-list-form-bgColor",
+    "input": "input",
+    "name": "bgColor",
+    "type": "text",
+    "label": "Baggrundsfarve",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-list-form-show-logo",
+    "input": "checkbox",
+    "name": "showLogo",
+    "type": "checkbox",
+    "label": "Vis logo",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "event-list-form-jsonData",
+    "input": "textarea",
+    "name": "jsonData",
+    "label": "JSON data",
+    "helpText": "Her kan du skrive JSON til slidet",
+    "formGroupClasses": "col-md"
+  }
+]

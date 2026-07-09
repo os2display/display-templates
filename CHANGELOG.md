@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Added Event and Event List templates for Københavns Kommune (KK).
+  - Added Event template for displaying a single event with image, title, dates, and theme logo support.
+  - Added Event List template with pagination and horizontal/vertical layouts.
+  - Added shared KBH font assets in `src/shared/fonts/kbh/`.
+  - Added `use-element-size` hook for responsive layout handling.
+  - Registered templates in webpack, `index.js`, and local KK slide examples.
+
 ## [2.7.0] - 2026-05-01
 
 - [#199](https://github.com/os2display/display-templates/pull/199)
