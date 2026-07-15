@@ -1,17 +1,12 @@
 /**
  * KBH fonts shared by Event and Event List templates.
- *
- * Remote components resolve font URLs relative to the client bundle, not the
- * template bundle. Specify src twice so webpack compiles the local file and
- * the absolute URL is used at runtime in the display client.
+ * Font files are bundled via webpack file-loader into build/fonts/.
  */
-$absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/main/build/fonts";
 
 /** KBH font definition */
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Thin.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
@@ -19,7 +14,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-ThinItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-ThinItalic.woff") format("woff");
   font-weight: 100;
   font-style: italic;
 }
@@ -27,7 +21,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Light.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
@@ -35,7 +28,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-LightItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-LightItalic.woff") format("woff");
   font-weight: 300;
   font-style: italic;
 }
@@ -43,7 +35,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Regular.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -51,7 +42,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Italic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
@@ -59,7 +49,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Medium.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
@@ -67,7 +56,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-MediumItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-MediumItalic.woff") format("woff");
   font-weight: 500;
   font-style: italic;
 }
@@ -75,7 +63,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Demibold.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Demibold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -83,7 +70,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-DemiboldItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-DemiboldItalic.woff") format("woff");
   font-weight: 600;
   font-style: italic;
 }
@@ -91,7 +77,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Bold.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -99,7 +84,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-BoldItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }
@@ -107,7 +91,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Black.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
@@ -115,7 +98,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-BlackItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBH-BlackItalic.woff") format("woff");
   font-weight: 900;
   font-style: italic;
 }
@@ -124,7 +106,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst.woff") format("woff");
-  src: url("#{$absolute_url}/KBHTekst.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -132,7 +113,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-Italic.woff") format("woff");
-  src: url("#{$absolute_url}/KBHTekst-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
@@ -140,7 +120,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-Bold.woff") format("woff");
-  src: url("#{$absolute_url}/KBHTekst-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -148,7 +127,6 @@ $absolute_url: "https://raw.githubusercontent.com/os2display/display-templates/m
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-BoldItalic.woff") format("woff");
-  src: url("#{$absolute_url}/KBHTekst-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }

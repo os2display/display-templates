@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { ThemeStyles } from "../slide-util";
+import { ThemeStyles, resolveImageFit, resolveLogoPosition } from "../slide-util";
 import useElementSize from "../use-element-size";
 import "../global-styles.css";
 import "../shared/fonts/kbh/font.scss";
@@ -47,12 +47,18 @@ function parseEventListJson(jsonData) {
  * @param {object} props Props.
  * @param {object} props.event Event data.
  * @param {string} props.layout Layout type.
+ * @param {string} props.imageFit Image object-fit mode.
  * @returns {JSX.Element} The component.
  */
-function EventListItem({ event, layout }) {
+function EventListItem({ event, layout, imageFit }) {
+  const imageClassName =
+    imageFit === "contain" ? "image-fit-contain" : "image-fit-cover";
+
   return (
     <div className="event-list-item">
-      {event.image && <img src={event.image} alt="" />}
+      {event.image && (
+        <img src={event.image} alt="" className={imageClassName} />
+      )}
       <div className="event-list-item__content">
         <div className="event-list-item__top">
           <h3 className="event-list-item__title">{event.title}</h3>
@@ -81,6 +87,7 @@ EventListItem.propTypes = {
     externalId: PropTypes.string,
   }).isRequired,
   layout: PropTypes.string.isRequired,
+  imageFit: PropTypes.oneOf(["cover", "contain"]).isRequired,
 };
 
 /**
@@ -104,7 +111,7 @@ function EventList({ slide, content, run, slideDone, executionId }) {
     layout = "horizontal";
   }
 
-  const { pageIntervalTime = 15000, jsonData, showLogo = true } = content;
+  const { pageIntervalTime = 15000, jsonData, showLogo = true, logoPosition = "top-right", imageFit = "cover" } = content;
 
   const bgColor = content.bgColor || "#000c2e";
   const logo = slide?.theme?.logo;
@@ -117,11 +124,14 @@ function EventList({ slide, content, run, slideDone, executionId }) {
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
 
+  const resolvedLogoPosition = resolveLogoPosition(logoPosition);
+  const resolvedImageFit = resolveImageFit(imageFit);
+
   const rootClasses = [
     "template-event-list",
     "event-list",
     `layout-${layout}`,
-    showLogo && logoUrl && "with-logo",
+    showLogo && logoUrl && `logo-position-${resolvedLogoPosition}`,
   ].filter(Boolean);
 
   const rootStyle = {
@@ -169,16 +179,17 @@ function EventList({ slide, content, run, slideDone, executionId }) {
     return (
       <>
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
-          {logoBlock}
           <div className="event-list__items">
             {currentEvents.map((event) => (
               <EventListItem
                 key={getEventKey(event)}
                 event={event}
                 layout={layout}
+                imageFit={resolvedImageFit}
               />
             ))}
           </div>
+          {logoBlock}
         </div>
         <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
       </>
@@ -194,6 +205,7 @@ function EventList({ slide, content, run, slideDone, executionId }) {
               key={getEventKey(event)}
               event={event}
               layout={layout}
+              imageFit={resolvedImageFit}
             />
           ))}
         </div>
@@ -223,6 +235,13 @@ EventList.propTypes = {
     bgColor: PropTypes.string,
     pageIntervalTime: PropTypes.number,
     showLogo: PropTypes.bool,
+    logoPosition: PropTypes.oneOf([
+      "top-right",
+      "top-left",
+      "bottom-right",
+      "bottom-left",
+    ]),
+    imageFit: PropTypes.oneOf(["cover", "contain"]),
   }).isRequired,
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
-import { ThemeStyles } from "../slide-util";
+import { ThemeStyles, resolveImageFit, resolveLogoPosition } from "../slide-util";
 import useElementSize from "../use-element-size";
 import "../global-styles.css";
 import "../shared/fonts/kbh/font.scss";
@@ -64,6 +64,8 @@ function Event({ slide, content, run, slideDone, executionId }) {
     image,
     duration = 10000,
     showLogo = true,
+    logoPosition = "top-right",
+    imageFit = "cover",
   } = content;
 
   const bgColor = content.bgColor || "#000c2e";
@@ -71,11 +73,16 @@ function Event({ slide, content, run, slideDone, executionId }) {
   const logo = slide?.theme?.logo;
   const logoUrl = showLogo && logo?.assets?.uri ? logo.assets.uri : "";
 
+  const resolvedLogoPosition = resolveLogoPosition(logoPosition);
+  const resolvedImageFit = resolveImageFit(imageFit);
+  const imageClassName =
+    resolvedImageFit === "contain" ? "image-fit-contain" : "image-fit-cover";
+
   const rootClasses = [
     "template-event",
     "event",
     `layout-${layout}`,
-    showLogo && logoUrl && "with-logo",
+    showLogo && logoUrl && `logo-position-${resolvedLogoPosition}`,
   ].filter(Boolean);
 
   const rootStyle = {
@@ -120,14 +127,14 @@ function Event({ slide, content, run, slideDone, executionId }) {
               )}
               {dateBlock}
             </div>
-            {logoBlock}
           </div>
           {image && (
             <div className="event-top__image">
-              <img src={image} alt="" />
+              <img src={image} alt="" className={imageClassName} />
             </div>
           )}
           <EventDetails title={title} subTitle={subTitle} />
+          {logoBlock}
         </div>
         <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
       </>
@@ -139,21 +146,19 @@ function Event({ slide, content, run, slideDone, executionId }) {
       <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
         {image && (
           <div className="event__image">
-            <img src={image} alt="" />
+            <img src={image} alt="" className={imageClassName} />
           </div>
         )}
         <div className="event-info">
-          <div className="event-info__top">
-            <div className="event-top__text">
-              {host && (
-                <div className="event__host event-info__host">{host}</div>
-              )}
-              {dateBlock}
+          {host && (
+            <div className="event-info__top">
+              <div className="event__host event-info__host">{host}</div>
             </div>
-            {logoBlock}
-          </div>
+          )}
           <EventDetails title={title} subTitle={subTitle} />
+          {(startDate || endDate) && dateBlock}
         </div>
+        {logoBlock}
       </div>
       <ThemeStyles id={executionId} css={slide?.theme?.cssStyles} />
     </>
@@ -185,6 +190,13 @@ Event.propTypes = {
     textColor: PropTypes.string,
     duration: PropTypes.number,
     showLogo: PropTypes.bool,
+    logoPosition: PropTypes.oneOf([
+      "top-right",
+      "top-left",
+      "bottom-right",
+      "bottom-left",
+    ]),
+    imageFit: PropTypes.oneOf(["cover", "contain"]),
   }).isRequired,
 };
 

@@ -9,7 +9,7 @@
     color: #000;
     background-color: #fff;
     overflow: hidden;
-    width: 55%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,6 +38,7 @@
 }
 
 .event-list {
+  position: relative;
   color: #fff;
   display: flex;
   width: 100%;
@@ -46,10 +47,11 @@
   padding: 6em 3em 6em 6em;
 
   &__logo {
+    position: absolute;
     width: 10em;
     height: 10em;
     flex-shrink: 0;
-    margin-left: 2em;
+    z-index: 1;
 
     img {
       width: 100%;
@@ -58,10 +60,34 @@
     }
   }
 
+  &.logo-position-top-right &__logo {
+    top: 3em;
+    right: 3em;
+  }
+
+  &.logo-position-top-left &__logo {
+    top: 3em;
+    left: 3em;
+  }
+
+  &.logo-position-bottom-right &__logo {
+    bottom: 3em;
+    right: 3em;
+  }
+
+  &.logo-position-bottom-left &__logo {
+    bottom: 3em;
+    left: 3em;
+  }
+
   img {
-    width: 45%;
+    width: 60%;
     height: 100%;
     object-fit: cover;
+
+    &.image-fit-contain {
+      object-fit: contain;
+    }
   }
 
   &__items {
@@ -75,11 +101,6 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 3em;
-
-    .event-list__logo {
-      margin-bottom: 3em;
-      margin-left: auto;
-    }
 
     .event-list__items {
       height: 100%;

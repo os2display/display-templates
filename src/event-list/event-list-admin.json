@@ -23,6 +23,54 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "event-list-form-logo-position",
+    "input": "select",
+    "name": "logoPosition",
+    "label": "Logo placering",
+    "formGroupClasses": "col-md-6",
+    "options": [
+      {
+        "key": "logo-position-top-right",
+        "title": "Øverste højre hjørne",
+        "value": "top-right"
+      },
+      {
+        "key": "logo-position-top-left",
+        "title": "Øverste venstre hjørne",
+        "value": "top-left"
+      },
+      {
+        "key": "logo-position-bottom-right",
+        "title": "Nederste højre hjørne",
+        "value": "bottom-right"
+      },
+      {
+        "key": "logo-position-bottom-left",
+        "title": "Nederste venstre hjørne",
+        "value": "bottom-left"
+      }
+    ]
+  },
+  {
+    "key": "event-list-form-image-fit",
+    "input": "select",
+    "name": "imageFit",
+    "label": "Billedvisning",
+    "formGroupClasses": "col-md-6",
+    "options": [
+      {
+        "key": "image-fit-cover",
+        "title": "Udfyld container",
+        "value": "cover"
+      },
+      {
+        "key": "image-fit-contain",
+        "title": "Skaler ned",
+        "value": "contain"
+      }
+    ]
+  },
+  {
     "key": "event-list-form-jsonData",
     "input": "textarea",
     "name": "jsonData",

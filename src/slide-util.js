@@ -72,4 +72,42 @@ ThemeStyles.propTypes = {
   css: PropTypes.string,
 };
 
-export { getAllMediaUrlsFromField, getFirstMediaUrlFromField, ThemeStyles };
+const LOGO_POSITIONS = [
+  "top-right",
+  "top-left",
+  "bottom-right",
+  "bottom-left",
+];
+
+/**
+ * Normalize logo position values from admin or mock data.
+ *
+ * @param {string | undefined} logoPosition Raw logo position value.
+ * @returns {string} Valid logo position.
+ */
+function resolveLogoPosition(logoPosition) {
+  const normalized = String(logoPosition || "")
+    .trim()
+    .replace(/^logo-position-/, "")
+    .replace(/\s+/g, "-");
+
+  return LOGO_POSITIONS.includes(normalized) ? normalized : "top-right";
+}
+
+/**
+ * Resolve image object-fit from admin or mock data.
+ *
+ * @param {string | undefined} imageFit Raw image fit value.
+ * @returns {"cover" | "contain"} Valid object-fit value.
+ */
+function resolveImageFit(imageFit) {
+  return imageFit === "contain" ? "contain" : "cover";
+}
+
+export {
+  getAllMediaUrlsFromField,
+  getFirstMediaUrlFromField,
+  resolveImageFit,
+  resolveLogoPosition,
+  ThemeStyles,
+};

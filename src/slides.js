@@ -1313,6 +1313,7 @@ const slides = [
       occurrenceId: "",
       entryDuration: 10,
       showLogo: true,
+      logoPosition: "top-right",
     },
   },
   {
@@ -1988,6 +1989,8 @@ const slides = [
       bgColor: "#000c2e",
       textColor: "#fff",
       showLogo: true,
+      logoPosition: "bottom-left",
+      imageFit: "contain",
     },
   },
   {
@@ -2005,6 +2008,8 @@ const slides = [
       bgColor: "#000c2e",
       pageIntervalTime: 8000,
       showLogo: true,
+      logoPosition: "top-right",
+      imageFit: "cover",
       jsonData: JSON.stringify([
         {
           title: "Sommerkoncert i Kongens Have",
