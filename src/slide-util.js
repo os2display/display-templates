@@ -72,12 +72,7 @@ ThemeStyles.propTypes = {
   css: PropTypes.string,
 };
 
-const LOGO_POSITIONS = [
-  "top-right",
-  "top-left",
-  "bottom-right",
-  "bottom-left",
-];
+const LOGO_POSITIONS = ["top-right", "top-left", "bottom-right", "bottom-left"];
 
 /**
  * Normalize logo position values from admin or mock data.

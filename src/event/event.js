@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import BaseSlideExecution from "../base-slide-execution";
-import { ThemeStyles, resolveImageFit, resolveLogoPosition } from "../slide-util";
+import {
+  ThemeStyles,
+  resolveImageFit,
+  resolveLogoPosition,
+} from "../slide-util";
 import useElementSize from "../use-element-size";
 import "../global-styles.css";
 import "../shared/fonts/kbh/font.scss";

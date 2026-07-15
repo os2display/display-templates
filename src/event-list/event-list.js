@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { ThemeStyles, resolveImageFit, resolveLogoPosition } from "../slide-util";
+import {
+  ThemeStyles,
+  resolveImageFit,
+  resolveLogoPosition,
+} from "../slide-util";
 import useElementSize from "../use-element-size";
 import "../global-styles.css";
 import "../shared/fonts/kbh/font.scss";
@@ -111,7 +115,13 @@ function EventList({ slide, content, run, slideDone, executionId }) {
     layout = "horizontal";
   }
 
-  const { pageIntervalTime = 15000, jsonData, showLogo = true, logoPosition = "top-right", imageFit = "cover" } = content;
+  const {
+    pageIntervalTime = 15000,
+    jsonData,
+    showLogo = true,
+    logoPosition = "top-right",
+    imageFit = "cover",
+  } = content;
 
   const bgColor = content.bgColor || "#000c2e";
   const logo = slide?.theme?.logo;
