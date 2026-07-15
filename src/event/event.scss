@@ -109,6 +109,26 @@
   }
 }
 
+.event .event-details {
+  &__title {
+    margin-bottom: 0.25em;
+
+    h1 {
+      font-size: 4.5em;
+      font-family: "KBH", sans-serif;
+      font-weight: 700;
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+
+  &__sub-title h2 {
+    font-size: 2.25em;
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
 .event .event-info {
   display: flex;
   flex-direction: column;
@@ -134,25 +154,5 @@
 .event .layout-horizontal {
   .event-info {
     padding: 3em;
-  }
-}
-
-.event .event-details {
-  &__title {
-    margin-bottom: 0.25em;
-
-    h1 {
-      font-size: 4.5em;
-      font-family: "KBH", sans-serif;
-      font-weight: 700;
-      margin: 0;
-      word-break: break-word;
-    }
-  }
-
-  &__sub-title h2 {
-    font-size: 2.25em;
-    font-weight: 400;
-    margin: 0;
   }
 }
